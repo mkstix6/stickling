@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Mark Stickling">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mark Stickling</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <link rel="author" href="humans.txt"> -->
+
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        img{
+            max-width:100%;
+        }
+        :root{
+            background:#f0f0f0;
+            background-color:black;
+            font-family:abel,sans-serif;
+            line-height:1.4;
+            background-image:linear-gradient(to bottom right, rgba(47,228,189,.9) 10%,rgba(50,200,230,.9),rgba(15,36,161,.9));
+            color:white;
+            color:rgba(255,255,255,1);
+            /* text-shadow:0 1px 0 black; */
+            text-fill-color:green;
+
+        }
+        html{
+
+        }
+        body{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            min-height:100vh;
+            padding:0;
+            margin:0;
+        }
+        .threeD{
+            perspective:400px;
+        }
+        .center_both{
+            margin:auto;
+            margin-top:auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+        }
+        .person{
+            border-radius:200px;
+            position:relative;
+            animation:rotate-it-x .6s 1 ease-out;
+            overflow: hidden;
+            transform:translateZ(0px);
+        }
+        .person::after{
+            /* box-shadow:inset 0 2px 1px rgba(0,0,0,.1),inset 0 0 3px 0px rgba(0,0,0,.2); */
+            content:"";
+            display:block;
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            border-radius:inherit;
+            z-index:2;
+
+        }
+        .person::before{
+            content:"";
+            background-image:linear-gradient(to bottom right, rgba(255,255,255,0),rgba(255,255,255,0) 20%,rgba(255,255,255,.5) 22%,rgba(255,255,255,0) 40%,rgba(255,255,255,0));
+
+            display:block;
+
+             position:absolute;
+            top:-200px;
+            left:-200px;
+            right:-200px;
+            bottom:-200px;
+            /* z-index:4; */
+            animation:shiny .6s 1 linear;
+            animation-fill-mode:forwards;
+            border-radius:200px;
+        }
+        @keyframes shiny{
+            0%{
+                transform:translateX(400px) translateY(400px);
+                opacity:1;
+            }
+            80%{
+                opacity:1;
+                
+            }
+            100%{
+                transform:translateX(-100px) translateY(-100px);
+                opacity:0;
+
+            }
+        }
+        h1{
+            margin:1em 0 .5em;
+            text-align:center;
+        }
+        @keyframes in{
+            0%{
+                transform:scale(.95) translateZ(-100px);
+                opacity:0.00001;
+            }
+            20%{
+                opacity:0.0001;
+            }
+            100%{
+                transform:scale(1) translateZ(0px);
+                opacity:1;
+            }
+        }
+        @keyframes rotate-it-x{
+            0%{
+                transform:rotateX(30deg);
+            }
+            100%{
+                transform:rotateX(0deg);
+            }
+        }
+        .card{
+            /* background:white; */
+            animation: in .6s 1 ease-out;
+            position:relative;
+            max-width:100%;
+            perspective:400px;
+            /* background:rgba(255,255,255,.1); */
+
+            border-radius:4px;
+            margin:20px;
+            /* padding:20px; */
+            padding-bottom:20px;
+            /* box-shadow: 0 2px 30px rgba(0,0,0,.1); */
+
+        }
+
+        .person img{
+            border-radius:200px;
+            /* border-bottom-right-radius: 0; */
+            /* border-bottom-left-radius: 0; */
+            display:block;
+        }
+        .card_person{
+            border-top-left-radius:200px;
+            border-top-right-radius: 200px;
+            border-radius:200px;
+        }
+        .person_attributes{
+            list-style:none;
+            padding-left:0;
+            text-align:center;
+        }
+        .footer{
+            display:flex;
+            justify-content:flex-end;
+            /* margin-top:auto; */
+            width:100%;
+            padding:1em 1em;
+            align-self:flex-end;
+            position:fixed;
+            bottom:0;
+            left:0;
+            right:0;
+        }
+        .footer a {
+            margin:0 0.5em;
+
+        }
+        a{
+            color:inherit;
+            opacity:0.8;
+            text-decoration: none;
+
+        }
+        a:hover{
+            opacity:1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page" id="page_home">
+        <div class="center_both threeD">
+            <div class="card card_person">
+                <div class="person">
+                    <img src="me.jpg" alt="">
+                </div>
+                <h1>Mark Stickling</h1>
+                <ul class="person_attributes">
+                    <li>London</li>
+                    <li>Front end web developer</li>
+                    <li>HTML CSS JS</li>
+                    <li>jQuery GSAP ScrollMagic</li>
+                    <li>npm Gulp</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page" id="page_photography">
+
+    </div>
+    <div class="footer">
+        <a href="#">photography</a>
+        <a href="#">social</a>
+    </div>
+    <!-- <script src="js/main.js"> -->
+
+</script>
+</body>
+</html>
