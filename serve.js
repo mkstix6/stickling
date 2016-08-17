@@ -1,14 +1,14 @@
 "use strict";
+// Load the http module to create an http server.
 var http = require('http');
-var fs = require('fs');
 
-http.createServer(function(req, res) {
-    fs.readFile('home.html', function(err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-            'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
+// Configure our HTTP server to respond with Hello World to all requests.
+var server = http.createServer(function(request, response) {
+    response.writeHead(200, {
+        "Content-Type": "text/plain"
     });
-}).listen(8080);
+    response.end("Hello World\n");
+});
+
+// Last, but not least, listen on port 8080
+server.listen(8080);
