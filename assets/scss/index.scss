@@ -109,7 +109,7 @@ h1 {
         opacity: 0.00001;
     }
 
-    20% {
+    40% {
         opacity: 0.0001;
     }
 
@@ -121,11 +121,11 @@ h1 {
 
 @keyframes rotate-it-x {
     0% {
-        transform: rotateX(30deg);
+        transform: rotateX(30deg) translateZ(-50px);
     }
 
     100% {
-        transform: rotateX(0deg);
+        transform: rotateX(0deg) translateZ(-50px);
     }
 }
 
@@ -203,7 +203,7 @@ li {
     transform: translateZ(-5px);
 
     @for $n from 1 through 5 {
-        li:nth-child(#{$n}) {
+        &:nth-child(#{$n}) {
             transform: translateZ(-2px * $n);
         }
     }

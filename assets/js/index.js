@@ -1,4 +1,4 @@
 "use strict"
 let cardAttract = require("./modules/cardattract.js")
 
-cardAttract()
+window.setTimeout(cardAttract, 600)
