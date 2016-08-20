@@ -4,8 +4,7 @@ let mposit = [0, 0]
 
 document.onmousemove = handleMouseMove;
 
-;
-(function attract() {
+function attract() {
     let card = document.getElementById('mecard')
         // cposition = card.getBoundingClientRect()
 
@@ -18,7 +17,7 @@ document.onmousemove = handleMouseMove;
         window.requestAnimationFrame(renderattract)
     }
     window.requestAnimationFrame(renderattract)
-})()
+})
 
 function handleMouseMove(event) {
 
