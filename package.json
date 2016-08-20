@@ -4,8 +4,8 @@
     "description": "",
     "main": "serve.html",
     "scripts": {
-        "start": "npm run build;node serve.js",
-        "build": "webpack"
+        "start": "node serve.js",
+        "prestart": "webpack"
     },
     "author": "",
     "license": "ISC",
