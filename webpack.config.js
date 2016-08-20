@@ -19,11 +19,13 @@ module.exports = {
             loader: "babel-loader"
         }, {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('css!sass')
+            loader: ExtractTextPlugin.extract('css!sass!postcss-loader')
         }]
     },
     postcss: function() {
-        return [precss, autoprefixer]
+        return [precss, autoprefixer({
+            browsers: ['last 2 versions']
+        })]
     },
     plugins: [
         new ExtractTextPlugin('assets/css/main.css', {
