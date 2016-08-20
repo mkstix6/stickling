@@ -4,7 +4,7 @@
     "description": "",
     "main": "serve.html",
     "scripts": {
-        "start": "npm run build;node serve.js",
+        "start": "node serve.js",
         "build": "webpack"
     },
     "author": "",
