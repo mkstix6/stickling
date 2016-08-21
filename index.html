@@ -24,13 +24,13 @@
 <body>
     <div class="page" id="page_home">
         <div class="center_both threeD">
-            <div id="mecard" class="card card_person">
+            <div id="mecard" class="card card_person" itemscope itemtype="https://schema.org/Person">
                 <div class="person">
-                    <img src="me.jpg" alt="Mark Stickling">
+                    <img src="me.jpg" alt="Mark Stickling" itemprop="image">
                 </div>
-                <h1>Mark Stickling</h1>
+                <h1><span itemprop="givenName">Mark</span> <span itemprop="familyName">Stickling</span></h1>
                 <ul class="person_attributes">
-                    <li>London</li>
+                    <li itemprop="homeLocation">London</li>
                     <li>Front end web developer</li>
                     <li>HTML CSS JS</li>
                     <li>jQuery GSAP ScrollMagic</li>
