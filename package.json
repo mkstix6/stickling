@@ -7,7 +7,7 @@
         "start": "node serve.js",
         "prestart": "webpack"
     },
-    "author": "",
+    "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
         "node": "~4.0"
@@ -37,5 +37,6 @@
         "webpack-hot-middleware": "^2.12.2",
         "webpack-module-hot-accept": "^1.0.4",
         "webpack-stream": "^3.2.0"
-    }
+    },
+    "repository": "https://github.com/mkstix6/18simlple.git"
 }
