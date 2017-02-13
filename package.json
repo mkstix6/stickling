@@ -3,10 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "main": "serve.html",
-    "scripts": {
-        "start": "node serve.js",
-        "prestart": "webpack"
-    },
     "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
