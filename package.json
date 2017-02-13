@@ -2,7 +2,7 @@
     "name": "18simple",
     "version": "1.0.0",
     "description": "",
-    "main": "serve.html",
+    "main": "index.html",
     "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
