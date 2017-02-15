@@ -8,6 +8,10 @@
     "engines": {
         "node": "~7.0"
     },
+    "scripts": {
+        "start": "node serve.js",
+        "poststart": "webpack"
+    },
     "dependencies": {
         "connect": "^3.4.1",
         "express": "4.x",
