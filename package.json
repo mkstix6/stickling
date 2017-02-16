@@ -10,7 +10,7 @@
     },
     "scripts": {
         "start": "node serve.js",
-        "prestart": "webpack;npm install"
+        "prestart": "npm install;webpack"
     },
     "dependencies": {
         "connect": "^3.4.1",
