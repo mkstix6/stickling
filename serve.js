@@ -1,8 +1,8 @@
-'use strict'
-var express = require('express')
-var app = express()
+var http = require('http')
+var fs = require('fs')
+var index = fs.readFileSync('index.html')
 
-app.use(express.static(__dirname + '/'))
-app.use(express.static(process.cwd() + '/assets'))
-
-app.listen(process.env.PORT || 3000)
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'})
+  res.end(index)
+}).listen(9615)
