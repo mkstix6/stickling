@@ -9,8 +9,8 @@
         "node": "~7.0"
     },
     "scripts": {
-        "start": "npm serve.js",
-        "prestart": "webpack"
+        "start": "node run serve.js",
+        "prestart": "npm install;webpack"
     },
     "dependencies": {
         "connect": "^3.4.1",
