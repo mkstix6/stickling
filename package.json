@@ -10,7 +10,7 @@
     },
     "scripts": {
         "start": "node run serve.js",
-        "prestart": "npm install;webpack"
+        "prestart": "node install;webpack"
     },
     "dependencies": {
         "connect": "^3.4.1",
