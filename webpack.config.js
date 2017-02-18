@@ -3,7 +3,6 @@ var autoprefixer = require('autoprefixer')
 var style = require('style-loader')
 var css = require('css-loader')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var path = '/'
 
 module.exports = {
   entry: {
@@ -11,8 +10,7 @@ module.exports = {
     css: './assets/scss/index.scss'
   },
   output: {
-    path: __dirname + 'dist',
-    filename: '[name].entry.js'
+    filename: './assets/js/bundle.js'
   },
   module: {
     loaders: [{
@@ -21,7 +19,17 @@ module.exports = {
       loader: 'babel-loader'
     }, {
       test: /\.scss$/,
-      loaders: ['style', 'css', 'sass']
+      loader: ExtractTextPlugin.extract('css!sass!postcss-loader')
     }]
-  }
+  },
+  postcss: function () {
+    return [precss, autoprefixer({
+      browsers: ['last 2 versions']
+    })]
+  },
+  plugins: [
+    new ExtractTextPlugin('assets/css/main.css', {
+      allChunks: true
+    })
+  ]
 }
