@@ -6,7 +6,8 @@
     "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
-        "node": "~7.0"
+        "node": "~7.0",
+        "yarn": "^0.20.3"
     },
     "scripts": {
         "start" : "node serve.js"
