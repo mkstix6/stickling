@@ -2,7 +2,7 @@
     "name": "simple18",
     "version": "1.0.0",
     "description": "",
-    "main": "index.html",
+    "main": "serve.js",
     "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
@@ -10,7 +10,7 @@
     },
     "scripts": {
         "start" : "node serve.js",
-        //"prestart": "node install;webpack"
+        //"prestart": "webpack"
     },
     "dependencies": {
         "connect": "^3.4.1",
