@@ -1,5 +1,5 @@
 {
-    "name": "18simple",
+    "name": "simple18",
     "version": "1.0.0",
     "description": "",
     "main": "index.html",
@@ -9,7 +9,7 @@
         "node": "~7.0"
     },
     "scripts": {
-        "start": "node run serve.js",
+        "start" : "node serve.js",
         "prestart": "node install;webpack"
     },
     "dependencies": {
@@ -17,9 +17,7 @@
         "express": "4.x",
         "serve-static": "^1.11.1",
         "socket.io": "1.5.x",
-        "underscore": "1.8.3"
-    },
-    "devDependencies": {
+        "underscore": "1.8.3",
         "autoprefixer": "^6.4.0",
         "babel-core": "^6.13.2",
         "babel-loader": "^6.2.5",
