@@ -11,8 +11,7 @@
         "yarn": "^0.20.3"
     },
     "scripts": {
-        "start" : "node serve.js",
-        "prestart": "npm install;webpack"
+        "start" : "webpack;node serve.js"
     },
     "dependencies": {
         "connect": "^3.4.1",
