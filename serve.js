@@ -1,7 +1,14 @@
-var express = require('express')
+var finalhandler = require('finalhandler')
+var http = require('http')
 var serveStatic = require('serve-static')
 
-var app = express()
+// Serve up public/ftp folder
+var serve = serveStatic('public/ftp', {'index': ['index.html', 'index.htm']})
 
-app.use(serveStatic('public/ftp', {'index': ['index.html', 'index.htm']}))
-app.listen(8080)
+// Create server
+var server = http.createServer(function onRequest (req, res) {
+  serve(req, res, finalhandler(req, res))
+})
+
+// Listen
+server.listen(3000)
