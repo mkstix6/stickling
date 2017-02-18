@@ -1,6 +1,6 @@
 var connect = require('connect')
 var serveStatic = require('serve-static')
 
-connect().use(
-    serveStatic('/index.html')
-).listen(8080)
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html')
+})
