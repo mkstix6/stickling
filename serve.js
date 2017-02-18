@@ -1,11 +1,7 @@
-// Load the http module to create an http server.
-var http = require('http')
+var express = require('express')
+var serveStatic = require('serve-static')
 
-// Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-  response.writeHead(200, {'Content-Type': 'text/plain'})
-  response.end('Hello World\n')
-})
+var app = express()
 
-// Last, but not least, listen on port 8080
-server.listen(8080)
+app.use(serveStatic('public/ftp', {'index': ['index.html', 'index.htm']}))
+app.listen(8080)
