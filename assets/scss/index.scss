@@ -48,6 +48,21 @@ body {
     flex-direction: column;
 }
 
+#shimmer {
+    display: block;
+    position: absolute;
+    top: -10%;
+    left: -20%;
+    right: -20%;
+    bottom: -10%;
+    border-radius: inherit;
+    z-index: 2;
+    transform: translateZ(0px) translateY(-2em);
+    background: radial-gradient(rgba(white, 0.4), rgba(white, 0.0001), rgba(white, 0.0001));
+    will-change: transform;
+    transition: transform 150ms;
+}
+
 .person {
     border-radius: 200px;
     position: relative;
@@ -58,6 +73,7 @@ body {
 
     &::after {
         /* box-shadow:inset 0 2px 1px rgba(0,0,0,.1),inset 0 0 3px 0px rgba(0,0,0,.2); */
+
         content: "";
         display: block;
         position: absolute;
@@ -83,6 +99,14 @@ body {
         animation: shiny .6s 1 linear;
         animation-fill-mode: forwards;
         border-radius: 200px;
+    }
+
+    img {
+        border-radius: 200px;
+
+        /* border-bottom-right-radius: 0; */
+        /* border-bottom-left-radius: 0; */
+        display: block;
     }
 }
 
@@ -152,14 +176,6 @@ h1 {
     transition: transform 150ms;
     perspective: 400px;
     transform-style: preserve-3d;
-}
-
-.person img {
-    border-radius: 200px;
-
-    /* border-bottom-right-radius: 0; */
-    /* border-bottom-left-radius: 0; */
-    display: block;
 }
 
 .card_person {
