@@ -206,17 +206,37 @@ li {
     transform-style: preserve-3d;
     transform: translateZ(-5px);
 
-    @for $n from 1 through 5 {
+    @for $n from 1 through 30 {
         &:nth-child(#{$n}) {
             transform: translateZ(-2px * $n);
         }
     }
 
-    &:hover {
-        transform: scale(1) translateZ(1px);
+    @for $n from 1 through 30 {
+        &:hover:nth-child(#{$n}) {
+            transform: translateZ(-2px * $n + 5);
+        }
     }
 }
 
 a:hover {
     opacity: 1;
+}
+
+.starstat {
+    display: flex;
+    justify-content: center;
+
+    // width: 20em;
+
+    .text {
+        flex: 1 1 50%;
+        text-align: right;
+        margin-right: 0.5em;
+    }
+
+    .stars {
+        flex: 1 1 50%;
+        text-align: left;
+    }
 }
