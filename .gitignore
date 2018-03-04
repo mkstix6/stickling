@@ -2,3 +2,7 @@ node_modules
 assets/js/bundle.js
 assets/css/*
 /npm-debug.log
+
+/assets/js/main.bundle.js
+
+/assets/js/main.bundle.js.map
