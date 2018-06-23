@@ -2,7 +2,6 @@ var precss = require('precss')
 var autoprefixer = require('autoprefixer')
 var style = require('style-loader')
 var css = require('css-loader')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -19,17 +18,12 @@ module.exports = {
       loader: 'babel-loader'
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('css!sass!postcss-loader')
+      loader: 'css!sass!postcss-loader'
     }]
   },
   postcss: function () {
     return [precss, autoprefixer({
       browsers: ['last 2 versions']
     })]
-  },
-  plugins: [
-    new ExtractTextPlugin('assets/css/main.css', {
-      allChunks: true
-    })
-  ]
+  }
 }
