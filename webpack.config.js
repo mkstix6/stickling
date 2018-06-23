@@ -5,8 +5,8 @@ var css = require('css-loader')
 
 module.exports = {
   entry: {
-    js: './assets/js/index.js',
-    css: './assets/scss/index.scss'
+    js: './assets/js/index.js'
+    // css: './assets/scss/index.scss'
   },
   output: {
     filename: './assets/js/bundle.js'

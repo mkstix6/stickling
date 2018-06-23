@@ -7,8 +7,7 @@
     "author": "mkstix6 <mkstix6@gmail.com>",
     "license": "ISC",
     "engines": {
-        "node": "~6.0",
-        "yarn": "^0.20.3"
+        "node": "^10"
     },
     "scripts": {
         "start": "webpack;node serve.js"
