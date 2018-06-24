@@ -9,6 +9,20 @@
 </template>
 
 <style lang="scss">
+  @font-face {
+    font-family: 'Pink Blue';
+    src: url('./assets/Pink Blue.ttf');
+  }
+  @font-face {
+    font-family: 'Alike Angular';
+    src: url('./assets/AlikeAngular-Regular.ttf');
+  }
+
+  .display-font {
+    // font-family: 'Pink Blue';
+    font-family: 'Alike Angular', serif;
+  }
+
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -21,11 +35,27 @@
     box-sizing: border-box;
   }
 
+  .m-0 {
+    margin: 0 !important;
+  }
+
+  .mt-auto {
+    margin-top: auto !important;
+  }
+
+  .mb-auto {
+    margin-bottom: auto !important;
+  }
+
+  .aibase{
+    align-items: baseline;
+  }
+
   img {
     max-width: 100%;
   }
 
-  :root {
+   :root {
     background: #f0f0f0;
     background-color: black;
     font-family: abel, sans-serif;
@@ -58,65 +88,15 @@
     perspective: 400px;
   }
 
+  .flex {
+    display: flex;
+  }
+
   .center_both {
     margin: auto;
     margin-top: auto;
-    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-  }
-
-  #shimmer {
-    display: block;
-    position: absolute;
-    top: -10%;
-    left: -20%;
-    right: -20%;
-    bottom: -10%;
-    border-radius: inherit;
-    z-index: 2;
-    transform: translateZ(0px) translateY(-2em);
-    background: radial-gradient(rgba(white, 0.4), rgba(white, 0.0001), rgba(white, 0.0001));
-    will-change: transform;
-    transition: transform 150ms;
-  }
-
-  .person {
-    border-radius: 200px;
-    position: relative;
-    animation: rotate-it-x .6s 1 ease-out;
-    overflow: hidden;
-    box-shadow: 0 9px 40px rgba(0, 0, 0, 0.2);
-    transform: translateZ(-50px);
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: inherit;
-      z-index: 2;
-    }
-    &::before {
-      content: "";
-      background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 22%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0));
-      display: block;
-      position: absolute;
-      top: -200px;
-      left: -200px;
-      right: -200px;
-      bottom: -200px;
-      animation: shiny .6s 1 linear;
-      animation-fill-mode: forwards;
-      border-radius: 200px;
-    }
-    img {
-      border-radius: 200px;
-      display: block;
-    }
   }
 
   @keyframes shiny {
@@ -161,25 +141,6 @@
     }
   }
 
-  .card {
-    animation: in .6s 1 ease-out;
-    position: relative;
-    max-width: 100%;
-    perspective: 400px;
-    border-radius: 4px;
-    margin: 20px;
-    padding-bottom: 20px;
-    transition: transform 150ms;
-    perspective: 400px;
-    transform-style: preserve-3d;
-  }
-
-  .card_person {
-    border-top-left-radius: 200px;
-    border-top-right-radius: 200px;
-    border-radius: 200px;
-  }
-
   .person_attributes {
     list-style: none;
     padding-left: 0;
@@ -210,7 +171,7 @@
     text-decoration: none;
   }
 
-  pre{
+  pre {
     font: inherit;
   }
 
