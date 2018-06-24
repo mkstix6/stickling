@@ -27,7 +27,7 @@ export default new Vuex.Store({
     },
     {
       name: 'Vue',
-      value: 1,
+      value: 2,
     },
     {
       name: 'jQuery',
