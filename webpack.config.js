@@ -6,8 +6,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
-    js: './assets/js/index.js'
-    // css: './assets/scss/index.scss'
+    js: './assets/js/index.js',
+    css: './assets/scss/index.scss'
   },
   output: {
     filename: './dist/bundle.js'
@@ -28,7 +28,7 @@ module.exports = {
     })]
   },
   plugins: [
-    new ExtractTextPlugin('assets/css/main.css', {
+    new ExtractTextPlugin('dist/main.css', {
       allChunks: true
     })
   ]

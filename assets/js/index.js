@@ -1,6 +1,5 @@
 'use strict'
-let cardAttract = require('./modules/cardattract.js')
 
-require('./../scss/index.scss')
+const cardAttract = require('./modules/cardattract.js')
 
 window.setTimeout(cardAttract, 600)
