@@ -1,10 +1,24 @@
+.DS_Store
 node_modules
-assets/js/bundle.js
-assets/css/*
-/npm-debug.log
+/dist
 
-/assets/js/main.bundle.js
+/tests/e2e/videos/
+/tests/e2e/screenshots/
 
-/assets/js/main.bundle.js.map
+# local env files
+.env.local
+.env.*.local
 
-dist/
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
