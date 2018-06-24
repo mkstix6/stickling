@@ -1,6 +1,7 @@
 'use strict'
 
 let mposit = [0, 0]
+const magnitude = -4
 
 document.onmousemove = handleMouseMove
 
@@ -13,7 +14,7 @@ function cardAttract () {
     shimmer = document.getElementById('shimmer')
 
   function renderattract () {
-    card.style.transform = 'rotateX(' + (mposit[1] * 0.01) + 'deg) rotateY(' + (mposit[0] * -0.01) + 'deg)'
+    card.style.transform = 'rotateX(' + (mposit[1] * 0.01 * magnitude) + 'deg) rotateY(' + (mposit[0] * -0.01 * magnitude) + 'deg)'
     shimmer.style.transform = 'translateZ(0px) translateY(' + (mposit[1] * 0.1 - 100) + 'px) translateX(' + (mposit[0] * 0.1) + 'px)'
 
     window.requestAnimationFrame(renderattract)
