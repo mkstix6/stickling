@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/mkstix6/18simple.git",
   "name": "portfolio20vue",
-  "version": "0.1.0",
+  "version": "20.1.0",
   "private": true,
   "main": "serve.js",
   "engines": {
