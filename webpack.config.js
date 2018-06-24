@@ -9,7 +9,7 @@ module.exports = {
     // css: './assets/scss/index.scss'
   },
   output: {
-    filename: './assets/js/bundle.js'
+    filename: './dist/bundle.js'
   },
   module: {
     loaders: [{

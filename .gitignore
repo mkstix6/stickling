@@ -6,3 +6,5 @@ assets/css/*
 /assets/js/main.bundle.js
 
 /assets/js/main.bundle.js.map
+
+dist/
