@@ -51,7 +51,7 @@ export default new Vuex.Store({
     },
     {
       name: 'Git',
-      value: 3,
+      value: 4,
     },
     {
       name: 'Gulp',
@@ -59,11 +59,11 @@ export default new Vuex.Store({
     },
     {
       name: 'Webpack',
-      value: 2,
+      value: 3,
     },
     {
       name: 'Rollup',
-      value: 2,
+      value: 3,
     },
     {
       name: 'Docker',
@@ -83,7 +83,7 @@ export default new Vuex.Store({
     },
     {
       name: 'Bootstrap',
-      value: 3,
+      value: 4,
     },
     {
       name: 'Foundation',
@@ -103,7 +103,7 @@ export default new Vuex.Store({
     },
     {
       name: 'Sketch',
-      value: 2,
+      value: 3,
     },
     ],
   },
