@@ -1,7 +1,7 @@
 <template>
   <ul class="person_attributes">
     <li v-for="item in items" :key="item.name" class="starstat" :data-val="item.value">
-      <span class="text" :title="starsTitleperson_attributes">{{item.name}}</span>
+      <span class="text">{{item.name}}</span>
       <!-- <StarsString :value="item.value" /> -->
     </li>
   </ul>

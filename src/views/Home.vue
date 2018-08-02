@@ -67,10 +67,12 @@
 
   MagTile,
   .mephoto {
-    width: 12.6vw;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     top: 0.2em;
+    flex: 1 0 13rem;
   }
 
   .column {
@@ -86,8 +88,6 @@
   .job {
     font-size: $fs-base * $ratio;
   }
-
-  .home {}
 
   .mt-auto {
     margin-top: auto !important;

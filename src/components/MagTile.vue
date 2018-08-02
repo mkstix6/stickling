@@ -10,11 +10,14 @@
 </template>
 
 <script>
-  import cardAttract from '../modules/cardattract.js';
+  import cardAttract from '../modules/cardattract.ts';
 
   export default {
     mounted: () => {
-      cardAttract();
+      document.addEventListener('DOMContentLoaded', () => {
+        cardAttract.init();
+        console.log('init');
+      });
     },
   };
 </script>
@@ -77,8 +80,6 @@
     position: relative;
     max-width: 100%;
     border-radius: 4px;
-    margin: 20px;
-    padding-bottom: 20px;
     transition: transform 150ms;
     perspective: 400px;
     transform-style: preserve-3d;

@@ -48,7 +48,9 @@
   }
 
   .aibase{
-    align-items: baseline;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   img {

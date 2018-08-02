@@ -74,14 +74,6 @@ export default new Vuex.Store({
       value: 1,
     },
     {
-      name: 'Angular',
-      value: 1,
-    },
-    {
-      name: 'Polymer',
-      value: 1,
-    },
-    {
       name: 'Bootstrap',
       value: 4,
     },
