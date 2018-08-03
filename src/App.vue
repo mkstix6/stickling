@@ -13,6 +13,7 @@
   //   font-family: 'Pink Blue';
   //   src: url('./assets/Pink Blue.ttf');
   // }
+
   @font-face {
     font-family: 'Alike Angular';
     src: url('./assets/AlikeAngular-Regular.ttf');

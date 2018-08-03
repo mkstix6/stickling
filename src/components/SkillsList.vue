@@ -26,6 +26,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '_variables.scss';
+
   $sizeRate: 0.96;
   @for $i from 1 through 5 {
     [data-val="#{$i}"] {
@@ -40,6 +42,11 @@
     width: 50%;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: $media-lg) {
+      max-width:90%;
+      width: auto;
+    }
   }
 
   .starstat {

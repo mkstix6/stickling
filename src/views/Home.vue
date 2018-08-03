@@ -9,9 +9,13 @@
         <div class="job">Front end web developer</div>
         <div class="dddisplay-font london" itemprop="homeLocation">London</div>
       </div>
-      <div class="flex column tac aic">
+      <div class="flex column tac aic mb-pad">
         <SkillsList :items="skillsData" />
       </div>
+    </div>
+    <div class="page fsx2-lg">
+      <h2>Hi!</h2>
+      <p class="line-length justify wide-line">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who build great teams, ask questions, consider advice, learn and teach.</p>
     </div>
     <div class="footer">
       <!-- <a href="#">photography</a> -->
@@ -41,6 +45,41 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../components/_variables.scss';
+
+  .justify{
+    text-align: justify;
+  }
+
+  .fsx2 {
+    font-size: 2rem;
+  }
+
+  .mb-pad {
+    margin-bottom: 5vh;
+  }
+
+  .fsx2-lg{
+    @media (min-width: $media-lg){
+      font-size: 2rem;
+    }
+  }
+  .wide-line{
+    line-height: 1.8;
+    @media (max-width: 700px) {
+      // line-height: 9vw;
+    }
+  }
+  .nowrap{
+    white-space: nowrap;
+  }
+
+  .line-length{
+    max-width: 22em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
   .tac {
     text-align: center;
   }
@@ -54,7 +93,7 @@
   }
 
   .page {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,10 +122,18 @@
   $fs-base: 3vw;
   .london {
     font-size: $fs-base;
+
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
   }
 
   .job {
     font-size: $fs-base * $ratio;
+
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
   }
 
   .mt-auto {
