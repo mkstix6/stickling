@@ -19,10 +19,7 @@
     },
     computed: {
       starsTitle: (num) => '★'.repeat(num),
-      orderedItems: function () {
-        console.log(this.items, _.orderBy(this.items, 'name', 'desc'))
-        return _.orderBy(this.items, 'value', 'desc')
-      },
+      orderedItems() { return _.orderBy(this.items, 'value', 'desc'); },
     },
   };
 </script>
