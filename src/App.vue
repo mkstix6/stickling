@@ -74,7 +74,8 @@
   h4,
   h5,
   h6 {
-    letter-spacing: -1px;
+    letter-spacing: -0.01em;
+    font-weight: 400;
   }
 
   body {
