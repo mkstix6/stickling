@@ -3,7 +3,7 @@
     <div id="mecard" class="card card_person" itemscope itemtype="https://schema.org/Person">
       <div class="person">
         <span id="shimmer"></span>
-        <img src="../assets/me.jpg" alt="Mark Stickling" itemprop="image">
+        <img :src="gravatarImageSrc" alt="Mark Stickling" itemprop="image">
       </div>
     </div>
   </div>
@@ -11,8 +11,14 @@
 
 <script>
   import cardAttract from '../modules/cardattract.ts';
+  const  emailHash = 'd4558721b8558c7a51ba3869042bf881';
 
   export default {
+    data() {
+      return {
+        gravatarImageSrc: `https://www.gravatar.com/avatar/${emailHash}?s=200`,
+      }
+    },
     mounted: () => {
       document.addEventListener('DOMContentLoaded', () => {
         cardAttract.init();
