@@ -23,6 +23,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '_variables.scss';
+
   #shimmer {
     display: block;
     position: absolute;
@@ -89,6 +91,10 @@
     border-top-left-radius: 200px;
     border-top-right-radius: 200px;
     border-radius: 200px;
+
+    @media (max-width: $media-lg) {
+      max-width: 45vw;
+    }
   }
 
   .threeD {

@@ -28,10 +28,10 @@
 <style lang="scss" scoped>
   @import '_variables.scss';
 
-  $sizeRate: 0.96;
+  $sizeRate: 1.5;
   @for $i from 1 through 5 {
     [data-val="#{$i}"] {
-      font-size: $sizeRate * $i * 0.2rem + 1rem;
+      font-size: $sizeRate * $i * 0.1rem + 1rem;
     }
   }
 

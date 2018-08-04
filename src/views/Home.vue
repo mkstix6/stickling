@@ -111,7 +111,14 @@
     align-items: center;
     position: relative;
     top: 0.2em;
-    flex: 1 0 13rem;
+    flex: 0 0 12vw;
+    margin-right: 2.5em;
+
+    @media (max-width: $media-lg){
+      margin-right: 0;
+      margin-left: 0;
+      flex: 45vw;
+    }
   }
 
   .column {
