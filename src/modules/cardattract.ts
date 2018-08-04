@@ -16,10 +16,10 @@ interface CardAttract {
 const cardAttract: CardAttract = {
   init(this: any) {
     if (document.getElementById('mecard')! && document.getElementById('shimmer')!) {
-      console.log('go');
+      // console.log('go');
       this.getElems();
       this.reqRAFLoop();
-      console.log('done');
+      // console.log('done');
     }
   },
   mposit: [0, 0],

@@ -16,7 +16,7 @@
     mounted: () => {
       document.addEventListener('DOMContentLoaded', () => {
         cardAttract.init();
-        console.log('init');
+        // console.log('init');
       });
     },
   };
