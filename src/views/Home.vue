@@ -15,7 +15,7 @@
     </div>
     <div class="page fsx2-lg">
       <h2>Hi!</h2>
-      <p class="line-length justify wide-line">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who build great teams, ask questions, consider advice, learn and teach.</p>
+      <p class="line-length justify wide-line">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who contribute to teams, ask questions, consider advice, teach.</p>
     </div>
     <div class="footer">
       <!-- <a href="#">photography</a> -->
