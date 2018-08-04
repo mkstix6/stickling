@@ -14,7 +14,7 @@ export default new Vuex.Store({
       value: 5,
     },
     {
-      name: 'Sass',
+      name: 'Scss',
       value: 4,
     },
     {
@@ -78,8 +78,8 @@ export default new Vuex.Store({
       value: 4,
     },
     {
-      name: 'Foundation',
-      value: 4,
+      name: 'Zurb Foundation',
+      value: 3,
     },
     {
       name: 'Photography',
