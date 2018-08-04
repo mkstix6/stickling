@@ -1,21 +1,8 @@
 <template>
   <ul class="person_attributes">
-
-
-
-    <li v-for="item in items" :key="item.name" class="starstat" :data-val="item.value">
-      <span class="text">{{item.name}}</span>
-    </li>
-
-
-
     <li v-for="item in orderedItems" :key="item.name" class="starstat" :data-val="item.value">
       <span class="text person_attributes" :title="starsTitle">{{item.name}}</span>
-      <!-- <StarsString :value="item.value" /> -->
     </li>
-
-
-
   </ul>
 </template>
 
@@ -32,7 +19,10 @@
     },
     computed: {
       starsTitle: (num) => '★'.repeat(num),
-      orderedItems: () => _.orderBy(this.items, 'name', 'desc'),
+      orderedItems: function () {
+        console.log(this.items, _.orderBy(this.items, 'name', 'desc'))
+        return _.orderBy(this.items, 'value', 'desc')
+      },
     },
   };
 </script>
@@ -54,6 +44,7 @@
     width: 50%;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
 
     @media (max-width: $media-lg) {
       max-width:90%;
