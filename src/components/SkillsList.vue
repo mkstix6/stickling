@@ -1,14 +1,14 @@
 <template>
   <ul class="person_attributes">
-    <li v-for="item in items" :key="item.name" class="starstat" :data-val="item.value">
-      <span class="text">{{item.name}}</span>
-      <!-- <StarsString :value="item.value" /> -->
+    <li v-for="item in orderedItems" :key="item.name" class="starstat" :data-val="item.value">
+      <span class="text person_attributes" :title="starsTitle">{{item.name}}</span>
     </li>
   </ul>
 </template>
 
 <script>
   import StarsString from '@/components/StarsString.vue';
+  import orderBy from 'lodash';
 
   export default {
     components: {
@@ -18,9 +18,8 @@
       items: Array,
     },
     computed: {
-      starsTitle: (num) => {
-        return '★'.repeat(num);
-      },
+      starsTitle: (num) => '★'.repeat(num),
+      orderedItems() { return _.orderBy(this.items, 'value', 'desc'); },
     },
   };
 </script>
@@ -42,6 +41,7 @@
     width: 50%;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
 
     @media (max-width: $media-lg) {
       max-width:90%;
