@@ -13,6 +13,7 @@
     "prestart": "npm run build",
     "start": "node serve.js",
     "lint": "vue-cli-service lint",
+    "precommit": "npm run lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
