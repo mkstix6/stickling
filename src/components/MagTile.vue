@@ -79,6 +79,7 @@
     }
     img {
       border-radius: 200px;
+      width: 100%;
       display: block;
     }
   }
@@ -94,6 +95,7 @@
   }
 
   .card_person {
+    width: 100%;
     border-top-left-radius: 200px;
     border-top-right-radius: 200px;
     border-radius: 200px;

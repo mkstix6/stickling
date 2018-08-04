@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="page tac" id="page_home">
-      <div class="flex mt-auto aibase">
+      <div class="flex mt-auto aibase w-100">
         <MagTile class="mephoto" />
         <h1 class="display-font markstickling m-0"><span itemprop="givenName">Mark</span>&nbsp;<span itemprop="familyName">Stickling</span></h1>
       </div>
@@ -46,7 +46,9 @@
 
 <style lang="scss" scoped>
   @import '../components/_variables.scss';
-
+  .w-100{
+    width: 100%;
+  }
   .justify{
     text-align: justify;
   }
