@@ -38,6 +38,10 @@ export default new Vuex.Store({
       value: 3,
     },
     {
+      name: 'TypeScript',
+      value: 1,
+    },
+    {
       name: 'ScrollMagic',
       value: 3,
     },
