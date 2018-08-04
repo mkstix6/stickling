@@ -14,8 +14,15 @@
     "prestart": "npm run build",
     "start": "node serve.js",
     "lint": "vue-cli-service lint",
+    "precommit": "npm run lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
   },
   "dependencies": {
     "connect": "^3.6.6",
@@ -36,6 +43,7 @@
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/test-utils": "^1.0.0-beta.16",
     "babel-core": "7.0.0-bridge.0",
+    "husky": "next",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
