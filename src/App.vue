@@ -19,6 +19,17 @@
     src: url('./assets/AlikeAngular-Regular.ttf');
   }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .display-font {
     // font-family: 'Pink Blue';
     font-family: 'Alike Angular', serif;
