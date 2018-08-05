@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="page tac" id="page_home">
+      <TopNav></TopNav>
       <div class="flex mt-auto aibase w-100">
         <MagTile class="mephoto" />
         <h1 class="display-font markstickling m-0"><span itemprop="givenName">Mark</span>&nbsp;<span itemprop="familyName">Stickling</span></h1>
@@ -29,6 +30,7 @@
   import MagTile from '@/components/MagTile.vue';
   import SkillsList from '@/components/SkillsList.vue';
   import store from '@/store.ts';
+  import TopNav from '@/components/TopNav.vue';
 
   export default Vue.extend({
     name: 'home',
@@ -40,6 +42,7 @@
     components: {
       MagTile,
       SkillsList,
+      TopNav,
     },
   });
 </script>
