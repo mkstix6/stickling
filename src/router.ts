@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import About from './views/About.vue';
+import Writing from './views/Writing.vue';
+import Article from './views/Article.vue';
 
 Vue.use(Router);
 
@@ -13,9 +14,17 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About,
+      path: '/writing',
+      name: 'writing',
+      component: Writing,
+    },
+    {
+      path: '/writing/:id',
+      name: 'article',
+      props: true,
+      component: Article
     },
   ],
 });
+
+
