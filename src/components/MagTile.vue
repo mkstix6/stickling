@@ -17,7 +17,7 @@
     data() {
       return {
         gravatarImageSrc: `https://www.gravatar.com/avatar/${emailHash}?s=200`,
-      }
+      };
     },
     mounted: () => {
       document.addEventListener('DOMContentLoaded', () => {
