@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="page fsx2-lg">
-      <h2>Hi!</h2>
-      <p class="line-length justify wide-line">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who contribute to teams, ask questions, consider advice, teach.</p>
+      <h2 class="display-font" style="font-size: 7rem; margin-bottom: 0.1em;">Hi!</h2>
+      <p class="line-length justify wide-line" style="margin-top: 0.1em;">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who contribute to teams, ask questions, consider advice, teach.</p>
     </div>
     <div class="footer">
       <!-- <a href="#">photography</a> -->
@@ -132,19 +132,19 @@
 
   $ratio: 0.62;
   $fs-base: 3vw;
-  .london {
-    font-size: $fs-base;
-
-    @media (max-width: 700px) {
-      font-size: 1rem;
-    }
-  }
-
   .job {
     font-size: $fs-base * $ratio;
 
     @media (max-width: 700px) {
-      font-size: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .london {
+    font-size: $fs-base;
+
+    @media (max-width: 700px) {
+      font-size: 1.5rem;
     }
   }
 
