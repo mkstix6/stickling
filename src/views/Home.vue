@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="page fsx2-lg">
-      <h2 class="display-font" style="font-size: 7rem; margin-bottom: 0.1em;">Hi!</h2>
+      <h2 class="display-font" style="font-size: 7rem; margin-top: 0.1em; margin-bottom: 0.1em;">Hi!</h2>
       <p class="line-length justify wide-line" style="margin-top: 0.1em;">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who contribute to teams, ask questions, consider advice, teach.</p>
     </div>
     <div class="footer">
