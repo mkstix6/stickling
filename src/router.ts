@@ -22,7 +22,7 @@ export default new Router({
       path: '/writing/:id',
       name: 'article',
       props: true,
-      component: Article
+      component: Article,
     },
   ],
 });

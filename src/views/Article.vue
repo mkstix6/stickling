@@ -9,12 +9,12 @@ export default {
 
   name: 'Article',
 
-  data () {
+  data() {
     return {
 
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style lang="css" scoped>
