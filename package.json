@@ -4,9 +4,6 @@
   "version": "20.1.0",
   "private": true,
   "main": "serve.js",
-  "engines": {
-    "node": "^10"
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "servedev": "vue-cli-service serve --mode development",
