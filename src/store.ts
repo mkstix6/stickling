@@ -27,7 +27,15 @@ export default new Vuex.Store({
     },
     {
       name: 'Vue',
-      value: 2,
+      value: 4,
+    },
+    {
+      name: 'Nuxt',
+      value: 4
+    },
+    {
+      name: 'Bulma',
+      value: 4
     },
     {
       name: 'jQuery',
