@@ -26,133 +26,133 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import MagTile from '@/components/MagTile.vue';
-  import SkillsList from '@/components/SkillsList.vue';
-  import store from '@/store.ts';
-  import TopNav from '@/components/TopNav.vue';
+import Vue from 'vue';
+import MagTile from '@/components/MagTile.vue';
+import SkillsList from '@/components/SkillsList.vue';
+import store from '@/store.ts';
+import TopNav from '@/components/TopNav.vue';
 
-  export default Vue.extend({
-    name: 'home',
-    computed: {
-      skillsData() {
-        return store.state.skills;
-      },
+export default Vue.extend({
+  name: 'home',
+  computed: {
+    skillsData() {
+      return store.state.skills;
     },
-    components: {
-      MagTile,
-      SkillsList,
-      TopNav,
-    },
-  });
+  },
+  components: {
+    MagTile,
+    SkillsList,
+    TopNav
+  }
+});
 </script>
 
 <style lang="scss" scoped>
-  @import '../components/_variables.scss';
-  .w-100{
-    width: 100%;
-  }
-  .justify{
-    text-align: justify;
-  }
+@import '../components/_variables.scss';
+.w-100 {
+  width: 100%;
+}
+.justify {
+  text-align: justify;
+}
 
-  .fsx2 {
+.fsx2 {
+  font-size: 2rem;
+}
+
+.mb-pad {
+  margin-bottom: 5vh;
+}
+
+.fsx2-lg {
+  @media (min-width: $media-lg) {
     font-size: 2rem;
   }
-
-  .mb-pad {
-    margin-bottom: 5vh;
+}
+.wide-line {
+  line-height: 1.8;
+  @media (max-width: 700px) {
+    // line-height: 9vw;
   }
+}
+.nowrap {
+  white-space: nowrap;
+}
 
-  .fsx2-lg{
-    @media (min-width: $media-lg){
-      font-size: 2rem;
-    }
+.line-length {
+  max-width: 22em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.tac {
+  text-align: center;
+}
+
+.aic {
+  align-items: center;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.markstickling {
+  font-size: 10vw;
+}
+
+MagTile,
+.mephoto {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0.2em;
+  flex: 0 0 12vw;
+  margin-right: 2.5em;
+
+  @media (max-width: $media-lg) {
+    margin-right: 0;
+    margin-left: 0;
+    flex: 45vw;
   }
-  .wide-line{
-    line-height: 1.8;
-    @media (max-width: 700px) {
-      // line-height: 9vw;
-    }
+}
+
+.column {
+  flex-direction: column;
+}
+
+$ratio: 0.62;
+$fs-base: 3vw;
+.job {
+  font-size: $fs-base * $ratio;
+
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
   }
-  .nowrap{
-    white-space: nowrap;
+}
+
+.london {
+  font-size: $fs-base;
+
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
   }
+}
 
-  .line-length{
-    max-width: 22em;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
+.mt-auto {
+  margin-top: auto !important;
+}
 
-  .tac {
-    text-align: center;
-  }
-
-  .aic {
-    align-items: center;
-  }
-
-  .jcc {
-    justify-content: center;
-  }
-
-  .page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .markstickling {
-    font-size: 10vw;
-  }
-
-  MagTile,
-  .mephoto {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 0.2em;
-    flex: 0 0 12vw;
-    margin-right: 2.5em;
-
-    @media (max-width: $media-lg){
-      margin-right: 0;
-      margin-left: 0;
-      flex: 45vw;
-    }
-  }
-
-  .column {
-    flex-direction: column;
-  }
-
-  $ratio: 0.62;
-  $fs-base: 3vw;
-  .job {
-    font-size: $fs-base * $ratio;
-
-    @media (max-width: 700px) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .london {
-    font-size: $fs-base;
-
-    @media (max-width: 700px) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .mt-auto {
-    margin-top: auto !important;
-  }
-
-  .mb-auto {
-    margin-bottom: auto !important;
-  }
+.mb-auto {
+  margin-bottom: auto !important;
+}
 </style>
