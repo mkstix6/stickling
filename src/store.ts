@@ -111,6 +111,12 @@ export default new Vuex.Store({
         value: 3
       }
     ],
+    links: [
+      {
+        url: `https://projects.lukehaas.me/runjs/`,
+        name: `RunJS`
+      }
+    ]
   },
   mutations: {},
   actions: {}
