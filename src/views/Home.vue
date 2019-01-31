@@ -18,6 +18,22 @@
       <h2 class="display-font" style="font-size: 7rem; margin-top: 0.1em; margin-bottom: 0.1em;">Hi!</h2>
       <p class="line-length justify wide-line" style="margin-top: 0.1em;">Primarily working on WordPress and exploring ES6. Shipped a couple of VueJS mini-apps. Keen on <span class="nowrap">WAI-ARIA</span>, semantics, structured-data. 5+ years building responsive HTML & CSS using new techniques whilst supporting the past. Great developers are the people who contribute to teams, ask questions, consider advice, teach.</p>
     </div>
+
+    <div class="page">
+      <ul>
+        <li
+          v-for="link in links"
+          :key="link.name"
+        >
+          <a
+            :href="link.url"
+          >
+            {{ link.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
     <div class="footer">
       <!-- <a href="#">photography</a> -->
       <!-- <a href="#">social</a> -->
@@ -32,12 +48,29 @@ import SkillsList from '@/components/SkillsList.vue';
 import store from '@/store.ts';
 import TopNav from '@/components/TopNav.vue';
 
+interface Skilldata {
+  name: string;
+  value: number;
+}
+
+interface Linkdata {
+  url: string;
+  name: string;
+  kind?: string;
+}
+
 export default Vue.extend({
   name: 'home',
   computed: {
-    skillsData() {
+    skillsData(): Skilldata[] {
       return store.state.skills;
     },
+    linksData(): Linkdata[] {
+      return store.state.links;
+    },
+    links(): Linkdata[] {
+      return this.linksData.filter((x: Linkdata) => x.url !== '');
+    }
   },
   components: {
     MagTile,
