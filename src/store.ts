@@ -8,106 +8,134 @@ export default new Vuex.Store({
     skills: [
       {
         name: 'HTML',
-        value: 4
+        value: 4,
+        group: 'html'
       },
       {
         name: 'CSS',
-        value: 5
+        value: 5,
+        group: 'css'
       },
       {
         name: 'Scss',
-        value: 4
+        value: 4,
+        group: 'css'
       },
       {
         name: 'JS',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'ES6',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'Vue',
-        value: 4
+        value: 3,
+        group: 'js'
       },
       {
         name: 'Nuxt',
-        value: 4
+        value: 3,
+        group: 'js'
       },
       {
         name: 'Bulma',
-        value: 4
+        value: 3,
+        group: 'css'
       },
       {
         name: 'jQuery',
-        value: 4
+        value: 4,
+        group: 'js'
       },
       {
         name: 'GSAP',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'TypeScript',
-        value: 1
+        value: 1,
+        group: 'js'
       },
       {
         name: 'ScrollMagic',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'npm',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'yarn',
-        value: 3
+        value: 3,
+        group: 'js'
       },
       {
         name: 'Git',
-        value: 4
+        value: 4,
+        group: 'git'
       },
       {
         name: 'Gulp',
-        value: 3
+        value: 3,
+        group: 'tool'
       },
       {
         name: 'Webpack',
-        value: 3
+        value: 3,
+        group: 'tool'
       },
       {
         name: 'Rollup',
-        value: 3
+        value: 3,
+        group: 'tool'
       },
       {
         name: 'Docker',
-        value: 2
+        value: 2,
+        group: 'tool'
       },
       {
         name: 'React',
-        value: 1
+        value: 1,
+        group: 'js'
       },
       {
         name: 'Bootstrap',
-        value: 4
+        value: 4,
+        group: 'css'
       },
       {
         name: 'Zurb Foundation',
-        value: 3
+        value: 3,
+        group: 'css'
       },
       {
         name: 'Photography',
-        value: 3
+        value: 3,
+        group: 'hobby'
       },
       {
         name: 'PhotoShop',
-        value: 3
+        value: 3,
+        group: 'editing'
       },
       {
         name: 'Illustrator',
-        value: 3
+        value: 3,
+        group: 'editing'
       },
       {
         name: 'Sketch',
+        value: 3,
+        group: 'editing'
+      },
       {
         name: 'Cypress.js',
         value: 2,
