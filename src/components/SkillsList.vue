@@ -6,22 +6,35 @@
   </ul>
 </template>
 
-<script>
-  import StarsString from '@/components/StarsString.vue';
-  import orderBy from 'lodash';
+<script lang="ts">
+import Vue from 'vue';
+import StarsString from '@/components/StarsString.vue';
+import { orderBy } from 'lodash';
 
-  export default {
-    components: {
-      StarsString,
-    },
-    props: {
-      items: Array,
-    },
-    computed: {
-      starsTitle: (num) => '★'.repeat(num),
-      orderedItems() { return _.orderBy(this.items, 'value', 'desc'); },
-    },
-  };
+interface Items {
+  name: string;
+  value: number;
+}
+
+export default Vue.extend({
+  components: {
+    StarsString
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  computed: {
+    orderedItems(): object[] {
+      return this.orderBy(this.items, 'value', 'desc');
+    }
+  },
+  methods: {
+    orderBy
+  }
+});
 </script>
 
 <style lang="scss" scoped>

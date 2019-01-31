@@ -22,7 +22,7 @@
     <div class="page">
       <ul>
         <li
-          v-for="link in linksData"
+          v-for="link in links"
           :key="link.name"
         >
           <a
@@ -48,14 +48,28 @@ import SkillsList from '@/components/SkillsList.vue';
 import store from '@/store.ts';
 import TopNav from '@/components/TopNav.vue';
 
+interface Skilldata {
+  name: string;
+  value: number;
+}
+
+interface Linkdata {
+  url: string;
+  name: string;
+  kind?: string;
+}
+
 export default Vue.extend({
   name: 'home',
   computed: {
-    skillsData() {
+    skillsData(): Skilldata[] {
       return store.state.skills;
     },
-    linksData() {
+    linksData(): Linkdata[] {
       return store.state.links;
+    },
+    links(): Linkdata[] {
+      return this.linksData.filter((x: Linkdata) => x.url !== '');
     }
   },
   components: {
