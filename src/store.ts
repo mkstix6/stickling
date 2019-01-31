@@ -150,7 +150,27 @@ export default new Vuex.Store({
     links: [
       {
         url: `https://projects.lukehaas.me/runjs/`,
-        name: `RunJS`
+        name: `RunJS`,
+        kind: 'tool'
+      },
+      {
+        url: `https://css-tricks.com/`,
+        name: `CSS-Tricks`,
+        kind: 'blog'
+      },
+      {
+        url: `https://github.com/sindresorhus/awesome#front-end-development`,
+        name: `Sindresorhus — Curated list of awesome lists`
+      },
+      {
+        url: `http://responsivedesignweekly.com`,
+        name: `Responsive Design Newsletter`,
+        kind: 'newsletter'
+      },
+      {
+        url: `https://patternlab.io`,
+        name: `Pattern Lab`,
+        kind: 'learning'
       }
     ]
   },
