@@ -47,5 +47,6 @@
       }
     }
   ],
-  "quotemark": "single"
+  "quotemark": "single",
+  "semicolon": "error"
 }

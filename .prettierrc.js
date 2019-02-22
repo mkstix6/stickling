@@ -1,4 +1,5 @@
 module.exports = {
   singleQuote: true,
-  commaDangle: never
+  commaDangle: true,
+  semi: "error",
 };
