@@ -1,7 +1,0 @@
-{
-  "comma-dangle": [
-    "error",
-    "never"
-  ],
-  "semi": "error"
-}

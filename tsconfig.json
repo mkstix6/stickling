@@ -34,19 +34,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "trailing-comma": [
-    false,
-    {
-      "singleline": "never",
-      "multiline": {
-        "objects": "never", // <==================
-        "arrays": "never",
-        "functions": "never",
-        "typeLiterals": "ignore"
-      }
-    }
-  ],
-  "quotemark": "single",
-  "semicolon": "error"
+  ]
 }
