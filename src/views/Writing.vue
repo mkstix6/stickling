@@ -14,14 +14,11 @@
 import TopNav from '../components/TopNav.vue';
 
 export default {
-
   name: 'Writing',
 
   data() {
-    return {
-
-    };
-  },
+    return {};
+  }
 };
 </script>
 

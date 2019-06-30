@@ -11,14 +11,11 @@
 
 <script>
 export default {
-
   name: 'TopNav',
 
   data() {
-    return {
-
-    };
-  },
+    return {};
+  }
 };
 </script>
 
@@ -49,7 +46,7 @@ export default {
   }
 
   .icon-codepen {
-    svg{
+    svg {
       height: 1.5rem;
     }
   }
@@ -57,15 +54,14 @@ export default {
   .icon-500px {
     margin-right: $socialmargin * 0.4;
 
-    svg{
+    svg {
       height: 1.2rem;
     }
   }
-  .icon-github{
-    svg{
+  .icon-github {
+    svg {
       height: 1.6rem;
     }
   }
-
 }
 </style>
