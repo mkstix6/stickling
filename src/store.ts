@@ -42,6 +42,16 @@ export default new Vuex.Store({
         group: 'js'
       },
       {
+        name: 'Unit Testing',
+        value: 2,
+        group: 'js'
+      },
+      {
+        name: 'Ava',
+        value: 2,
+        group: 'js'
+      },
+      {
         name: 'Bulma',
         value: 3,
         group: 'css'
