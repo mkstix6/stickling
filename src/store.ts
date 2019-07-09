@@ -150,11 +150,6 @@ export default new Vuex.Store({
         name: 'Cypress.js',
         value: 2,
         group: 'testing'
-      },
-      {
-        name: 'Ava.js',
-        value: 2,
-        group: 'testing'
       }
     ],
     links: [
