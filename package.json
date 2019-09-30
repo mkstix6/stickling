@@ -1,71 +1,11 @@
 {
-  "repository": "https://github.com/mkstix6/18simple.git",
-  "name": "portfolio20vue",
-  "version": "20.1.0",
+  "repository": "https://github.com/mkstix6/stickling.git",
+  "name": "stickling",
+  "version": "21.0.0",
   "private": true,
-  "main": "serve.js",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "servedev": "vue-cli-service serve --mode development",
-    "build": "vue-cli-service build",
-    "prestart": "npm run build",
-    "start": "node serve.js",
-    "lint": "vue-cli-service lint",
-    "precommit": "npm run lint",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "deploy": "git push clever master:master",
-    "dev": "yarn run servedev"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
-    }
-  },
-  "dependencies": {
-    "connect": "^3.6.6",
-    "lodash": "^4.17.10",
-    "register-service-worker": "^1.0.0",
-    "serve-static": "^1.13.2",
-    "typescript": "^3.2.4",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
-  },
-  "devDependencies": {
-    "@types/jest": "^22.0.1",
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-e2e-cypress": "^3.0.0-beta.15",
-    "@vue/cli-plugin-pwa": "^3.0.0-beta.15",
-    "@vue/cli-plugin-typescript": "^3.3.0",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/test-utils": "^1.0.0-beta.16",
-    "babel-core": "7.0.0-bridge.0",
-    "husky": "^1.3",
-    "lint-staged": "^6.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "ts-jest": "^22.4.6",
-    "vue-template-compiler": "^2.5.16"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
-  ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+    "not ie <= 11"
+  ]
 }
