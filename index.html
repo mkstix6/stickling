@@ -4,14 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mark Stickling</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="gsap.min.js"></script>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="./gsap.min.js"></script>
+    <script src="./script.js" type="module"></script>
   </head>
   <body>
-    <div class="logoAnimatedParts">
-      <!-- prettier-ignore -->
-      <svg height="478" viewBox="0 0 942 478" width="942" xmlns="http://www.w3.org/2000/svg"><linearGradient id="a" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1d48b4"/><stop offset=".517386199" stop-color="#00b6ed"/><stop offset="1" stop-color="#56ffd5"/></linearGradient><g fill="url(#a)" fill-rule="evenodd" transform="translate(-4)"><path d="m92.675712 212.753678 74.496027-210.09070058 35.503973 108.49999958 110-108.49999958-53.549459 216.99999958-31.818736-32.286241-41.456622 25.376942-31.523393-30.227054z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -1.909193 3.55411)" /><path d="m286.935075 221.383002 49.093683-193.0000005 43.906317 166.8155245z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.128725 5.838265)" /><path d="m372.119252 60.9065284 40.823675 158.5811356 30.878811-41.681312 68.297514 41.529048-50.005857-70.004718 22.393844-99.8430181z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.279796 7.736528)" /><path d="m466.780822 218.781101 53.328414-194.0000002 18.488042 95.0000002 61.5-29.2046664-49.389961 69.3316784 62.281153 80.061583-100.73809-55.226912z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.228042 9.442448)" /><path d="m417.430564 406.20103 40.913814-172.274602 17.586186 90 58.5-27.667579-46.980695 65.682643 33.682358 51.984936-62.787849-32.444365z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.580809 8.355469)" /><path d="m154.111867 210.653379-126.9391407 63.78005 41.5954987 52.370033-66.16991083 93.849917 175.62914883-100.098194-58.930154-46.121756z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.495141 1.625998)" /><path d="m147.617061 263.27078 53.278744 41.007407 17.599835 106.018608 28.446854-106.018608 59.674567-41.007407z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.843097 4.015033)" /><path d="m284.887511 300.95644 61.786777-45.233066-61.786777 162z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.828538 5.562421)" /><path d="m363.881174 406.662705-37.060202-50.106053 23.770694-56.893947 75.881184-12-62.591676 59.5 44.143125 59.5z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.001459 6.62627)" /><path d="m601.178098 157.418883-78.408964 218.759224 17.142858 36.955964 41.065829-11.456188-13.637258-33.087738z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -4.89317 9.851241)" /><path d="m600.461065 280.078502-4.856382 139.799987 51.954778-174.492705z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.710561 10.898764)" /><path d="m620.581907 407.658659 39.959647-136.39011 36.898244 43.792428 13.960472-65.792428 39.181637 163-90.040353-48.454729z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.66829 12.015432)" /><path d="m744.324748 288.73436 113.38809 24.684643 85.72645 172.315357-911.9020877-72.010632 836.0483367 22.899434-80.398754 26.864125z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.683925 8.566821)" /></g></svg>
+    <div class="page">
+      <div class="section">
+        <div class="logo">
+          <div class="logoAnimatedParts">
+            <!-- prettier-ignore -->
+            <svg height="478" viewBox="0 0 942 478" width="942" xmlns="http://www.w3.org/2000/svg"><linearGradient id="a" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1d48b4"/><stop offset=".517386199" stop-color="#00b6ed"/><stop offset="1" stop-color="#56ffd5"/></linearGradient><g fill="url(#a)" fill-rule="evenodd" transform="translate(-4)"><path d="m92.675712 212.753678 74.496027-210.09070058 35.503973 108.49999958 110-108.49999958-53.549459 216.99999958-31.818736-32.286241-41.456622 25.376942-31.523393-30.227054z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -1.909193 3.55411)" /><path d="m286.935075 221.383002 49.093683-193.0000005 43.906317 166.8155245z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.128725 5.838265)" /><path d="m372.119252 60.9065284 40.823675 158.5811356 30.878811-41.681312 68.297514 41.529048-50.005857-70.004718 22.393844-99.8430181z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.279796 7.736528)" /><path d="m466.780822 218.781101 53.328414-194.0000002 18.488042 95.0000002 61.5-29.2046664-49.389961 69.3316784 62.281153 80.061583-100.73809-55.226912z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -2.228042 9.442448)" /><path d="m417.430564 406.20103 40.913814-172.274602 17.586186 90 58.5-27.667579-46.980695 65.682643 33.682358 51.984936-62.787849-32.444365z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.580809 8.355469)" /><path d="m154.111867 210.653379-126.9391407 63.78005 41.5954987 52.370033-66.16991083 93.849917 175.62914883-100.098194-58.930154-46.121756z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.495141 1.625998)" /><path d="m147.617061 263.27078 53.278744 41.007407 17.599835 106.018608 28.446854-106.018608 59.674567-41.007407z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.843097 4.015033)" /><path d="m284.887511 300.95644 61.786777-45.233066-61.786777 162z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.828538 5.562421)" /><path d="m363.881174 406.662705-37.060202-50.106053 23.770694-56.893947 75.881184-12-62.591676 59.5 44.143125 59.5z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.001459 6.62627)" /><path d="m601.178098 157.418883-78.408964 218.759224 17.142858 36.955964 41.065829-11.456188-13.637258-33.087738z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -4.89317 9.851241)" /><path d="m600.461065 280.078502-4.856382 139.799987 51.954778-174.492705z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.710561 10.898764)" /><path d="m620.581907 407.658659 39.959647-136.39011 36.898244 43.792428 13.960472-65.792428 39.181637 163-90.040353-48.454729z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -5.66829 12.015432)" /><path d="m744.324748 288.73436 113.38809 24.684643 85.72645 172.315357-911.9020877-72.010632 836.0483367 22.899434-80.398754 26.864125z" transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.683925 8.566821)" /></g></svg>
+          </div>
+        </div>
+      </div>
+      <main>
+      <div class="section content">
+        <p>
+        ToDo:
+        <ul>
+        <li>Pictures of me for time of day</li>
+        <li>Something 3D</li>
+        </ul>
+        </p>
+        <h1>Mark Stickling — Frontend web developer based in London</h1>
+        <p>
+          Front end developer with 10+ years digital agency experience. I've
+          built web apps with
+          <em>Vue.js</em> and the <em>Nuxt</em> framework. Provided many
+          customer friendly solutions using WordPress. Keen on creating
+          <em>a11y</em> and <em>WCAG</em> compliant websites and tools. Fluent
+          in <em>HTML</em>, <em>CSS</em>, <em>JS</em> with modern
+          <em>ES6</em> syntax.
+        </p>
+        <p>I've coded, maintained and lead teams to build a bunch of front ends. Some small, some complex.</p>
+        <div>
+          ORBITER OF FAVICONS
+
+          <ul class="orbiter">
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-01.jpg" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-02.jpeg" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-03.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-04.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-05.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-06.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-07.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-08.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-09.png" /></li>
+            <li><img width="16" height="16" src="/project-favicons/project-favicon-10.png" /></li>
+          </ul>
+        </div>
+        <p>Working with junior staff is a highlight of my day, it's as much fun and important to help others progress as it is to learn something new myself.</p>
+      </div>
+      <div class="section content">
+        <div class="glassoflogos">
+          Glass of logos 2D physics.
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+        <p>
+          Familiar with a range of web development tools and projects, such as:
+          Scss, TypeScript, Webpack, Rollup, Gulp, Node, npm, Yarn, Git,
+          Cypress.js testing, Docker, WordPress (Advanced Custom Fields), GSAP,
+          ScrollMagic, Three.js, Bootstrap, Jira, Slack, PhotoShop, Illustrator, Sketch,
+          InVision, jQuery, Blender 3D.
+        </p>
+      </div>
+      </main>
     </div>
   </body>
 </html>

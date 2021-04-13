@@ -1,0 +1,25 @@
+{
+  "name": "stickling",
+  "version": "1.0.0",
+  "description": "browser-sync start --server --files \"style.css, script.js\"",
+  "main": "index.html",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkstix6/stickling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkstix6/stickling/issues"
+  },
+  "homepage": "https://github.com/mkstix6/stickling#readme",
+  "dependencies": {
+    "@snowpack/plugin-sass": "^1.4.0",
+    "snowpack": "^3.2.2"
+  }
+}
