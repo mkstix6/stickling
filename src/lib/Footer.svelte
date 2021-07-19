@@ -50,7 +50,7 @@
 		// justify-content: space-between;
 		background: var(--card-backgroundcolor);
 
-		padding: 5rem 0.5rem 3rem;
+		padding: 5rem 2rem 3rem;
 		margin-top: auto !important;
 
 		> div {
