@@ -3,3 +3,7 @@ node_modules
 /.svelte
 /build
 /functions
+.svelte-kit/
+.vscode/
+
+designassets/
