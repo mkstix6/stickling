@@ -169,6 +169,8 @@
 </div>
 
 <style lang="scss">
+	@use "sass:math";
+
 	.laptop {
 		--laptopwidth: 80vw;
 		--logo-width: 10vw;
@@ -182,7 +184,7 @@
 		// border: 1px solid var(--pallette3);
 		border-bottom-color: transparent;
 		margin: 3rem auto 7vw;
-		$macBook2020DimensionRatio: 21.24/30.41;
+		$macBook2020DimensionRatio: math.div(21.24, 30.41);
 		// $macBook2013DimensionRatio: 21.9/31.4;
 		width: var(--laptopwidth);
 		height: calc(var(--laptopwidth) * #{$macBook2020DimensionRatio});
