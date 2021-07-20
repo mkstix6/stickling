@@ -8,7 +8,6 @@
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },
 		// { path: '/polygonparade', text: 'polygonparade' },
-		// { path: '/quickcrockpot', text: 'quickcrockpot' },
 		// { path: '/wysiwygstyles', text: 'wysiwygstyles' }
 	];
 </script>
