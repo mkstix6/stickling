@@ -60,16 +60,6 @@ body {
 }
 
 /* Fonts */
-/* @font-face {
-	font-family: 'Alike Angular';
-	src: url('../fonts/Alike_Angular/AlikeAngular-Regular.ttf') format('truetype');
-} */
-
-/* @font-face {
-	font-family: 'Abel';
-	src: url('../fonts/Abel/Abel-Regular.ttf') format('truetype');
-} */
-
 @font-face {
 	font-family: 'Lexend';
 	src: url('../fonts/Lexend/Lexend[LXND,wght].ttf') format('truetype');
@@ -122,7 +112,6 @@ body {
 	--herogradient: linear-gradient(33deg, var(--pallette1), var(--pallette2), var(--pallette3));
 	--fontfamilybody: 'Lexend', -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
 		helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
-	/* --fontfamilyheadings: 'Alike Angular', serif; */
 	--fontfamilyheadings: var(--fontfamilybody);
 	/* component variables */
 	--pallettecard-padding: 1.6rem;
