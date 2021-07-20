@@ -2,6 +2,7 @@
 	import BigLogo from '$lib/BigLogo.svelte';
 	import LaptopLogos from '$lib/LaptopLogos.svelte';
 	import PostGrid from '$lib/PostGrid.svelte';
+	import Orbiter from '$lib/Orbiter.svelte';
 	// import SunFlare from '$lib/SunFlare.svelte';
 	// import LogoSticker from '$lib/LogoSticker.svelte';
 </script>
@@ -100,22 +101,9 @@
 			<a class="megaButton" href="/posts">view all Posts &gt;</a>
 		</section>
 
-		<!-- <section class="px3">
-			ORBITER OF FAVICONS
-			<ul class="orbiter">
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-01.jpg" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-02.jpeg" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-03.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-04.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-05.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-06.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-07.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-08.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-09.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-10.png" /></li>
-				<li><img width="16" height="16" src="/project-favicons/project-favicon-11.png" /></li>
-			</ul>
-		</section> -->
+		<section class="px3">
+			<Orbiter />
+		</section>
 
 		<!-- <section class="px3">
 			<h2>Portfolio</h2>
