@@ -3,12 +3,10 @@
 
 	const pages = [
 		{ path: '/', text: 'Home' }
-		// { path: '/pallettes', text: 'Pallettes' }
 		// { path: '/cv', text: 'CV' }, // TODO remove this from public nav
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },
 		// { path: '/polygonparade', text: 'polygonparade' },
-		// { path: '/wysiwygstyles', text: 'wysiwygstyles' }
 	];
 </script>
 

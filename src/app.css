@@ -288,7 +288,12 @@ body {
 }
 
 .px3 {
-	padding: 3rem !important;
+	padding-left: 3rem !important;
+	padding-right: 3rem !important;
+}
+.py3 {
+	padding-top: 3rem !important;
+	padding-bottom: 3rem !important;
 }
 .p3 {
 	padding: 3rem !important;
@@ -380,13 +385,13 @@ h2 {
 }
 
 p {
-	max-width: 40ex;
+	max-width: 50ex;
 	line-height: 1.7;
 	font-weight: 450;
 }
 
 li {
-	max-width: 40ex;
+	max-width: 50ex;
 }
 
 p + p {
