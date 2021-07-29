@@ -8,7 +8,7 @@
 	const logoImageALT = `${logoData.name}`;
 </script>
 
-<img class="logo" src={logoImageURL} alt={logoImageALT} title="Built with {logoData.name}" />
+<img class="logo" src={logoImageURL} alt={logoImageALT} title={logoData.name} />
 
 <style>
 	.logo {

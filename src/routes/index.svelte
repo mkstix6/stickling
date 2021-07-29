@@ -1,6 +1,7 @@
 <script>
 	import BigLogo from '$lib/BigLogo.svelte';
 	import LaptopLogos from '$lib/LaptopLogos.svelte';
+	import PostGrid from '$lib/PostGrid.svelte';
 	// import SunFlare from '$lib/SunFlare.svelte';
 	// import LogoSticker from '$lib/LogoSticker.svelte';
 </script>
@@ -10,35 +11,29 @@
 </svelte:head>
 
 <main id="main">
-	<div class="page">
-		<section class="section no-background" style="position: relative; z-index: 0;">
+	<div class="page" style="padding-top: 10vw;">
+		<!-- <section class="section section--hero no-background" style="position: relative; z-index: 0;">
 			<div class="heroimage">
 				<speed-lines />
-				<!-- <img
-					width="400"
-					height="100"
-					style="width: 100%; height: 50vw; object-fit: cover; "
-					src="static/photos/IMG_7929.jpg"
-					alt=""
-				/> -->
 			</div>
-			<!-- <div class="card"> -->
 			<div
 				class="px3"
 				style="pointer-events: none; position: absolute; top: 0; bottom: 0; left: 0; right: 0;"
 			>
 				<BigLogo />
 			</div>
-			<!-- </div> -->
-		</section>
+		</section> -->
+		<section />
 
 		<section class="px3 indentp">
 			<h1 class="angletext">
 				I'm
-				<span class="color-active fontsize-double">Mark Stickling</span><br />
-				a Frontend web developer<br />
-				from London
+				<strong class="color-active fontsize-double" style="font-weight: 900;"
+					>Mark Stickling</strong
+				><br />
+				a <em style="color: white; font-style: normal;">Frontend web developer</em>
 			</h1>
+
 			<!-- <div
 				style="display: inline-block;width:50vw; height:30vw; overflow: hidden; position: relative;"
 			>
@@ -93,35 +88,16 @@
 				</span>
 			</div> -->
 			<p>
-				Over a decade of digital agency experience I've planned, coded and maintained
-				digital-experiences. Ranging from small brochure webites to data driven apps. Good <strong
-					>SEO</strong
-				>,
-				<strong>code-performance</strong> and <strong>semantic HTML</strong> are foundational to the
-				work we do.
+				With a decade of digital agency experience I've planned, coded and maintained
+				digital-experiences. Ranging from small brochure webites to data driven apps.
 			</p>
-			<h2 class="angletext">Teamwork</h2>
-			<p>
-				I've lead teams of developers to provide customer friendly solutions.
-				<em>Supporting staff</em> is a highlight of my day. It's fun and important to help others progress
-				as it is to learn something new myself.
-			</p>
-			<h2 class="angletext">Inclusivity on the web</h2>
-			<p>
-				Creating websites that are
-				<strong
-					><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/"
-						><abbr title="Accessibility">accessible</abbr></a
-					>
-				</strong>
-				and inclusive is of utmost importance.
-			</p>
-			<p>
-				I strive to meet
-				<em><a href="https://www.w3.org/TR/WCAG21/" style="white-space: nowrap;">WCAG2.1</a></em>
-				standards for the projects I work on and advocate for its recommendations.
-			</p>
-			<p><strong><a href="https://twitter.com/hashtag/a11y?src=hashtag_click">#a11y</a></strong></p>
+		</section>
+
+		<section class="section slice px3 py3">
+			<h2 class="angletext">I made these…</h2>
+			<p class="angletext">Explore some things I've coded.</p>
+			<PostGrid itemcount={6} />
+			<a class="megaButton" href="/posts">view all Posts &gt;</a>
 		</section>
 
 		<!-- <section class="px3">
@@ -178,64 +154,97 @@
 			</ul>
 		</section> -->
 
+		<section class="section px3 py3 indentp">
+			<h2 class="angletext">Teamwork is essential</h2>
+			<p>
+				I've lead teams of developers to provide customer friendly solutions.
+				<em>Supporting coworkers</em> is a highlight of my day. It's as fun and important to help others
+				progress, as to be taught something new myself.
+			</p>
+			<h2 class="angletext">Inclusivity on the web</h2>
+			<p>
+				Creating websites that are
+				<strong
+					><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+						><abbr title="Accessibility">accessible</abbr></a
+					>
+				</strong>
+				and inclusive is of utmost importance.
+			</p>
+			<p>
+				I strive to meet
+				<em><a href="https://www.w3.org/TR/WCAG21/" style="white-space: nowrap;">WCAG2.1</a></em>
+				standards for the projects I work on and advocate for its recommendations.
+			</p>
+			<p><strong><a href="https://twitter.com/hashtag/a11y?src=hashtag_click">#a11y</a></strong></p>
+		</section>
+
 		<section class="section px3 slice" style="overflow: hidden;">
 			<!-- <h2 class="glassoflogos">Glass of logos 2D physics.</h2> -->
 			<h2 class="angletext">The way we build websites has changed a lot over the years…</h2>
-			<!-- <h2>Familiar with a range of web development tools and projects, such as…</h2> -->
+			<!-- <h2>Familiar with a range of web development tools and posts, such as…</h2> -->
 			<div class="laptopGrid">
 				<div>
-					<LaptopLogos />
+					<!-- <LaptopLogos /> -->
 				</div>
 				<div class="mytechexperience">
-					<p class="card">
+					<p>
+						Good <strong>SEO</strong>,
+						<strong>code-performance</strong> and <strong>semantic HTML</strong> are foundational to
+						the work we do.
+					</p>
+					<p>
 						I'm familiar with <strong>modern frontend frameworks</strong> such as <em>Vue.js</em>,
-						<em>Nuxt.js</em>, and <em>SvelteKit</em> and configured
+						<em>Nuxt.js</em>, and <em>SvelteKit</em>
+					</p>
+					<p>
+						I've configured
 						<strong>supporting technologies</strong>
 						like
 						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Gulp</em>,
 						<em>Node</em>, <em>npm</em>, <em>Docker</em>, <em>Yarn</em>, and most recently
 						<em>SnowPack</em>.
 					</p>
-					<p class="card">
+					<p>
 						Enhanced experiences with popular <strong>JS libraries</strong> including <em>GSAP</em>,
 						<em>ScrollMagic</em>,
 						<em>Three.js</em>, <em>jQuery</em> to supplement using vanilla JS to achieve custom behaviour.
 					</p>
-					<p class="card">
+					<p>
 						I've implemented <strong>data driven</strong> frontends calling on
 						<em>R.E.S.T APIs</em>. We organise and test their schemas with <em>Postman</em>. I'm
 						keen to improve my <em>GraphQL</em> skills.
 					</p>
-					<p class="card">
+					<p>
 						Worked with <strong>PHP technologies</strong> like <em>WordPress</em> (Advanced Custom
 						Fields) and
 						<em>Laravel</em>.
 					</p>
-					<p class="card">
+					<p>
 						Incorporated <strong>CSS tooling</strong> and libraries like <em>Sass</em>,
 						<em>Bootstrap</em>
 						and
 						<em>Zurb Foundation</em>.
 					</p>
-					<p class="card">
+					<p>
 						<strong>Collabotated</strong> using <em>GitHub</em> and <em>Bitbucket</em>.
 					</p>
-					<p class="card">
+					<p>
 						I'm competent with various <strong>design software</strong>: <em>PhotoShop</em>,
 						<em>Illustrator</em>,
 						<em>Sketch</em>, <em>InVision</em>.
 					</p>
-					<p class="card">
+					<p>
 						<strong>End-to-end tested</strong> applications with
 						<em>Cypress.js</em>.
 						<strong>Unit tested</strong> with runners like <em>Jest</em> and <em>AVA</em>. Then
 						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>
 					</p>
-					<p class="card">
+					<p>
 						Recently I've started dabbling with <strong>3D</strong> using
 						<em>Three.js</em> and <em>Blender</em>.
 					</p>
-					<p class="card">
+					<p>
 						I've configured and administered <strong
 							>project management and organisational software</strong
 						>
@@ -246,7 +255,7 @@
 			</div>
 		</section>
 
-		<section class="section px3">
+		<section class="section slice px3">
 			<h2 class="angletext">📣 Shoutouts and thanks 🙏</h2>
 			<ul class="thankslist">
 				<li class="card">
@@ -259,14 +268,21 @@
 				<li class="card">
 					The GSAP forum has been very helpful answering my questions about keyframing many items.
 				</li>
+				<li class="card">…and my wonderful partner Sarah.</li>
 			</ul>
 		</section>
 	</div>
 </main>
 
 <style lang="scss">
+	h1 {
+		width: 100%;
+	}
 	section:nth-child(odd) {
 		background: var(--card-backgroundcolor);
+		.button {
+			background: var(--card-darkerbackgroundcolor);
+		}
 	}
 
 	@media screen and (min-width: 1000px) {
@@ -356,7 +372,11 @@
 		strong {
 			// font-weight: inherit;
 			// color: var(--pallette2);
-			white-space: nowrap;
+			// white-space: nowrap;
 		}
+	}
+
+	.section--hero {
+		margin-bottom: 5rem;
 	}
 </style>

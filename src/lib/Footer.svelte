@@ -31,7 +31,9 @@
 			<SocialNav />
 		</div>
 
-		<Nav />
+		<div>
+			<Nav />
+		</div>
 
 		<div>
 			<div>
@@ -48,7 +50,11 @@
 		// flex-direction: column;
 		// align-items: center;
 		// justify-content: space-between;
-		background: var(--card-backgroundcolor);
+
+		background: linear-gradient(-186deg, #fff0, 45%, #ffff 60%);
+		@media (prefers-color-scheme: dark) {
+			background: linear-gradient(-186deg, #06102300, 45%, #061023ff 60%);
+		}
 
 		padding: 5rem 2rem 3rem;
 		margin-top: auto !important;
@@ -58,7 +64,19 @@
 			align-items: center;
 			justify-content: space-between;
 			margin-bottom: 1.5em;
+
+			@media screen and (max-width: 900px) {
+				flex-direction: column;
+
+				> * {
+					margin-bottom: 1.5em;
+				}
+			}
 		}
+	}
+
+	a {
+		text-decoration: none;
 	}
 	.logolink {
 		cursor: pointer;

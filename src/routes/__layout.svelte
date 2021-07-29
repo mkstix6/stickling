@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import '../app.scss';
 	import SiteHeader from '$lib/Header.svelte';
 	import SiteFooter from '$lib/Footer.svelte';
 </script>

@@ -1,3 +1,6 @@
+import slugify from 'slugify';
+const slugifyOptions = { strict: true };
+
 export const developmentLogos = [
 	{
 		key: 'ava',
@@ -260,7 +263,6 @@ export const developmentLogos = [
 		order: 2019,
 		aspectratio: 1
 	},
-
 	{
 		key: 'js',
 		name: 'JS',
@@ -664,4 +666,195 @@ export const developmentLogos = [
 		order: 2019,
 		aspectratio: 1
 	}
+];
+
+// Remember there is forEach code at the end of this array acting on some of this data.
+export const postItems = [
+	{
+		year: 2021,
+		title: 'Pixel Sand Mixer',
+		thumbnail: '',
+		videothumbnail: '/posts/pixel-sand-mixer.mp4',
+		type: 'codeart',
+		tech: ['js']
+	},
+	{
+		year: 2021,
+		title: `Hex38 Aristotle's Puzzle`,
+		type: 'experiment',
+		tech: ['js'],
+		videothumbnail: '/posts/hex38.mp4'
+	},
+	{
+		year: 2021,
+		title: 'Shimmering SVG effect',
+		slug: 'sunset-paradise-postcard',
+		codepenLink: 'https://codepen.io/mkstix6/pen/LYyLrEO?editors=0100',
+		videothumbnail: '/posts/sunset-paradise-postcard.mp4',
+		type: 'codeart',
+		tech: ['css']
+	},
+	{
+		year: 2020,
+		title: 'Brandirectory website',
+		slug: 'brandirectory-project',
+		liveLink: 'https://brandirectory.com',
+		type: 'work',
+		// thumbnail: '/posts/brandirectory-thumb.png',
+		codethumbnail:
+			'background-position: -100% 45%; background-size: 200% 200%; background-image: conic-gradient(#a024ad 0%,5%,white 5%,6%,#ed962c 6%,10%,white 10%,11%,#f9eb53 11%,15%,white 15%,16%,#51af56 16%,20%,white 20%,21%,#cedc4e 21%,25%,white 25%,26%,#e95432 26%,30%,white 30%,31%,#4e97ef 31%,35%,white 35%,36%,#e72f63 36%,40%,white 40%,41%,#5cbdd2 41%,45%,white 45%,46%,#469688 46%,50%,white 50%,white);',
+		tech: ['vue', 'nuxt']
+	},
+	{
+		year: 2019,
+		title: 'Confetti',
+		codepenLink: 'https://codepen.io/mkstix6/pen/arZWbE',
+		videothumbnail: '/posts/confetti.mp4',
+		type: 'art',
+		tech: ['css', 'js']
+	},
+	{
+		year: 2019,
+		title: 'Skewed text background experiments',
+		codepenLink: 'https://codepen.io/mkstix6/full/ERLLvb',
+		type: 'article',
+		// thumbnail: '/posts/skewed-text-background-experiments-thumb.png',
+		codethumbnail: 'background: linear-gradient(to right, mediumturquoise, mediumpurple);',
+		tech: ['css']
+	},
+	{
+		year: 2018,
+		title: 'Flexbox only responsive components',
+		codepenLink: 'https://codepen.io/mkstix6/full/dPmYvV',
+		// thumbnail: '/posts/flexbox-responsive-components.png',
+		codethumbnail: 'background: linear-gradient(to right, #57c6ad, 60%, #0d0fbc 60%, #0d0fbc);',
+		type: 'article',
+		tech: ['css']
+	},
+	{
+		year: 2021,
+		title: 'Learning Web Dev Bookmarks',
+		slug: 'bookmarks',
+		type: 'list',
+		// tech: [],
+		codethumbnail:
+			'background:  var(--herogradient),repeating-radial-gradient(var(--pallette3), 20px, var(--pallette5) 20px, var(--pallette5) 40px); background-blend-mode: screen;'
+	}
+	// {
+	// 	year: 2017,
+	// 	title: 'IE and Edge detection',
+	// 	codepenLink: 'https://codepen.io/mkstix6/full/pRbErK',
+	// 	type: 'article',
+	// 	tech: ['css']
+	// }
+].map((post) => {
+	if (!post.slug) {
+		post.slug = slugify(post.title, slugifyOptions).toLowerCase();
+	}
+	post.link = `/posts/${post.slug}`;
+	return post;
+});
+// .sort((a, b) => b.year - a.year);
+
+export const bookmarks = [
+	{
+		title: 'Styling list bullets with emoji',
+		url: 'https://www.clairecodes.com/blog/2019-04-26-styling-list-bullets-with-emoji/',
+		date: '26 April 2019',
+		year: 2019,
+		tech: ['css']
+	},
+	{
+		title: 'CSS Grid fluid columns snippet',
+		url: 'https://css-tricks.com/snippets/css/complete-guide-grid/#fluid-columns-snippet',
+		date: 'Jul 21, 2021',
+		year: 2021,
+		tech: ['css']
+	},
+	{
+		title: 'System Font Stack',
+		url: 'https://systemfontstack.com',
+		year: 2021,
+		tech: ['css']
+	},
+	{
+		title: 'How to get the domain name from a URL in JavaScript',
+		url: 'https://w3collective.com/get-domain-name-url-javascript/',
+		year: 2021,
+		tech: ['js']
+	},
+	{
+		title: 'ECMAScript 6 Cheatsheet',
+		url: 'http://help.wtf/es6',
+		year: 2020,
+		tech: ['js']
+	},
+	{
+		title: 'FunFunFunction – JavaScript functional programming videos',
+		url: 'https://www.youtube.com/c/funfunfunction/playlists',
+		year: 2020,
+		tech: ['js']
+	},
+	{
+		title: 'PX, EM or REM Media Queries?',
+		url: 'https://zellwk.com/blog/media-query-units/',
+		year: 2016,
+		tech: ['css']
+	},
+	{
+		title: 'Screensiz.es',
+		url: 'https://screensiz.es',
+		year: 2018,
+		tech: ['css']
+	},
+	{
+		title: 'Srcset and sizes – Responsive images',
+		url: 'https://ericportis.com/posts/2014/srcset-sizes/',
+		year: 2014,
+		tech: ['html', 'css']
+	},
+	{
+		title: 'Object Property Value Shorthand in JavaScript with ES6',
+		url: 'https://alligator.io/js/object-property-shorthand-es6/',
+		year: 2020,
+		tech: ['js']
+	},
+	{
+		title: 'Learn Git Branching – interactive sandbox',
+		url: 'https://learngitbranching.js.org',
+		year: 2014,
+		tech: ['git']
+	},
+	{
+		title: 'ES6features – GitHub',
+		url: 'https://github.com/lukehoban/es6features',
+		year: 2014,
+		tech: ['js']
+	}
+].map((bookmark, index) => {
+	// Compute domain
+	let domain = new URL(bookmark.url);
+	bookmark.domain = domain.hostname.replace('www.', '');
+	// Add original order reminder
+	bookmark.order = index;
+	// Sort arrays
+	// bookmark.tech.sort();
+	return bookmark;
+});
+// .sort((a, b) => b.year - a.year);
+
+export const webInspiration = [['http://acko.net']];
+
+export const workFavicons = [
+	'project-favicon-01.jpg',
+	'project-favicon-02.jpeg',
+	'project-favicon-03.png',
+	'project-favicon-04.png',
+	'project-favicon-05.png',
+	'project-favicon-06.png',
+	'project-favicon-07.png',
+	'project-favicon-08.png',
+	'project-favicon-09.png',
+	'project-favicon-10.png',
+	'project-favicon-11.png'
 ];

@@ -19,18 +19,18 @@
 			CSSPlugin.defaultTransformPerspective = 80;
 			gsap.set('.logo', {
 				opacity: 1,
-				zIndex: 2
+				zIndex: 20
 			});
-			gsap.from('.logoAnimatedParts svg', {
+			gsap.timeline().from('.logoAnimatedParts svg', {
 				y: translateDistance,
-				scale: 2,
-				rotateX: 90,
+				scale: 0.001,
+				// rotateX: 90,
 				duration: 1.4,
 				ease: 'elastic.out(0.3,0.3)'
 			});
 			gsap.timeline().from('.logoAnimatedParts svg path', {
 				y: translateDistance,
-				scale: 0.1,
+				scale: 0.0001,
 				rotate: 'random(-300deg,300deg)',
 				duration: 'random(0.8, 1.3)',
 				ease: 'elastic.out(0.3,0.3)'
@@ -46,7 +46,7 @@
 <div class="logo">
 	<div class="logoAnimatedParts">
 		<!-- style="filter: drop-shadow(0 0 5px #000);" -->
-		<svg height="478" viewBox="0 0 942 478" width="942" xmlns="http://www.w3.org/2000/svg"
+		<svg height="478" viewBox="-50 -50 1192 528" width="942" xmlns="http://www.w3.org/2000/svg"
 			><linearGradient id="a" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse"
 				><stop offset="0" stop-color="#1d48b4" /><stop
 					offset=".517386199"
@@ -105,8 +105,8 @@
 				/><path
 					d="m744.324748 288.73436 113.38809 24.684643 85.72645 172.315357-911.9020877-72.010632 836.0483367 22.899434-80.398754 26.864125z"
 					transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.683925 8.566821)"
-				/></g
-			>
+				/>
+			</g>
 
 			<g fill="url(#a)" fill-rule="evenodd" transform="translate(-4)"
 				><path
@@ -148,9 +148,9 @@
 				/><path
 					d="m744.324748 288.73436 113.38809 24.684643 85.72645 172.315357-911.9020877-72.010632 836.0483367 22.899434-80.398754 26.864125z"
 					transform="matrix(.9998477 -.01745241 .01745241 .9998477 -6.683925 8.566821)"
-				/></g
-			></svg
-		>
+				/>
+			</g>
+		</svg>
 	</div>
 </div>
 
@@ -160,7 +160,10 @@
 	}
 
 	svg {
+		inset: 50px;
 		width: 100%;
 		height: 100%;
+		display: block;
+		position: relative;
 	}
 </style>
