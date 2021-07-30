@@ -40,6 +40,8 @@
 	.icon {
 		font-size: 1.25em;
 		color: var(--card-backgroundcolor);
+		display: flex;
+		align-items: center;
 	}
 	.slotContent {
 		margin-left: 1.75em;
