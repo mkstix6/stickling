@@ -150,7 +150,7 @@
 							class="laptop__logoimg"
 							width={Math.floor(scale * 100 * aspectratio)}
 							height={Math.floor(scale * 100)}
-							src="static/logos/stickers/{image}"
+							src="/logos/stickers/{image}"
 							alt={name}
 							style="--logo-width: {Math.floor(
 								scale * (laptopWidth * 0.15) * aspectratio
