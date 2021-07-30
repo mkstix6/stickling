@@ -88,10 +88,6 @@
 					/>
 				</span>
 			</div> -->
-			<p>
-				With a decade of digital agency experience I've planned, coded and maintained
-				digital-experiences. Ranging from small brochure webites to data driven apps.
-			</p>
 		</section>
 
 		<section class="section slice px3 py3">
@@ -101,7 +97,12 @@
 			<a class="megaButton" href="/posts">view all Posts &gt;</a>
 		</section>
 
-		<section class="px3">
+		<section class="section px3 py3">
+			<h2 class="angletext">I've built a lot of user interfaces</h2>
+			<p>
+				With a decade of digital agency experience I've planned, coded and maintained
+				digital-experiences ranging from small brochure webites to data driven apps.
+			</p>
 			<Orbiter />
 		</section>
 
@@ -142,7 +143,7 @@
 			</ul>
 		</section> -->
 
-		<section class="section px3 py3 indentp">
+		<section class="section slice px3 py3 indentp">
 			<h2 class="angletext">Teamwork is essential</h2>
 			<p>
 				I've lead teams of developers to provide customer friendly solutions.
@@ -173,7 +174,7 @@
 			<!-- <h2>Familiar with a range of web development tools and posts, such as…</h2> -->
 			<div class="laptopGrid">
 				<div>
-					<!-- <LaptopLogos /> -->
+					<LaptopLogos />
 				</div>
 				<div class="mytechexperience">
 					<p>
