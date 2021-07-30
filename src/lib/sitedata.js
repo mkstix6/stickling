@@ -830,6 +830,12 @@ export const bookmarks = [
 		url: 'https://github.com/lukehoban/es6features',
 		year: 2014,
 		tech: ['js']
+	},
+	{
+		title: 'Real Favicon Generator',
+		url: 'https://realfavicongenerator.net/',
+		year: 2014,
+		tech: ['html']
 	}
 ].map((bookmark, index) => {
 	// Compute domain
