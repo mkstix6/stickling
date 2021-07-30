@@ -97,7 +97,7 @@
 			<a class="megaButton" href="/posts">view all Posts &gt;</a>
 		</section>
 
-		<section class="section px3 py3">
+		<section class="section px3 py3 overflow-hidden">
 			<h2 class="angletext">I've built a lot of user interfaces</h2>
 			<p>
 				With a decade of digital agency experience I've planned, coded and maintained

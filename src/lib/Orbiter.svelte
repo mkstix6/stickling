@@ -62,7 +62,7 @@
 		list-style: none;
 		place-items: center;
 
-		perspective: 180px;
+		perspective: 2100px;
 		perspective-origin: bottom center;
 
 		li {
@@ -77,13 +77,14 @@
 				height: $length;
 				background: white;
 				background-color: var(--card-backgroundcolor);
-				background: linear-gradient(to top, #fff3, #fff1, #fff2 70%, #fff0);
+				background: linear-gradient(to top, #fff1, #fff0);
 				top: -$length - 1;
 				left: 16.5px;
 			}
 
 			img {
 				animation: spinny 30s infinite;
+				animation-fill-mode: both;
 				// animation-fill-mode: backwards;
 				animation-timing-function: ease-in-out;
 			}
@@ -91,9 +92,9 @@
 				&:nth-child(50n + #{$i}) {
 					$forward: random() * 40;
 					transform: rotateY(#{(random() * 12)-6}deg)
-						translateX(#{(random() * 100)}px)
-						translateY(#{((random() * 100) + $forward - $i) - 40}px)
-						translateZ(#{$forward}px);
+						translateX(#{(random() * 100 - 10)}px)
+						translateY(#{(random() * $forward) + $forward}px)
+						translateZ(#{$forward * 10}px);
 					z-index: $forward;
 
 					img {

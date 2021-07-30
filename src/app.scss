@@ -24,6 +24,10 @@
 	width: 100% !important;
 }
 
+.overflow-hidden {
+	overflow: hidden !important;
+}
+
 abbr {
 	text-decoration: underline;
 }
@@ -591,6 +595,10 @@ a.sitelink,
 		content: '↗️'; /* TODO choose a better icon for external links */
 		margin-left: 0.5em;
 	}
+}
+
+.section h2:first-child {
+	margin-top: 1em;
 }
 
 .section.content {
