@@ -184,7 +184,7 @@
 					</p>
 					<p>
 						I'm familiar with <strong>modern frontend frameworks</strong> such as <em>Vue.js</em>,
-						<em>Nuxt.js</em>, and <em>SvelteKit</em>
+						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
 					</p>
 					<p>
 						I've configured
@@ -227,7 +227,7 @@
 						<strong>End-to-end tested</strong> applications with
 						<em>Cypress.js</em>.
 						<strong>Unit tested</strong> with runners like <em>Jest</em> and <em>AVA</em>. Then
-						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>
+						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>.
 					</p>
 					<p>
 						Recently I've started dabbling with <strong>3D</strong> using
