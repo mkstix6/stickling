@@ -100,8 +100,8 @@
 		<section class="section px3 py3 overflow-hidden">
 			<h2 class="angletext">I've built a lot of user interfaces</h2>
 			<p>
-				With a decade of digital agency experience I've planned, coded and maintained
-				digital-experiences ranging from small brochure webites to data driven apps.
+				During a decade of digital agency I've planned, coded and maintained digital-experiences
+				ranging from small brochure webites to data driven apps.
 			</p>
 			<Orbiter />
 		</section>
@@ -143,7 +143,7 @@
 			</ul>
 		</section> -->
 
-		<section class="section slice px3 py3 indentp">
+		<!-- <section class="section slice px3 py3 indentp">
 			<h2 class="angletext">Teamwork is essential</h2>
 			<p>
 				I've lead teams of developers to provide customer friendly solutions.
@@ -166,7 +166,7 @@
 				standards for the projects I work on and advocate for its recommendations.
 			</p>
 			<p><strong><a href="https://twitter.com/hashtag/a11y?src=hashtag_click">#a11y</a></strong></p>
-		</section>
+		</section> -->
 
 		<section class="section px3 slice" style="overflow: hidden;">
 			<!-- <h2 class="glassoflogos">Glass of logos 2D physics.</h2> -->
@@ -187,17 +187,22 @@
 						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
 					</p>
 					<p>
+						<strong>End-to-end tested</strong> applications with
+						<em>Cypress.js</em>.
+						<strong>Unit tested</strong> with runners like <em>AVA</em> and <em>Jest</em>. Then
+						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>.
+					</p>
+					<p>
 						I've configured
-						<strong>supporting technologies</strong>
+						<strong>tooling technologies</strong>
 						like
-						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Gulp</em>,
-						<em>Node</em>, <em>npm</em>, <em>Docker</em>, <em>Yarn</em>, and most recently
-						<em>SnowPack</em>.
+						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Gulp</em>, <em>npm</em>,
+						<em>Docker</em>, <em>Yarn</em>.
 					</p>
 					<p>
 						Enhanced experiences with popular <strong>JS libraries</strong> including <em>GSAP</em>,
 						<em>ScrollMagic</em>,
-						<em>Three.js</em>, <em>jQuery</em> to supplement using vanilla JS to achieve custom behaviour.
+						<em>Three.js</em>, <em>jQuery</em> to supplement vanilla JS and achieve custom behaviour.
 					</p>
 					<p>
 						I've implemented <strong>data driven</strong> frontends calling on
@@ -205,9 +210,7 @@
 						keen to improve my <em>GraphQL</em> skills.
 					</p>
 					<p>
-						Worked with <strong>PHP technologies</strong> like <em>WordPress</em> (Advanced Custom
-						Fields) and
-						<em>Laravel</em>.
+						Worked with <strong>PHP technologies</strong> like <em>WordPress</em> (Advanced Custom Fields).
 					</p>
 					<p>
 						Incorporated <strong>CSS tooling</strong> and libraries like <em>Sass</em>,
@@ -222,12 +225,6 @@
 						I'm competent with various <strong>design software</strong>: <em>PhotoShop</em>,
 						<em>Illustrator</em>,
 						<em>Sketch</em>, <em>InVision</em>.
-					</p>
-					<p>
-						<strong>End-to-end tested</strong> applications with
-						<em>Cypress.js</em>.
-						<strong>Unit tested</strong> with runners like <em>Jest</em> and <em>AVA</em>. Then
-						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>.
 					</p>
 					<p>
 						Recently I've started dabbling with <strong>3D</strong> using
