@@ -836,6 +836,12 @@ export const bookmarks = [
 		url: 'https://realfavicongenerator.net/',
 		year: 2014,
 		tech: ['html']
+	},
+	{
+		title: 'CanIUse.com – front-end web browser support tables',
+		url: 'https://caniuse.com/',
+		year: 2021,
+		tech: ['html', 'css', 'js']
 	}
 ].map((bookmark, index) => {
 	// Compute domain
