@@ -2,5 +2,7 @@
 node_modules
 /.svelte-kit
 /package
+/build
+/functions
 
 .vscode/
