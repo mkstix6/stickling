@@ -634,16 +634,71 @@ a.sitelink,
 	perspective: 1000px;
 }
 
-.dust {
-	pointer-events: none;
-	background: #ff0;
-	display: block;
-	z-index: 1;
-	width: 10px;
-	height: 10px;
-	animation: spinny 0.4s infinite;
-	border-radius: 100%;
-	perspective: 1000px;
+[data-particleschoice='confetti'] {
+	.dust {
+		pointer-events: none;
+		background: #ff0;
+		display: block;
+		z-index: 1;
+		width: 10px;
+		height: 10px;
+		animation: spinny 0.4s infinite;
+		// border-radius: 100%;
+		perspective: 1000px;
+	}
+
+	.dustposition:nth-child(8n + 0) .dust {
+		background: #9e6cb2;
+	}
+	.dustposition:nth-child(8n + 1) .dust {
+		background: #74d0f1;
+	}
+	.dustposition:nth-child(8n + 2) .dust {
+		background: #8dd9bc;
+	}
+	.dustposition:nth-child(8n + 3) .dust {
+		background: #bef17a;
+	}
+	.dustposition:nth-child(8n + 4) .dust {
+		background: #fbf446;
+	}
+	.dustposition:nth-child(8n + 5) .dust {
+		background: #f3c270;
+	}
+	.dustposition:nth-child(8n + 6) .dust {
+		background: #eb6b69;
+	}
+	.dustposition:nth-child(8n + 7) .dust {
+		background: #ed79cf;
+	}
+}
+
+[data-particleschoice='snow'],
+[data-particleschoice='snowcannon'] {
+	.dustposition {
+		transition: opacity 200ms;
+	}
+	@for $i from 1 through 20 {
+		.dustposition:nth-child(20n + #{$i}) .dust {
+			animation-delay: random() * 400ms;
+		}
+	}
+
+	.dust {
+		pointer-events: none;
+		// background: #fff;
+		background-image: linear-gradient(0deg, #fff0, 45%, #ffff 55%, #fff0 55%, #fff0),
+			linear-gradient(60deg, #fff0, 45%, #ffff 55%, #fff0 55%, #fff0),
+			linear-gradient(-60deg, #fff0, 45%, #ffff 55%, #fff0 55%, #fff0);
+		opacity: 0.8;
+		display: block;
+		z-index: 1;
+		width: 10px;
+		height: 10px;
+		animation: spinny 1s infinite;
+		border-radius: 100%;
+		perspective: 1000px;
+	}
 }
 
 .hljs {
