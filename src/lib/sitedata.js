@@ -857,6 +857,19 @@ export const bookmarks = [
 		tech: ['html', 'css', 'js'],
 		kind: 'reference',
 	},
+	{
+		title: 'Web Design is 95% Typography',
+		url: 'https://ia.net/topics/the-web-is-all-about-typography-period',
+		year: 2006,
+		tech: ['css', 'design'],
+		kind: 'article',
+	},
+	{
+		title: 'Free easy image optimisation',
+		url: 'https://imageoptim.com/mac',
+		// year: 2006,
+		tech: ['html'],
+		kind: 'app',
 	},
 ].map((bookmark, index) => {
 	// Compute domain
