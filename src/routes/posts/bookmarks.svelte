@@ -19,7 +19,7 @@
 					let aTech = a[sortChoice][0];
 					let bTech = b[sortChoice][0];
 					return aTech > bTech ? 1 : aTech < bTech ? -1 : 0;
-				})
+				}),
 			];
 		} else if (sortChoice) {
 			sortedBookmarks = [...bookmarks.sort(sortByKey(sortChoice))];

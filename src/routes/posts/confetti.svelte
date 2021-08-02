@@ -136,7 +136,7 @@
 				this.create();
 				this.reset();
 				this.tick();
-			}
+			},
 		};
 
 		function confettiFactory() {

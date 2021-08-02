@@ -3,8 +3,8 @@
 		return {
 			props: {
 				status,
-				title: `${status}: ${error.message}`
-			}
+				title: `${status}: ${error.message}`,
+			},
 		};
 	}
 </script>

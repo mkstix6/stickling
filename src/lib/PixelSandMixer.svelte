@@ -208,29 +208,29 @@
 			saturation: 50, // %
 			hueRotate: 180, // degrees
 			hueRange: 100, // degrees
-			hueReverse: false
+			hueReverse: false,
 		},
 		hotSand: {
 			lightness: 60, // %
 			saturation: 60, // %
 			hueRotate: 10, // degrees
 			hueRange: 40, // degrees
-			hueReverse: true
+			hueReverse: true,
 		},
 		beachSand: {
 			lightness: 80, // %
 			saturation: 30, // %
 			hueRotate: 40, // degrees
 			hueRange: 15, // degrees
-			hueReverse: true
+			hueReverse: true,
 		},
 		rainbowSand: {
 			lightness: 60, // %
 			saturation: 70, // %
 			hueRotate: 0, // degrees
 			hueRange: 350, // degrees
-			hueReverse: false
-		}
+			hueReverse: false,
+		},
 	};
 
 	const rotateVector90CW = ([x, y]) => [-y, x];

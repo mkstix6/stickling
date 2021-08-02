@@ -4,8 +4,8 @@
 		return {
 			props: {
 				page,
-				params
-			}
+				params,
+			},
 		};
 	}
 </script>

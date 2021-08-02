@@ -12,28 +12,28 @@
 		if (!mediaQuery || mediaQuery.matches) {
 			// No animation
 			gsap.set('.logo', {
-				opacity: 1
+				opacity: 1,
 			});
 		} else {
 			const translateDistance = Math.random() * 500 + 1000;
 			CSSPlugin.defaultTransformPerspective = 80;
 			gsap.set('.logo', {
 				opacity: 1,
-				zIndex: 20
+				zIndex: 20,
 			});
 			gsap.timeline().from('.logoAnimatedParts svg', {
 				y: translateDistance,
 				scale: 0.001,
 				// rotateX: 90,
 				duration: 1.4,
-				ease: 'elastic.out(0.3,0.3)'
+				ease: 'elastic.out(0.3,0.3)',
 			});
 			gsap.timeline().from('.logoAnimatedParts svg path', {
 				y: translateDistance,
 				scale: 0.0001,
 				rotate: 'random(-300deg,300deg)',
 				duration: 'random(0.8, 1.3)',
-				ease: 'elastic.out(0.3,0.3)'
+				ease: 'elastic.out(0.3,0.3)',
 			});
 		}
 	};

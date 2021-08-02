@@ -33,7 +33,7 @@
 			x: 'random([-2000,2000])',
 			y: 'random(-600,600)',
 			z: 10000,
-			scale: 1.05
+			scale: 1.05,
 		});
 	};
 
@@ -94,13 +94,13 @@
 					return index / 100;
 				},
 				duration: flyDuration,
-				stagger: { amount: 1.8 }
+				stagger: { amount: 1.8 },
 			}).to(
 				logosSelector,
 				{
 					scale: 1,
 					duration: 0.1,
-					stagger: { amount: 2 }
+					stagger: { amount: 2 },
 				},
 				flyDuration + 0.01
 			);
@@ -120,7 +120,7 @@
 			const observer = new IntersectionObserver(animateLaptop, {
 				root: null,
 				rootMargin: '0px',
-				threshold: 0.2
+				threshold: 0.2,
 			});
 			observer.observe(observeTarget);
 		}

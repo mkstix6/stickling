@@ -9,7 +9,7 @@
 		'theme-autumn',
 		'theme-winter',
 		'theme-christmas',
-		'theme-halloween'
+		'theme-halloween',
 	];
 </script>
 
