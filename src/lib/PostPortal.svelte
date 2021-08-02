@@ -70,12 +70,11 @@
 		height: 100%;
 		margin-bottom: -2em;
 		padding-top: 2rem;
-		padding-bottom: 2rem;
+		padding-bottom: 1.6rem;
 
 		&::after {
 			content: '';
-			background: #0005;
-			background: linear-gradient(135deg, #0002, #000a);
+			background: linear-gradient(135deg, #0000, #0008);
 			position: absolute;
 			inset: 0;
 			z-index: 1;
@@ -106,6 +105,8 @@
 		max-width: 100%;
 		margin: 0;
 		padding: 0;
+		font-weight: 600;
+		text-shadow: -1px 1px 2px #0005;
 	}
 
 	img,
