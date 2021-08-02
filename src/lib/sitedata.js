@@ -763,6 +763,7 @@ export const bookmarks = [
 		date: '26 April 2019',
 		year: 2019,
 		tech: ['css'],
+		kind: 'article',
 	},
 	{
 		title: 'CSS Grid fluid columns snippet',
@@ -770,79 +771,93 @@ export const bookmarks = [
 		date: 'Jul 21, 2021',
 		year: 2021,
 		tech: ['css'],
+		kind: 'snippet',
 	},
 	{
 		title: 'System Font Stack',
 		url: 'https://systemfontstack.com',
 		year: 2021,
 		tech: ['css'],
+		kind: 'snippet',
 	},
 	{
 		title: 'How to get the domain name from a URL in JavaScript',
 		url: 'https://w3collective.com/get-domain-name-url-javascript/',
 		year: 2021,
 		tech: ['js'],
+		kind: 'snippet',
 	},
 	{
 		title: 'ECMAScript 6 Cheatsheet',
 		url: 'http://help.wtf/es6',
 		year: 2020,
 		tech: ['js'],
+		kind: 'reference',
 	},
 	{
 		title: 'FunFunFunction – JavaScript functional programming videos',
 		url: 'https://www.youtube.com/c/funfunfunction/playlists',
 		year: 2020,
 		tech: ['js'],
+		kind: 'tutorial',
 	},
 	{
 		title: 'PX, EM or REM Media Queries?',
 		url: 'https://zellwk.com/blog/media-query-units/',
 		year: 2016,
 		tech: ['css'],
+		kind: 'article',
 	},
 	{
 		title: 'Screensiz.es',
 		url: 'https://screensiz.es',
 		year: 2018,
 		tech: ['css'],
+		kind: 'reference',
 	},
 	{
 		title: 'Srcset and sizes – Responsive images',
 		url: 'https://ericportis.com/posts/2014/srcset-sizes/',
 		year: 2014,
 		tech: ['html', 'css'],
+		kind: 'article',
 	},
 	{
 		title: 'Object Property Value Shorthand in JavaScript with ES6',
 		url: 'https://alligator.io/js/object-property-shorthand-es6/',
 		year: 2020,
 		tech: ['js'],
+		kind: 'article',
 	},
 	{
 		title: 'Learn Git Branching – interactive sandbox',
 		url: 'https://learngitbranching.js.org',
 		year: 2014,
 		tech: ['git'],
+		kind: 'tutorial',
 	},
 	{
 		title: 'ES6features – GitHub',
 		url: 'https://github.com/lukehoban/es6features',
 		year: 2014,
-		tech: ['js']
+		tech: ['js'],
+		kind: 'reference',
 	},
 	{
 		title: 'Real Favicon Generator',
 		url: 'https://realfavicongenerator.net/',
 		year: 2014,
-		tech: ['html']
+		tech: ['html'],
+		kind: 'tool',
 	},
 	{
 		title: 'CanIUse.com – front-end web browser support tables',
 		url: 'https://caniuse.com/',
 		year: 2021,
-		tech: ['html', 'css', 'js']
-	}
+		tech: ['html', 'css', 'js'],
+		kind: 'reference',
+	},
+	},
 ].map((bookmark, index) => {
 	// Compute domain
 	let domain = new URL(bookmark.url);
