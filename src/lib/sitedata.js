@@ -717,15 +717,6 @@ export const postItems = [
 		videothumbnail: '/posts/hex38.mp4',
 	},
 	{
-		year: 2021,
-		title: 'Shimmering SVG effect',
-		slug: 'sunset-paradise-postcard',
-		codepenLink: 'https://codepen.io/mkstix6/pen/LYyLrEO?editors=0100',
-		videothumbnail: '/posts/sunset-paradise-postcard.mp4',
-		type: 'codeart',
-		tech: ['css'],
-	},
-	{
 		year: 2020,
 		title: 'Brandirectory website',
 		slug: 'brandirectory-project',
@@ -735,6 +726,12 @@ export const postItems = [
 		codethumbnail:
 			'background-position: -100% 45%; background-size: 200% 200%; background-image: conic-gradient(#a024ad 0%,5%,white 5%,6%,#ed962c 6%,10%,white 10%,11%,#f9eb53 11%,15%,white 15%,16%,#51af56 16%,20%,white 20%,21%,#cedc4e 21%,25%,white 25%,26%,#e95432 26%,30%,white 30%,31%,#4e97ef 31%,35%,white 35%,36%,#e72f63 36%,40%,white 40%,41%,#5cbdd2 41%,45%,white 45%,46%,#469688 46%,50%,white 50%,white);',
 		tech: ['vue', 'nuxt'],
+	},
+	{
+		year: 2021,
+		title: 'Photography',
+		slug: 'photography',
+		type: 'list',
 	},
 	{
 		year: 2019,
@@ -780,9 +777,12 @@ export const postItems = [
 	// },
 	{
 		year: 2021,
-		title: 'Photography',
-		slug: 'photography',
-		type: 'list',
+		title: 'Shimmering SVG effect',
+		slug: 'sunset-paradise-postcard',
+		codepenLink: 'https://codepen.io/mkstix6/pen/LYyLrEO?editors=0100',
+		videothumbnail: '/posts/sunset-paradise-postcard.mp4',
+		type: 'codeart',
+		tech: ['css'],
 	},
 ].map((post) => {
 	if (!post.slug) {
