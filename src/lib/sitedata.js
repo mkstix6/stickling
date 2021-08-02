@@ -733,7 +733,7 @@ export const postItems = [
 	},
 	{
 		year: 2021,
-		title: 'Learning Web Dev Bookmarks',
+		title: 'Useful Web Dev Bookmarks',
 		slug: 'bookmarks',
 		type: 'list',
 		// tech: [],

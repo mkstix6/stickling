@@ -31,7 +31,7 @@
 
 <div class="page page--post">
 	<main id="main">
-		<h1 class="angletext">Bookmarks</h1>
+		<h1 class="angletext">Useful Web Dev Bookmarks</h1>
 		<p>My catalogue of other people's articles that have helped.</p>
 		<form action="">
 			<label for="bookmarksSort">Sort by…</label>
