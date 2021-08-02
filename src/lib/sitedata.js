@@ -1,6 +1,37 @@
 import slugify from 'slugify';
 const slugifyOptions = { strict: true };
 
+export const photography = [
+	{ filename: 'IMG_0794.jpeg', alt: 'Hackney electricity tower' },
+	{ filename: 'IMG_1408.jpeg', alt: 'Happy sea lion' },
+	{ filename: 'IMG_0522.jpeg', alt: 'Hello there seagull' },
+	{ filename: 'IMG_0882.jpeg', alt: 'Beady swan' },
+	{ filename: 'IMG_2024.jpeg', alt: 'Bees moving home' },
+	{ filename: 'IMG_2214.jpeg', alt: 'Sunlight through leaves' },
+	{ filename: 'IMG_2258.jpeg', alt: 'Parliament at night' },
+	{ filename: 'IMG_2452.jpeg', alt: 'Tower Bridge accross the Thames' },
+	{ filename: 'IMG_2515.jpeg', alt: 'Tower Bridge lights' },
+	{ filename: 'IMG_2937.jpeg', alt: 'Rolling hills' },
+	{ filename: 'IMG_4312.jpeg', alt: 'Iceberg' },
+	{ filename: 'IMG_4487.jpeg', alt: 'Black sand and surf' },
+	{ filename: 'IMG_4728.jpeg', alt: 'Crystal clear water at Kefalonia Myrtos beach' },
+	{ filename: 'IMG_4801.jpeg', alt: 'Sea sailing' },
+	{ filename: 'IMG_4847.jpeg', alt: 'Luna' },
+	{ filename: 'IMG_5076ir.jpeg', alt: 'Infrared of Mawgan Porth' },
+	{ filename: 'IMG_5131.jpeg', alt: 'Surf time' },
+	{ filename: 'IMG_5231.jpeg', alt: 'Rainbow over South London tower blocks' },
+	{ filename: 'IMG_5233.jpeg', alt: 'Sunrise over South London tower blocks' },
+	{ filename: 'IMG_5235.jpeg', alt: 'Water wheel' },
+	{ filename: 'IMG_5400ir.jpeg', alt: 'Infrared of Mawgan Porth' },
+	{ filename: 'IMG_5645.jpeg', alt: 'Hampstead blooms' },
+	{ filename: 'IMG_5665.jpeg', alt: 'Infrared London from Parliament Hill' },
+	{ filename: 'IMG_5712.jpeg', alt: 'Iceland greenhouses' },
+	{ filename: 'IMG_5924.jpeg', alt: 'Hi Robbin' },
+	{ filename: 'IMG_6339.jpeg', alt: 'Buzzy bees' },
+	{ filename: 'IMG_6752.jpeg', alt: 'Sunrise condensation' },
+	{ filename: 'IMG_8397.jpeg', alt: 'Hackney Wick heavens' },
+];
+
 export const developmentLogos = [
 	{
 		key: 'ava',
@@ -746,12 +777,22 @@ export const postItems = [
 	// 	codepenLink: 'https://codepen.io/mkstix6/full/pRbErK',
 	// 	type: 'article',
 	// 	tech: ['css']
-	// }
+	// },
+	{
+		year: 2021,
+		title: 'Photography',
+		slug: 'photography',
+		type: 'list',
+	},
 ].map((post) => {
 	if (!post.slug) {
 		post.slug = slugify(post.title, slugifyOptions).toLowerCase();
 	}
 	post.link = `/posts/${post.slug}`;
+	// Photography specific code
+	if (post.slug === 'photography') {
+		post.thumbnail = `/photos/${photography[0].filename}`;
+	}
 	return post;
 });
 // .sort((a, b) => b.year - a.year);
