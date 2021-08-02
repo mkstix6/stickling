@@ -1,4 +1,6 @@
 <script>
+	import SocialLink from '$lib/SocialLink.svelte';
+
 	import Highlight from 'svelte-highlight';
 	import css from 'svelte-highlight/src/languages/css';
 	import nightOwl from 'svelte-highlight/src/styles/night-owl';
@@ -259,6 +261,10 @@ em::after {
 	</div>
 </section>
 
+<SocialLink href="https://codepen.io/mkstix6/pen/ERLLvb" service="codepen"
+	>I originally wrote this on CodePen</SocialLink
+>
+
 <style lang="scss">
 	$c1: mediumturquoise;
 	$c2: mediumpurple;
@@ -404,6 +410,7 @@ em::after {
 		display: grid;
 		grid-template-areas: 'header header' 'content code';
 		gap: 1.5rem;
+		margin-bottom: 1.5rem;
 
 		h2 {
 			grid-area: header;
