@@ -85,15 +85,6 @@
 		--imgrotation: 15deg;
 		perspective: 1000px;
 	}
-
-	img {
-		max-width: 100%;
-		width: 100%;
-		height: auto;
-		display: block;
-		transition: transform 600ms;
-	}
-
 	.imgcontainer:nth-child(odd) img {
 		transform: rotateY(calc(-1 * var(--imgrotation)));
 	}
@@ -103,5 +94,13 @@
 	.imgcontainer img:focus,
 	.imgcontainer img:hover {
 		transform: rotateY(0deg);
+	}
+
+	img {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+		display: block;
+		transition: transform 600ms;
 	}
 </style>
