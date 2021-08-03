@@ -4,9 +4,9 @@ const slugifyOptions = { strict: true };
 export const photography = [
 	{ filename: 'IMG_0794.jpeg', alt: 'Hackney electricity tower' },
 	{ filename: 'IMG_1408.jpeg', alt: 'Happy sea lion' },
-	{ filename: 'IMG_0522.jpeg', alt: 'Hello there seagull' },
+	{ filename: 'IMG_0522.jpeg', alt: 'Hello there red billed gull' },
 	{ filename: 'IMG_0882.jpeg', alt: 'Beady swan' },
-	{ filename: 'IMG_2024.jpeg', alt: 'Bees moving home' },
+	{ filename: 'IMG_2024.jpeg', alt: `My Dad's Bees moving home` },
 	{ filename: 'IMG_2214.jpeg', alt: 'Sunlight through leaves' },
 	{ filename: 'IMG_2258.jpeg', alt: 'Parliament at night' },
 	{ filename: 'IMG_2452.jpeg', alt: 'Tower Bridge accross the Thames' },
