@@ -133,31 +133,6 @@
 				</li>
 			</ul>
 		</section> -->
-
-		<!-- <section class="section slice px3 py3 indentp">
-			<h2 class="angletext">Teamwork is essential</h2>
-			<p>
-				I've lead teams of developers to provide customer friendly solutions.
-				<em>Supporting coworkers</em> is a highlight of my day. It's as fun and important to help others
-				progress, as to be taught something new myself.
-			</p>
-			<h2 class="angletext">Inclusivity on the web</h2>
-			<p>
-				Creating websites that are
-				<strong
-					><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/"
-						><abbr title="Accessibility">accessible</abbr></a
-					>
-				</strong>
-				and inclusive is of utmost importance.
-			</p>
-			<p>
-				I strive to meet
-				<em><a href="https://www.w3.org/TR/WCAG21/" style="white-space: nowrap;">WCAG2.1</a></em>
-				standards for the projects I work on and advocate for its recommendations.
-			</p>
-			<p><strong><a href="https://twitter.com/hashtag/a11y?src=hashtag_click">#a11y</a></strong></p>
-		</section> -->
 	</div>
 </main>
 

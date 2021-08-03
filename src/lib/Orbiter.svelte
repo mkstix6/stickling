@@ -116,11 +116,11 @@
 			0% {
 				transform: rotateY(0deg);
 			}
-			40% {
-				transform: rotateY(40deg);
-			}
 			50% {
-				transform: rotateY(360deg);
+				transform: rotateY(340deg);
+			}
+			60% {
+				transform: rotateY(60deg);
 			}
 			80% {
 				transform: rotateY(310deg);

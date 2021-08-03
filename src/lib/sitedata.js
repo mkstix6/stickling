@@ -73,7 +73,7 @@ export const developmentLogos = [
 		aspectratio: 1,
 	},
 	{
-		key: 'blender 3d',
+		key: 'blender',
 		name: 'Blender 3D',
 		image: 'blender.png',
 		link: undefined,
