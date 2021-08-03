@@ -60,9 +60,10 @@
 		/* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
 		gap: 0.1rem;
 		list-style: none;
-		place-items: center;
+		place-items: start center;
+		padding-bottom: 70px;
 
-		perspective: 2100px;
+		perspective: 800px;
 		perspective-origin: bottom center;
 
 		li {
@@ -91,17 +92,17 @@
 			@for $i from 1 through 50 {
 				&:nth-child(50n + #{$i}) {
 					$forward: random() * 40;
-					transform: rotateY(#{(random() * 12)-6}deg)
-						translateX(#{(random() * 100 - 10)}px)
-						translateY(#{(random() * $forward) + $forward}px)
-						translateZ(#{$forward * 10}px);
-					z-index: $forward;
+					transform: rotateY(#{floor((random() * 12) - 6)}deg)
+						translateX(#{floor((random() * 100 - 50))}px)
+						translateY(#{floor((random() * $forward) + $forward)}px)
+						translateZ(#{floor(($forward - 20) * 10)}px);
+					z-index: floor($forward);
 
 					img {
 						animation-duration: #{random() * 20s + 25s};
 						animation-delay: #{random() * 20s};
 						filter: blur(
-							#{math.div(40 - $forward, 10) - 2}px
+							#{max(0, floor(math.div(40 - $forward, 10) - 2))}px
 						); // brightness(#{($forward / 40) + 0.25});
 						opacity: #{math.div($forward, 40) + 0.25};
 					}
