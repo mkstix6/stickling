@@ -4,11 +4,13 @@
 	export let logokey;
 
 	const logoData = developmentLogos.find((item) => logokey === item.key);
-	const logoImageURL = `/logos/stickers/${logoData.image}`;
-	const logoImageALT = `${logoData.name}`;
+	const logoImageURL = `/logos/stickers/${logoData?.image}`;
+	const logoImageALT = `${logoData?.name}`;
 </script>
 
-<img class="logo" src={logoImageURL} alt={logoImageALT} title={logoData.name} />
+{#if logoData}
+	<img class="logo" src={logoImageURL} alt={logoImageALT} title={logoData?.name} />
+{/if}
 
 <style>
 	.logo {
