@@ -706,6 +706,18 @@ a.sitelink,
 	border-radius: 0.25em;
 }
 
+fieldset {
+	border: 1px solid #7774;
+	border-radius: 0.5rem;
+	display: inline-block;
+}
+
+legend {
+	position: static;
+	top: 0;
+	left: 0;
+}
+
 // Hex38 puzzle global styles for sortable
 .sortable-chosen {
 	box-shadow: inset 4px 4px 4px fuchsia !important;

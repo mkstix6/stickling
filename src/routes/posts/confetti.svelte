@@ -179,7 +179,6 @@
 
 		{#each particleStyles as style}
 			<div>
-				<label for="choice-{style}">{style}</label>
 				<input
 					bind:group={particlesChoice}
 					id="choice-{style}"
@@ -187,6 +186,7 @@
 					name="choice"
 					value={style}
 				/>
+				<label for="choice-{style}">{style}</label>
 			</div>
 		{/each}
 	</fieldset>
@@ -224,6 +224,9 @@
 	// 	animation: spinny 0.4s infinite;
 	// 	border-radius: 100%;
 	// }
+	label {
+		text-transform: capitalize;
+	}
 
 	.confettiSpace {
 		position: relative;
