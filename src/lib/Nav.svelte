@@ -4,6 +4,7 @@
 	const pages = [
 		{ path: '/', text: 'Home' },
 		{ path: '/posts', text: 'Posts' },
+		{ path: '/about', text: 'About' },
 		// { path: '/cv', text: 'CV' }, // TODO remove this from public nav
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },
