@@ -34,7 +34,7 @@
 
 	<footer>
 		<div>
-			<a class="button" href="/posts">&lt; view all Posts</a>
+			<a class="button" href="/posts">&lt; view all posts</a>
 		</div>
 		<div class="prevnext">
 			<div class="prevnext-button">

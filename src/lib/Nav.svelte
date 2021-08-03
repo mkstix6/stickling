@@ -2,9 +2,9 @@
 	import { page } from '$app/stores';
 
 	const pages = [
-		{ path: '/', text: 'Home' },
-		{ path: '/posts', text: 'Posts' },
-		{ path: '/about', text: 'About' },
+		{ path: '/', text: 'home' },
+		{ path: '/posts', text: 'posts' },
+		{ path: '/about', text: 'about' },
 		// { path: '/cv', text: 'CV' }, // TODO remove this from public nav
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },

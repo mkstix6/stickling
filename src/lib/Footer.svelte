@@ -27,7 +27,7 @@
 		</div>
 
 		<div>
-			<span>Get in touch…</span>
+			<span>get in touch…</span>
 			<SocialNav />
 		</div>
 
@@ -37,7 +37,7 @@
 
 		<div>
 			<div>
-				Built with <a href="https://kit.svelte.dev">SvelteKit</a>
+				built with <a href="https://kit.svelte.dev">SvelteKit</a>
 				<LogoSticker logokey="svelte" />
 			</div>
 		</div>

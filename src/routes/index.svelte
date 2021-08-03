@@ -32,7 +32,7 @@
 				<strong class="color-active fontsize-double" style="font-weight: 900;"
 					>Mark Stickling</strong
 				><br />
-				a <em style="color: white; font-style: normal;">Frontend web developer</em>
+				a <em style="color: white; font-style: normal;">frontend web developer</em>
 			</h1>
 
 			<!-- <div
@@ -94,7 +94,7 @@
 			<h2 class="angletext">I made these…</h2>
 			<p class="angletext">Explore some things I've coded.</p>
 			<PostGrid itemcount={6} />
-			<a class="megaButton" href="/posts">view all Posts &gt;</a>
+			<a class="megaButton" href="/posts">view all posts &gt;</a>
 		</section>
 
 		<!-- <section class="px3">
