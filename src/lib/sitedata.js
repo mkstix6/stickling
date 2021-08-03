@@ -912,6 +912,13 @@ export const bookmarks = [
 		tech: ['html'],
 		kind: 'app',
 	},
+	{
+		title: '5 steps to faster web fonts',
+		url: 'https://iainbean.com/posts/2021/5-steps-to-faster-web-fonts/',
+		year: 2021,
+		tech: ['html'],
+		kind: 'article',
+	},
 ].map((bookmark, index) => {
 	// Compute domain
 	let domain = new URL(bookmark.url);
