@@ -178,8 +178,7 @@
 		gap: 3rem;
 		list-style: none;
 		padding-left: 0;
-		> li {
-		}
+
 		article {
 			padding: 1.5rem;
 			border-radius: var(--big-radius);
