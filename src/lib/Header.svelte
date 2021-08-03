@@ -111,14 +111,7 @@
 
 		&:focus,
 		&:hover {
-			&,
-			& .bigM__button {
-				background: var(--pallette-active);
-			}
+			background: var(--pallette-active);
 		}
-	}
-
-	.socialnav a {
-		color: var(--pallette2);
 	}
 </style>

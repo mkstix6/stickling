@@ -222,14 +222,6 @@
 		margin-bottom: 40px;
 	}
 
-	html {
-		background: #fff;
-		/*background-image: linear-gradient(to bottom right, #00FFB4 0%, #0EB0DC 48%, #1D43B7 80%, #06006D 100%);*/
-		background-image: linear-gradient(to bottom right, #abd 0%, #cdf 100%);
-		background-size: 100vw 100vh;
-		background-attachment: fixed;
-		padding: 40px 50px 100px;
-	}
 	h4 {
 		text-align: center;
 		margin-top: 3em;

@@ -4,7 +4,9 @@
 
 <ul class="orbiter">
 	{#each workFavicons as faviconSrc}
-		<li><img width="32" height="32" src="/project-favicons/{faviconSrc}" /></li>
+		<li>
+			<img width="32" height="32" src="/project-favicons/{faviconSrc}" alt="a website favicon" />
+		</li>
 	{/each}
 </ul>
 

@@ -83,10 +83,7 @@
 
 		&:focus,
 		&:hover {
-			&,
-			& .bigM__button {
-				background: var(--pallette-active);
-			}
+			background: var(--pallette-active);
 		}
 	}
 	.bigM {

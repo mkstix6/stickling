@@ -59,13 +59,6 @@
 		--postcardWidth: 60vw;
 	}
 
-	body {
-		display: grid;
-		place-items: center;
-		background: #bdc7d9;
-		min-height: 100%;
-	}
-
 	svg {
 		max-width: 100%;
 		max-height: 100%;
@@ -147,10 +140,5 @@
 	.sun {
 		width: 50vw;
 		height: 50vw;
-	}
-
-	.water {
-		width: 100%;
-		height: 100%;
 	}
 </style>

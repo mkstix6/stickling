@@ -19,7 +19,7 @@
 	onMount(async () => {
 		// window.Sortable = Sortable;
 		// window.Sortable = require('sortablejs').Sortable;
-		console.log('sortableInstance.options.swap', sortableInstance?.options?.swap);
+		// console.log('sortableInstance.options.swap', sortableInstance?.options?.swap);
 		// if (!Sortable.options.swap) {
 		try {
 			Sortable.mount(new Swap());
@@ -40,7 +40,7 @@
 					const numbers = readNumbersFromBoard();
 					renderBoard(numbers);
 				}, 100);
-			}
+			},
 		});
 		// debugger;
 		// Render app starting default setup
@@ -107,7 +107,7 @@
 			[d, i, n, r],
 			[a, e, j, o, s],
 			[b, f, k, p],
-			[c, g, l]
+			[c, g, l],
 		];
 		const hexReverseTotals = [
 			[lineTotals[0], lineTotals[5], lineTotals[12]],
@@ -128,7 +128,7 @@
 			[lineTotals[3], lineTotals[9], lineTotals[13]],
 			[lineTotals[4], lineTotals[7], lineTotals[10]],
 			[lineTotals[4], lineTotals[8], lineTotals[11]],
-			[lineTotals[4], lineTotals[9], lineTotals[12]]
+			[lineTotals[4], lineTotals[9], lineTotals[12]],
 		];
 
 		// Render attempt to hexagon elements
@@ -246,46 +246,6 @@
 </footer>
 
 <style lang="scss">
-	// General setup
-	* {
-		font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
-			helvetica, Ubuntu, roboto, noto, arial, sans-serif;
-	}
-
-	body {
-		display: grid;
-		// place-items: center;
-		margin: 0;
-		padding: 5vw;
-		background: black;
-		width: 100%;
-		height: auto;
-		box-sizing: border-box;
-
-		@media (orientation: landscape) {
-			grid-template-columns: 20rem 1fr;
-		}
-	}
-
-	h1 {
-		margin: 0;
-		padding: 0;
-	}
-
-	h2 {
-		margin-bottom: 0.25em;
-	}
-
-	p {
-		margin: 0;
-		margin-bottom: 0.5em;
-		padding: 0;
-	}
-
-	p + button {
-		margin-top: 2rem;
-	}
-
 	.controls {
 		margin: 1.5rem 0;
 	}
@@ -629,17 +589,5 @@
 			top: calc(var(--hexHeight) * -0.25 - var(--vgap));
 			left: calc(var(--hexWidth) * 3 + var(--gap) * 2.5);
 		}
-	}
-	.sortable-chosen {
-		box-shadow: inset 4px 4px 4px fuchsia !important;
-		filter: blur(10px) !important;
-	}
-	.sortable-ghost {
-		box-shadow: inset 4px 4px 4px fuchsia !important;
-		filter: blur(10px) !important;
-	}
-	.sortable-swap-highlight {
-		box-shadow: inset 4px 4px 4px fuchsia !important;
-		filter: blur(10px) !important;
 	}
 </style>

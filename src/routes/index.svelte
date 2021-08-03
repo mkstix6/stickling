@@ -167,60 +167,50 @@
 	}
 	section:nth-child(odd) {
 		background: var(--card-backgroundcolor);
-		.button {
-			background: var(--card-darkerbackgroundcolor);
-		}
+		// .button {
+		// 	background: var(--card-darkerbackgroundcolor);
+		// }
 	}
 
-	.portfolio-list {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 3rem;
-		list-style: none;
-		padding-left: 0;
+	// .portfolio-list {
+	// 	display: grid;
+	// 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	// 	gap: 3rem;
+	// 	list-style: none;
+	// 	padding-left: 0;
 
-		article {
-			padding: 1.5rem;
-			border-radius: var(--big-radius);
-			border: 1px solid gray;
+	// 	article {
+	// 		padding: 1.5rem;
+	// 		border-radius: var(--big-radius);
+	// 		border: 1px solid gray;
 
-			a {
-				word-break: break-all;
-				line-break: auto;
-			}
-		}
-	}
+	// 		a {
+	// 			word-break: break-all;
+	// 			line-break: auto;
+	// 		}
+	// 	}
+	// }
 
-	.heroimage {
-		position: relative;
-		clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
-		overflow: hidden;
-		width: 100vw;
-		height: 50vw;
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: var(--herogradient);
-			-webkit-backdrop-filter: grayscale(100%);
-			mix-blend-mode: screen;
-		}
-	}
+	// .heroimage {
+	// 	position: relative;
+	// 	clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+	// 	overflow: hidden;
+	// 	width: 100vw;
+	// 	height: 50vw;
+	// 	&::after {
+	// 		content: '';
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: 0;
+	// 		right: 0;
+	// 		bottom: 0;
+	// 		background: var(--herogradient);
+	// 		-webkit-backdrop-filter: grayscale(100%);
+	// 		mix-blend-mode: screen;
+	// 	}
+	// }
 
-	.thankslist {
-		list-style: none;
-		display: grid;
-		// grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		grid-auto-flow: dense;
-		gap: 1rem 2rem;
-	}
-
-	.section--hero {
-		margin-bottom: 5rem;
-	}
+	// .section--hero {
+	// 	margin-bottom: 5rem;
+	// }
 </style>

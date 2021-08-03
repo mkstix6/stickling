@@ -19,7 +19,7 @@
 			natus qui, veniam expedita. Dolorem ipsam ea, nisi a repellat natus corporis excepturi beatae
 			voluptate, incidunt. Quos, ea!
 		</p>
-		<p><img class="" src="https://unsplash.it/1500/1000/?random" /></p>
+		<p><img alt="random test image" src="https://unsplash.it/1500/1000/?random" /></p>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veritatis, ut dignissimos
 			fugiat, eaque accusamus quae molestias nisi, enim fugit magnam sed. Consequuntur nobis
@@ -30,7 +30,7 @@
 			adipisci officia molestias, quo natus laudantium magni nobis molestiae, eum repudiandae
 			pariatur, mollitia vel itaque illo at neque.
 		</p>
-		<p><img class="" src="https://unsplash.it/600/400/?random" /></p>
+		<p><img alt="random test image" src="https://unsplash.it/600/400/?random" /></p>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis iusto, impedit ea
 			odio atque provident omnis debitis cupiditate distinctio, velit ipsam laudantium similique

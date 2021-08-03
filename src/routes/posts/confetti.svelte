@@ -125,14 +125,16 @@
 				this.y = !!y ? y : 200;
 			},
 			create() {
-				this.elem = document.createElement('div');
-				this.elem.classList.add('dustposition');
-				let particle = document.createElement('div');
-				particle.classList.add('dust');
-				this.elem.append(particle);
-				document.querySelector('.confettiSpace').append(this.elem);
+				if (document.querySelector('.confettiSpace')) {
+					this.elem = document.createElement('div');
+					this.elem.classList.add('dustposition');
+					let particle = document.createElement('div');
+					particle.classList.add('dust');
+					this.elem.append(particle);
+					document.querySelector('.confettiSpace').append(this.elem);
+				}
 			},
-			start(x = 200, y = 200) {
+			start() {
 				this.create();
 				this.reset();
 				this.tick();

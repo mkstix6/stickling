@@ -16,19 +16,21 @@
 				{#if videothumbnail}
 					<video muted autoplay loop playsinline src={videothumbnail} loading="lazy">video…</video>
 				{:else if thumbnail}
-					<img src={thumbnail} loading="lazy" />
+					<img src={thumbnail} loading="lazy" alt="" />
 				{/if}
 				<div class="card__content">
 					<h3 class="angletext posttitle">{title}</h3>
 				</div>
 			</div>
-			<div class="techList">
-				{#each tech as logo}
-					<div class="techList__item">
-						<LogoSticker logokey={logo} />
-					</div>
-				{/each}
-			</div>
+			{#if tech?.length}
+				<div class="techList">
+					{#each tech as techKey}
+						<div class="techList__item">
+							<LogoSticker logokey={techKey} />
+						</div>
+					{/each}
+				</div>
+			{/if}
 		</a>
 	</div>
 </article>

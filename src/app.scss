@@ -705,3 +705,17 @@ a.sitelink,
 	padding: 1rem;
 	border-radius: 0.25em;
 }
+
+// Hex38 puzzle global styles for sortable
+.sortable-chosen {
+	box-shadow: inset 4px 4px 4px fuchsia !important;
+	filter: blur(10px) !important;
+}
+.sortable-ghost {
+	box-shadow: inset 4px 4px 4px fuchsia !important;
+	filter: blur(10px) !important;
+}
+.sortable-swap-highlight {
+	box-shadow: inset 4px 4px 4px fuchsia !important;
+	filter: blur(10px) !important;
+}

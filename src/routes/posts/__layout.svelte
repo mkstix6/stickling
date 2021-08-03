@@ -1,10 +1,8 @@
 <script context="module">
 	export async function load({ page }) {
-		const params = page.params;
 		return {
 			props: {
 				page,
-				params,
 			},
 		};
 	}
@@ -12,7 +10,6 @@
 
 <script>
 	export let page;
-	export let params;
 
 	import PostPortal from '$lib/PostPortal.svelte';
 	import { postItems } from '$lib/sitedata.js';
