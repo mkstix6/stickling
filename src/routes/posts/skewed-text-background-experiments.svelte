@@ -221,15 +221,17 @@ em::after {
 				If multiline, preceding and following text is ejected to the next line.
 			</li>
 		</ul>
-		<p class="attempt-4">Some text with some <em><span>skewed words</span></em> in the middle.</p>
-		<p class="attempt-4">
-			Lorem ipsum dolor sit amet, consectetur <em
-				><span
-					>adipisicing elit. Assumenda, eius consequuntur. Culpa possimus rem quibusdam odit facilis
-					dolorum mollitia, voluptates</span
-				></em
-			> sapiente dolor doloribus quos nam quasi, repellendus blanditiis saepe fuga.
-		</p>
+		<div class="test">
+			<p class="attempt-4">Some text with some <em><span>skewed words</span></em> in the middle.</p>
+			<p class="attempt-4">
+				Lorem ipsum dolor sit amet, consectetur <em
+					><span
+						>adipisicing elit. Assumenda, eius consequuntur. Culpa possimus rem quibusdam odit
+						facilis dolorum mollitia, voluptates</span
+					></em
+				> sapiente dolor doloribus quos nam quasi, repellendus blanditiis saepe fuga.
+			</p>
+		</div>
 	</div>
 	<div class="code">
 		<Highlight language={css} code={codeD} />
@@ -269,6 +271,10 @@ em::after {
 	$c1: mediumturquoise;
 	$c2: mediumpurple;
 	$g1: linear-gradient(to right, $c1, $c2);
+
+	.test em {
+		color: white;
+	}
 
 	ul {
 		margin-bottom: 2rem;
@@ -431,7 +437,6 @@ em::after {
 		.test {
 			grid-area: content;
 			background: var(--bgc);
-			color: white;
 			border-radius: 0.5em;
 			width: 100%;
 		}

@@ -238,5 +238,6 @@
 		display: block;
 		padding: 0;
 		margin: 1rem 0 3rem 0;
+		background-color: #061023;
 	}
 </style>

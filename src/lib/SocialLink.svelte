@@ -22,7 +22,18 @@
 		display: inline-flex;
 		align-items: center;
 		background-color: var(--card-backgroundcolor);
-		background-image: radial-gradient(circle at left center, #ffff, 3em, #fff0 3em, #fff0);
+		@media (prefers-color-scheme: dark) {
+			background-image: radial-gradient(circle at left center, #ffff, 3em, #fff0 3em, #fff0);
+		}
+		@media (prefers-color-scheme: light) {
+			background-image: radial-gradient(
+				circle at left center,
+				var(--pallette2),
+				3em,
+				#fff0 3em,
+				#fff0
+			);
+		}
 		border-radius: 0.75em;
 		text-decoration: none;
 		padding: 0.75em 1em;
@@ -42,6 +53,8 @@
 		color: var(--card-backgroundcolor);
 		display: flex;
 		align-items: center;
+		position: relative;
+		left: -0.05em;
 	}
 	.slotContent {
 		margin-left: 1.75em;

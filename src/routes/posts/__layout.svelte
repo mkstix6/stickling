@@ -114,12 +114,20 @@
 	}
 	.prevnext-label > div {
 		display: block;
-		background: white;
-		color: black;
+
 		font-weight: 900;
 		padding: 0.2em 1em;
 		box-shadow: 0 0.5em 1em -0.5em #0005;
 		transform: rotateY(-15deg);
 		position: relative;
+
+		@media (prefers-color-scheme: dark) {
+			background: white;
+			color: black;
+		}
+		@media (prefers-color-scheme: light) {
+			background: #111;
+			color: white;
+		}
 	}
 </style>

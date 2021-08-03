@@ -32,7 +32,7 @@
 				<strong class="color-active fontsize-double" style="font-weight: 900;"
 					>Mark Stickling</strong
 				><br />
-				a <em style="color: white; font-style: normal;">frontend web developer</em>
+				a <em style="font-style: normal;">frontend web developer</em>
 			</h1>
 
 			<!-- <div
