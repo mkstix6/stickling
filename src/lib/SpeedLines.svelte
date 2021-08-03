@@ -1,20 +1,20 @@
-<script>
-	customElements.define(
-		'speed-lines',
-		class extends HTMLElement {
-			constructor() {
-				super();
-				let profile = document.getElementById('zprofiletemplate');
-				let myprofile = profile.content;
-				const shadowRoot = this.attachShadow({ mode: 'open' }).appendChild(
-					myprofile.cloneNode(true)
-				);
-			}
-		}
-	);
+<script lang="ts">
+	// customElements.define(
+	// 	'speed-lines',
+	// 	class extends HTMLElement {
+	// 		constructor() {
+	// 			super();
+	// 			let profile = document.getElementById('zprofiletemplate');
+	// 			let myprofile = profile.content;
+	// 			const shadowRoot = this.attachShadow({ mode: 'open' }).appendChild(
+	// 				myprofile.cloneNode(true)
+	// 			);
+	// 		}
+	// 	}
+	// );
 
 	// Set up canvas
-	const canvas = document.getElementById('canvas');
+	const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 	const ctx = canvas.getContext('2d');
 	ctx.canvas.width = document.documentElement.clientWidth;
 	ctx.canvas.height = document.documentElement.clientHeight;
@@ -39,14 +39,22 @@
 		zipAngleRadians = Math.atan2(opposite, adjacent);
 		// --characterRotation
 		document
-			.querySelector('.character')
-			.style.setProperty('--characterRotation', zipAngleRadians + emogiAlignment);
+			.querySelector<HTMLElement>('.character')
+			.style.setProperty('--characterRotation', `${zipAngleRadians + emogiAlignment}`);
 	});
 
 	class SpeedLinesCanvas {
 		xOffset = Math.random() * canvasWidth;
 		x = Math.random() * canvasWidth;
 		y = Math.random() * canvasHeight;
+		ctx;
+		size;
+		speed;
+		angleRad;
+		tickX;
+		tickY;
+		color;
+		length;
 		constructor(ctx) {
 			this.ctx = ctx;
 			this.size = Math.random() * (maxSize - minSize) + minSize;
