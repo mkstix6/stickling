@@ -92,7 +92,7 @@
 
 		<section class="section slice px3 py3">
 			<h2 class="angletext">I made these…</h2>
-			<p class="angletext">Explore some things I've coded.</p>
+			<p class="angletext">Explore some things I've created.</p>
 			<PostGrid itemcount={6} />
 			<a class="megaButton" href="/posts">view all posts &gt;</a>
 		</section>
