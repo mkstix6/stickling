@@ -708,6 +708,7 @@ export const postItems = [
 		videothumbnail: '/posts/pixel-sand-mixer.mp4',
 		type: 'codeart',
 		tech: ['js'],
+		codethumbnail: `background-color: #572c85;`,
 	},
 	{
 		year: 2021,
@@ -715,6 +716,7 @@ export const postItems = [
 		type: 'experiment',
 		tech: ['js'],
 		videothumbnail: '/posts/hex38.mp4',
+		codethumbnail: `background-color: #81b98d;`,
 	},
 	{
 		year: 2020,
@@ -738,6 +740,7 @@ export const postItems = [
 		title: 'Confetti',
 		codepenLink: 'https://codepen.io/mkstix6/pen/arZWbE',
 		videothumbnail: '/posts/confetti.mp4',
+		codethumbnail: `background-color: #050d22;`,
 		type: 'art',
 		tech: ['css', 'js'],
 	},
@@ -781,6 +784,7 @@ export const postItems = [
 		slug: 'sunset-paradise-postcard',
 		codepenLink: 'https://codepen.io/mkstix6/pen/LYyLrEO?editors=0100',
 		videothumbnail: '/posts/sunset-paradise-postcard.mp4',
+		codethumbnail: `background-color: #985e26;`,
 		type: 'codeart',
 		tech: ['css'],
 	},
