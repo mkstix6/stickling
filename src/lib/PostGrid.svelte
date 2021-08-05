@@ -3,6 +3,7 @@
 
 	import { postItems } from '$lib/sitedata.js';
 	import PostPortal from '$lib/PostPortal.svelte';
+	import { fly } from 'svelte/transition';
 
 	let posts = [];
 	if (postItems.length) {
@@ -14,8 +15,10 @@
 </script>
 
 <div class="postGrid">
-	{#each posts as post}
-		<PostPortal {...post} />
+	{#each posts as post, index}
+		<div in:fly={{ delay: index * 40, duration: 400, x: 5, y: 20, opacity: 0 }}>
+			<PostPortal {...post} />
+		</div>
 	{/each}
 </div>
 
