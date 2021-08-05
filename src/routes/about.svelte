@@ -27,15 +27,9 @@
 		<section class="section px3 py3 indentp">
 			<h2 class="angletext">Some things I believe…</h2>
 			<p>
-				Good <strong>SEO</strong>,
-				<strong>code-performance</strong> and <strong>semantic HTML</strong> are foundational to the
-				work we do.
-			</p>
-			<h3>Teamwork is essential</h3>
-			<p>
-				I've lead teams of developers to provide customer friendly solutions.
-				<em>Supporting coworkers</em> is a highlight of my day. It's as fun and important to help others
-				progress, as to be taught something new myself.
+				<strong>Semantic HTML</strong> and good website
+				<strong>performance</strong> are foundational to the work we do. It's a happy bonus these
+				support <strong>SEO</strong>.
 			</p>
 			<h3>Inclusivity on the web</h3>
 			<p>
@@ -53,6 +47,12 @@
 				standards for the projects I work on and advocate for its recommendations.
 			</p>
 			<p><strong><a href="https://twitter.com/hashtag/a11y?src=hashtag_click">#a11y</a></strong></p>
+			<h3>Teamwork is essential</h3>
+			<p>
+				I've lead teams of developers to provide customer friendly solutions.
+				<em>Supporting coworkers</em> is a highlight of my day. It's as fun and important to help others
+				progress, as to be taught something new myself.
+			</p>
 		</section>
 
 		<section class="section px3 py3" style="overflow: hidden;">
@@ -64,108 +64,120 @@
 					<LaptopLogos />
 				</div>
 				<div class="mytechexperience">
-					<h3>Some technology I have experience with…</h3>
-					<p>
-						<LogoSticker logokey="vue" />
-						<LogoSticker logokey="nuxt" />
-						<LogoSticker logokey="svelte" />
-						<br />
+					<h3>I have lots of different experience:</h3>
+					<div class="skillcard">
 						I'm familiar with <strong>modern frontend frameworks</strong> such as <em>Vue.js</em>,
 						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="cypress" />
-						<LogoSticker logokey="ava" />
-						<LogoSticker logokey="jest" />
-						<LogoSticker logokey="bitbucket" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="vue" />
+							<LogoSticker logokey="nuxt" />
+							<LogoSticker logokey="svelte" />
+						</div>
+					</div>
+					<div class="skillcard">
 						<strong>End-to-end tested</strong> applications with
 						<em>Cypress.js</em>.
 						<strong>Unit tested</strong> with runners like <em>AVA</em> and <em>Jest</em>. Then
 						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="typescript" />
-						<LogoSticker logokey="webpack" />
-						<LogoSticker logokey="webpackrollup" />
-						<LogoSticker logokey="gulp" />
-						<LogoSticker logokey="npm" />
-						<LogoSticker logokey="docker" />
-						<LogoSticker logokey="yarn" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="cypress" />
+							<LogoSticker logokey="ava" />
+							<LogoSticker logokey="jest" />
+							<LogoSticker logokey="bitbucket" />
+						</div>
+					</div>
+					<div class="skillcard">
 						I've configured
 						<strong>tooling technologies</strong>
 						like
 						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Gulp</em>, <em>npm</em>,
 						<em>Docker</em> and <em>Yarn</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="gsap" />
-						<LogoSticker logokey="scrollmagic" />
-						<LogoSticker logokey="three" />
-						<LogoSticker logokey="jquery" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="typescript" />
+							<LogoSticker logokey="webpack" />
+							<LogoSticker logokey="webpackrollup" />
+							<LogoSticker logokey="gulp" />
+							<LogoSticker logokey="npm" />
+							<LogoSticker logokey="docker" />
+							<LogoSticker logokey="yarn" />
+						</div>
+					</div>
+					<div class="skillcard">
 						Enhanced experiences with popular <strong>JS libraries</strong> including <em>GSAP</em>,
 						<em>ScrollMagic</em>,
-						<em>Three.js</em>, <em>jQuery</em> to supplement vanilla JS and achieve custom behaviour.
-					</p>
-					<p>
-						<LogoSticker logokey="rest" />
-						<LogoSticker logokey="postman" />
-						<LogoSticker logokey="graphql" />
-						<br />
+						<em>Three.js</em>, <em>jQuery</em> to supplement vanilla JS and achieve custom
+						behaviour.
+						<div class="logorow">
+							<LogoSticker logokey="gsap" />
+							<LogoSticker logokey="scrollmagic" />
+							<LogoSticker logokey="three" />
+							<LogoSticker logokey="jquery" />
+						</div>
+					</div>
+					<div class="skillcard">
 						I've implemented <strong>data driven</strong> frontends calling on
 						<em>R.E.S.T APIs</em>. We organise and test their schemas with <em>Postman</em>. I'm
 						keen to improve my <em>GraphQL</em> skills.
-					</p>
-					<p>
-						<LogoSticker logokey="wordpress" />
-						<br />
-						Worked with <strong>PHP technologies</strong> like <em>WordPress</em> (Advanced Custom Fields).
-					</p>
-					<p>
-						<LogoSticker logokey="sass" />
-						<LogoSticker logokey="bootstrap" />
-						<LogoSticker logokey="foundation" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="rest" />
+							<LogoSticker logokey="postman" />
+							<LogoSticker logokey="graphql" />
+						</div>
+					</div>
+					<div class="skillcard">
+						Worked with <strong>PHP technologies</strong> like <em>WordPress</em> (Advanced Custom
+						Fields).
+						<div class="logorow">
+							<LogoSticker logokey="wordpress" />
+						</div>
+					</div>
+					<div class="skillcard">
 						Incorporated <strong>CSS tooling</strong> and libraries like <em>Sass</em>,
 						<em>Bootstrap</em>
 						and
 						<em>Zurb Foundation</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="github" />
-						<LogoSticker logokey="bitbucket" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="sass" />
+							<LogoSticker logokey="bootstrap" />
+							<LogoSticker logokey="foundation" />
+						</div>
+					</div>
+					<div class="skillcard">
 						<strong>Collabotated</strong> using <em>GitHub</em> and <em>Bitbucket</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="photoshop" />
-						<LogoSticker logokey="illustrator" />
-						<LogoSticker logokey="sketch" />
-						<LogoSticker logokey="invision" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="github" />
+							<LogoSticker logokey="bitbucket" />
+						</div>
+					</div>
+					<div class="skillcard">
 						I'm competent with various <strong>design software</strong>: <em>PhotoShop</em>,
 						<em>Illustrator</em>,
 						<em>Sketch</em>, <em>InVision</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="three" />
-						<LogoSticker logokey="blender" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="photoshop" />
+							<LogoSticker logokey="illustrator" />
+							<LogoSticker logokey="sketch" />
+							<LogoSticker logokey="invision" />
+						</div>
+					</div>
+					<div class="skillcard">
 						Recently I've started dabbling with <strong>3D</strong> using
 						<em>Three.js</em> and <em>Blender</em>.
-					</p>
-					<p>
-						<LogoSticker logokey="jira" />
-						<LogoSticker logokey="trello" />
-						<LogoSticker logokey="slack" />
-						<br />
+						<div class="logorow">
+							<LogoSticker logokey="three" />
+							<LogoSticker logokey="blender" />
+						</div>
+					</div>
+					<div class="skillcard">
 						I've configured and administered
 						<strong>project management and organisational software</strong>
 						for our teams such as
 						<em>Jira</em>, <em>Trello</em> and <em>Slack</em>.
-					</p>
+						<div class="logorow">
+							<LogoSticker logokey="trello" />
+							<LogoSticker logokey="slack" />
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -213,5 +225,21 @@
 			// color: var(--pallette2);
 			// white-space: nowrap;
 		}
+	}
+
+	.skillcard {
+		line-height: 1.5;
+		margin: 0;
+		// border: 2px solid var(--card-backgroundcolor);
+		background: linear-gradient(150deg, #06102300, var(--card-backgroundcolor));
+		padding: 1.5em 1em 0.5em;
+	}
+	.logorow {
+		margin: 0.5em 0 0;
+		text-align: right;
+		display: flex;
+		gap: 0.62em;
+		width: 100%;
+		justify-content: flex-end;
 	}
 </style>
