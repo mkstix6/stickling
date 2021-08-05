@@ -2,22 +2,22 @@
 	import { onMount } from 'svelte';
 	onMount(() => {
 		// Collect heading tag elements into an array (want to use Array.prototype.forEach() later).
-		const h4s = [...document.querySelectorAll('h4')];
+		const widthObservers = [...document.querySelectorAll('.widthObserver')];
 		// Setup (once).
-		h4s.forEach((heading) => {
+		widthObservers.forEach((heading) => {
 			const child = document.createElement(`span`);
 			child.classList.add('sizemeasure');
 			heading.appendChild(child);
 		});
 		// Trigger measurement.
-		measureh4s();
+		measurewidthObservers();
 		// …and when the window resizes.
 		window.onresize = function () {
-			measureh4s();
+			measurewidthObservers();
 		};
 		// Run each time we want to update the measurement displayed.
-		function measureh4s() {
-			h4s.forEach((heading) => {
+		function measurewidthObservers() {
+			widthObservers.forEach((heading) => {
 				const elemwidth = heading.offsetWidth;
 				heading.querySelector('.sizemeasure').innerHTML = ` : ${elemwidth}px`;
 			});
@@ -30,8 +30,8 @@
 	<p>
 		I wrote this before CSS Container Queries had been given the green light by the powers that be.
 		If you're reading in a year where Container Queries have become ubiquitous (I'm jelous) this
-		post may only be interesting as a snapshot in history. But in 2021, as I'm writing this,
-		alternative techniques are still required.
+		post may only be interesting as a snapshot in history. But in 2021 I still use this technique
+		occasionally.
 	</p>
 </aside>
 <p>Using flexbox to make responsive widgets without media queries.</p>
@@ -76,31 +76,31 @@
 
 <p><em>Change your browser window width to get a feel for how this is responsive.</em></p>
 
-<h4 class="column100">Container 100% width</h4>
+<div class="widthObserver column100">Container 100% width</div>
 <div class="container column100">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
 </div>
 
-<h4 class="column80">Container 80% width</h4>
+<div class="widthObserver column80">Container 80% width</div>
 <div class="container column80">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
 </div>
 
-<h4 class="column60">Container 60% width</h4>
+<div class="widthObserver column60">Container 60% width</div>
 <div class="container column60">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
 </div>
 
-<h4 class="column40">Container 40% width</h4>
+<div class="widthObserver column40">Container 40% width</div>
 <div class="container column40">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
 </div>
 
-<h4 class="column20">Container 20% width</h4>
+<div class="widthObserver column20">Container 20% width</div>
 <div class="container column20">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
@@ -183,14 +183,14 @@
 	}
 
 	%hmeasureguide {
-		$color: rgba(black, 0.3);
-		color: $color;
+		color: inherit;
 		margin-left: auto;
 		margin-right: auto;
 		position: relative;
-		border-bottom: 1px solid $color;
+		border-bottom: 1px solid currentColor;
+		opacity: 0.8;
 		&:after {
-			box-shadow: inset 1px 0 0 $color, inset -1px 0 0 $color;
+			box-shadow: inset 1px 0 0 currentColor, inset -1px 0 0 currentColor;
 			content: '';
 			display: block;
 			position: absolute;
@@ -222,9 +222,10 @@
 		margin-bottom: 40px;
 	}
 
-	h4 {
+	.widthObserver {
 		text-align: center;
-		margin-top: 3em;
+		margin-top: 1em;
+		margin-bottom: 1em;
 		@extend %hmeasureguide;
 	}
 
