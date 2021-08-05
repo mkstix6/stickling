@@ -9,7 +9,14 @@
 </script>
 
 {#if logoData}
-	<img class="logo" src={logoImageURL} alt={logoImageALT} title={logoData?.name} />
+	<img
+		class="logo"
+		src={logoImageURL}
+		alt={logoImageALT}
+		title={logoData?.name}
+		width="18"
+		height="18"
+	/>
 {/if}
 
 <style>
