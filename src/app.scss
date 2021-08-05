@@ -68,7 +68,7 @@ body {
 	font-family: 'Lexend';
 	src: url('/fonts/Lexend/Lexend[LXND,wght].ttf') format('truetype');
 	font-weight: 1 999; /* Variable font */
-	font-display: swap;
+	font-display: optional;
 }
 
 :root {
