@@ -37,7 +37,9 @@
 
 	<div class="navcontainer">
 		<Nav />
-		<SocialNav />
+		<div class="no-mobile">
+			<SocialNav />
+		</div>
 		<!-- <ThemeSwitch /> -->
 	</div>
 </header>
@@ -76,7 +78,7 @@
 		display: flex;
 		align-items: stretch;
 		justify-content: space-between;
-		padding-left: 12vw;
+		padding-left: 15vw;
 	}
 	.siteHeader {
 		background: var(--headerBGcolor);
@@ -112,6 +114,12 @@
 		&:focus,
 		&:hover {
 			background: var(--pallette-active);
+		}
+	}
+
+	.no-mobile {
+		@media screen and (max-width: 500px) {
+			display: none !important;
 		}
 	}
 </style>
