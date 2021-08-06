@@ -1,6 +1,36 @@
 import slugify from 'slugify';
 const slugifyOptions = { strict: true };
 
+export const socialDetails = [
+	{
+		service: 'twitter',
+		serviceDisplayCase: 'Twitter',
+		handle: '@mkstix6',
+		contactUrl: 'https://twitter.com/mkstix6',
+		kind: 'contactInfo',
+	},
+	{
+		service: 'linkedin',
+		serviceDisplayCase: 'Linkedin',
+		contactUrl: 'https://www.linkedin.com/in/mark-stickling-b77ba246/',
+		kind: 'contactInfo',
+	},
+	{
+		service: 'codepen',
+		serviceDisplayCase: 'CodePen',
+		handle: 'mkstix6',
+		contactUrl: 'https://codepen.io/mkstix6/',
+		kind: 'codeExamples',
+	},
+	{
+		service: 'github',
+		serviceDisplayCase: 'Github',
+		handle: 'mkstix6',
+		contactUrl: 'https://github.com/mkstix6',
+		kind: 'codeExamples',
+	},
+];
+
 export const photography = [
 	{ filename: 'IMG_0794.jpeg', alt: 'Hackney electricity tower' },
 	{ filename: 'IMG_1408.jpeg', alt: 'Happy sea lion' },
