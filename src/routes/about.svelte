@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Stickling.co.uk</title>
+	<title>About Mark | Stickling.co.uk</title>
 </svelte:head>
 
 <main id="main">

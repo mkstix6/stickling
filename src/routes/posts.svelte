@@ -2,6 +2,10 @@
 	import PostGrid from '$lib/PostGrid.svelte';
 </script>
 
+<svelte:head>
+	<title>Mark's Posts | Stickling.co.uk</title>
+</svelte:head>
+
 <div class="page page--posts">
 	<main id="main">
 		<h1 class="angletext">Posts</h1>

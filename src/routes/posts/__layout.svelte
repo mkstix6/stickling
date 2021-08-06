@@ -15,10 +15,15 @@
 	import { postItems } from '$lib/sitedata.js';
 
 	$: slug = page.path.split('/').pop();
+	$: thisPost = postItems.find((item) => item.slug === slug);
 	$: thisPostIndex = postItems.findIndex((item) => item.slug === slug);
 	$: prevPost = postItems[thisPostIndex - 1];
 	$: nextPost = postItems[thisPostIndex + 1];
 </script>
+
+<svelte:head>
+	<title>{thisPost.title} | Posts | Stickling.co.uk</title>
+</svelte:head>
 
 <div class="page page--post">
 	<div class="pretitle">
