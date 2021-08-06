@@ -1,12 +1,15 @@
 <script>
 	import PhotographyImage from '$lib/PhotographyImage.svelte';
+	import AnimateIn from '$lib/AnimateIn.svelte';
 	import { photography } from '$lib/sitedata.js';
 </script>
 
 <div class="photogrid">
 	{#each photography as { filename, alt }}
 		<div class="imgcontainer">
-			<PhotographyImage src="/photos/{filename}" {alt} />
+			<AnimateIn>
+				<PhotographyImage src="/photos/{filename}" {alt} />
+			</AnimateIn>
 		</div>
 	{/each}
 </div>
