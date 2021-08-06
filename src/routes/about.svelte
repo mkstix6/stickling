@@ -2,6 +2,7 @@
 	import LaptopLogos from '$lib/LaptopLogos.svelte';
 	import Orbiter from '$lib/Orbiter.svelte';
 	import LogoSticker from '$lib/LogoSticker.svelte';
+	import AnimateIn from '$lib/AnimateIn.svelte';
 </script>
 
 <svelte:head>
@@ -21,7 +22,9 @@
 				During a decade of digital agency I've planned, coded and maintained digital-experiences
 				ranging from small brochure webites to data driven apps.
 			</p>
-			<Orbiter />
+			<AnimateIn>
+				<Orbiter />
+			</AnimateIn>
 		</section>
 
 		<section class="section px3 py3 indentp">
