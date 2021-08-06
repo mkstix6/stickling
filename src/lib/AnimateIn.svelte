@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	export let from = 'transform: translateX(5px) translateY(50px); opacity: 0;';
+	export let to = 'transform: translateX(0) translateY(0); opacity: 1;';
+	export let duration = 500;
+
 	let element;
 	let observeTarget;
 	let wasObserved = false;
@@ -40,9 +44,9 @@
 
 <div class="perspective">
 	<div
-		class="animateinelement"
 		class:unobserved={!wasObserved}
 		class:observed={wasObserved}
+		style="{wasObserved ? to : from}; transition: opacity {duration}ms, transform {duration}ms;"
 		bind:this={element}
 	>
 		<slot />
@@ -52,19 +56,5 @@
 <style>
 	.perspective {
 		perspective: 1000px;
-	}
-
-	.animateinelement {
-		transition: opacity 500ms, transform 500ms;
-	}
-
-	.unobserved {
-		transform: translateX(5px) translateY(50px) rotateY(20deg);
-		opacity: 0;
-	}
-
-	.observed {
-		transform: translateX(0) translateY(0) rotateY(0deg);
-		opacity: 1;
 	}
 </style>

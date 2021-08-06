@@ -7,7 +7,10 @@
 <div class="photogrid">
 	{#each photography as { filename, alt }}
 		<div class="imgcontainer">
-			<AnimateIn>
+			<AnimateIn
+				from="transform: translateX(5px) translateY(50px) rotateY(20deg); opacity: 0;"
+				to="transform: translateX(0) translateY(0) rotateY(0deg); opacity: 1;"
+			>
 				<PhotographyImage src="/photos/{filename}" {alt} />
 			</AnimateIn>
 		</div>
