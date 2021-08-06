@@ -1,7 +1,7 @@
 <script context="module">
 	export const load = async ({ page }) => ({
 		props: {
-			key: page.path,
+			pagePath: page.path,
 		},
 	});
 </script>
@@ -10,17 +10,15 @@
 	import '../app.scss';
 	import SiteHeader from '$lib/Header.svelte';
 	import SiteFooter from '$lib/Footer.svelte';
-	import { fly } from 'svelte/transition';
+	import PageTransitions from '$lib/PageTransitions.svelte';
 
-	export let key;
+	export let pagePath;
 </script>
 
 <SiteHeader />
 
-{#key key}
-	<div in:fly={{ x: 5, duration: 400, delay: 350 }} out:fly={{ x: -5, duration: 400 }}>
-		<slot />
-	</div>
-{/key}
+<PageTransitions {pagePath}>
+	<slot />
+</PageTransitions>
 
 <SiteFooter />
