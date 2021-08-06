@@ -118,7 +118,7 @@
 	}
 
 	.no-mobile {
-		@media screen and (max-width: 500px) {
+		@media screen and (max-width: 700px) {
 			display: none !important;
 		}
 	}
