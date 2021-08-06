@@ -5,6 +5,7 @@
 		{ path: '/', text: 'home' },
 		{ path: '/posts', text: 'posts' },
 		{ path: '/about', text: 'about' },
+		{ path: '/contact', text: 'contact' },
 		// { path: '/cv', text: 'CV' }, // TODO remove this from public nav
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },
