@@ -199,9 +199,13 @@
 				order: 2;
 			}
 			> div + div {
-				flex: 1 0 30ex;
+				flex: 1 0 50ex;
 				position: relative;
 				order: 1;
+			}
+
+			h3 {
+				width: 100%;
 			}
 		}
 	}
@@ -236,6 +240,7 @@
 		// border: 2px solid var(--card-backgroundcolor);
 		background: linear-gradient(150deg, #06102300, var(--card-backgroundcolor));
 		padding: 1.5em 1em 0.5em;
+		max-width: 50ex;
 	}
 	.logorow {
 		margin: 0.5em 0 0;
