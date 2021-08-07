@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let from = 'transform: translateX(5px) translateY(50px); opacity: 0;';
+	export let from = 'transform: translateX(5px) translateY(10px); opacity: 0;';
 	export let to = 'transform: translateX(0) translateY(0); opacity: 1;';
 	export let duration = 500;
 

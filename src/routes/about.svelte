@@ -22,7 +22,7 @@
 				During a decade of digital agency I've planned, coded and maintained digital-experiences
 				ranging from small brochure webites to data driven apps.
 			</p>
-			<AnimateIn>
+			<AnimateIn duration={1000}>
 				<Orbiter />
 			</AnimateIn>
 		</section>
