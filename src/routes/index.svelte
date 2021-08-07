@@ -29,9 +29,7 @@
 		<section class="px3 indentp">
 			<h1 class="angletext">
 				I'm
-				<strong class="color-active fontsize-double" style="font-weight: 900;"
-					>Mark Stickling</strong
-				><br />
+				<strong class="color-active fontsize-double">Mark Stickling</strong><br />
 				a <em style="font-style: normal;">frontend web developer</em>
 			</h1>
 
@@ -137,9 +135,6 @@
 </main>
 
 <style lang="scss">
-	h1 {
-		width: 100%;
-	}
 	section:nth-child(odd) {
 		background: var(--card-backgroundcolor);
 		// .button {

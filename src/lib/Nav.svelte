@@ -24,9 +24,10 @@
 	nav {
 		display: flex;
 	}
+
 	a {
 		margin: 0.5em 0.5em;
-		font-weight: 600;
+		font-weight: 500;
 		text-decoration: none;
 		transform: rotate(-6deg);
 		display: block;

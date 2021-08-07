@@ -37,8 +37,10 @@
 
 		<div>
 			<div>
-				built with <a href="https://kit.svelte.dev">SvelteKit</a>
-				<LogoSticker logokey="svelte" />
+				<small>
+					built with <a href="https://kit.svelte.dev">SvelteKit</a>
+					<LogoSticker logokey="svelte" />
+				</small>
 			</div>
 		</div>
 	</div>
