@@ -122,4 +122,10 @@
 			display: none !important;
 		}
 	}
+
+	@media print {
+		header {
+			display: none;
+		}
+	}
 </style>

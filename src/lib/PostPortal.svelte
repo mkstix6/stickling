@@ -104,6 +104,7 @@
 
 	.posttitle {
 		color: white;
+		font-size: 1.2rem;
 		max-width: 100%;
 		margin: 0;
 		padding: 0;

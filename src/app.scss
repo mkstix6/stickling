@@ -61,6 +61,10 @@ body {
 
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+	@media print {
+		background: transparent !important;
+	}
 }
 
 /* Fonts */
@@ -365,6 +369,10 @@ body {
 	// -webkit-background-clip: text;
 	background-clip: text;
 	/* background: () no-repeat; */
+
+	@media print {
+		color: var(--bodycolor);
+	}
 }
 
 strong.gradient {
@@ -380,7 +388,8 @@ h5,
 h6 {
 	color: var(--headingscolor);
 	font-family: var(--fontfamilyheadings);
-	font-weight: 1000;
+	font-weight: 700;
+	letter-spacing: 0.02em;
 	@include gradientText;
 	padding-bottom: 0.2em;
 	line-height: 1;
@@ -431,10 +440,20 @@ h2 {
 	// width: 100%;
 }
 
+h3,
+.h3 {
+	font-size: 2rem;
+}
+
+h4,
+.h4 {
+	font-size: 1.25rem;
+}
+
 p {
 	max-width: 50ex;
 	line-height: 1.7;
-	font-weight: 450;
+	font-weight: 350;
 }
 
 li {
@@ -466,6 +485,13 @@ li {
 li > ul,
 li > ol {
 	margin-top: 0.5em;
+}
+
+abbr {
+	&:focus,
+	&:hover {
+		color: goldenrod;
+	}
 }
 
 code {
