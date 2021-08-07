@@ -67,7 +67,7 @@
 					<LaptopLogos />
 				</div>
 				<div class="mytechexperience">
-					<h3>I have lots of different experience:</h3>
+					<h3>I've built up a variety of skills:</h3>
 					<div class="skillcard">
 						I'm familiar with <strong>modern frontend frameworks</strong> such as <em>Vue.js</em>,
 						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
