@@ -2,6 +2,10 @@
 	import SocialIcon from '$lib/SocialIcon.svelte';
 </script>
 
+<svelte:head>
+	<title>Mark's CV | Stickling.co.uk</title>
+</svelte:head>
+
 <main id="main" class="py3">
 	<div class="gutterpadding py3">
 		<h1 class="angletext">Mark Stickling CV</h1>
