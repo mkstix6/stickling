@@ -366,7 +366,7 @@ body {
 @mixin gradientText {
 	background: var(--herogradient);
 	color: transparent;
-	// -webkit-background-clip: text;
+	-webkit-background-clip: text; // For Chrome 20210807
 	background-clip: text;
 	/* background: () no-repeat; */
 
