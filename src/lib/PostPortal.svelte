@@ -7,32 +7,36 @@
 	export let codethumbnail;
 
 	import LogoSticker from '$lib/LogoSticker.svelte';
+	import MagneticHover from '$lib/MagneticHover.svelte';
 </script>
 
 <article>
-	<div class="mediaAngled">
-		<a href={link}>
-			<div class="card" style={codethumbnail}>
-				{#if videothumbnail}
-					<video muted autoplay loop playsinline src={videothumbnail} loading="lazy">video…</video>
-				{:else if thumbnail}
-					<img src={thumbnail} loading="lazy" alt="" />
+	<MagneticHover>
+		<div class="mediaAngled">
+			<a href={link}>
+				<div class="card" style={codethumbnail}>
+					{#if videothumbnail}
+						<video muted autoplay loop playsinline src={videothumbnail} loading="lazy">video…</video
+						>
+					{:else if thumbnail}
+						<img src={thumbnail} loading="lazy" alt="" />
+					{/if}
+					<div class="card__content">
+						<h3 class="angletext posttitle">{title}</h3>
+					</div>
+				</div>
+				{#if tech?.length}
+					<div class="techList">
+						{#each tech as techKey}
+							<div class="techList__item">
+								<LogoSticker logokey={techKey} />
+							</div>
+						{/each}
+					</div>
 				{/if}
-				<div class="card__content">
-					<h3 class="angletext posttitle">{title}</h3>
-				</div>
-			</div>
-			{#if tech?.length}
-				<div class="techList">
-					{#each tech as techKey}
-						<div class="techList__item">
-							<LogoSticker logokey={techKey} />
-						</div>
-					{/each}
-				</div>
-			{/if}
-		</a>
-	</div>
+			</a>
+		</div>
+	</MagneticHover>
 </article>
 
 <style lang="scss">
@@ -89,6 +93,10 @@
 				opacity: 0.5;
 				transition: opacity 100ms;
 			}
+		}
+		&:active::after {
+			opacity: 0.2;
+			transition: opacity 5ms;
 		}
 	}
 
