@@ -12,12 +12,10 @@
 	const triggerAnimation = (entries, observer) => {
 		const element = entries[0];
 
-		if (!element.isIntersecting) {
-			// do nothing
-		} else {
+		if (element.isIntersecting) {
+			wasObserved = true;
 			// Only animate once.
 			observer.unobserve(observeTarget);
-			wasObserved = true;
 		}
 	};
 
@@ -30,12 +28,21 @@
 		if (!mediaQuery || mediaQuery.matches) {
 			// No animation
 		} else {
-			const observer = new IntersectionObserver(triggerAnimation, {
-				root: null,
-				rootMargin: '0px',
-				threshold: 0.4,
-			});
-			observer.observe(observeTarget);
+			if (
+				!'IntersectionObserver' in window &&
+				!'IntersectionObserverEntry' in window &&
+				!'intersectionRatio' in window.IntersectionObserverEntry.prototype
+			) {
+				// Polyfill if required
+			} else {
+				wasObserved = false;
+				const observer = new IntersectionObserver(triggerAnimation, {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.4,
+				});
+				observer.observe(observeTarget);
+			}
 		}
 
 		// TODO return unobserve code here so observer is removed when component is destroyed (e.g. between page navigations)
