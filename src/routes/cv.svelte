@@ -133,12 +133,16 @@
 				</section>
 			</div>
 		</div>
+
+		<div style="text-align: center;">
+			<button onclick="window.print()" class="megaButton printbutton">Print this page</button>
+		</div>
 	</div>
 </main>
 
 <style lang="scss">
 	.grid {
-		@media screen and (min-width: 1000px) {
+		@media screen and (min-width: 1000px), print {
 			$goldenraitio: 1.62;
 			display: grid;
 			gap: 3rem;
@@ -254,6 +258,11 @@
 				box-shadow: -0.4em 0 0 var(--stripecolor1), -0.8em 0 0 var(--stripecolor2),
 					-1.25em 0 0 var(--stripecolor3), -1.7em 0 0 var(--stripecolor4);
 				// opacity: 0.3;
+
+				@media print {
+					display: none !important;
+					content: none !important;
+				}
 			}
 
 			&::after {
@@ -269,6 +278,10 @@
 				background: var(--stripecolor);
 				// box-shadow: -0.75em 0 0 var(--stripecolor1), -1.5em 0 0 var(--stripecolor2),
 				// 	-2.25em 0 0 var(--stripecolor3), -3em 0 0 var(--stripecolor4);
+				@media print {
+					display: none !important;
+					content: none !important;
+				}
 			}
 		}
 		@for $i from 1 through 6 {
@@ -312,6 +325,10 @@
 		}
 	}
 
+	.printbutton {
+		margin: 3rem auto;
+	}
+
 	@media print {
 		.cvlist li {
 			min-height: 0;
@@ -321,6 +338,10 @@
 				content: none;
 				display: none;
 			}
+		}
+
+		.printbutton {
+			display: none;
 		}
 	}
 </style>
