@@ -63,7 +63,7 @@
 			<h2 class="angletext">The way we build websites has changed a lot over the years</h2>
 			<!-- <h2>Familiar with a range of web development tools and posts, such as…</h2> -->
 			<div class="laptopGrid">
-				<div>
+				<div class="laptopContainer">
 					<LaptopLogos />
 				</div>
 				<div class="mytechexperience">
@@ -188,11 +188,15 @@
 </main>
 
 <style lang="scss">
-	@media screen and (min-width: 1000px) {
-		.laptopGrid {
+	.laptopGrid {
+		h3 {
+			width: 100%;
+		}
+
+		@media screen and (min-width: 1000px) {
 			display: flex;
-			// flex-wrap: wrap;
 			gap: 5rem;
+
 			> div {
 				position: relative;
 				flex: 1 1 250px;
@@ -203,11 +207,12 @@
 				position: relative;
 				order: 1;
 			}
-
-			h3 {
-				width: 100%;
-			}
 		}
+	}
+
+	.laptopContainer {
+		max-width: 62vw;
+		margin: 0 auto;
 	}
 
 	.mytechexperience {
