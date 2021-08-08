@@ -28,8 +28,8 @@
 			</ul>
 		</section>
 
-		<section class="section px3 py3">
-			<h1>I upload code to these places</h1>
+		<aside class="section px3 py3">
+			<h2>I upload code to these places</h2>
 			<ul>
 				{#each codeExamples as { handle, contactUrl, serviceDisplayCase, service }}
 					<li>
