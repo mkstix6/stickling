@@ -130,9 +130,12 @@
 
 <style lang="scss">
 	.grid {
-		$goldenraitio: 1.62;
-		display: grid;
-		grid-template-columns: #{$goldenraitio}fr 1fr;
+		@media screen and (min-width: 1000px) {
+			$goldenraitio: 1.62;
+			display: grid;
+			gap: 3rem;
+			grid-template-columns: #{$goldenraitio}fr 1fr;
+		}
 	}
 
 	.qr {
