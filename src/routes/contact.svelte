@@ -42,6 +42,11 @@
 					</li>
 				{/each}
 			</ul>
+		</aside>
+
+		<section class="section px3 py3">
+			<h2>Face to face…</h2>
+			<p>I live in London and can travel thoughout the city (national restrictions providing).</p>
 		</section>
 	</div>
 </main>

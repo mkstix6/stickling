@@ -123,6 +123,13 @@
 						</a>
 					</p>
 				</section>
+
+				<section class="mb2">
+					<h2 class="h3">Location</h2>
+					<p>
+						I live in London and can travel thoughout the city (national restrictions providing).
+					</p>
+				</section>
 			</div>
 		</div>
 	</div>
