@@ -101,8 +101,9 @@
 					</ul>
 				</section>
 			</div>
+
 			<div class="contact">
-				<section>
+				<section class="mb2">
 					<h2>Website</h2>
 					<p style="display: flex; align-items: center;">
 						<img class="qr" src="/cv/qr-sticklingcouk-cv.png" alt="QR code to stickling.co.uk" />
@@ -110,7 +111,7 @@
 					</p>
 				</section>
 
-				<section>
+				<section class="mb2">
 					<h2 class="h3">Contact</h2>
 					<p>
 						<SocialIcon service="twitter" />
@@ -201,15 +202,15 @@
 		}
 	}
 
+	p {
+		font-size: 16px;
+		max-width: 60ex;
+		line-height: 1.4;
+	}
+
 	.cvlist {
 		list-style: none;
 		margin-bottom: 3rem;
-
-		p {
-			font-size: 16px;
-			max-width: 60ex;
-			line-height: 1.4;
-		}
 
 		a {
 			text-decoration: none;
@@ -240,17 +241,19 @@
 			max-width: none;
 
 			&::before {
-				// content: '';
+				content: '';
 				display: block;
 				position: absolute;
-				width: 3em;
-				left: -2em;
+				width: 0.2em;
+				left: 0;
 				top: 0;
 				bottom: 0;
 				// transform: skewY(-6deg);
 				transform-origin: top right;
-				background: linear-gradient(to left, var(--stripecolor) 30%, transparent);
-				opacity: 0.3;
+				// background: linear-gradient(to left, var(--stripecolor) 30%, transparent);
+				box-shadow: -0.4em 0 0 var(--stripecolor1), -0.8em 0 0 var(--stripecolor2),
+					-1.25em 0 0 var(--stripecolor3), -1.7em 0 0 var(--stripecolor4);
+				// opacity: 0.3;
 			}
 
 			&::after {
@@ -260,12 +263,12 @@
 				left: 0;
 				top: 0;
 				bottom: 0;
-				width: 1em;
+				width: 0.5em;
 				// transform: skewY(-6deg);
 				transform-origin: top right;
 				background: var(--stripecolor);
-				box-shadow: -0.5em 0 0 var(--stripecolor1), -1em 0 0 var(--stripecolor2),
-					-1.5em 0 0 var(--stripecolor3), -2em 0 0 var(--stripecolor4);
+				// box-shadow: -0.75em 0 0 var(--stripecolor1), -1.5em 0 0 var(--stripecolor2),
+				// 	-2.25em 0 0 var(--stripecolor3), -3em 0 0 var(--stripecolor4);
 			}
 		}
 		@for $i from 1 through 6 {
