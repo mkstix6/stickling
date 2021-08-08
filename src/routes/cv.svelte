@@ -31,7 +31,7 @@
 							<p>
 								Building webapps with the Vue.js and Nuxt.js frameworks with REST APIs for data
 								delivery. Also building bespoke WordPress based brochure websites and integrating 3D
-								experiences with three.js.
+								experiences using three.js.
 							</p>
 						</li>
 						<li style="--durationyears: 2;">
