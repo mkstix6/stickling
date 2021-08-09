@@ -23,7 +23,6 @@
 		observeTarget = element;
 		// Grab the prefers reduced media query.
 		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
 		// Check if the media query matches or is not available.
 		if (!mediaQuery || mediaQuery.matches) {
 			// No animation
