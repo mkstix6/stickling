@@ -7,9 +7,11 @@
 
 	const tl = gsap.timeline();
 	const logosSelector = '.laptop__logolink';
+
+	let logos_element;
 	let laptopWidth;
 	let observeTarget;
-	let laptopWasObserverd = false;
+	let wasObserverd = false;
 
 	const prepLaptop = () => {
 		tl.set(logosSelector, {
@@ -29,7 +31,7 @@
 		} else {
 			// Only animate once.
 			observer.unobserve(observeTarget);
-			laptopWasObserverd = true;
+			wasObserverd = true;
 
 			const flyDuration = 0.7;
 			tl.to(logosSelector, {
@@ -55,21 +57,28 @@
 	};
 
 	onMount(async () => {
-		observeTarget = document.querySelector('.laptop__logos');
-
+		observeTarget = logos_element;
 		// Grab the prefers reduced media query.
 		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		// Check if the media query matches or is not available.
 		if (!mediaQuery || mediaQuery.matches) {
 			// No animation
 		} else {
-			prepLaptop();
-			const observer = await new IntersectionObserver(animateLaptop, {
-				root: document.body,
-				rootMargin: '0px',
-				threshold: 0.2,
-			});
-			observer.observe(observeTarget);
+			if (
+				!'IntersectionObserver' in window &&
+				!'IntersectionObserverEntry' in window &&
+				!'intersectionRatio' in window.IntersectionObserverEntry.prototype
+			) {
+				// Polyfill if required
+			} else {
+				prepLaptop();
+				const observer = await new IntersectionObserver(animateLaptop, {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.2,
+				});
+				observer.observe(observeTarget);
+			}
 		}
 
 		// TODO On destroy function (below)
@@ -78,12 +87,12 @@
 </script>
 
 <div class="aspectRatioBox">
-	<div class="laptop" bind:clientWidth={laptopWidth} class:laptop--observed={laptopWasObserverd}>
+	<div class="laptop" bind:clientWidth={laptopWidth} class:laptop--observed={wasObserverd}>
 		<div class="laptop__screenglow" />
 		<div class="laptop__base" />
 		<div class="laptop__lidperspective">
 			<div class="laptop__lid">
-				<div class="laptop__logos" style="perspective: 1000px;">
+				<div class="laptop__logos" bind:this={logos_element}>
 					{#each laptopLogosJSON as { name, image, link, rotation, scale, aspectratio }, i}
 						<a
 							class="laptop__logolink"
