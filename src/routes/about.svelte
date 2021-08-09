@@ -20,7 +20,8 @@
 			<h2 class="angletext">I've built a lot of user interfaces</h2>
 			<p>
 				During a decade of digital agency I've planned, coded and maintained digital-experiences
-				ranging from small brochure webites to data driven apps.
+				with a wonderful team of people. Projects ranging from small brochure webites to data driven
+				webapps.
 			</p>
 			<AnimateIn duration={1000}>
 				<Orbiter />
