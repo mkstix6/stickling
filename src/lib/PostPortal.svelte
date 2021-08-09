@@ -16,7 +16,8 @@
 			<a href={link}>
 				<div class="card" style={codethumbnail}>
 					{#if videothumbnail}
-						<video muted autoplay loop playsinline src={videothumbnail} loading="lazy">video…</video
+						<video muted autoplay loop playsinline tabindex="-1" src={videothumbnail} loading="lazy"
+							>video…</video
 						>
 					{:else if thumbnail}
 						<img src={thumbnail} loading="lazy" alt="" />

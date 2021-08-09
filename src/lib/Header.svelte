@@ -10,7 +10,13 @@
 	<div class="bigM">
 		<div class="square-box pos-rel">
 			<a href="/" title="home page" class="bigM__button logolink">
-				<svg viewBox="70 -20 260 260" height="200" width="200" xmlns="http://www.w3.org/2000/svg">
+				<svg
+					aria-label="M logo for Stickling.co.uk"
+					viewBox="70 -20 260 260"
+					height="200"
+					width="200"
+					xmlns="http://www.w3.org/2000/svg"
+				>
 					<linearGradient id="stampGrad" x1="0%" y1="0%" x2="0%" y2="100%">
 						<stop offset="0" stop-color="#1d48b4" />
 						<stop offset="0.5" stop-color="#00b6ed" />
