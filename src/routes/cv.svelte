@@ -185,12 +185,15 @@
 		font-size: 1.5rem;
 		font-weight: 400;
 		margin-bottom: 0.5em;
+		color: var(--bodycolor);
+		background: none;
 	}
 
 	h3 {
 		font-size: 1rem;
 		font-weight: 400;
-		color: inherit;
+		color: var(--bodycolor);
+		background: none;
 	}
 
 	small {
