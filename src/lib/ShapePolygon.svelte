@@ -4,7 +4,7 @@
 	export let pointCount = 6;
 	export let chosenShape = 'polygon'; // 'polygon' | 'star' | 'buzzsaw';
 	export let innerRadius = 0.5;
-	export let polyStyle = 'fill:#0007;';
+	export let polyStyle = 'fill: currentColor;';
 	export let randomness = 0;
 
 	let coordinates = [];
