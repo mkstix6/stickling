@@ -10,7 +10,6 @@
 		// { path: '/pallettes', text: 'Pallettes' }
 		// { path: '/workout', text: 'Workout' },
 		// { path: '/blog', text: 'Blog' },
-		// { path: '/polygonparade', text: 'polygonparade' },
 	];
 </script>
 
