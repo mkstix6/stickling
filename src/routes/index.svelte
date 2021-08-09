@@ -33,6 +33,8 @@
 				a <em style="font-style: normal;">frontend web developer</em>
 			</h1>
 
+			<p>Welcome to my online home.</p>
+
 			<!-- <div
 				style="display: inline-block;width:50vw; height:30vw; overflow: hidden; position: relative;"
 			>
