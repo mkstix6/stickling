@@ -148,6 +148,13 @@ body {
 	}
 }
 
+@media print {
+	:root {
+		--bodycolor: #000;
+		font-size: 16px;
+	}
+}
+
 .theme-dark,
 .theme-evening,
 .theme-halloween {
