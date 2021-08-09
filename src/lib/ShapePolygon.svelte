@@ -18,8 +18,8 @@
 			case 'polygon': {
 				const circleFraction = (2 * Math.PI) / pointCount;
 				for (let i = 1; i < pointCount + 1; i++) {
-					let x = Math.sin(circleFraction * i);
-					let y = Math.cos(circleFraction * i);
+					let x = Math.sin(circleFraction * (i + 0.5));
+					let y = Math.cos(circleFraction * (i + 0.5));
 					x = x * tipRadius + tipRadius;
 					y = y * tipRadius + tipRadius;
 					coordinates.push({ x, y });
@@ -80,7 +80,7 @@
 			coordinates = coordinates.map(({ x, y }) => {
 				return {
 					x: x + randomness * (Math.random() - 0.5),
-					y: y + randomness * (Math.random() - 0.5)
+					y: y + randomness * (Math.random() - 0.5),
 				};
 			});
 		}
