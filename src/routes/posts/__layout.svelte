@@ -22,7 +22,11 @@
 </script>
 
 <svelte:head>
-	<title>{thisPost.title} | Posts | Stickling.co.uk</title>
+	{#if thisPost?.title}
+		<title>{thisPost.title} | Posts | Stickling.co.uk</title>
+	{:else}
+		<title>{slug} | Posts | Stickling.co.uk</title>
+	{/if}
 </svelte:head>
 
 <div class="page page--post">
