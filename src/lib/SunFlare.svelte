@@ -7,22 +7,22 @@
 			polyStyle: 'fill: #0002; stroke: #0001; stroke-width:4',
 			pointCount: 100,
 			chosenShape: 'polygon',
-			randomness: 4
+			randomness: 4,
 		},
 		{
 			polyStyle: 'fill: #0002; stroke: #0001; stroke-width:3',
 			pointCount: 30,
 			chosenShape: 'star',
 			innerRadius: 0.7,
-			randomness: 7
+			randomness: 7,
 		},
 		{
 			polyStyle: 'fill: #0002; stroke: #0001; stroke-width:3',
 			pointCount: 40,
 			chosenShape: 'star',
 			innerRadius: 0.6,
-			randomness: 7
-		}
+			randomness: 7,
+		},
 	];
 </script>
 
