@@ -12,7 +12,7 @@
 <figure>
 	<PixelSandMixer />
 	<caption
-		>Use arrow keys or your device's accelerometer to rotate the drum and grivity will do the rest.</caption
+		>Use arrow keys or your device's accelerometer to rotate the drum and gravity will do the rest.</caption
 	>
 </figure>
 
