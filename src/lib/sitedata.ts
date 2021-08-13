@@ -747,6 +747,16 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
+		title: 'Blender learnings',
+		slug: 'blender-learning-2021',
+		thumbnail: '',
+		videothumbnail: '/posts/blender-learning-2021/bouncymirror.mp4',
+		type: 'codeart',
+		tech: ['blender'],
+		codethumbnail: `background-color: #572c85;`,
+	},
+	{
+		year: 2021,
 		title: 'Pixel Sand Mixer',
 		thumbnail: '',
 		videothumbnail: '/posts/pixel-sand-mixer.mp4',
