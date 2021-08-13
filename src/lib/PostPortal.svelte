@@ -1,10 +1,10 @@
 <script>
-	export let link;
-	export let thumbnail;
-	export let videothumbnail;
+	export let link = '';
+	export let thumbnail = '';
+	export let videothumbnail = '';
 	export let tech = [];
-	export let title;
-	export let codethumbnail;
+	export let title = '';
+	export let codethumbnail = '';
 
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import MagneticHover from '$lib/MagneticHover.svelte';
