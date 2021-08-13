@@ -14,6 +14,12 @@
 	}
 </script>
 
+<svelte:head>
+	<!-- elements go here -->
+	<link rel="preload" href="/posts/blender-learning-2021/bouncymirror.mp4" as="video" />
+	<link rel="preload" href="/posts/pixel-sand-mixer.mp4" as="video" />
+</svelte:head>
+
 <div class="postGrid">
 	{#each posts as post, index}
 		<div in:fly={{ delay: index * 40 + 400, duration: 400, x: 5, y: 20, opacity: 0 }}>
