@@ -1,9 +1,7 @@
 <script>
 	import SocialLink from '$lib/SocialLink.svelte';
 
-	import Highlight from 'svelte-highlight';
-	import css from 'svelte-highlight/src/languages/css';
-	import nightOwl from 'svelte-highlight/src/styles/night-owl';
+	import CSSHighlight from '$lib/CSSHighlight.svelte';
 
 	let codeA = `em {
   display: inline-block;
@@ -107,10 +105,6 @@ em::after {
 `;
 </script>
 
-<svelte:head>
-	{@html nightOwl}
-</svelte:head>
-
 <h1 class="angletext">CSS attempts at text with inline skewed background</h1>
 <p>
 	I've been looking for a reliable way to add a styalised background behind strings of text. It
@@ -150,7 +144,7 @@ em::after {
 		</div>
 	</div>
 	<div class="code">
-		<Highlight language={css} code={codeA} />
+		<CSSHighlight code={codeA} />
 	</div>
 </section>
 
@@ -176,7 +170,7 @@ em::after {
 		</div>
 	</div>
 	<div class="code">
-		<Highlight language={css} code={codeB} />
+		<CSSHighlight code={codeB} />
 	</div>
 </section>
 
@@ -205,7 +199,7 @@ em::after {
 		</div>
 	</div>
 	<div class="code">
-		<Highlight language={css} code={codeC} />
+		<CSSHighlight code={codeC} />
 	</div>
 </section>
 
@@ -234,7 +228,7 @@ em::after {
 		</div>
 	</div>
 	<div class="code">
-		<Highlight language={css} code={codeD} />
+		<CSSHighlight code={codeD} />
 	</div>
 </section>
 
@@ -259,7 +253,7 @@ em::after {
 		</div>
 	</div>
 	<div class="code">
-		<Highlight language={css} code={codeE} />
+		<CSSHighlight code={codeE} />
 	</div>
 </section>
 
