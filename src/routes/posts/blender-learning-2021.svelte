@@ -7,23 +7,21 @@
 	<p>
 		I've taken some time off in 2021 and I'm using some of it to get to grips with a little 3D
 		modelling. 3D media is growing rapidly, on the web and accross the tech industry, and it's only
-		going to become larger; in the near future I reckon we'll think of working with 3D files just
+		going to become larger. In the near future I reckon we'll think of working with 3D files just
 		like we work with videos and photos.
 	</p>
 	<p>
-		People online said great things about the program Blender and it sounds like it has had a lot of
-		recent development to make it easier than ever to get going with. Also it's completely free!
+		Blender <LogoSticker logokey="blender" /> gets a lot of good publicity and it sounds like it has
+		had a lot of recent development to make it easier than ever to get going with. Also it's completely
+		free! I found some great tutorials online [link tutorial] and some fun demonstrations [link cool]
+		of the new Blender features and I felt inspired to dive in.
 	</p>
 	<p>
-		Ok so I'm going to skip over the basics of navigating the 3D space, adding objects and other
-		options in Blender that other people have covered in much better detail than could with my
-		current skills but noting the concepts will be handy.
+		Ok so I'm going to note down the major terms and concepts I've come accross so far and I'll skip
+		over the basics of navigating the 3D space, adding objects and other options in Blender. Other
+		people have covered everything here in much better detail than I could with my current skills.
+		I'm thinking of this article as a handy reference.
 	</p>
-	<p>
-		I found some great tutorials online and some fun demonstrations of the new Blender features and
-		I felt inspired to dive in.
-	</p>
-	<p>[link tutorial] [link cool]</p>
 
 	<section>
 		<h2>First up…</h2>
@@ -31,7 +29,7 @@
 			<li>Lights</li>
 			<li>Surfaces and materials</li>
 			<li>Physics collisions</li>
-			<li>Environment surrounds (what's the proper name again?)</li>
+			<li>Environment surrounds HDRI (what's the proper name again?)</li>
 			<li>reflections</li>
 		</ul>
 
@@ -102,6 +100,13 @@
 		going to be limited by both Three's featureset as well as the normal web considerations such as
 		performance and asset download size.
 	</p>
+
+	<aside>
+		Links
+		<ol>
+			<li>https://apm-designs.com/blender/hdri-maps-realistic-lighting-blender/</li>
+		</ol>
+	</aside>
 </article>
 
 <style>
@@ -110,7 +115,6 @@
 	}
 	figure {
 		max-width: 30rem;
-		float: right;
 	}
 
 	figcaption {
