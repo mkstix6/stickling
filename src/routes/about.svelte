@@ -178,6 +178,7 @@
 						for our teams such as
 						<em>Jira</em>, <em>Trello</em> and <em>Slack</em>.
 						<div class="logorow">
+							<LogoSticker logokey="jira" />
 							<LogoSticker logokey="trello" />
 							<LogoSticker logokey="slack" />
 						</div>
