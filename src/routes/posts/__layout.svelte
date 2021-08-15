@@ -31,7 +31,7 @@
 
 <div class="page page--post">
 	<div class="pretitle">
-		<a class="button" href="/posts">&lt; All Posts</a>
+		<a class="button backbutton" href="/posts">&lt; All Posts</a>
 	</div>
 
 	<main id="main">
@@ -68,10 +68,17 @@
 		width: 100%;
 		text-align: center;
 	}
-	a {
+
+	.backbutton {
 		// display: block;
 		opacity: 0.7;
 		margin-bottom: 1rem;
+		transition: opacity 300ms;
+
+		&:focus,
+		&:hover {
+			opacity: 1;
+		}
 	}
 
 	.pretitle {
