@@ -1,4 +1,26 @@
 <script>
+	import SocialLink from '$lib/SocialLink.svelte';
+
+	import CSSHighlight from '$lib/CSSHighlight.svelte';
+	let code = `.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Fluid width on same row, full width on own row. */
+.fluid-width {
+  flex-grow: 99999; /* a big number */
+  flex-shrink: 1; /* not zero */
+  flex-basis: 400px; /* min-width */
+}
+
+/* Fixed width on same row, full width on own row. */
+.fixed-width {
+  flex-grow: 1; /* a small number but not zero */
+  flex-shrink: 1; /* not zero */
+  flex-basis: 300px; /* min-width */
+}`;
+
 	import { onMount } from 'svelte';
 	onMount(() => {
 		// Collect heading tag elements into an array (want to use Array.prototype.forEach() later).
@@ -25,7 +47,7 @@
 	});
 </script>
 
-<h1 class="angletext">Flexbox for responsive components?</h1>
+<h1 class="angletext">Flexbox for responsive components, without media queries</h1>
 <aside class="card">
 	<p>
 		I wrote this before CSS Container Queries had been given the green light by the powers that be.
@@ -34,6 +56,12 @@
 		occasionally.
 	</p>
 </aside>
+
+<section class="my3">
+	<h2>TL;DR</h2>
+	<CSSHighlight {code} />
+</section>
+
 <p>Using flexbox to make responsive widgets without media queries.</p>
 <p>
 	With one fixed width column (unless its on its own row) [in <span class="fixed-color"
@@ -94,7 +122,7 @@
 	<div class="fixedUnlessOnOwnRow" />
 </div>
 
-<div class="widthObserver column40">Container 40% width</div>
+<!-- <div class="widthObserver column40">Container 40% width</div>
 <div class="container column40">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
@@ -104,7 +132,7 @@
 <div class="container column20">
 	<div class="fluidWidthDownToAPoint" />
 	<div class="fixedUnlessOnOwnRow" />
-</div>
+</div> -->
 
 <hr />
 
@@ -124,6 +152,12 @@
 	</div>
 </div>
 
+<aside class="py3">
+	<SocialLink href="https://codepen.io/mkstix6/pen/dPmYvV" service="codepen"
+		>I originally wrote this on CodePen</SocialLink
+	>
+</aside>
+
 <style lang="scss">
 	///////////////// interesting flexbox bits /////////////////////////
 	.container {
@@ -132,12 +166,12 @@
 	}
 	.fluidWidthDownToAPoint {
 		flex-grow: 999999; // a relatively big number: needed for OTHER column to be fixed width // if it's too big IE fails to compute
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forcced to by small container.
+		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
 		flex-basis: 400px; // its natural min-width
 	}
 	.fixedUnlessOnOwnRow {
 		flex-grow: 1; // a relatively small number: needed for THIS column to be fixed width. Not "0" so it will also fill to expand a row if it is on it's own in the row.
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forcced to by small container.
+		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
 		flex-basis: 300px; // its natural min-width.
 	}
 
@@ -256,12 +290,12 @@
 	.column60 {
 		width: 60%;
 	}
-	.column40 {
-		width: 40%;
-	}
-	.column20 {
-		width: 20%;
-	}
+	// .column40 {
+	// 	width: 40%;
+	// }
+	// .column20 {
+	// 	width: 20%;
+	// }
 
 	aside {
 		display: inline-block;
