@@ -11,96 +11,94 @@
 		<h1 class="angletext">Mark Stickling CV</h1>
 
 		<div class="grid">
-			<div>
-				<section class="employment">
-					<h2 class="h3">Employment history</h2>
-					<ul class="cvlist">
-						<li style="--durationyears: 6;">
-							<h3>Senior Frontend developer</h3>
-							<p>
-								<small
-									><time datetime="2015">2015</time>-<time datetime="2021">2021</time>
-									<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
-								</small>
-							</p>
-							<p>
-								My departmental responsibilities included assisting the department lead with team
-								organisation and supporting junior staff and interns. Client communication.
-								Facilitation of, and contributing to, project meetings.
-							</p>
-							<p>
-								Building webapps with the Vue.js and Nuxt.js frameworks with REST APIs for data
-								delivery. Also building bespoke WordPress based brochure websites and integrating 3D
-								experiences using three.js.
-							</p>
-						</li>
-						<li style="--durationyears: 2;">
-							<h3>Frontend developer</h3>
-							<p>
-								<small>
-									<time datetime="2013">2013</time>-<time datetime="2015">2015</time>
-									<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
-								</small>
-							</p>
-							<p>
-								Building websites atop WordPress. Using HTML, CSS, JS and PHP to deliver bespoke
-								websites. Continuing my established responsibilities whilst supporting interns and
-								helping other staff. Researching emerging technologies and discussing with
-								department about web trends. Transitioning department workflows such as moving our
-								repositories from subversion to git. Managing project's tasks and priorities.
-							</p>
-						</li>
-						<li style="--durationyears: 1;">
-							<h3>Development intern</h3>
-							<p>
-								<small>
-									<time datetime="2012-05">2012</time>-<time datetime="2013">2013</time>
-									<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
-								</small>
-							</p>
-							<p>
-								Coding from PhotoShop designs into HTML & CSS with quick turn arounds for multiple
-								ongoing projects and supported clients. Discussions with clients about requirements,
-								content, and ongoing maintenence updates. Learning the various project's codebases,
-								making code changes and deploying to production.
-							</p>
-						</li>
-						<li style="--durationyears: 3;">
-							<h3>
-								<abbr title="Special Educational Needs">S.E.N.</abbr>
-								Teaching Assistant
-							</h3>
-							<p>
-								<small>
-									<time datetime="2009-09">2009</time>-<time datetime="2012-07">2012</time>
-									<a href="https://www.glebe.bromley.sch.uk">@ Glebe School</a>
-								</small>
-							</p>
-							<p>
-								Supporting students and teachers in lessons accross all departments and subjects
-								with an emphasis on ICT. Covering individual lessons during staff shortages.
-								Assisting day trips or multi-day trips including hiking Mt. Snowdon, sports
-								competitions, outdoor activities, watersports, theatre and culinary focuses.
-							</p>
-						</li>
-					</ul>
-				</section>
+			<section class="employment">
+				<h2 class="h3">Employment history</h2>
+				<ul class="cvlist">
+					<li style="--durationyears: 6;">
+						<h3>Senior Frontend developer</h3>
+						<p>
+							<small
+								><time datetime="2015">2015</time>-<time datetime="2021">2021</time>
+								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
+							</small>
+						</p>
+						<p>
+							My departmental responsibilities included assisting the department lead with team
+							organisation and supporting junior staff and interns. Client communication.
+							Facilitation of, and contributing to, project meetings.
+						</p>
+						<p>
+							Building webapps with the Vue.js and Nuxt.js frameworks with REST APIs for data
+							delivery. Also building bespoke WordPress based brochure websites and integrating 3D
+							experiences using three.js.
+						</p>
+					</li>
+					<li style="--durationyears: 2;">
+						<h3>Frontend developer</h3>
+						<p>
+							<small>
+								<time datetime="2013">2013</time>-<time datetime="2015">2015</time>
+								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
+							</small>
+						</p>
+						<p>
+							Building websites atop WordPress. Using HTML, CSS, JS and PHP to deliver bespoke
+							websites. Continuing my established responsibilities whilst supporting interns and
+							helping other staff. Researching emerging technologies and discussing with department
+							about web trends. Transitioning department workflows such as moving our repositories
+							from subversion to git. Managing project's tasks and priorities.
+						</p>
+					</li>
+					<li style="--durationyears: 1;">
+						<h3>Development intern</h3>
+						<p>
+							<small>
+								<time datetime="2012-05">2012</time>-<time datetime="2013">2013</time>
+								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
+							</small>
+						</p>
+						<p>
+							Coding from PhotoShop designs into HTML & CSS with quick turn arounds for multiple
+							ongoing projects and supported clients. Discussions with clients about requirements,
+							content, and ongoing maintenence updates. Learning the various project's codebases,
+							making code changes and deploying to production.
+						</p>
+					</li>
+					<li style="--durationyears: 3;">
+						<h3>
+							<abbr title="Special Educational Needs">S.E.N.</abbr>
+							Teaching Assistant
+						</h3>
+						<p>
+							<small>
+								<time datetime="2009-09">2009</time>-<time datetime="2012-07">2012</time>
+								<a href="https://www.glebe.bromley.sch.uk">@ Glebe School</a>
+							</small>
+						</p>
+						<p>
+							Supporting students and teachers in lessons accross all departments and subjects with
+							an emphasis on ICT. Covering individual lessons during staff shortages. Assisting day
+							trips or multi-day trips including hiking Mt. Snowdon, sports competitions, outdoor
+							activities, watersports, theatre and culinary focuses.
+						</p>
+					</li>
+				</ul>
+			</section>
 
-				<section class="education">
-					<h2 class="h3">Education</h2>
-					<ul class="cvlist">
-						<li style="--durationyears: 3;">
-							<h3>Physics BSc</h3>
-							<p>
-								<small>
-									<time datetime="2005-09">2005</time>-<time datetime="2008-08">2008</time>
-									<a href="https://warwick.ac.uk">@ University of Warwick</a>
-								</small>
-							</p>
-						</li>
-					</ul>
-				</section>
-			</div>
+			<section class="education">
+				<h2 class="h3">Education</h2>
+				<ul class="cvlist">
+					<li style="--durationyears: 3;">
+						<h3>Physics BSc</h3>
+						<p>
+							<small>
+								<time datetime="2005-09">2005</time>-<time datetime="2008-08">2008</time>
+								<a href="https://warwick.ac.uk">@ University of Warwick</a>
+							</small>
+						</p>
+					</li>
+				</ul>
+			</section>
 
 			<div class="contact">
 				<section class="mb2">
@@ -141,12 +139,28 @@
 </main>
 
 <style lang="scss">
-	.grid {
-		@media screen and (min-width: 1000px), print {
+	@media screen and (min-width: 1000px), print {
+		.grid {
 			$goldenraitio: 1.62;
 			display: grid;
 			gap: 3rem;
 			grid-template-columns: #{$goldenraitio}fr 1fr;
+		}
+	}
+
+	@media screen and (max-width: 1000px), print {
+		.grid {
+			display: grid;
+		}
+
+		.employment {
+			order: 2;
+		}
+		.education {
+			order: 2;
+		}
+		.contact {
+			order: 1;
 		}
 	}
 
