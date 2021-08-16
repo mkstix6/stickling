@@ -326,46 +326,61 @@ body {
 	padding-right: 3rem !important;
 }
 
-.mb1 {
-	margin-bottom: 1rem !important;
-}
+:root {
+	--spacer1: 1rem;
+	--spacer2: 2rem;
+	--spacer3: 3rem;
+	--spacer4: 4rem;
+	--spacer5: 5rem;
 
-.mb2 {
-	margin-bottom: 2rem !important;
-}
-
-.mt3 {
-	margin-top: 3rem !important;
-}
-
-.mb3 {
-	margin-bottom: 3rem !important;
-}
-
-.m3 {
-	margin: 3rem !important;
-}
-
-.px3 {
-	padding-left: 3rem !important;
-	padding-right: 3rem !important;
 	@media screen and (max-width: 500px) {
-		padding-left: 1.5rem !important;
-		padding-right: 1.5rem !important;
+		--spacer1: 0.5rem;
+		--spacer2: 1rem;
+		--spacer3: 1.5rem;
+		--spacer4: 2rem;
+		--spacer5: 2.5rem;
 	}
 }
-.pt3 {
-	padding-top: 3rem !important;
-}
-.pb3 {
-	padding-bottom: 3rem !important;
-}
-.py3 {
-	@extend .pt3;
-	@extend .pb3;
-}
-.p3 {
-	padding: 3rem !important;
+$edgeProperties: (
+	margin: 'm',
+	padding: 'p',
+);
+$spacers: (
+	1: var(--spacer1),
+	2: var(--spacer2),
+	3: var(--spacer3),
+	4: var(--spacer4),
+	5: var(--spacer5),
+);
+$edges: (
+	left: 'l',
+	right: 'r',
+	top: 't',
+	bottom: 'b',
+);
+@each $property, $propLetter in $edgeProperties {
+	@each $number, $measurement in $spacers {
+		@each $edge, $edgeLetter in $edges {
+			.#{$propLetter}#{$edgeLetter}#{$number} {
+				#{$property}-#{$edge}: $measurement !important;
+			}
+		}
+	}
+	@each $number, $measurement in $spacers {
+		.#{$propLetter}x#{$number} {
+			@extend .#{$propLetter}l#{$number};
+			@extend .#{$propLetter}r#{$number};
+		}
+		.#{$propLetter}y#{$number} {
+			@extend .#{$propLetter}t#{$number};
+			@extend .#{$propLetter}b#{$number};
+		}
+		.#{$propLetter}#{$number} {
+			@each $edge, $edgeLetter in $edges {
+				@extend .#{$propLetter}#{$edgeLetter}#{$number};
+			}
+		}
+	}
 }
 
 .angletext {
