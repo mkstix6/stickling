@@ -358,26 +358,29 @@ $edges: (
 	top: 't',
 	bottom: 'b',
 );
+@mixin spacer($property, $edge, $measurement) {
+	#{$property}-#{$edge}: $measurement !important;
+}
 @each $property, $propLetter in $edgeProperties {
 	@each $number, $measurement in $spacers {
 		@each $edge, $edgeLetter in $edges {
 			.#{$propLetter}#{$edgeLetter}#{$number} {
-				#{$property}-#{$edge}: $measurement !important;
+				@include spacer($property, $edge, $measurement);
 			}
 		}
 	}
 	@each $number, $measurement in $spacers {
 		.#{$propLetter}x#{$number} {
-			@extend .#{$propLetter}l#{$number};
-			@extend .#{$propLetter}r#{$number};
+			@include spacer($property, left, $measurement);
+			@include spacer($property, right, $measurement);
 		}
 		.#{$propLetter}y#{$number} {
-			@extend .#{$propLetter}t#{$number};
-			@extend .#{$propLetter}b#{$number};
+			@include spacer($property, top, $measurement);
+			@include spacer($property, bottom, $measurement);
 		}
 		.#{$propLetter}#{$number} {
 			@each $edge, $edgeLetter in $edges {
-				@extend .#{$propLetter}#{$edgeLetter}#{$number};
+				@include spacer($property, $edge, $measurement);
 			}
 		}
 	}
