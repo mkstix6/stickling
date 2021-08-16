@@ -218,11 +218,6 @@
 	}
 
 	.mytechexperience {
-		p {
-			background: var(--pallette5);
-			border-radius: 0.3em;
-			padding: 0.7em 1em;
-		}
 		em {
 			display: inline-block;
 			background: var(--pallettemax);
