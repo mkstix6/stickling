@@ -141,10 +141,10 @@
 <style lang="scss">
 	@media screen and (min-width: 1000px), print {
 		.grid {
-			$goldenraitio: 1.62;
+			$goldenratio: 1.62;
 			display: grid;
 			gap: 3rem;
-			grid-template-columns: #{$goldenraitio}fr 1fr;
+			grid-template-columns: #{$goldenratio}fr 1fr;
 		}
 	}
 
