@@ -146,6 +146,16 @@
 			gap: 3rem;
 			grid-template-columns: #{$goldenratio}fr 1fr;
 		}
+
+		.employment {
+			order: 1;
+		}
+		.education {
+			order: 3;
+		}
+		.contact {
+			order: 2;
+		}
 	}
 
 	@media screen and (max-width: 1000px), print {
