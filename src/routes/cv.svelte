@@ -158,7 +158,13 @@
 		}
 	}
 
-	@media screen and (max-width: 1000px), print {
+	@media print {
+		.grid {
+			width: 1000px;
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
 		.grid {
 			display: grid;
 		}
