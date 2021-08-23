@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://stickling.co.uk/</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/about</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/cv</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/contact</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/pixel-sand-mixer</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/hex38-aristotles-puzzle</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/brandirectory-project</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/photography</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/confetti</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/skewed-text-background-experiments</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/flexbox-only-responsive-components</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/bookmarks</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stickling.co.uk/posts/sunset-paradise-postcard</loc>
+  <lastmod>2021-08-20T10:36:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
