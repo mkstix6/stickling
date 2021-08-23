@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import SocialIcon from '$lib/SocialIcon.svelte';
-	import { socialDetails } from '$lib/sitedata.js';
+	import { socialDetails } from '$lib/sitedata';
 </script>
 
 <nav class="socialnav">

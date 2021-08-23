@@ -8,11 +8,11 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	export let page;
 
 	import PostPortal from '$lib/PostPortal.svelte';
-	import { postItems } from '$lib/sitedata.js';
+	import { postItems } from '$lib/sitedata';
 
 	$: slug = page.path.split('/').pop();
 	$: thisPost = postItems.find((item) => item.slug === slug);

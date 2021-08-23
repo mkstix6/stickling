@@ -1,5 +1,5 @@
-<script>
-	import { workFavicons } from '$lib/sitedata.js';
+<script lang="ts">
+	import { workFavicons } from '$lib/sitedata';
 </script>
 
 <ul class="orbiter">

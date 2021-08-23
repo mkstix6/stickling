@@ -730,7 +730,21 @@ export const developmentLogos = [
 ];
 
 // Remember there is forEach code at the end of this array acting on some of this data.
-export const postItems = [
+export interface PostItem {
+	year: number;
+	title: string;
+	slug?: string;
+	thumbnail?: string;
+	videothumbnail?: string;
+	type: string;
+	tech?: string[];
+	codethumbnail?: string;
+	link?: string;
+	liveLink?: string;
+	codepenLink?: string;
+}
+
+export const postItems: PostItem[] = [
 	{
 		year: 2021,
 		title: 'Pixel Sand Mixer',
@@ -754,7 +768,7 @@ export const postItems = [
 		slug: 'brandirectory-project',
 		liveLink: 'https://brandirectory.com',
 		type: 'work',
-		// thumbnail: '/posts/brandirectory-thumb.png',
+		thumbnail: '', // '/posts/brandirectory-thumb.png'
 		codethumbnail:
 			'background-position: -100% 45%; background-size: 200% 200%; background-image: conic-gradient(#a024ad 0%,5%,white 5%,6%,#ed962c 6%,10%,white 10%,11%,#f9eb53 11%,15%,white 15%,16%,#51af56 16%,20%,white 20%,21%,#cedc4e 21%,25%,white 25%,26%,#e95432 26%,30%,white 30%,31%,#4e97ef 31%,35%,white 35%,36%,#e72f63 36%,40%,white 40%,41%,#5cbdd2 41%,45%,white 45%,46%,#469688 46%,50%,white 50%,white);',
 		tech: ['vue', 'nuxt'],
@@ -818,7 +832,7 @@ export const postItems = [
 		type: 'codeart',
 		tech: ['css'],
 	},
-].map((post) => {
+].map((post: PostItem) => {
 	if (!post.slug) {
 		post.slug = slugify(post.title, slugifyOptions).toLowerCase();
 	}
@@ -831,7 +845,18 @@ export const postItems = [
 });
 // .sort((a, b) => b.year - a.year);
 
-export const bookmarks = [
+export interface Bookmark {
+	title: string;
+	url: string;
+	date?: string;
+	year?: number;
+	tech: string[];
+	kind: string;
+	domain?: string;
+	order?: number;
+}
+
+export const bookmarks: Bookmark[] = [
 	{
 		title: 'Styling list bullets with emoji',
 		url: 'https://www.clairecodes.com/blog/2019-04-26-styling-list-bullets-with-emoji/',
@@ -953,7 +978,22 @@ export const bookmarks = [
 		tech: ['html'],
 		kind: 'article',
 	},
-].map((bookmark, index) => {
+	{
+		title: 'How to rotate a HDRI in Blender',
+		url: 'https://www.versluis.com/2020/07/rotate-hdri-in-blender/',
+		year: 2020,
+		tech: ['blender'],
+		kind: 'article',
+	},
+	{
+		title: 'Transparent PNG in Blender',
+		url:
+			'https://blender.stackexchange.com/questions/1303/can-blender-render-pngs-with-the-background-transparent',
+		year: 2013,
+		tech: ['blender'],
+		kind: 'article',
+	},
+].map((bookmark: Bookmark, index) => {
 	// Compute domain
 	let domain = new URL(bookmark.url);
 	bookmark.domain = domain.hostname.replace('www.', '');
@@ -963,6 +1003,15 @@ export const bookmarks = [
 	// bookmark.tech.sort();
 	return bookmark;
 });
+
+// {
+// 	title: 'TITLE',
+// 	url: 'URL',
+// 	year: 2000,
+// 	tech: ['TECHNOLOGY'],
+// 	kind: 'KIND',
+// },
+
 // .sort((a, b) => b.year - a.year);
 
 export const webInspiration = [['http://acko.net']];

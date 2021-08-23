@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import PhotographyImage from '$lib/PhotographyImage.svelte';
 	import AnimateIn from '$lib/AnimateIn.svelte';
-	import { photography } from '$lib/sitedata.js';
+	import { photography } from '$lib/sitedata';
 </script>
 
 <div class="photogrid">

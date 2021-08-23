@@ -1,4 +1,4 @@
-import { postItems } from '../../src/lib/sitedata.js';
+import { postItems } from '../../src/lib/sitedata';
 
 const pages = ['/', '/posts', '/about', '/contact', ...postItems.map((post) => post.link)];
 

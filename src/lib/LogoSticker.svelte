@@ -1,5 +1,5 @@
-<script>
-	import { developmentLogos } from '$lib/sitedata.js';
+<script lang="ts">
+	import { developmentLogos } from '$lib/sitedata';
 
 	export let logokey;
 

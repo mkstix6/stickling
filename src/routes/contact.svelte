@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import SocialIcon from '$lib/SocialIcon.svelte';
-	import { socialDetails } from '$lib/sitedata.js';
+	import { socialDetails } from '$lib/sitedata';
 
 	const contactDetails = socialDetails.filter((item) => item.kind === 'contactInfo');
 	const codeExamples = socialDetails.filter((item) => item.kind === 'codeExamples');

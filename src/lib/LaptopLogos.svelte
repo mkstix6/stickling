@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { developmentLogos } from '$lib/sitedata.js';
+	import { developmentLogos } from '$lib/sitedata';
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
 

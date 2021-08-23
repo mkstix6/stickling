@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	export let itemcount = 0;
 
-	import { postItems } from '$lib/sitedata.js';
+	import { postItems } from '$lib/sitedata';
 	import PostPortal from '$lib/PostPortal.svelte';
 	import { fly } from 'svelte/transition';
 

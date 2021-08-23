@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import BookmarkRow from '$lib/BookmarkRow.svelte';
 
-	import { bookmarks } from '$lib/sitedata.js';
+	import { bookmarks } from '$lib/sitedata';
 
 	$: sortChoice = '';
 	$: sortedBookmarks = [...bookmarks];
