@@ -584,7 +584,7 @@ Compass: ${compass}
 		if (autoRotateInterval) {
 			clearInterval(autoRotateInterval);
 		}
-		globalSetGravity();
+		// globalSetGravity();
 		if (sandField) {
 			sandField.resetState();
 		}
