@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 
+	type Vector2D = [number, number];
+	type Coordinates2D = [number, number];
+
 	class Grain {
 		x = 0;
 		y = 0;
@@ -14,7 +17,7 @@
 			this.x = x;
 			this.y = y;
 		}
-		getCoordinates(): [number, number] {
+		getCoordinates(): Vector2D {
 			return [this.x, this.y];
 		}
 		isSettled() {
@@ -72,9 +75,9 @@
 	}
 
 	class BitMap {
-		#field = [];
-		#width;
-		#height;
+		field = [];
+		width;
+		height;
 		constructor(width, height) {
 			this.width = width;
 			this.height = height;
@@ -109,8 +112,8 @@
 	}
 
 	class GravityField extends BitMap {
-		gravity = [0, 1];
-		setGravity(vector = [0, 1]) {
+		gravity: Vector2D = [0, 1];
+		setGravity(vector: Vector2D = [0, 1]) {
 			this.gravity = vector;
 		}
 		constructor(width = canvasWidth, height = canvasHeight) {
@@ -138,7 +141,7 @@
 		down1(coordinates) {
 			let [gx, gy] = this.gravity;
 			let [fromX, fromY] = coordinates;
-			let newCoordinates = [fromX + gx, fromY + gy];
+			let newCoordinates: Coordinates2D = [fromX + gx, fromY + gy];
 			if (this.validCoordinates(newCoordinates)) {
 				return newCoordinates;
 			} else {
@@ -167,10 +170,10 @@
 			sidewaysVector = combineVectors(sidewaysVector, sidewaysVector);
 			return this.vectorMovement(coordinates, sidewaysVector);
 		}
-		vectorMovement(coordinates, sidewaysVector = [0, 0]) {
+		vectorMovement(coordinates: Coordinates2D, sidewaysVector: Vector2D = [0, 0]) {
 			let [gx, gy] = combineVectors(this.gravity, sidewaysVector);
 			let [fromX, fromY] = coordinates;
-			let newCoordinates = [fromX + gx, fromY + gy];
+			let newCoordinates: Coordinates2D = [fromX + gx, fromY + gy];
 			if (this.validCoordinates(newCoordinates)) {
 				return newCoordinates;
 			} else {
@@ -233,8 +236,8 @@
 		},
 	};
 
-	const rotateVector90CW = ([x, y]) => [-y, x];
-	const rotateVector90CCW = ([x, y]) =>
+	const rotateVector90CW = ([x, y]: Vector2D): Vector2D => [-y, x];
+	const rotateVector90CCW = ([x, y]: Vector2D): Vector2D =>
 		rotateVector90CW(rotateVector90CW(rotateVector90CW([x, y])));
 
 	nextSandColorPref();
@@ -421,8 +424,8 @@
 		return toggleBool;
 	}
 
-	function combineVectors(a, b) {
-		let newVector = [];
+	function combineVectors(a: Vector2D, b: Vector2D): Vector2D {
+		let newVector: Vector2D = [0, 0];
 		for (let i = 0; i < a.length; i++) {
 			newVector[i] = a[i] + b[i];
 		}
