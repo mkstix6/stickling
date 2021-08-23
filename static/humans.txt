@@ -1,0 +1,10 @@
+/* TEAM */
+	Developer: Mark Stickling
+	Twitter: @mkstix6
+	From:London, UK
+
+/* SITE */
+	Last update:2021
+	Language: English
+	Doctype: HTML5
+	IDE: VSCode
