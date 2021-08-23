@@ -97,18 +97,22 @@
 					controls
 					loop
 					src="/posts/blender-learning-2021/FoldsSurface2021081702-transparent1000.png"
-					alt=""
+					alt="a deformed sphere with a blue metallic material"
 				/>
-				<figcaption>Using noise to displace a sphere</figcaption>
+				<figcaption>
+					Using generated noise to create a displacement map to deform a blue metallic sphere
+				</figcaption>
 			</figure>
 			<figure>
 				<img
 					controls
 					loop
-					src="/posts/blender-learning-2021/FoldsSurfaceCeramic2021081704.png"
-					alt=""
+					src="/posts/blender-learning-2021/FoldsSurfaceCeramic2021082201.png"
+					alt="a deformed sphere with a white ceramic material with kintsugi effect"
 				/>
-				<figcaption>Using noise to displace a sphere</figcaption>
+				<figcaption>
+					Using generated noise to displace a white ceramic sphere with kintugi effect
+				</figcaption>
 			</figure>
 		</div>
 	</section>
