@@ -111,7 +111,7 @@
 					alt="a deformed sphere with a white ceramic material with kintsugi effect"
 				/>
 				<figcaption>
-					Using generated noise to displace a white ceramic sphere with kintugi effect
+					Using generated noise to displace a white ceramic sphere with kintsugi effect
 				</figcaption>
 			</figure>
 		</div>
