@@ -54,6 +54,11 @@ html {
 	box-sizing: inherit;
 }
 
+video {
+	max-width: 100%;
+	height: auto;
+}
+
 /* System Fonts as used by GitHub */
 body {
 	overflow-x: hidden;

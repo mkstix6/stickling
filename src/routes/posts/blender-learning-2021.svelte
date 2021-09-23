@@ -4,62 +4,67 @@
 </script>
 
 <article>
-	<h1><LogoSticker logokey="blender" /> Blender learnin's</h1>
+	<h1 class="angletext"><LogoSticker logokey="blender" /> Blender learnin's</h1>
 	<section>
-		<figure class="gallery" style="float: right;">
-			<div>
-				<div class="threecontainer">
-					<ThreeGLTFLoader file="/SticklingM4.glb" />
-				</div>
-				<figcaption style="max-width: 20em;">
-					I'm using the Three.js <LogoSticker logokey="three" /> library to bring this model into the
-					browser
-				</figcaption>
-			</div>
-		</figure>
 		<p>
-			I've taken some time off in 2021 and I'm using some of it to get to grips with a little 3D
-			modelling. 3D media is growing rapidly, on the web and accross the tech industry and in the
-			near future as web developers I reckon be working with 3D files just like we work with videos
-			and photos.
+			I've taken time off in 2021 and I'm using some of it to get to grips with a little 3D
+			modelling.
 		</p>
 		<p>
-			Blender <LogoSticker logokey="blender" /> gets a lot of good publicity and it sounds like it has
-			had a lot of recent development to make it easier than ever to get going with. Also it's completely
-			free! I found some great tutorials online [link tutorial] and some fun demonstrations [link cool]
-			of the new Blender features and I felt inspired to dive in.
+			3D media is growing rapidly, on the web and accross the tech industry and in the near future
+			as web developers I reckon be working with 3D files just like we work with videos and photos.
 		</p>
 		<p>
-			Ok so I'm going to note down the major terms and concepts I've come accross so far and I'll
-			skip over the basics of navigating the 3D space, adding objects and other options in Blender.
-			Other people have covered everything here in much better detail than I could with my current
-			skills. I'm thinking of this article as a handy reference.
+			<strong
+				><a href="https://www.blender.org"><LogoSticker logokey="blender" /> Blender</a></strong
+			>
+			gets a lot of good publicity and it sounds like it has had a lot of recent development to make
+			it easier than ever to get going with. Also it's completely free! I found some great tutorials
+			online [link tutorial] and some fun demonstrations [link cool] of the new Blender features and
+			I felt inspired to dive in.
 		</p>
 	</section>
 
 	<section>
-		<h2>First up…</h2>
-		<ul>
-			<li>Meshes</li>
+		<p>
+			Blender provides many tools for creating 3D objects and animations. Here are a few I've found
+			useful so far (there are many, many, more).
+		</p>
+
+		<ul class="wordcloud">
+			<li>Mesh</li>
 			<li>Materials</li>
 			<li>Shaders</li>
 			<li>Lights</li>
-			<li>Physics collisions</li>
-			<li>Environment surrounds HDRI (what's the proper name again?)</li>
-			<li>reflections</li>
+			<li>Physics simulations</li>
+			<li>HDRI Environment Backgrounds</li>
+			<li>Reflections</li>
+			<li>Transparency</li>
+			<li>Emmitance lighting</li>
+			<li>Displacement maps</li>
+			<li>Keyframe animations</li>
+			<li>Rigging</li>
 		</ul>
+	</section>
+	<section>
+		<p>
+			Playing with materials, HDRI backgrounds, reflections, soft-body simulations. You can see the
+			orange ball doesn't reflect properly whilst rolling.
+		</p>
 		<div class="gallery">
 			<figure>
 				<video
 					controls
 					loop
+					muted
+					playsinline
 					src="/posts/blender-learning-2021/bouncymirror.mp4"
 					alt="A physics simulation of some objects bouncing and colliding"
 					>A physics simulation of some objects bouncing and colliding</video
 				>
 				<figcaption>
-					Some of my materials choices don't even start to emulate reality 😆; I haven't often seen
-					a squishy chromed metal ball.
+					I haven't often seen a squishy chromed metal ball but that's the fun and challenge of
+					tools like Blender, you can create anything you like.
 				</figcaption>
 			</figure>
 		</div>
@@ -67,10 +72,7 @@
 
 	<section>
 		<h2>Ghost ball</h2>
-		<ul>
-			<li>Transparency</li>
-			<li>Emmitance lighting</li>
-		</ul>
+		<p>Using emission & transmission.</p>
 		<div class="gallery">
 			<figure>
 				<img
@@ -83,14 +85,17 @@
 	</section>
 
 	<section>
-		<dl>
-			<dt>Displacement maps</dt>
-			<dd>
-				Making very detailed meshes can be a lot of work. One tool we have at our disposal to help
-				with this are displacement maps. These can allow us to reduce the number of vertices and
-				polygons we need in our mesh.
-			</dd>
-		</dl>
+		<h2>Displacement orbs</h2>
+		<p>
+			It may not look like it but for each of the objects below the mesh is a perfect sphere but
+			with a displacement map applied. Usually displacement maps are used to create small bumps and
+			dips on objects but here the same technique has been pushed to the extreme to produce heavily
+			distorted alien looking objects.
+		</p>
+		<p>
+			Thanks to <a href="https://www.youtube.com/watch?v=xoKdneGFXnE">Chris P's tutorial</a> for teaching
+			me to create these.
+		</p>
 		<div class="gallery">
 			<figure>
 				<img
@@ -100,7 +105,7 @@
 					alt="a deformed sphere with a blue metallic material"
 				/>
 				<figcaption>
-					Using generated noise to create a displacement map to deform a blue metallic sphere
+					Using noise to create a displacement map to deform a blue metallic sphere
 				</figcaption>
 			</figure>
 			<figure>
@@ -111,10 +116,17 @@
 					alt="a deformed sphere with a white ceramic material with kintsugi effect"
 				/>
 				<figcaption>
-					Using generated noise to displace a white ceramic sphere with kintsugi effect
+					Using noise to displace a white ceramic sphere with added kintsugi effect
 				</figcaption>
 			</figure>
 		</div>
+		<p>
+			<small
+				><em>Note:</em> this is one of the cases where your choice of rendering engine within Blender
+				makes a dramatic difference. Initially I'd selected the Eevee rendering engine but the displacement
+				maps didn't do anything. As soon as I switched to the Cycles engine it all came together.</small
+			>
+		</p>
 	</section>
 
 	<section>
@@ -136,27 +148,12 @@
 			<figure>
 				<img src="/posts/blender-learning-2021/pluckyducky-scan-image.jpeg" alt="___ALT TEXT___" />
 				<figcaption>
-					Working with tools you already know can help speed you along when you're learning.
+					Working with tools you already know, like pen and paper, can help speed you along when
+					you're learning.
 				</figcaption>
 			</figure>
 		</div>
-		<dl>
-			<dt>Keyframe animations</dt>
-			<dd>
-				We have keyframe animations in CSS with the <code>@keyframe</code> which really helps understand
-				working with them in 3D. In CSS I often write keyframe code myself and set a duration but in
-				3D it's convenient to move objects or a character rig in the 3D viewer, then snapshot that position
-				as a keyframe. Blender handles the transitions between the keyframes much like in CSS.
-			</dd>
 
-			<dt>Rigging</dt>
-			<dd>
-				Particularly useful for animating characters but can be used to assist any object with
-				moving parts. It's like setting up a skeleton; each part of a rig is even called a <em
-					>'bone'</em
-				>. A whole skeleton is known as an armature.
-			</dd>
-		</dl>
 		<div class="gallery">
 			<figure>
 				<img
@@ -171,10 +168,12 @@
 				<video
 					controls
 					loop
+					muted
+					playsinline
 					src="/posts/blender-learning-2021/pluckyduckykicky.mp4"
 					alt="___ALT TEXT___">Our ducky character kicking its feet.</video
 				>
-				<figcaption>Alright! First character done ✅.</figcaption>
+				<figcaption>Alright! First character done 🦆.</figcaption>
 			</figure>
 		</div>
 	</section>
@@ -182,20 +181,12 @@
 	<section>
 		<h2>What's next?</h2>
 		<p>
-			So clearly 😅 I'm in need of some more time understanding and using these skills but it's at
-			about this point where I start to wonder which of these disciplines will work in the browser.
-			Most likely I'm going to reach for the Three.js library when using 3D models on the web so I'm
-			going to be limited by both Three's featureset as well as the normal web considerations such
-			as performance and asset download size.
+			I've got a ways to go with learning Blender but at the end of the day I'm a web developer so
+			next I'm going to play with loading 3D assets into the browser. I'll probably reach for the
+			<LogoSticker logokey="three" /> Three.js library and I'm going to be limited by both Three's featureset
+			as well as the normal web considerations such as performance and asset download size.
 		</p>
 	</section>
-
-	<aside>
-		Links
-		<ol>
-			<li>https://apm-designs.com/blender/hdri-maps-realistic-lighting-blender/</li>
-		</ol>
-	</aside>
 </article>
 
 <style lang="scss">
@@ -203,11 +194,16 @@
 		clear: both;
 	}
 
+	section {
+		margin-bottom: 5rem;
+	}
+
 	figcaption {
 		display: block;
 		text-align: left;
 		font-size: 1rem;
 		padding: 0.5em 0;
+		max-width: 35em;
 	}
 
 	img,
@@ -235,12 +231,35 @@
 
 		figure {
 			margin: 0;
-			width: min-content;
 		}
 	}
 
 	.threecontainer {
 		width: 40vw;
 		height: 40vw;
+	}
+
+	.wordcloud {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: center;
+		list-style: none;
+		padding-left: 0;
+
+		li {
+			margin: 0.5em;
+			background: var(--card-backgroundcolor);
+			border-radius: 0.5em;
+			padding: 0.5em 1em;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+
+			&:nth-child(odd) {
+				position: relative;
+				// top: -1em;
+			}
+		}
 	}
 </style>

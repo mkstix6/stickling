@@ -747,6 +747,8 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
+	{
+		year: 2021,
 		title: 'Blender learnings',
 		slug: 'blender-learning-2021',
 		thumbnail: '',
