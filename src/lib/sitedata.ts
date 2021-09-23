@@ -1015,6 +1015,14 @@ export const bookmarks: Bookmark[] = [
 		tech: ['blender'],
 		kind: 'article',
 	},
+	{
+		title: `My glass material isn't transparent in Eevee`,
+		url:
+			'https://blender.stackexchange.com/questions/162934/my-glass-material-isnt-transparent-in-eevee',
+		year: 2020,
+		tech: ['blender'],
+		kind: 'questionanswer',
+	},
 ].map((bookmark: Bookmark, index) => {
 	// Compute domain
 	let domain = new URL(bookmark.url);
