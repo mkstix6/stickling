@@ -45,13 +45,13 @@
 		<div class="prevnext">
 			<div class="prevnext-button">
 				{#if prevPost}
-					<div class="prevnext-label"><div>Previous</div></div>
+					<div class="prevnext-label"><div>Newer</div></div>
 					<PostPortal {...prevPost} />
 				{/if}
 			</div>
 			<div class="prevnext-button">
 				{#if nextPost}
-					<div class="prevnext-label"><div>Next</div></div>
+					<div class="prevnext-label"><div>Older</div></div>
 					<PostPortal {...nextPost} />
 				{/if}
 			</div>
