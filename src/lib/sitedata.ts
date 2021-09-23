@@ -32,6 +32,7 @@ export const socialDetails = [
 ];
 
 export const photography = [
+	{ filename: 'IMG_5280.jpeg', alt: 'Pink sunrise over South London tower blocks' },
 	{ filename: 'IMG_0794.jpeg', alt: 'Hackney electricity tower' },
 	{ filename: 'IMG_1408.jpeg', alt: 'Happy sea lion' },
 	{ filename: 'IMG_0522.jpeg', alt: 'Hello there red billed gull' },
