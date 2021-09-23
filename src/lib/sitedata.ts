@@ -750,6 +750,15 @@ export const postItems: PostItem[] = [
 		year: 2021,
 	{
 		year: 2021,
+		title: '3D logo',
+		slug: 'threejs-logo',
+		type: 'codeart',
+		tech: ['three'],
+		videothumbnail: '/posts/threedlogothumbnail.mp4',
+		codethumbnail: `background: linear-gradient(120deg, #ee88ca,#ee88ca 40%, #fff 50%, #a8fdff 60%, #a8fdff);`,
+	},
+	{
+		year: 2021,
 		title: 'Blender learnings',
 		slug: 'blender-learning-2021',
 		thumbnail: '',
