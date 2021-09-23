@@ -33,7 +33,7 @@
 		}
 		/* This is better for small screens, once min() is better supported */
 		/* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
-		gap: 1rem;
+		gap: 2rem;
 		margin-bottom: 5rem;
 		max-width: 1248px;
 	}
