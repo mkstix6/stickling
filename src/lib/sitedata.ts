@@ -748,6 +748,13 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
+		title: 'Slimes',
+		slug: 'slimes',
+		type: 'codeart',
+		tech: ['blender'],
+		videothumbnail: '/posts/SlimesRender-2021090102-720p.mp4',
+		codethumbnail: `background: radial-gradient(center center, pink, pink 50%, blue 50%);`,
+	},
 	{
 		year: 2021,
 		title: '3D logo',
