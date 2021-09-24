@@ -761,7 +761,7 @@ export const postItems: PostItem[] = [
 		type: 'codeart',
 		tech: ['blender'],
 		videothumbnail: '/posts/slimes-small.mp4',
-		codethumbnail: `background: radial-gradient(center center, pink, pink 50%, blue 50%);`,
+		codethumbnail: `background: #a21e70;`,
 	},
 	{
 		year: 2021,
