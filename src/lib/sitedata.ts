@@ -814,6 +814,7 @@ export const postItems: PostItem[] = [
 		year: 2021,
 		title: 'Photography',
 		slug: 'photography',
+		videothumbnail: '/posts/canonlens.mp4',
 		type: 'list',
 	},
 	{
@@ -874,10 +875,10 @@ export const postItems: PostItem[] = [
 		post.slug = slugify(post.title, slugifyOptions).toLowerCase();
 	}
 	post.link = `/posts/${post.slug}`;
-	// Photography specific code
-	if (post.slug === 'photography') {
-		post.thumbnail = `/photos/${photography[0].filename}`;
-	}
+	// Photography specific code // replaced with dedicated video
+	// if (post.slug === 'photography') {
+	// 	post.thumbnail = `/photos/${photography[0].filename}`;
+	// }
 	return post;
 });
 // .sort((a, b) => b.year - a.year);
