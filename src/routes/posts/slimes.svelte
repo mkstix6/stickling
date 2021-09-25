@@ -33,11 +33,14 @@
 <style>
 	.intro {
 		display: flex;
+		align-items: flex-start;
 	}
 	.slimerancherimage {
 		margin: 1em;
 		width: 10rem;
+		height: auto;
 		border-radius: 0.5em;
 		border: 1px solid #fff1;
+		max-width: 25vw;
 	}
 </style>
