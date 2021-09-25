@@ -5,8 +5,8 @@
 
 <h1 class="angletext">Shimmering SVG filter effect</h1>
 <p>
-	Simple SVG filters can elevate CSS animations. Although, on my old laptop it triggers the GPU and
-	seems to take up a lot of battery 🔋.
+	SVG filters can elevate CSS animations. Although, on my old laptop it triggers the GPU and seems
+	to take up a lot of battery 🔋.
 </p>
 
 <figure>
