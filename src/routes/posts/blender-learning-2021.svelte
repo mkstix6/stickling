@@ -160,9 +160,9 @@
 					controls
 					loop
 					src="/posts/blender-learning-2021/ducky-rig.png"
-					alt="A simple bone rig of a ducky model"
+					alt="A bone rig of a ducky model"
 				/>
-				<figcaption>A simple bone rig</figcaption>
+				<figcaption>A bone rig</figcaption>
 			</figure>
 			<figure>
 				<video
