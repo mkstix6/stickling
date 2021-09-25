@@ -13,7 +13,14 @@
 		funny Slime characters to try some <em>soft body physics</em> and <em>light transmission</em> in
 		Blender.
 	</p>
-	<img src="/posts/slime-rancher.jpg" alt="Slime Rancher game art" class="slimerancherimage" />
+	<img
+		src="/posts/slime-rancher.jpg"
+		alt="Slime Rancher game art"
+		width="256"
+		height="256"
+		class="slimerancherimage"
+		loading="lazy"
+	/>
 </div>
 
 <figure>
