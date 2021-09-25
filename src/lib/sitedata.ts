@@ -752,6 +752,7 @@ export const postItems: PostItem[] = [
 		slug: 'canvas-generative-art-202109',
 		type: 'codeart',
 		tech: ['js'],
+		thumbnail: '/posts/canvas-generative-art-202109/experiment-20210917153112-06.png',
 		codethumbnail: `background: #396;`,
 	},
 	{
