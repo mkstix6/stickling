@@ -69,8 +69,12 @@
 		random numbers for production you can switch out the random numbers code later.
 	</p>
 	<p>
-		I found this algorithm online which produces numbers that jump about enough to look random,
-		without actually being random at all. It implements the <a
+		I found this <a href="https://javascript.info/task/pseudo-random-generator"
+			>pseudo-random number algorithm</a
+		>
+		online which produces numbers that jump about enough to look random, without actually being random
+		at all. It implements the
+		<a
 			href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions"
 			>JS Generators</a
 		> syntax, which is very handy.
