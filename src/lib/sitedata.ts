@@ -748,7 +748,7 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
-		title: 'Generative art',
+		title: 'Canvas Generative art',
 		slug: 'canvas-generative-art-202109',
 		type: 'codeart',
 		tech: ['js'],
