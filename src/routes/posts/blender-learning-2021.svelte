@@ -1,6 +1,5 @@
 <script>
 	import LogoSticker from '$lib/LogoSticker.svelte';
-	import ThreeGLTFLoader from '$lib/ThreeGLTFLoader.svelte';
 </script>
 
 <article>
