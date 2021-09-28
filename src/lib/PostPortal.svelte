@@ -6,18 +6,37 @@
 	export let title = '';
 	export let codethumbnail = '';
 
+	let paused = false;
+	let loop = false;
+
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import MagneticHover from '$lib/MagneticHover.svelte';
+
+	function playVideo() {
+		paused = false;
+		loop = true;
+	}
+	function pauseVideo() {
+		paused = true;
+		loop = false;
+	}
 </script>
 
 <article>
 	<MagneticHover>
 		<div class="mediaAngled">
-			<a href={link}>
+			<a href={link} on:mouseenter={playVideo} on:mouseleave={pauseVideo}>
 				<div class="card" style={codethumbnail}>
 					{#if videothumbnail}
-						<video muted autoplay loop playsinline tabindex="-1" src={videothumbnail} loading="lazy"
-							>video…</video
+						<video
+							bind:paused
+							{loop}
+							muted
+							autoplay
+							playsinline
+							tabindex="-1"
+							src={videothumbnail}
+							loading="lazy">video…</video
 						>
 					{:else if thumbnail}
 						<img src={thumbnail} loading="lazy" alt="" />
