@@ -32,18 +32,20 @@
 	}
 
 	.imgcontainer {
-		width: 80%;
 		margin: 0 auto;
 		// border: clamp(1vw, 3vw, 2rem) solid black;
 		// box-shadow: 0 -1px 0 #fff1, 0 1px 0 #0001;
 		position: relative;
 		border-radius: clamp(0.5vw, 1vw, 1rem);
 
-		&:nth-child(odd) {
-			left: -10%;
-		}
-		&:nth-child(even) {
-			right: -10%;
+		@media screen and (min-width: 600px) {
+			width: 80%;
+			&:nth-child(odd) {
+				left: -10%;
+			}
+			&:nth-child(even) {
+				right: -10%;
+			}
 		}
 	}
 
