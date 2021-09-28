@@ -1,4 +1,5 @@
 <script>
+	import LogoSticker from '$lib/LogoSticker.svelte';
 	import JSHighlight from '$lib/JSHighlight.svelte';
 	let code = `export function* pseudoRandom(seed) {
 	let value = seed;
@@ -53,7 +54,7 @@
 	].sort();
 </script>
 
-<h1 class="angletext">Canvas generative art</h1>
+<h1 class="angletext"><LogoSticker logokey="js" /> Canvas generative art</h1>
 
 <section>
 	<p>
@@ -89,6 +90,7 @@
 		the renders to see how it's progressed over the hours. Enjoy!
 	</p>
 
+	<h3 class="starttext">Start</h3>
 	<div class="gallery">
 		{#each artworks as art}
 			<img
@@ -117,5 +119,11 @@
 		margin: 0.25em;
 		border-radius: 0.25em;
 		background: white;
+	}
+	.starttext {
+		text-align: center;
+		margin: 0 auto;
+		text-transform: uppercase;
+		font-size: 3rem;
 	}
 </style>
