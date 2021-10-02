@@ -4,7 +4,7 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import { pseudoRandom } from '$lib/utils.js';
+	import { pseudoRandomMax, pseudoRandom } from '$lib/utils.ts';
 
 	export let seed = 1;
 	export let diagnostics = false;

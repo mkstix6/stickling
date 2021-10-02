@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { pseudoRandom } from '$lib/utils.js';
+	import { pseudoRandom } from '$lib/utils.ts';
 
 	let canvasElement;
 	let ctx;
