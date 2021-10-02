@@ -35,7 +35,7 @@
 	let flowFieldGridCellSize =
 		Math.round((canvasUniqDecimal < 0.1 ? 0.1 : canvasUniqDecimal) * 10) * 10;
 	let doSmoothFlowField = canvasUniqDecimal > 0.2;
-	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 7);
+	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 6) + 1;
 	let flowFieldAngleRangeDecimal = canvasUniqDecimal;
 	let hueRange = ((canvasUniq * 12433) % 360) + minHueRange;
 	let strictFlowDirection = !!(canvasUniq % 2);
@@ -51,7 +51,7 @@
 	let lineStyles = [
 		{
 			name: 'solid',
-			weight: 10,
+			weight: 8,
 		},
 		{
 			name: 'solidTaper',
@@ -59,7 +59,7 @@
 		},
 		{
 			name: 'dots',
-			weight: 10,
+			weight: 8,
 		},
 		{
 			name: 'dotsTaper',
@@ -67,14 +67,11 @@
 		},
 		{
 			name: 'lolipop',
-			weight: 10,
+			weight: 8,
 		},
 	];
 	function chooseStyle(inputDecimal: number): string {
 		const totalWeight = lineStyles.map(({ weight }) => weight).reduce((acc, curr) => acc + curr, 0);
-		// const sortedStyles = lineStyles.sort(({ name: a }, { name: b }) =>
-		// 	a > b ? 1 : a < b ? -1 : 0
-		// );
 		let soFar = 0;
 		for (let i = 0; i < lineStyles.length; i++) {
 			let item = lineStyles[i];
@@ -123,7 +120,6 @@
 				flowField[i][j] =
 					Math.round((randomGen.next().value % (flowFieldAngleRangeDecimal * Math.PI * 2)) * 100) /
 					100;
-				// flowField[i][j] = 2; // FIXME remove this line
 			}
 		}
 
@@ -222,20 +218,11 @@
 			let hue = 0;
 
 			if (canvasUniqDecimal2 > 0.5) {
-				// FIXME change this value to be between zero and 1
 				// Hue reflect
 				let hueDecimal = (((x + y) / (hueRepeatDistance * 2)) % hueRange) / hueRange;
 				hueDecimal = hueDecimal < 0.5 ? hueDecimal : 1 - hueDecimal;
 				hueDecimal = hueDecimal * 2;
 				hue = hueDecimal * hueRange;
-			} else if (canvasUniqDecimal2 > 2) {
-				// This looks a bit rubbish mostly
-				// FIXME change this value from zero
-				// Radial hue
-				let centerX = canvasElement.width / 2;
-				let centerY = canvasElement.height / 2;
-				let hypotenuseFromCenter = Math.sqrt((x - centerX) ** 2 + (y - centerY) ** 2);
-				hue = (hypotenuseFromCenter / hueRepeatDistance) % hueRange;
 			} else {
 				// Hue range cycle-snap-repeat
 				hue = ((x + y) / hueRepeatDistance) % hueRange;
@@ -249,21 +236,16 @@
 
 			// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
 			let hueDarkenMidPoint = 60;
-			let hueDarkenRange = 50;
+			let hueDarkenRange = 70;
 			let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
 			let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
-			let hueDarkenByMax = 3;
+			let hueDarkenByMax = 8;
 			if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
 				let hueAdjustDecimal =
 					(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
 				let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
 				lightness = lightness - hueAdjustValue * hueDarkenByMax;
 			}
-
-			// Dark mode 2/2 // Dark mode was a bit meh
-			// if (canvasUniq > pseudoRandomMax * 0) {
-			// 	lightness = 30 + (lineUniq % 50);
-			// }
 
 			if (!(((indexLine * lineUniq) % lineCount) * canvasUniqDecimal)) {
 				hue = (hue + 180) % 360;
@@ -277,26 +259,15 @@
 				}
 			}
 			let alpha = 1;
-			// if (canvasUniqDecimal < 0.03 && lineUniqDecimal < 0.2) {
-			// 	alpha = 0.4;
-			// }
 
 			ctx.lineWidth = 1;
 			ctx.lineCap = 'round';
 
-			// ctx.beginPath();
-			// ctx.moveTo(x, y);
-
-			// let lineSteps = ((uniq * 9) % 30) + 30;
 			lineSteps = canvasUniq % 40;
 			lineSteps = lineSteps < minLineSteps ? minLineSteps : lineSteps;
 
 			if (lineStyle === 'dotsTaper' || lineStyle === 'solidTaper') {
-				// if(canvasUniqDecimal > 0.5) {
 				lineSteps = lineSteps < 6 ? (canvasUniqDecimal % 6) + 3 : lineSteps;
-				// } else {
-
-				// }
 			}
 
 			let moveVector;
@@ -305,20 +276,16 @@
 			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
 				let lineMoveDistance = maxMoveDistance;
 
-				// lineStyle = 'dots'; // FIXME comment this line
-
 				switch (lineStyle) {
 					case 'solid': {
-						// Lwidth = 10;
 						break;
 					}
 					case 'dots': {
-						// TODO style here
 						lineMoveDistance = Lwidth;
 						break;
 					}
 					case 'dotsTaper': {
-						if (canvasUniqDecimal2 > 0.5) {
+						if (canvasUniq % 2) {
 							// Dots Taper In
 							Lwidth = indexStep;
 						} else {
@@ -328,7 +295,7 @@
 						break;
 					}
 					case 'solidTaper': {
-						if (canvasUniqDecimal2 > 0.5) {
+						if (canvasUniq % 2) {
 							// Solid Taper In
 							Lwidth = indexStep;
 						} else {
@@ -353,6 +320,11 @@
 					ctx.lineWidth = Lwidth * 2;
 				}
 
+				// Make little fish version
+				if (lineStyle === 'solidTaper' && !(canvasUniq2 % 3)) {
+					lineMoveDistance = 1;
+				}
+
 				// Satisfying consistent dot spacing depends on dot radius.
 				if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
 					let diameter = Lwidth * 2;
@@ -360,11 +332,6 @@
 					lineMoveDistance =
 						lineMoveDistance < minDotStepDistance ? minDotStepDistance : lineMoveDistance;
 				}
-
-				// Hue adjust lines every step. This looked pretty bad in majority of cases when applied
-				// if (canvasUniqDecimal2 > 0) {
-				// 	hue = (hue + indexStep / 5) % 360;
-				// }
 
 				let color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 				if (debug) {
@@ -447,7 +414,6 @@
 
 <div>
 	<div style="display: flex; flex-direction: column;">
-		<!-- {seed}-{lineStyle} -->
 		<canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 	</div>
 
@@ -515,11 +481,8 @@
 
 <style>
 	canvas {
-		width: 256px;
-		height: 256px;
-		/* width: 512px; */
-		/* height: 512px; */
-		/* transform: scale(0.25); */
+		width: 128px;
+		height: 128px;
 	}
 	canvas.diagnostics {
 		width: 512px;

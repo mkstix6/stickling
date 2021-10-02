@@ -56,7 +56,7 @@
 	}
 
 	.grid > * {
-		flex: 0 0 256px;
+		flex: 0 0 auto;
 	}
 
 	.halfs {
