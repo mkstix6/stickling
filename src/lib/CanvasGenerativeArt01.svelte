@@ -10,36 +10,47 @@
 	export let diagnostics = false;
 	export let debug = false;
 
-	let renderSize = 512;
+	seed = parseInt(seed);
+
+	let renderSize = 1024;
 	let canvasElement;
 	let ctx;
 	let flowField = [];
 	let lineSteps = 20;
 	// Minimum clamp values
 	let minHueRange = 1;
-	let minLineWidth = 2;
+	let minLineWidth = 3;
+	let maxLineWidth = renderSize / 21;
 	let minMoveDistance = 1;
-	let minLineCount = 101;
+	let minLineCount = 397;
 	let minLineSteps = 2;
 	let minUniqDecimal = 0.001;
+	let edgeShy = false;
+	let darkStyle = false;
 
 	let generator = pseudoRandom(seed);
+
 	let canvasUniq = generator.next().value;
 	let canvasUniq2 = generator.next().value;
+	// Protect against zero and negative numbers
 	canvasUniq = canvasUniq < 1 ? 1 : canvasUniq;
 	canvasUniq2 = canvasUniq2 < 1 ? 1 : canvasUniq2;
-	let canvasUniqDecimal = parseFloat(`0.${canvasUniq.toString().slice(1, 3)}`) + minUniqDecimal;
-	let canvasUniqDecimal2 = parseFloat(`0.${canvasUniq2.toString().slice(1, 3)}`) + minUniqDecimal;
-	let edgeShy = false;
+	// Create unique decimals
+	let canvasUniqDecimal = parseFloat(`0.${canvasUniq.toString().slice(-3)}`) + minUniqDecimal;
+	let canvasUniqDecimal2 = parseFloat(`0.${canvasUniq2.toString().slice(-3)}`) + minUniqDecimal;
+
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize =
-		Math.round((canvasUniqDecimal < 0.1 ? 0.1 : canvasUniqDecimal) * 10) * 10;
-	let doSmoothFlowField = canvasUniqDecimal > 0.2;
-	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 6) + 1;
+		Math.round((canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * 31) * 10;
+	// Protect against zero cell size
+	flowFieldGridCellSize = flowFieldGridCellSize < 10 ? 10 : flowFieldGridCellSize;
+
+	let doSmoothFlowField = canvasUniqDecimal > 0.3;
+	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 5) + 1;
 	let flowFieldAngleRangeDecimal = canvasUniqDecimal;
 	let hueRange = ((canvasUniq * 12433) % 360) + minHueRange;
-	let strictFlowDirection = !!(canvasUniq % 2);
-	let Lwidth = Math.round((canvasUniqDecimal * 4313) % 13) + minLineWidth;
+	let strictFlowDirection = !!(canvasUniq % 3);
+	let Lwidth = Math.round((canvasUniqDecimal * 4313) % maxLineWidth) + minLineWidth;
 	let lineCount = (seed * generator.next().value) % 2959;
 	// Minimum 101 lines
 	lineCount = lineCount < minLineCount ? minLineCount : lineCount;
@@ -47,6 +58,12 @@
 	let maxRotationChange = canvasUniqDecimal;
 	// let isGrayscale = true;
 	let isGrayscale = generator.next().value < pseudoRandomMax * 0.05;
+	let isGrayscaleHighContrast = canvasUniqDecimal < 0.5;
+
+	let doCircle = true || canvasUniqDecimal2 > 0.5;
+	let doCircleBreaks = false;
+	let doCircleSoft = true || canvasUniqDecimal2 < 0.75;
+	let circleSoftness = (canvasUniq % 137) + 20;
 
 	let lineStyles = [
 		{
@@ -92,7 +109,7 @@
 	let lineStyle = chooseStyle(canvasUniqDecimal2);
 
 	if (lineStyle === 'solidTaper' || lineStyle === 'dotsTaper') {
-		minLineSteps = 10;
+		minLineSteps = 17;
 	}
 
 	var d = new Date();
@@ -186,7 +203,11 @@
 
 		// Fill canvas background
 		ctx.rect(0, 0, canvasElement.width, canvasElement.height);
-		ctx.fillStyle = '#fff';
+		if (darkStyle) {
+			ctx.fillStyle = '#000';
+		} else {
+			ctx.fillStyle = '#fff';
+		}
 		ctx.fill();
 
 		// Dark mode 1/2 // Dark mode was a bit meh
@@ -196,6 +217,9 @@
 		// 	ctx.fillStyle = '#111';
 		// 	ctx.fill();
 		// }
+
+		let hueShift = ((canvasUniq % 360) * 5342) % 360;
+		// console.log(hueShift, canvasUniqDecimal, flowFieldGridCellSize);
 
 		for (let indexLine = 0; indexLine < lineCount; indexLine++) {
 			const lineUniq = generator.next().value;
@@ -228,11 +252,15 @@
 				hue = ((x + y) / hueRepeatDistance) % hueRange;
 			}
 			// Procedural hue shift
-			hue = hue + canvasUniq;
+			hue = hue + hueShift;
+
 			// Place hue value on 360° hue-circle-representation
-			hue = hue % 360;
+			hue = Math.round(hue % 360);
 
 			let lightness = lineUniqDecimal * 30 + 70;
+			if (darkStyle) {
+				lightness = 100 - lightness + 70;
+			}
 
 			// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
 			let hueDarkenMidPoint = 60;
@@ -247,17 +275,25 @@
 				lightness = lightness - hueAdjustValue * hueDarkenByMax;
 			}
 
+			// Rarely use opposite color hue
 			if (!(((indexLine * lineUniq) % lineCount) * canvasUniqDecimal)) {
 				hue = (hue + 180) % 360;
 				lightness = 80;
 			}
+
+			// Set saturation
 			let saturation = 100;
+
+			// Grayscale settings
 			if (isGrayscale) {
 				saturation = 0.1;
-				if (canvasUniqDecimal < 0.5) {
-					lightness = lineUniqDecimal > 0.5 ? 90 : 30;
+				if (isGrayscaleHighContrast) {
+					// High contrast
+					lightness = lineUniqDecimal > 0.6 ? 80 : lineUniqDecimal < 0.1 ? 95 : 30;
 				}
 			}
+
+			//
 			let alpha = 1;
 
 			ctx.lineWidth = 1;
@@ -333,6 +369,13 @@
 						lineMoveDistance < minDotStepDistance ? minDotStepDistance : lineMoveDistance;
 				}
 
+				if (darkStyle) {
+					// hue = 54;
+					saturation = 100;
+					// lightness = 100 - lightness;
+					// lightness = 50;
+				}
+
 				let color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 				if (debug) {
 					color = 'limegreen';
@@ -377,17 +420,38 @@
 				let newx = Math.round(x + moveVector[0]);
 				let newy = Math.round(y + moveVector[1]);
 
-				if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
-					// Dotted lines
-					let fullCircle = 2 * Math.PI;
-					ctx.arc(newx, newy, Lwidth, 0, fullCircle);
-					ctx.fill();
-				} else {
-					// Solid lines
-					ctx.lineTo(newx, newy);
-					ctx.stroke();
-				}
+				let distanceFromCenter = Math.sqrt(
+					(canvasElement.width / 2 - newx) ** 2 + (canvasElement.height / 2 - newy) ** 2
+				);
 
+				// Ring gap
+				// distanceFromCenter =
+				// 	distanceFromCenter > 100 && distanceFromCenter < 150
+				// 		? distanceFromCenter + (lineUniq % 137) + 30
+				// 		: distanceFromCenter;
+
+				if (doCircleSoft) {
+					distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
+				}
+				let withinCircle = canvasElement.width / 2.56 > distanceFromCenter;
+
+				if (!doCircle || withinCircle || lightness > 89) {
+					// Draw
+					if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
+						// Dotted lines
+						let fullCircle = 2 * Math.PI;
+						ctx.arc(newx, newy, Lwidth, 0, fullCircle);
+						ctx.fill();
+					} else {
+						// Solid lines
+						ctx.lineTo(newx, newy);
+						ctx.stroke();
+					}
+				} else {
+					if (doCircleBreaks) {
+						break;
+					}
+				}
 				// ctx.closePath();
 
 				x = newx;
@@ -412,77 +476,75 @@
 	}
 </script>
 
-<div>
-	<div style="display: flex; flex-direction: column;">
-		<canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
-	</div>
+<canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 
-	{#if diagnostics}
+{#if diagnostics}
+	<div>
 		<div>
-			<div>
-				<span>
-					{seed} ::
-				</span>
-				{#each Array(9) as _, i}
-					<button
-						class="roundButton"
-						on:click={() => {
-							seed = i;
-							drawStuff();
-						}}>{i}</button
-					>
-				{/each}
-			</div>
-
-			<div>
-				<div><small>doSmoothFlowField</small>: <strong>{doSmoothFlowField}</strong></div>
-				<div>
-					<small>smoothFlowFieldIterations</small>: <strong>{smoothFlowFieldIterations}</strong>
-				</div>
-				<div>
-					<small>flowFieldAngleRangeDecimal</small>: <strong>{flowFieldAngleRangeDecimal}</strong>
-				</div>
-				<div><small>hueRange</small>: <strong>{hueRange}</strong></div>
-				<div style="width: 10em; height: 1em; background: linear-gradient(to left, , );" />
-				<div><small>flowFieldGridCellSize</small>: <strong>{flowFieldGridCellSize}</strong></div>
-				<div><small>strictFlowDirection</small>: <strong>{strictFlowDirection}</strong></div>
-				<div><small>canvasUniq</small>: <strong>{canvasUniq}</strong></div>
-				<div><small>canvasUniqDecimal</small>: <strong>{canvasUniqDecimal}</strong></div>
-				<div><small>lineCount</small>: <strong>{lineCount}</strong></div>
-				<div><small>maxMoveDistance</small>: <strong>{maxMoveDistance}</strong></div>
-				<div><small>maxRotationChange</small>: <strong>{maxRotationChange}</strong></div>
-				<div><small>lineSteps</small>: <strong>{lineSteps}</strong></div>
-				<div><small>Lwidth</small>: <strong>{Lwidth}</strong></div>
-			</div>
-
-			<button class="megaButton" id="download" on:click={downloadImage}>Download {fileName}</button>
-			<div class="flowFieldReadout">
-				{#each flowField as row}
-					<div>
-						{#each row as pixel}
-							<span
-								class="pixel"
-								style="background: hsl({(pixel / (Math.PI * 2)) *
-									360}, 50%, 50%); transform: rotate({-pixel}rad);"
-							>
-								↓
-							</span>
-							<!-- → -->
-							<!-- ← -->
-							<!-- ↑ -->
-							<!-- ↓ -->
-						{/each}
-					</div>
-				{/each}
-			</div>
+			<span>
+				{seed} ::
+			</span>
+			{#each Array(9) as _, i}
+				<button
+					class="roundButton"
+					on:click={() => {
+						seed = i;
+						drawStuff();
+					}}>{i}</button
+				>
+			{/each}
 		</div>
-	{/if}
-</div>
+
+		<div>
+			<div><small>doSmoothFlowField</small>: <strong>{doSmoothFlowField}</strong></div>
+			<div>
+				<small>smoothFlowFieldIterations</small>: <strong>{smoothFlowFieldIterations}</strong>
+			</div>
+			<div>
+				<small>flowFieldAngleRangeDecimal</small>: <strong>{flowFieldAngleRangeDecimal}</strong>
+			</div>
+			<div><small>hueRange</small>: <strong>{hueRange}</strong></div>
+			<div style="width: 10em; height: 1em; background: linear-gradient(to left, , );" />
+			<div><small>flowFieldGridCellSize</small>: <strong>{flowFieldGridCellSize}</strong></div>
+			<div><small>strictFlowDirection</small>: <strong>{strictFlowDirection}</strong></div>
+			<div><small>canvasUniq</small>: <strong>{canvasUniq}</strong></div>
+			<div><small>canvasUniqDecimal</small>: <strong>{canvasUniqDecimal}</strong></div>
+			<div><small>lineCount</small>: <strong>{lineCount}</strong></div>
+			<div><small>maxMoveDistance</small>: <strong>{maxMoveDistance}</strong></div>
+			<div><small>maxRotationChange</small>: <strong>{maxRotationChange}</strong></div>
+			<div><small>lineSteps</small>: <strong>{lineSteps}</strong></div>
+			<div><small>Lwidth</small>: <strong>{Lwidth}</strong></div>
+		</div>
+
+		<button class="megaButton" id="download" on:click={downloadImage}>Download {fileName}</button>
+		<div class="flowFieldReadout">
+			{#each flowField as row}
+				<div>
+					{#each row as pixel}
+						<span
+							class="pixel"
+							style="background: hsl({(pixel / (Math.PI * 2)) *
+								360}, 50%, 50%); transform: rotate({-pixel}rad);"
+						>
+							↓
+						</span>
+						<!-- → -->
+						<!-- ← -->
+						<!-- ↑ -->
+						<!-- ↓ -->
+					{/each}
+				</div>
+			{/each}
+		</div>
+	</div>
+{/if}
 
 <style>
 	canvas {
-		width: 128px;
-		height: 128px;
+		width: 100%;
+		/* width: 128px;
+		height: 128px; */
+		/* border-radius: 100%; */
 	}
 	canvas.diagnostics {
 		width: 512px;

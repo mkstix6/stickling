@@ -17,9 +17,11 @@
 		return [hue, 100, lightness];
 	}
 
-	let datesArray = Array.from(new Array(60), (x, i) => {
+	let timeTravel = 0;
+	let daysRange = 28;
+	let datesArray = Array.from(new Array(daysRange), (x, i) => {
 		var d = new Date();
-		d.setDate(d.getDate() + i);
+		d.setDate(d.getDate() + i + timeTravel);
 		return parseInt(
 			d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8)
 		);
@@ -40,9 +42,14 @@
 	</div> -->
 
 	<div class="grid">
-		<!-- {#each Array(64) as _, i} -->
+		<!-- {#each Array(12) as _, i} -->
 		{#each datesArray as date}
-			<CanvasArt seed={date} />
+			<div>
+				{date.toString().slice(6, 8)}/{date.toString().slice(4, 6)}/{date.toString().slice(0, 4)}
+				<div class="artcontainer">
+					<CanvasArt seed={date} />
+				</div>
+			</div>
 		{/each}
 	</div>
 </div>
@@ -51,12 +58,22 @@
 	.grid {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.5rem;
 		align-content: flex-start;
 	}
 
-	.grid > * {
-		flex: 0 0 auto;
+	.grid .artcontainer {
+		--size: 512px;
+		/* --size: auto; */
+		flex: 0 0 var(--size);
+		width: var(--size);
+		height: var(--size);
+		height: auto;
+		box-sizing: content-box;
+		/* background: white; */
+		aspect-ratio: 1/1;
+		/* padding: calc(var(--size) / 16); */
 	}
 
 	.halfs {
