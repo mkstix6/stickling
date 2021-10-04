@@ -26,9 +26,13 @@
 	let minLineSteps = 2;
 	let minUniqDecimal = 0.001;
 	let edgeShy = false;
-	let darkStyle = false;
+	let loopAroundEdges = false;
 
 	let generator = pseudoRandom(seed);
+
+	function pseudoRandomDecimal() {
+		return parseFloat(`0.${generator.next().value.toString().slice(-3)}`) + minUniqDecimal;
+	}
 
 	let canvasUniq = generator.next().value;
 	let canvasUniq2 = generator.next().value;
@@ -36,8 +40,11 @@
 	canvasUniq = canvasUniq < 1 ? 1 : canvasUniq;
 	canvasUniq2 = canvasUniq2 < 1 ? 1 : canvasUniq2;
 	// Create unique decimals
-	let canvasUniqDecimal = parseFloat(`0.${canvasUniq.toString().slice(-3)}`) + minUniqDecimal;
-	let canvasUniqDecimal2 = parseFloat(`0.${canvasUniq2.toString().slice(-3)}`) + minUniqDecimal;
+	let canvasUniqDecimal = pseudoRandomDecimal();
+	let canvasUniqDecimal2 = pseudoRandomDecimal();
+
+	let metalStyle = pseudoRandomDecimal() > 0.9;
+	let darkStyle = metalStyle && pseudoRandomDecimal() > 0.1;
 
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize =
@@ -226,6 +233,8 @@
 			const lineUniqDecimal = parseFloat(`0.${lineUniq.toString().slice(1, 3)}`);
 			let x;
 			let y;
+			let newx;
+			let newy;
 
 			if (edgeShy) {
 				// Start inset from edge
@@ -236,6 +245,9 @@
 				x = (generator.next().value % (canvasElement.width + 100)) - 50 || 100;
 				y = (generator.next().value % (canvasElement.height + 100)) - 50 || 100;
 			}
+
+			newx = x;
+			newy = y;
 
 			let hueRepeatDistance = (canvasUniq % 23) + 1;
 
@@ -307,6 +319,7 @@
 			}
 
 			let moveVector;
+			let color;
 
 			// Choose line width algorithm
 			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
@@ -376,13 +389,43 @@
 					// lightness = 50;
 				}
 
-				let color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+				let repeatlength = canvasElement.width / ((canvasUniq2 % 4) + 19);
+				let tempGoldDecimal = (((x + y) / repeatlength) % repeatlength) / repeatlength;
+				if (metalStyle) {
+					if (canvasUniqDecimal2 > 0.5) {
+						// Gold
+
+						let sat = tempGoldDecimal * 45 + 80;
+						sat = lineUniqDecimal > 0.8 ? sat + tempGoldDecimal * 4 : sat;
+
+						let l = tempGoldDecimal * 60 + 30;
+						l = lineUniqDecimal > 0.8 ? l - tempGoldDecimal * 4 : l;
+
+						color = `hsl(${tempGoldDecimal * 10 + 47}, ${sat}%, ${l}%)`;
+					} else {
+						// Silver
+
+						let l = tempGoldDecimal * 70 + 50;
+						l = lineUniqDecimal > 0.8 ? l - tempGoldDecimal * 4 : l;
+
+						color = `hsl(${tempGoldDecimal * 10 + 180}, 2%, ${l}%)`;
+					}
+
+					// color =
+					// 	tempGoldDecimal > 0.7
+					// 		? `hsl(47, 99%, 30%)`
+					// 		: tempGoldDecimal > 0.3
+					// 		? `hsl(51, 75%, 54%)`
+					// 		: `hsl(57, 94%, 90%)`;
+				}
+
+				if (!metalStyle) {
+					color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+				}
 				if (debug) {
 					color = 'limegreen';
 				}
 
-				ctx.fillStyle = color;
-				ctx.strokeStyle = color;
 				ctx.beginPath();
 				ctx.moveTo(x, y);
 
@@ -417,23 +460,40 @@
 					];
 				}
 
-				let newx = Math.round(x + moveVector[0]);
-				let newy = Math.round(y + moveVector[1]);
+				newx = Math.round(x + moveVector[0]);
+				newy = Math.round(y + moveVector[1]);
 
-				let distanceFromCenter = Math.sqrt(
+				let distanceFromCenter;
+				distanceFromCenter = Math.sqrt(
 					(canvasElement.width / 2 - newx) ** 2 + (canvasElement.height / 2 - newy) ** 2
 				);
-
-				// Ring gap
-				// distanceFromCenter =
-				// 	distanceFromCenter > 100 && distanceFromCenter < 150
-				// 		? distanceFromCenter + (lineUniq % 137) + 30
-				// 		: distanceFromCenter;
-
 				if (doCircleSoft) {
 					distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
 				}
 				let withinCircle = canvasElement.width / 2.56 > distanceFromCenter;
+
+				if (
+					metalStyle &&
+					!withinCircle &&
+					((lineStyle === 'lolipop' && indexStep !== lineSteps - 1) ||
+						(lineStyle !== 'lolipop' && indexStep !== 1))
+				) {
+					// if (metalStyle && !withinCircle && indexStep !== lineSteps - 1) {
+					if (canvasUniqDecimal2 > 0.5) {
+						// Gold
+						color = darkStyle
+							? `hsl(76, 13%, ${tempGoldDecimal * 6 + 3}%)`
+							: `hsl(56, 61%, ${tempGoldDecimal * 6 + 87}%)`;
+					} else {
+						// Silver
+						color = darkStyle
+							? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 3}%)`
+							: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 90}%)`;
+					}
+				}
+
+				ctx.fillStyle = color;
+				ctx.strokeStyle = color;
 
 				if (!doCircle || withinCircle || lightness > 89) {
 					// Draw
@@ -453,6 +513,19 @@
 					}
 				}
 				// ctx.closePath();
+
+				// Skip to other side if out of bounds
+				if (loopAroundEdges) {
+					if (newx < 0 || newy < 0 || newx > canvasElement.width || newy > canvasElement.height) {
+						newx = newx < 0 ? canvasElement.width : newx;
+						newy = newy < 0 ? canvasElement.height : newy;
+
+						newx = newx > canvasElement.width ? 0 : newx;
+						newy = newy > canvasElement.height ? 0 : newy;
+
+						ctx.moveTo(newx, newy);
+					}
+				}
 
 				x = newx;
 				y = newy;

@@ -17,7 +17,7 @@
 		return [hue, 100, lightness];
 	}
 
-	let timeTravel = 0;
+	let timeTravel = 190;
 	let daysRange = 28;
 	let datesArray = Array.from(new Array(daysRange), (x, i) => {
 		var d = new Date();
