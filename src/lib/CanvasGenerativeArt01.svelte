@@ -8,11 +8,13 @@
 
 	export let seed = 1;
 	export let diagnostics = false;
-	export let debug = false;
+	export let download = false;
+	export let rendersize = 1024;
+
+	let renderSize = rendersize;
 
 	seed = parseInt(seed);
 
-	let renderSize = 1024;
 	let canvasElement;
 	let ctx;
 	let flowField = [];
@@ -20,18 +22,43 @@
 	// Minimum clamp values
 	let minHueRange = 1;
 	let minLineWidth = 3;
-	let maxLineWidth = renderSize / 21;
+	let maxLineWidth = Math.round(renderSize * 0.04);
 	let minMoveDistance = 1;
-	let minLineCount = 397;
+	let minLineCount = Math.ceil(renderSize ** 2 * 0.000385);
 	let minLineSteps = 2;
 	let minUniqDecimal = 0.001;
 	let edgeShy = false;
 	let loopAroundEdges = false;
+	let hueShift = 0;
 
 	let generator = pseudoRandom(seed);
 
 	function pseudoRandomDecimal() {
 		return parseFloat(`0.${generator.next().value.toString().slice(-3)}`) + minUniqDecimal;
+	}
+
+	function bezier(t, p0, p1, p2, p3) {
+		var cX = 3 * (p1.x - p0.x),
+			bX = 3 * (p2.x - p1.x) - cX,
+			aX = p3.x - p0.x - cX - bX;
+
+		var cY = 3 * (p1.y - p0.y),
+			bY = 3 * (p2.y - p1.y) - cY,
+			aY = p3.y - p0.y - cY - bY;
+
+		var x = aX * Math.pow(t, 3) + bX * Math.pow(t, 2) + cX * t + p0.x;
+		var y = aY * Math.pow(t, 3) + bY * Math.pow(t, 2) + cY * t + p0.y;
+
+		return { x, y };
+	}
+
+	function metalGradientBezier(t) {
+		let cssBezierPoints = [0.015, 2.2, 0.925, -0.185];
+		let p0 = { x: 0, y: 0 }; // Start coordinates
+		let p1 = { x: cssBezierPoints[0], y: cssBezierPoints[1] }; // Handle 1 coordinates
+		let p2 = { x: cssBezierPoints[2], y: cssBezierPoints[3] }; // Handle 2 coordinates
+		let p3 = { x: 1, y: 1 }; // End coordinates
+		return bezier(t, p0, p1, p2, p3).y; // Just use the y value so this isn't a true bezier
 	}
 
 	let canvasUniq = generator.next().value;
@@ -43,8 +70,11 @@
 	let canvasUniqDecimal = pseudoRandomDecimal();
 	let canvasUniqDecimal2 = pseudoRandomDecimal();
 
-	let metalStyle = pseudoRandomDecimal() > 0.9;
+	let metalStyle = !(canvasUniq % 22);
+
 	let darkStyle = metalStyle && pseudoRandomDecimal() > 0.1;
+	let hueReflect = pseudoRandomDecimal() > 0.5;
+	let metalGoldNotSilver = pseudoRandomDecimal() > 0.5;
 
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize =
@@ -64,36 +94,57 @@
 	let maxMoveDistance = ((seed * generator.next().value) % 20) + minMoveDistance;
 	let maxRotationChange = canvasUniqDecimal;
 	// let isGrayscale = true;
-	let isGrayscale = generator.next().value < pseudoRandomMax * 0.05;
-	let isGrayscaleHighContrast = canvasUniqDecimal < 0.5;
+	let isGrayscale = pseudoRandomDecimal() < 0.07;
+	let isGrayscaleHighContrast = pseudoRandomDecimal() < 0.5;
 
-	let doCircle = true || canvasUniqDecimal2 > 0.5;
+	let doCircle = true || pseudoRandomDecimal() > 0.5;
 	let doCircleBreaks = false;
-	let doCircleSoft = true || canvasUniqDecimal2 < 0.75;
-	let circleSoftness = (canvasUniq % 137) + 20;
+	let doCircleSoft = true || pseudoRandomDecimal() < 0.75;
+	let circleSoftness =
+		(canvasUniq % Math.round(renderSize * 0.133)) + Math.round(renderSize * 0.0195);
 
 	let lineStyles = [
 		{
 			name: 'solid',
 			weight: 8,
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return indexLine < lineCount * 0.95 || lineStepIndex !== 1;
+			},
 		},
 		{
 			name: 'solidTaper',
-			weight: 10,
+			weight: 14,
+			metalOutsideCircleHighlight(lineStepIndex) {
+				return lineStepIndex !== 3;
+			},
 		},
 		{
 			name: 'dots',
-			weight: 8,
+			weight: 7,
+			metalOutsideCircleHighlight(lineStepIndex) {
+				return lineStepIndex !== 3;
+			},
 		},
 		{
 			name: 'dotsTaper',
-			weight: 10,
+			weight: 9,
+			metalOutsideCircleHighlight(lineStepIndex) {
+				return lineStepIndex !== 3;
+			},
 		},
 		{
 			name: 'lolipop',
-			weight: 8,
+			weight: 4,
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return indexLine < lineCount * 0.8 || lineStepIndex !== totalSteps - 1;
+			},
 		},
 	];
+
+	function getLineStyleProperties(targetStyleName) {
+		return lineStyles.find(({ name }) => name === targetStyleName);
+	}
+
 	function chooseStyle(inputDecimal: number): string {
 		const totalWeight = lineStyles.map(({ weight }) => weight).reduce((acc, curr) => acc + curr, 0);
 		let soFar = 0;
@@ -116,12 +167,13 @@
 	let lineStyle = chooseStyle(canvasUniqDecimal2);
 
 	if (lineStyle === 'solidTaper' || lineStyle === 'dotsTaper') {
-		minLineSteps = 17;
+		minLineSteps = 23;
 	}
 
 	var d = new Date();
 	var n = d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 14);
-	let fileName = `experiment-${n}-${`${seed}`.padStart(2, '00')}.png`;
+	// let fileName = `${n}-${`${seed}`.padStart(2, '00')}.png`;
+	let fileName = `${`${seed}`.padStart(2, '00')}.png`;
 
 	function downloadImage(e) {
 		const link = document.createElement('a');
@@ -225,7 +277,7 @@
 		// 	ctx.fill();
 		// }
 
-		let hueShift = ((canvasUniq % 360) * 5342) % 360;
+		hueShift = ((canvasUniq % 360) * 5342) % 360;
 		// console.log(hueShift, canvasUniqDecimal, flowFieldGridCellSize);
 
 		for (let indexLine = 0; indexLine < lineCount; indexLine++) {
@@ -249,11 +301,11 @@
 			newx = x;
 			newy = y;
 
-			let hueRepeatDistance = (canvasUniq % 23) + 1;
+			let hueRepeatDistance = (canvasUniq % Math.round(renderSize * 0.0224609375)) + 1;
 
 			let hue = 0;
 
-			if (canvasUniqDecimal2 > 0.5) {
+			if (hueReflect) {
 				// Hue reflect
 				let hueDecimal = (((x + y) / (hueRepeatDistance * 2)) % hueRange) / hueRange;
 				hueDecimal = hueDecimal < 0.5 ? hueDecimal : 1 - hueDecimal;
@@ -311,26 +363,35 @@
 			ctx.lineWidth = 1;
 			ctx.lineCap = 'round';
 
-			lineSteps = canvasUniq % 40;
+			lineSteps = canvasUniq % Math.round(canvasElement.width / 14);
 			lineSteps = lineSteps < minLineSteps ? minLineSteps : lineSteps;
 
-			if (lineStyle === 'dotsTaper' || lineStyle === 'solidTaper') {
-				lineSteps = lineSteps < 6 ? (canvasUniqDecimal % 6) + 3 : lineSteps;
+			if (lineStyle === 'lolipop') {
+				lineSteps = (canvasUniq % 17) + 3;
+			}
+
+			if (lineStyle === 'solidTaper' || lineStyle === 'dotsTaper') {
+				lineSteps = lineSteps < 6 ? (canvasUniq % 6) + 6 : lineSteps;
 			}
 
 			let moveVector;
 			let color;
 
+			let lineMoveDistance = maxMoveDistance;
+			// Make little fish version
+			if (lineStyle === 'solidTaper' && !(canvasUniq2 % 4)) {
+				lineMoveDistance = 1;
+				lineSteps += Math.round(canvasElement.width * 0.006);
+			}
+
 			// Choose line width algorithm
 			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
-				let lineMoveDistance = maxMoveDistance;
-
 				switch (lineStyle) {
 					case 'solid': {
 						break;
 					}
 					case 'dots': {
-						lineMoveDistance = Lwidth;
+						// lineMoveDistance = Lwidth;
 						break;
 					}
 					case 'dotsTaper': {
@@ -355,7 +416,7 @@
 					}
 					case 'lolipop': {
 						Lwidth = (canvasUniq % 10) + minLineWidth;
-
+						Lwidth += canvasElement.width * 0.01;
 						break;
 					}
 					default:
@@ -367,11 +428,6 @@
 				if (lineStyle === 'lolipop' && indexStep === lineSteps - 1) {
 					lineMoveDistance = 1;
 					ctx.lineWidth = Lwidth * 2;
-				}
-
-				// Make little fish version
-				if (lineStyle === 'solidTaper' && !(canvasUniq2 % 3)) {
-					lineMoveDistance = 1;
 				}
 
 				// Satisfying consistent dot spacing depends on dot radius.
@@ -388,27 +444,70 @@
 					// lightness = 100 - lightness;
 					// lightness = 50;
 				}
-
-				let repeatlength = canvasElement.width / ((canvasUniq2 % 4) + 19);
-				let tempGoldDecimal = (((x + y) / repeatlength) % repeatlength) / repeatlength;
+				let tempGoldDecimal;
 				if (metalStyle) {
-					if (canvasUniqDecimal2 > 0.5) {
+					// let repeatlength = canvasElement.width / ((canvasUniq2 % 2) + 20);
+					let repeatlength = canvasElement.width / ((canvasUniq2 % 15) + 24);
+					// Sharp straight metal gradient
+					tempGoldDecimal = (((x + y) / repeatlength) % repeatlength) / repeatlength;
+					// Shart radial metal gradient
+					if (canvasUniqDecimal < 0.5) {
+						tempGoldDecimal =
+							((Math.sqrt(x ** 2 + y ** 2) / repeatlength) % repeatlength) / repeatlength;
+					}
+
+					// if (canvasUniqDecimal2 > 0.5) {
+					// 	// Smooth metal gradient
+					// 	tempGoldDecimal = tempGoldDecimal < 0.5 ? tempGoldDecimal : 1 - tempGoldDecimal;
+					// 	tempGoldDecimal = tempGoldDecimal * 2;
+					// 	hue = tempGoldDecimal * repeatlength;
+					// } else {
+					// Ease decimal
+					{
+						// let highPowerRatio = 2;
+						// let lowPowerRatio = 5;
+						// let transitionPoint = 0.8;
+						// let midPoint = 0.4;
+						// tempGoldDecimal =
+						// 	tempGoldDecimal < midPoint
+						// 		? (1 - (1 - tempGoldDecimal * (1 / midPoint)) ** lowPowerRatio) * transitionPoint
+						// 		: ((tempGoldDecimal - midPoint) * (1 / (1 - midPoint))) ** highPowerRatio *
+						// 				(1 - transitionPoint) +
+						// 		  transitionPoint;
+
+						tempGoldDecimal = metalGradientBezier(tempGoldDecimal);
+					}
+
+					// }
+
+					if (metalGoldNotSilver) {
 						// Gold
 
-						let sat = tempGoldDecimal * 45 + 80;
-						sat = lineUniqDecimal > 0.8 ? sat + tempGoldDecimal * 4 : sat;
+						let goldHighHSL = [56, 87, 88];
+						// let goldMediumHSL = [46, 90, 62];
+						let goldLowHSL = [37, 63, 29];
 
-						let l = tempGoldDecimal * 60 + 30;
-						l = lineUniqDecimal > 0.8 ? l - tempGoldDecimal * 4 : l;
-
-						color = `hsl(${tempGoldDecimal * 10 + 47}, ${sat}%, ${l}%)`;
+						// Hue
+						let hu = tempGoldDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
+						// Saturation
+						let sat = tempGoldDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
+						sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 6 : sat;
+						// Lightness
+						let lit = tempGoldDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
+						lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+						// Combine to color
+						color = `hsl(${hu}, ${sat}%, ${lit}%)`;
 					} else {
 						// Silver
-
-						let l = tempGoldDecimal * 70 + 50;
-						l = lineUniqDecimal > 0.8 ? l - tempGoldDecimal * 4 : l;
-
-						color = `hsl(${tempGoldDecimal * 10 + 180}, 2%, ${l}%)`;
+						// Hue
+						let hu = tempGoldDecimal * 10 + 180;
+						// Saturation
+						let sat = 2;
+						// Lightness
+						let lit = tempGoldDecimal * 70 + 30;
+						lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+						// Combine to color
+						color = `hsl(${hu}, ${sat}%, ${lit}%)`;
 					}
 
 					// color =
@@ -421,9 +520,6 @@
 
 				if (!metalStyle) {
 					color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
-				}
-				if (debug) {
-					color = 'limegreen';
 				}
 
 				ctx.beginPath();
@@ -460,12 +556,9 @@
 					];
 				}
 
-				newx = Math.round(x + moveVector[0]);
-				newy = Math.round(y + moveVector[1]);
-
 				let distanceFromCenter;
 				distanceFromCenter = Math.sqrt(
-					(canvasElement.width / 2 - newx) ** 2 + (canvasElement.height / 2 - newy) ** 2
+					(canvasElement.width / 2 - x) ** 2 + (canvasElement.height / 2 - y) ** 2
 				);
 				if (doCircleSoft) {
 					distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
@@ -475,32 +568,44 @@
 				if (
 					metalStyle &&
 					!withinCircle &&
-					((lineStyle === 'lolipop' && indexStep !== lineSteps - 1) ||
-						(lineStyle !== 'lolipop' && indexStep !== 1))
+					getLineStyleProperties(lineStyle).metalOutsideCircleHighlight(
+						indexStep,
+						lineSteps,
+						indexLine,
+						lineCount
+					)
 				) {
 					// if (metalStyle && !withinCircle && indexStep !== lineSteps - 1) {
-					if (canvasUniqDecimal2 > 0.5) {
+					if (metalGoldNotSilver) {
 						// Gold
+						// color = darkStyle
+						// 	? `hsl(76, 13%, ${tempGoldDecimal * 6 + 3}%)`
+						// 	: `hsl(56, 61%, ${tempGoldDecimal * 6 + 87}%)`;
 						color = darkStyle
-							? `hsl(76, 13%, ${tempGoldDecimal * 6 + 3}%)`
-							: `hsl(56, 61%, ${tempGoldDecimal * 6 + 87}%)`;
+							? `hsl(${tempGoldDecimal * 10 + 70}, 13%, ${0.4 * 6 + 3}%)`
+							: `hsl(${tempGoldDecimal * 10 + 50}, 61%, ${0.4 * 6 + 87}%)`;
 					} else {
 						// Silver
+						// color = darkStyle
+						// 	? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 3}%)`
+						// 	: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 90}%)`;
 						color = darkStyle
-							? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 3}%)`
-							: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 90}%)`;
+							? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 3}%)`
+							: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 90}%)`;
 					}
 				}
 
 				ctx.fillStyle = color;
 				ctx.strokeStyle = color;
+				newx = Math.round(x + moveVector[0]);
+				newy = Math.round(y + moveVector[1]);
 
 				if (!doCircle || withinCircle || lightness > 89) {
 					// Draw
 					if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
 						// Dotted lines
 						let fullCircle = 2 * Math.PI;
-						ctx.arc(newx, newy, Lwidth, 0, fullCircle);
+						ctx.arc(x, y, Lwidth, 0, fullCircle);
 						ctx.fill();
 					} else {
 						// Solid lines
@@ -551,6 +656,10 @@
 
 <canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 
+{#if download}
+	<button id="download" on:click={downloadImage}>Download {fileName}</button>
+{/if}
+
 {#if diagnostics}
 	<div>
 		<div>
@@ -589,7 +698,6 @@
 			<div><small>Lwidth</small>: <strong>{Lwidth}</strong></div>
 		</div>
 
-		<button class="megaButton" id="download" on:click={downloadImage}>Download {fileName}</button>
 		<div class="flowFieldReadout">
 			{#each flowField as row}
 				<div>
@@ -615,6 +723,7 @@
 <style>
 	canvas {
 		width: 100%;
+		height: 100%;
 		/* width: 128px;
 		height: 128px; */
 		/* border-radius: 100%; */
