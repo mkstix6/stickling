@@ -21,15 +21,15 @@
 	let lineSteps = 20;
 	// Minimum clamp values
 	let minHueRange = 1;
-	let minLineWidth = 3;
-	let maxLineWidth = Math.round(renderSize * 0.04);
+
 	let minMoveDistance = 1;
-	let minLineCount = Math.ceil(renderSize ** 2 * 0.000385);
-	let minLineSteps = 2;
+	let minLineCount = 404; // Math.ceil(renderSize ** 2 * 0.000385);
 	let minUniqDecimal = 0.001;
 	let edgeShy = false;
 	let loopAroundEdges = false;
 	let hueShift = 0;
+	let lineMoveDistance;
+	let minDotStepDistance = 0;
 
 	let generator = pseudoRandom(seed);
 
@@ -69,29 +69,36 @@
 	// Create unique decimals
 	let canvasUniqDecimal = pseudoRandomDecimal();
 	let canvasUniqDecimal2 = pseudoRandomDecimal();
+	let canvasLWidthDecimal = pseudoRandomDecimal();
+
+	let widthChoiceDecimal = pseudoRandomDecimal();
+	let minLineWidth = widthChoiceDecimal < 0.9 ? 2 : 8;
+	let maxLineWidth = widthChoiceDecimal < 0.9 ? 24 : 50;
 
 	let metalStyle = !(canvasUniq % 22);
-
 	let darkStyle = metalStyle && pseudoRandomDecimal() > 0.1;
 	let hueReflect = pseudoRandomDecimal() > 0.5;
 	let metalGoldNotSilver = pseudoRandomDecimal() > 0.5;
 
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize =
-		Math.round((canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * 31) * 10;
+		Math.round(
+			(canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * Math.ceil(renderSize * 0.0302734375)
+		) * 10;
 	// Protect against zero cell size
 	flowFieldGridCellSize = flowFieldGridCellSize < 10 ? 10 : flowFieldGridCellSize;
 
-	let doSmoothFlowField = canvasUniqDecimal > 0.3;
-	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 5) + 1;
-	let flowFieldAngleRangeDecimal = canvasUniqDecimal;
+	let doSmoothFlowField = canvasUniqDecimal > 0.2;
+	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 4) + 1;
+	let flowFieldAngleRangeDecimal = canvasUniqDecimal * 2;
 	let hueRange = ((canvasUniq * 12433) % 360) + minHueRange;
 	let strictFlowDirection = !!(canvasUniq % 3);
-	let Lwidth = Math.round((canvasUniqDecimal * 4313) % maxLineWidth) + minLineWidth;
+	let Lwidth = Math.round(canvasLWidthDecimal * (maxLineWidth - minLineWidth)) + minLineWidth;
+
 	let lineCount = (seed * generator.next().value) % 2959;
 	// Minimum 101 lines
 	lineCount = lineCount < minLineCount ? minLineCount : lineCount;
-	let maxMoveDistance = ((seed * generator.next().value) % 20) + minMoveDistance;
+
 	let maxRotationChange = canvasUniqDecimal;
 	// let isGrayscale = true;
 	let isGrayscale = pseudoRandomDecimal() < 0.07;
@@ -103,40 +110,180 @@
 	let circleSoftness =
 		(canvasUniq % Math.round(renderSize * 0.133)) + Math.round(renderSize * 0.0195);
 
+	function evaluatePonintRelativeToCircle(x, y, lineUniq) {
+		let distanceFromCenter = Math.sqrt(
+			(canvasElement.width / 2 - x) ** 2 + (canvasElement.height / 2 - y) ** 2
+		);
+		if (doCircleSoft) {
+			distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
+		}
+		let withinCircle = canvasElement.width / 2.56 > distanceFromCenter;
+
+		return withinCircle;
+	}
+
 	let lineStyles = [
 		{
 			name: 'solid',
-			weight: 8,
+			weight: 9,
+			resolutionAdjustments: {
+				lineWidth: 'scale',
+				stepDistance: 'scale',
+				stepCount: 'equal',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
+				return maxMoveDistance;
+			},
 			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
 				return indexLine < lineCount * 0.95 || lineStepIndex !== 1;
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				return ogWidth;
+			},
+			minLineSteps: 2,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 73) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'solidTaper',
-			weight: 14,
-			metalOutsideCircleHighlight(lineStepIndex) {
+			weight: 9,
+			resolutionAdjustments: {
+				lineWidth: undefined,
+				stepDistance: 'equal',
+				stepCount: 'scale',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
+				return maxMoveDistance;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return lineStepIndex !== Math.ceil((7 * renderSize) / 1024);
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				if (canvasUniq % 2) {
+					// Solid Taper In
+					return indexStep;
+				} else {
+					// Solid Taper Both
+					return indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
+				}
+			},
+			minLineSteps: 23,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 73) + this.minLineSteps;
+			},
+		},
+		{
+			name: 'dripFish',
+			weight: 4,
+			resolutionAdjustments: {
+				lineWidth: undefined,
+				stepDistance: 'equal',
+				stepCount: 'scale',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
+				return 1;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
 				return lineStepIndex !== 3;
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				if (canvasUniq % 2) {
+					// Solid Taper In
+					return indexStep;
+				} else {
+					// Solid Taper Both
+					return indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
+				}
+			},
+			minLineSteps: 29,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 73) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'dots',
 			weight: 7,
-			metalOutsideCircleHighlight(lineStepIndex) {
-				return lineStepIndex !== 3;
+			resolutionAdjustments: {
+				lineWidth: 'scale',
+				stepDistance: 'scale',
+				stepCount: 'equal',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps, ogWidth) {
+				let lineSize = this.lineWidthAlgorithm(ogWidth, indexStep, lineSteps);
+				let diameter = lineSize * 2;
+				return maxMoveDistance < diameter
+					? diameter
+					: maxMoveDistance * canvasUniqDecimal2 + diameter;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				return ogWidth;
+			},
+			minLineSteps: 2,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 73) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'dotsTaper',
 			weight: 9,
-			metalOutsideCircleHighlight(lineStepIndex) {
+			resolutionAdjustments: {
+				lineWidth: 'scale',
+				stepDistance: 'scale',
+				stepCount: 'equal',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps, ogWidth) {
+				let lineSize = this.lineWidthAlgorithm(ogWidth, indexStep, lineSteps);
+				let diameter = lineSize * 2;
+				return maxMoveDistance < diameter
+					? diameter
+					: maxMoveDistance * canvasUniqDecimal2 + diameter;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
 				return lineStepIndex !== 3;
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				if (canvasUniq % 2) {
+					// Dots Taper In
+					return indexStep;
+				} else {
+					// Dots Taper Both
+					return indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
+				}
+			},
+			minLineSteps: 23,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 73) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'lolipop',
 			weight: 4,
+			resolutionAdjustments: {
+				lineWidth: 'scale',
+				stepDistance: 'scale',
+				stepCount: 'equal',
+			},
+			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
+				return indexStep === lineSteps - 1 ? 1 : maxMoveDistance;
+			},
 			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
-				return indexLine < lineCount * 0.8 || lineStepIndex !== totalSteps - 1;
+				return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
+			},
+			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+				let width = ogWidth;
+				if (indexStep === lineSteps - 1) {
+					// Lolipop BIG end line's last draw step
+					width = width * 2;
+				}
+				return width;
+			},
+			minLineSteps: 3,
+			lineStepsAlgorithm() {
+				return (canvasUniq % 17) + this.minLineSteps;
 			},
 		},
 	];
@@ -145,7 +292,7 @@
 		return lineStyles.find(({ name }) => name === targetStyleName);
 	}
 
-	function chooseStyle(inputDecimal: number): string {
+	function chooseStyle(inputDecimal: number) {
 		const totalWeight = lineStyles.map(({ weight }) => weight).reduce((acc, curr) => acc + curr, 0);
 		let soFar = 0;
 		for (let i = 0; i < lineStyles.length; i++) {
@@ -158,16 +305,159 @@
 		for (let i = 0; i < lineStyles.length; i++) {
 			let item = lineStyles[i];
 			if (inputDecimal > item.bucketBottom && inputDecimal <= item.bucketTop) {
-				return item.name;
+				return item;
 			}
 		}
-		return lineStyles[0].name;
+		return lineStyles[0];
+	}
+
+	function chooseColor(ogX, ogY, x, y, lineUniqDecimal, indexLine, lineUniq, indexStep) {
+		let color;
+		let tempGoldDecimal;
+
+		let hueRepeatScaler = (canvasUniq % 23) + 1;
+
+		let hue = 0;
+		let lightness;
+
+		if (hueReflect) {
+			// Hue reflect
+			let hueDecimal =
+				(((ogX / (renderSize / 1024) + ogY / (renderSize / 1024)) / (hueRepeatScaler * 2)) %
+					hueRange) /
+				hueRange;
+			hueDecimal = hueDecimal < 0.5 ? hueDecimal : 1 - hueDecimal;
+			hueDecimal = hueDecimal * 2;
+			hue = hueDecimal * hueRange;
+		} else {
+			// Hue range cycle-snap-repeat
+			hue = ((ogX / (renderSize / 1024) + ogY / (renderSize / 1024)) / hueRepeatScaler) % hueRange;
+		}
+		// Procedural hue shift
+		hue = hue + hueShift;
+
+		// Place hue value on 360° hue-circle-representation
+		hue = Math.round(hue % 360);
+
+		lightness = lineUniqDecimal * 30 + 70;
+		if (darkStyle) {
+			lightness = 100 - lightness + 70;
+		}
+
+		// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
+		let hueDarkenMidPoint = 60;
+		let hueDarkenRange = 70;
+		let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
+		let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
+		let hueDarkenByMax = 8;
+		if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
+			let hueAdjustDecimal =
+				(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
+			let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
+			lightness = lightness - hueAdjustValue * hueDarkenByMax;
+		}
+
+		// Rarely use opposite color hue
+		if (!(((indexLine * lineUniq) % lineCount) * canvasUniqDecimal)) {
+			hue = (hue + 180) % 360;
+			lightness = 80;
+		}
+
+		// Set saturation
+		let saturation = 100;
+
+		// Grayscale settings
+		if (isGrayscale) {
+			saturation = 0.1;
+			if (isGrayscaleHighContrast) {
+				// High contrast
+				lightness = lineUniqDecimal > 0.6 ? 80 : lineUniqDecimal < 0.1 ? 95 : 30;
+			}
+		}
+
+		if (metalStyle) {
+			let repeatlength = canvasElement.width / ((canvasUniq2 % 15) + 24);
+			// Choose gradient style
+			if (canvasUniqDecimal < 0.5) {
+				// Shart radial metal gradient
+				tempGoldDecimal =
+					((Math.sqrt(x ** 2 + y ** 2) / (repeatlength * (1024 / renderSize))) % repeatlength) /
+					repeatlength;
+			} else {
+				// Sharp straight metal gradient
+				tempGoldDecimal =
+					(((x + y) / (repeatlength * (1024 / renderSize))) % repeatlength) / repeatlength;
+			}
+			tempGoldDecimal = metalGradientBezier(tempGoldDecimal);
+
+			if (metalGoldNotSilver) {
+				// Gold
+
+				let goldHighHSL = [56, 87, 88];
+				// let goldMediumHSL = [46, 90, 62];
+				let goldLowHSL = [37, 63, 29];
+
+				// Hue
+				let hu = tempGoldDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
+				// Saturation
+				let sat = tempGoldDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
+				sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 6 : sat;
+				// Lightness
+				let lit = tempGoldDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
+				lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+				// Combine to color
+				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
+			} else {
+				// Silver
+				// Hue
+				let hu = tempGoldDecimal * 10 + 180;
+				// Saturation
+				let sat = 2;
+				// Lightness
+				let lit = tempGoldDecimal * 70 + 30;
+				lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+				// Combine to color
+				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
+			}
+		}
+
+		let withinCircle = evaluatePonintRelativeToCircle(x, y, lineUniq);
+
+		if (
+			metalStyle &&
+			!withinCircle &&
+			getLineStyleProperties(lineStyle.name).metalOutsideCircleHighlight(
+				indexStep,
+				lineSteps,
+				indexLine,
+				lineCount
+			)
+		) {
+			if (metalGoldNotSilver) {
+				// Gold
+				color = darkStyle
+					? `hsl(${tempGoldDecimal * 10 + 70}, 13%, ${0.4 * 6 + 3}%)`
+					: `hsl(${tempGoldDecimal * 10 + 50}, 61%, ${0.4 * 6 + 87}%)`;
+			} else {
+				// Silver
+				color = darkStyle
+					? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 3}%)`
+					: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 90}%)`;
+			}
+		}
+
+		if (!metalStyle) {
+			color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+		}
+
+		return { color, lightness };
 	}
 
 	let lineStyle = chooseStyle(canvasUniqDecimal2);
 
-	if (lineStyle === 'solidTaper' || lineStyle === 'dotsTaper') {
-		minLineSteps = 23;
+	let maxMoveDistance = Math.round(((seed * generator.next().value) % 20) + minMoveDistance);
+	if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
+		maxMoveDistance = Math.ceil((maxMoveDistance * renderSize) / 1024);
 	}
 
 	var d = new Date();
@@ -227,21 +517,6 @@
 		}
 	}
 
-	onMount(() => {
-		// canvasElement.width = canvasElement.clientWidth;
-		// canvasElement.height = canvasElement.clientHeight;
-		ctx = canvasElement.getContext('2d');
-
-		// Rotate entire canvas
-		for (let i = 0; i < canvasUniq2 % 4; i++) {
-			ctx.rotate(90 * (Math.PI / 180));
-			ctx.translate(0, -canvasElement.width);
-		}
-
-		// Start
-		drawStuff();
-	});
-
 	function getFlowFieldRotation(x, y) {
 		// Round values to grid cells
 		let xCell = Math.floor(x / flowFieldGridCellSize);
@@ -278,7 +553,9 @@
 		// }
 
 		hueShift = ((canvasUniq % 360) * 5342) % 360;
-		// console.log(hueShift, canvasUniqDecimal, flowFieldGridCellSize);
+
+		let ogX;
+		let ogY;
 
 		for (let indexLine = 0; indexLine < lineCount; indexLine++) {
 			const lineUniq = generator.next().value;
@@ -301,225 +578,42 @@
 			newx = x;
 			newy = y;
 
-			let hueRepeatDistance = (canvasUniq % Math.round(renderSize * 0.0224609375)) + 1;
-
-			let hue = 0;
-
-			if (hueReflect) {
-				// Hue reflect
-				let hueDecimal = (((x + y) / (hueRepeatDistance * 2)) % hueRange) / hueRange;
-				hueDecimal = hueDecimal < 0.5 ? hueDecimal : 1 - hueDecimal;
-				hueDecimal = hueDecimal * 2;
-				hue = hueDecimal * hueRange;
-			} else {
-				// Hue range cycle-snap-repeat
-				hue = ((x + y) / hueRepeatDistance) % hueRange;
-			}
-			// Procedural hue shift
-			hue = hue + hueShift;
-
-			// Place hue value on 360° hue-circle-representation
-			hue = Math.round(hue % 360);
-
-			let lightness = lineUniqDecimal * 30 + 70;
-			if (darkStyle) {
-				lightness = 100 - lightness + 70;
-			}
-
-			// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
-			let hueDarkenMidPoint = 60;
-			let hueDarkenRange = 70;
-			let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
-			let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
-			let hueDarkenByMax = 8;
-			if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
-				let hueAdjustDecimal =
-					(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
-				let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
-				lightness = lightness - hueAdjustValue * hueDarkenByMax;
-			}
-
-			// Rarely use opposite color hue
-			if (!(((indexLine * lineUniq) % lineCount) * canvasUniqDecimal)) {
-				hue = (hue + 180) % 360;
-				lightness = 80;
-			}
-
-			// Set saturation
-			let saturation = 100;
-
-			// Grayscale settings
-			if (isGrayscale) {
-				saturation = 0.1;
-				if (isGrayscaleHighContrast) {
-					// High contrast
-					lightness = lineUniqDecimal > 0.6 ? 80 : lineUniqDecimal < 0.1 ? 95 : 30;
-				}
-			}
-
-			//
-			let alpha = 1;
-
-			ctx.lineWidth = 1;
-			ctx.lineCap = 'round';
-
-			lineSteps = canvasUniq % Math.round(canvasElement.width / 14);
-			lineSteps = lineSteps < minLineSteps ? minLineSteps : lineSteps;
-
-			if (lineStyle === 'lolipop') {
-				lineSteps = (canvasUniq % 17) + 3;
-			}
-
-			if (lineStyle === 'solidTaper' || lineStyle === 'dotsTaper') {
-				lineSteps = lineSteps < 6 ? (canvasUniq % 6) + 6 : lineSteps;
-			}
+			ogX = x;
+			ogY = y;
 
 			let moveVector;
-			let color;
 
-			let lineMoveDistance = maxMoveDistance;
-			// Make little fish version
-			if (lineStyle === 'solidTaper' && !(canvasUniq2 % 4)) {
-				lineMoveDistance = 1;
-				lineSteps += Math.round(canvasElement.width * 0.006);
+			ctx.lineCap = 'round'; // TODO move this
+
+			lineSteps = lineStyle.lineStepsAlgorithm();
+
+			if (lineStyle.resolutionAdjustments.stepCount === 'scale') {
+				// Resolution independence: steps for dots need to be the same steps for others need to scale to retain shapes
+				lineSteps = Math.round((lineSteps * renderSize) / 1024);
 			}
 
-			// Choose line width algorithm
 			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
-				switch (lineStyle) {
-					case 'solid': {
-						break;
-					}
-					case 'dots': {
-						// lineMoveDistance = Lwidth;
-						break;
-					}
-					case 'dotsTaper': {
-						if (canvasUniq % 2) {
-							// Dots Taper In
-							Lwidth = indexStep;
-						} else {
-							// Dots Taper Both
-							Lwidth = indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
-						}
-						break;
-					}
-					case 'solidTaper': {
-						if (canvasUniq % 2) {
-							// Solid Taper In
-							Lwidth = indexStep;
-						} else {
-							// Solid Taper Both
-							Lwidth = indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
-						}
-						break;
-					}
-					case 'lolipop': {
-						Lwidth = (canvasUniq % 10) + minLineWidth;
-						Lwidth += canvasElement.width * 0.01;
-						break;
-					}
-					default:
-						break;
-				}
+				lineMoveDistance = lineStyle.lineMoveDistanceAlgorithm(
+					maxMoveDistance,
+					indexStep,
+					lineSteps,
+					Lwidth
+				);
 
-				ctx.lineWidth = Lwidth;
-
-				if (lineStyle === 'lolipop' && indexStep === lineSteps - 1) {
-					lineMoveDistance = 1;
-					ctx.lineWidth = Lwidth * 2;
-				}
-
-				// Satisfying consistent dot spacing depends on dot radius.
-				if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
-					let diameter = Lwidth * 2;
-					let minDotStepDistance = diameter * ((canvasUniq % 5) + 1) + canvasUniqDecimal;
-					lineMoveDistance =
-						lineMoveDistance < minDotStepDistance ? minDotStepDistance : lineMoveDistance;
-				}
-
-				if (darkStyle) {
-					// hue = 54;
-					saturation = 100;
-					// lightness = 100 - lightness;
-					// lightness = 50;
-				}
-				let tempGoldDecimal;
-				if (metalStyle) {
-					// let repeatlength = canvasElement.width / ((canvasUniq2 % 2) + 20);
-					let repeatlength = canvasElement.width / ((canvasUniq2 % 15) + 24);
-					// Sharp straight metal gradient
-					tempGoldDecimal = (((x + y) / repeatlength) % repeatlength) / repeatlength;
-					// Shart radial metal gradient
-					if (canvasUniqDecimal < 0.5) {
-						tempGoldDecimal =
-							((Math.sqrt(x ** 2 + y ** 2) / repeatlength) % repeatlength) / repeatlength;
-					}
-
-					// if (canvasUniqDecimal2 > 0.5) {
-					// 	// Smooth metal gradient
-					// 	tempGoldDecimal = tempGoldDecimal < 0.5 ? tempGoldDecimal : 1 - tempGoldDecimal;
-					// 	tempGoldDecimal = tempGoldDecimal * 2;
-					// 	hue = tempGoldDecimal * repeatlength;
-					// } else {
-					// Ease decimal
-					{
-						// let highPowerRatio = 2;
-						// let lowPowerRatio = 5;
-						// let transitionPoint = 0.8;
-						// let midPoint = 0.4;
-						// tempGoldDecimal =
-						// 	tempGoldDecimal < midPoint
-						// 		? (1 - (1 - tempGoldDecimal * (1 / midPoint)) ** lowPowerRatio) * transitionPoint
-						// 		: ((tempGoldDecimal - midPoint) * (1 / (1 - midPoint))) ** highPowerRatio *
-						// 				(1 - transitionPoint) +
-						// 		  transitionPoint;
-
-						tempGoldDecimal = metalGradientBezier(tempGoldDecimal);
-					}
-
-					// }
-
-					if (metalGoldNotSilver) {
-						// Gold
-
-						let goldHighHSL = [56, 87, 88];
-						// let goldMediumHSL = [46, 90, 62];
-						let goldLowHSL = [37, 63, 29];
-
-						// Hue
-						let hu = tempGoldDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
-						// Saturation
-						let sat = tempGoldDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
-						sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 6 : sat;
-						// Lightness
-						let lit = tempGoldDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
-						lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
-						// Combine to color
-						color = `hsl(${hu}, ${sat}%, ${lit}%)`;
-					} else {
-						// Silver
-						// Hue
-						let hu = tempGoldDecimal * 10 + 180;
-						// Saturation
-						let sat = 2;
-						// Lightness
-						let lit = tempGoldDecimal * 70 + 30;
-						lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
-						// Combine to color
-						color = `hsl(${hu}, ${sat}%, ${lit}%)`;
-					}
-
-					// color =
-					// 	tempGoldDecimal > 0.7
-					// 		? `hsl(47, 99%, 30%)`
-					// 		: tempGoldDecimal > 0.3
-					// 		? `hsl(51, 75%, 54%)`
-					// 		: `hsl(57, 94%, 90%)`;
-				}
-
-				if (!metalStyle) {
-					color = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+				let { color, lightness } = chooseColor(
+					ogX,
+					ogY,
+					x,
+					y,
+					lineUniqDecimal,
+					indexLine,
+					lineUniq,
+					indexStep
+				);
+				if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
+					// Resolution independence for distance
+					lineMoveDistance = Math.ceil((lineMoveDistance * renderSize) / 1024);
+					lineMoveDistance = lineMoveDistance < 1 ? 1 : lineMoveDistance;
 				}
 
 				ctx.beginPath();
@@ -556,56 +650,24 @@
 					];
 				}
 
-				let distanceFromCenter;
-				distanceFromCenter = Math.sqrt(
-					(canvasElement.width / 2 - x) ** 2 + (canvasElement.height / 2 - y) ** 2
-				);
-				if (doCircleSoft) {
-					distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
+				let lineSize = lineStyle.lineWidthAlgorithm(Lwidth, indexStep, lineSteps);
+				if (lineStyle.resolutionAdjustments.lineWidth === 'scale') {
+					lineSize = Math.ceil((lineSize * renderSize) / 1024);
 				}
-				let withinCircle = canvasElement.width / 2.56 > distanceFromCenter;
-
-				if (
-					metalStyle &&
-					!withinCircle &&
-					getLineStyleProperties(lineStyle).metalOutsideCircleHighlight(
-						indexStep,
-						lineSteps,
-						indexLine,
-						lineCount
-					)
-				) {
-					// if (metalStyle && !withinCircle && indexStep !== lineSteps - 1) {
-					if (metalGoldNotSilver) {
-						// Gold
-						// color = darkStyle
-						// 	? `hsl(76, 13%, ${tempGoldDecimal * 6 + 3}%)`
-						// 	: `hsl(56, 61%, ${tempGoldDecimal * 6 + 87}%)`;
-						color = darkStyle
-							? `hsl(${tempGoldDecimal * 10 + 70}, 13%, ${0.4 * 6 + 3}%)`
-							: `hsl(${tempGoldDecimal * 10 + 50}, 61%, ${0.4 * 6 + 87}%)`;
-					} else {
-						// Silver
-						// color = darkStyle
-						// 	? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 3}%)`
-						// 	: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${tempGoldDecimal * 6 + 90}%)`;
-						color = darkStyle
-							? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 3}%)`
-							: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 90}%)`;
-					}
-				}
+				ctx.lineWidth = lineSize;
 
 				ctx.fillStyle = color;
 				ctx.strokeStyle = color;
 				newx = Math.round(x + moveVector[0]);
 				newy = Math.round(y + moveVector[1]);
 
-				if (!doCircle || withinCircle || lightness > 89) {
+				if (!doCircle || evaluatePonintRelativeToCircle(x, y, lineUniq) || lightness > 89) {
 					// Draw
-					if (lineStyle === 'dots' || lineStyle === 'dotsTaper') {
+					if (lineStyle.name === 'dots' || lineStyle.name === 'dotsTaper') {
 						// Dotted lines
 						let fullCircle = 2 * Math.PI;
-						ctx.arc(x, y, Lwidth, 0, fullCircle);
+						let dotRadius = lineSize / 2;
+						ctx.arc(x, y, dotRadius, 0, fullCircle);
 						ctx.fill();
 					} else {
 						// Solid lines
@@ -636,24 +698,25 @@
 				y = newy;
 			}
 		}
-
-		// Draw frame
-		// {
-		// 	ctx.fillStyle = '#fff';
-		// 	let frameRatio = 1 / 16;
-		// 	let frameSize = canvasElement.width * frameRatio;
-		// 	ctx.rect(0, 0, frameSize, canvasElement.height);
-		// 	ctx.fill();
-		// 	ctx.rect(frameSize * 15, 0, frameSize, canvasElement.height);
-		// 	ctx.fill();
-		// 	ctx.rect(0, 0, canvasElement.width, frameSize);
-		// 	ctx.fill();
-		// 	ctx.rect(0, frameSize * 15, canvasElement.width, frameSize);
-		// 	ctx.fill();
-		// }
 	}
+
+	onMount(() => {
+		ctx = canvasElement.getContext('2d');
+		if (!diagnostics) {
+			// Rotate entire canvas
+			for (let i = 0; i < canvasUniq2 % 4; i++) {
+				ctx.rotate(90 * (Math.PI / 180));
+				ctx.translate(0, -canvasElement.width);
+			}
+		}
+		// Start
+		drawStuff();
+	});
 </script>
 
+<div>
+	{seed} — {lineStyle.name}
+</div>
 <canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 
 {#if download}
@@ -662,42 +725,6 @@
 
 {#if diagnostics}
 	<div>
-		<div>
-			<span>
-				{seed} ::
-			</span>
-			{#each Array(9) as _, i}
-				<button
-					class="roundButton"
-					on:click={() => {
-						seed = i;
-						drawStuff();
-					}}>{i}</button
-				>
-			{/each}
-		</div>
-
-		<div>
-			<div><small>doSmoothFlowField</small>: <strong>{doSmoothFlowField}</strong></div>
-			<div>
-				<small>smoothFlowFieldIterations</small>: <strong>{smoothFlowFieldIterations}</strong>
-			</div>
-			<div>
-				<small>flowFieldAngleRangeDecimal</small>: <strong>{flowFieldAngleRangeDecimal}</strong>
-			</div>
-			<div><small>hueRange</small>: <strong>{hueRange}</strong></div>
-			<div style="width: 10em; height: 1em; background: linear-gradient(to left, , );" />
-			<div><small>flowFieldGridCellSize</small>: <strong>{flowFieldGridCellSize}</strong></div>
-			<div><small>strictFlowDirection</small>: <strong>{strictFlowDirection}</strong></div>
-			<div><small>canvasUniq</small>: <strong>{canvasUniq}</strong></div>
-			<div><small>canvasUniqDecimal</small>: <strong>{canvasUniqDecimal}</strong></div>
-			<div><small>lineCount</small>: <strong>{lineCount}</strong></div>
-			<div><small>maxMoveDistance</small>: <strong>{maxMoveDistance}</strong></div>
-			<div><small>maxRotationChange</small>: <strong>{maxRotationChange}</strong></div>
-			<div><small>lineSteps</small>: <strong>{lineSteps}</strong></div>
-			<div><small>Lwidth</small>: <strong>{Lwidth}</strong></div>
-		</div>
-
 		<div class="flowFieldReadout">
 			{#each flowField as row}
 				<div>
@@ -721,43 +748,43 @@
 {/if}
 
 <style>
+	:root {
+		--floffieldreadoutsize: 16px;
+	}
+
 	canvas {
 		width: 100%;
 		height: 100%;
-		/* width: 128px;
-		height: 128px; */
-		/* border-radius: 100%; */
 	}
-	canvas.diagnostics {
-		width: 512px;
-		height: 512px;
-	}
-	:root {
-		--size: 16px;
-	}
+
 	.pixel {
 		display: inline-block;
-		width: var(--size);
-		height: var(--size);
+		width: var(--floffieldreadoutsize);
+		height: var(--floffieldreadoutsize);
 		margin: 0;
 		padding: 0;
 		text-align: center;
-		line-height: var(--size);
+		line-height: var(--floffieldreadoutsize);
 		border-radius: 100%;
 		overflow: hidden;
 	}
+
 	.flowFieldReadout {
-		line-height: var(--size);
+		line-height: var(--floffieldreadoutsize);
 		display: inline-block;
-		transform: rotate(0deg);
-		transform-origin: center center;
+		transform: scale(0.25);
+		position: absolute;
+		max-width: none;
+		width: 2000px;
+		transform-origin: left top;
 	}
+
 	.roundButton {
-		--size: 3em;
-		width: var(--size);
-		height: var(--size);
+		--buttonsize: 3em;
+		width: var(--buttonsize);
+		height: var(--buttonsize);
 		border-radius: 100%;
-		line-height: var(--size);
+		line-height: var(--buttonsize);
 		text-align: center;
 		border: 1px solid black;
 		background: white;
