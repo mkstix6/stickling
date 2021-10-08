@@ -4,7 +4,7 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import { pseudoRandomMax, pseudoRandom } from '$lib/utils.ts';
+	import { pseudoRandom } from '$lib/utils';
 
 	export let seed = 1;
 	export let diagnostics = false;
@@ -12,8 +12,6 @@
 	export let rendersize = 1024;
 
 	let renderSize = rendersize;
-
-	seed = parseInt(seed);
 
 	let canvasElement;
 	let ctx;
@@ -23,7 +21,7 @@
 	let minHueRange = 1;
 
 	let minMoveDistance = 1;
-	let minLineCount = 404; // Math.ceil(renderSize ** 2 * 0.000385);
+	let minLineCount = 3333; // Math.ceil(renderSize ** 2 * 0.000385);
 	let minUniqDecimal = 0.001;
 	let edgeShy = false;
 	let loopAroundEdges = false;
@@ -72,8 +70,8 @@
 	let canvasLWidthDecimal = pseudoRandomDecimal();
 
 	let widthChoiceDecimal = pseudoRandomDecimal();
-	let minLineWidth = widthChoiceDecimal < 0.9 ? 2 : 8;
-	let maxLineWidth = widthChoiceDecimal < 0.9 ? 24 : 50;
+	let minLineWidth = widthChoiceDecimal < 0.9 ? 1 : 8;
+	let maxLineWidth = widthChoiceDecimal < 0.9 ? 16 : 50;
 
 	let metalStyle = !(canvasUniq % 22);
 	let darkStyle = metalStyle && pseudoRandomDecimal() > 0.1;
@@ -95,7 +93,7 @@
 	let strictFlowDirection = !!(canvasUniq % 3);
 	let Lwidth = Math.round(canvasLWidthDecimal * (maxLineWidth - minLineWidth)) + minLineWidth;
 
-	let lineCount = (seed * generator.next().value) % 2959;
+	let lineCount = (seed * generator.next().value) % (minLineCount * 2);
 	// Minimum 101 lines
 	lineCount = lineCount < minLineCount ? minLineCount : lineCount;
 
@@ -104,7 +102,7 @@
 	let isGrayscale = pseudoRandomDecimal() < 0.07;
 	let isGrayscaleHighContrast = pseudoRandomDecimal() < 0.5;
 
-	let doCircle = true || pseudoRandomDecimal() > 0.5;
+	let doCircle = true; // || pseudoRandomDecimal() > 0.5;
 	let doCircleBreaks = false;
 	let doCircleSoft = true || pseudoRandomDecimal() < 0.75;
 	let circleSoftness =
@@ -170,7 +168,7 @@
 			},
 			minLineSteps: 23,
 			lineStepsAlgorithm() {
-				return (canvasUniq % 73) + this.minLineSteps;
+				return (canvasUniq % 63) + this.minLineSteps;
 			},
 		},
 		{
@@ -259,33 +257,33 @@
 				return (canvasUniq % 73) + this.minLineSteps;
 			},
 		},
-		{
-			name: 'lolipop',
-			weight: 4,
-			resolutionAdjustments: {
-				lineWidth: 'scale',
-				stepDistance: 'scale',
-				stepCount: 'equal',
-			},
-			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
-				return indexStep === lineSteps - 1 ? 1 : maxMoveDistance;
-			},
-			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
-				return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
-			},
-			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
-				let width = ogWidth;
-				if (indexStep === lineSteps - 1) {
-					// Lolipop BIG end line's last draw step
-					width = width * 2;
-				}
-				return width;
-			},
-			minLineSteps: 3,
-			lineStepsAlgorithm() {
-				return (canvasUniq % 17) + this.minLineSteps;
-			},
-		},
+		// {
+		// 	name: 'lolipop',
+		// 	weight: 4,
+		// 	resolutionAdjustments: {
+		// 		lineWidth: 'scale',
+		// 		stepDistance: 'scale',
+		// 		stepCount: 'equal',
+		// 	},
+		// 	lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
+		// 		return indexStep === lineSteps - 1 ? 1 : maxMoveDistance;
+		// 	},
+		// 	metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+		// 		return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
+		// 	},
+		// 	lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
+		// 		let width = ogWidth;
+		// 		if (indexStep === lineSteps - 1) {
+		// 			// Lolipop BIG end line's last draw step
+		// 			width = width * 2;
+		// 		}
+		// 		return width;
+		// 	},
+		// 	minLineSteps: 3,
+		// 	lineStepsAlgorithm() {
+		// 		return (canvasUniq % 17) + this.minLineSteps;
+		// 	},
+		// },
 	];
 
 	function getLineStyleProperties(targetStyleName) {
@@ -424,6 +422,7 @@
 		let withinCircle = evaluatePonintRelativeToCircle(x, y, lineUniq);
 
 		if (
+			doCircle &&
 			metalStyle &&
 			!withinCircle &&
 			getLineStyleProperties(lineStyle.name).metalOutsideCircleHighlight(
@@ -463,7 +462,7 @@
 	var d = new Date();
 	var n = d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 14);
 	// let fileName = `${n}-${`${seed}`.padStart(2, '00')}.png`;
-	let fileName = `${`${seed}`.padStart(2, '00')}.png`;
+	$: fileName = `${`${seed}`.padStart(8, '00000000')}.png`;
 
 	function downloadImage(e) {
 		const link = document.createElement('a');
@@ -701,7 +700,7 @@
 	}
 
 	onMount(() => {
-		ctx = canvasElement.getContext('2d');
+		ctx = canvasElement.getContext('2d', { alpha: false });
 		if (!diagnostics) {
 			// Rotate entire canvas
 			for (let i = 0; i < canvasUniq2 % 4; i++) {
@@ -714,9 +713,6 @@
 	});
 </script>
 
-<div>
-	{seed} — {lineStyle.name}
-</div>
 <canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 
 {#if download}
