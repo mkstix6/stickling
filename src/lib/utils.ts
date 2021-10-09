@@ -5,7 +5,7 @@ export function* pseudoRandom(seed: number) {
 	if (seed === 0) {
 		seed = pseudoRandomMax - 1;
 	}
-	let value = seed;
+	let value: number = seed;
 
 	while (true) {
 		value = (value * 16807) % pseudoRandomMax;

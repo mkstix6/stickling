@@ -9,25 +9,24 @@
 	export let seed = 1;
 	export let diagnostics = false;
 	export let download = false;
-	export let rendersize = 1024;
+	export let rendersize = 2 ** 11;
 
 	let renderSize = rendersize;
 
 	let canvasElement;
 	let ctx;
 	let flowField = [];
-	let lineSteps = 20;
+	let lineSteps: number = 20;
 	// Minimum clamp values
-	let minHueRange = 1;
+	let minHueRange: number = 1;
 
-	let minMoveDistance = 1;
-	let minLineCount = 3333; // Math.ceil(renderSize ** 2 * 0.000385);
-	let minUniqDecimal = 0.001;
-	let edgeShy = false;
-	let loopAroundEdges = false;
-	let hueShift = 0;
-	let lineMoveDistance;
-	let minDotStepDistance = 0;
+	let minMoveDistance: number = 1;
+	let minLineCount: number = 1111; // Math.ceil(renderSize ** 2 * 0.000385);
+	let minUniqDecimal: number = 0.001;
+	let loopAroundEdges: boolean = false;
+	let hueShift: number = 0;
+	let lineMoveDistance: number;
+	let minDotStepDistance: number = 0;
 
 	let generator = pseudoRandom(seed);
 
@@ -51,7 +50,7 @@
 	}
 
 	function metalGradientBezier(t) {
-		let cssBezierPoints = [0.015, 2.2, 0.925, -0.185];
+		let cssBezierPoints = [0.1, 2.2, 0.925, -0.185];
 		let p0 = { x: 0, y: 0 }; // Start coordinates
 		let p1 = { x: cssBezierPoints[0], y: cssBezierPoints[1] }; // Handle 1 coordinates
 		let p2 = { x: cssBezierPoints[2], y: cssBezierPoints[3] }; // Handle 2 coordinates
@@ -59,53 +58,55 @@
 		return bezier(t, p0, p1, p2, p3).y; // Just use the y value so this isn't a true bezier
 	}
 
-	let canvasUniq = generator.next().value;
-	let canvasUniq2 = generator.next().value;
+	let canvasUniq: number = generator.next().value;
+	let canvasUniq2: number = generator.next().value;
 	// Protect against zero and negative numbers
 	canvasUniq = canvasUniq < 1 ? 1 : canvasUniq;
 	canvasUniq2 = canvasUniq2 < 1 ? 1 : canvasUniq2;
 	// Create unique decimals
-	let canvasUniqDecimal = pseudoRandomDecimal();
-	let canvasUniqDecimal2 = pseudoRandomDecimal();
-	let canvasLWidthDecimal = pseudoRandomDecimal();
+	let canvasUniqDecimal: number = pseudoRandomDecimal();
+	let canvasUniqDecimal2: number = pseudoRandomDecimal();
+	let canvasLWidthDecimal: number = pseudoRandomDecimal();
 
-	let widthChoiceDecimal = pseudoRandomDecimal();
-	let minLineWidth = widthChoiceDecimal < 0.9 ? 1 : 8;
-	let maxLineWidth = widthChoiceDecimal < 0.9 ? 16 : 50;
+	let widthChoiceDecimal: number = pseudoRandomDecimal();
+	let minLineWidth: number = widthChoiceDecimal < 0.9 ? 2 : 8;
+	let maxLineWidth: number = widthChoiceDecimal < 0.9 ? 13 : 50;
 
-	let metalStyle = !(canvasUniq % 22);
-	let darkStyle = metalStyle && pseudoRandomDecimal() > 0.1;
-	let hueReflect = pseudoRandomDecimal() > 0.5;
-	let metalGoldNotSilver = pseudoRandomDecimal() > 0.5;
+	let metalStyle: boolean = !(canvasUniq % 22);
+	let darkDecimal: number = pseudoRandomDecimal();
+	let darkStyle: boolean = (metalStyle && darkDecimal > 0.1) || (!metalStyle && darkDecimal < 0.15);
+	let hueReflect: boolean = pseudoRandomDecimal() > 0.5;
+	let metalGoldNotSilver: boolean = pseudoRandomDecimal() > 0.5;
 
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
-	let flowFieldGridCellSize =
+	let flowFieldGridCellSize: number =
 		Math.round(
 			(canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * Math.ceil(renderSize * 0.0302734375)
 		) * 10;
 	// Protect against zero cell size
 	flowFieldGridCellSize = flowFieldGridCellSize < 10 ? 10 : flowFieldGridCellSize;
 
-	let doSmoothFlowField = canvasUniqDecimal > 0.2;
-	let smoothFlowFieldIterations = Math.round((canvasUniqDecimal * 4313) % 4) + 1;
-	let flowFieldAngleRangeDecimal = canvasUniqDecimal * 2;
-	let hueRange = ((canvasUniq * 12433) % 360) + minHueRange;
-	let strictFlowDirection = !!(canvasUniq % 3);
-	let Lwidth = Math.round(canvasLWidthDecimal * (maxLineWidth - minLineWidth)) + minLineWidth;
+	let doSmoothFlowField: boolean = canvasUniqDecimal > 0.2;
+	let smoothFlowFieldIterations: number = Math.round((canvasUniqDecimal * 4313) % 11) + 3;
+	let flowFieldAngleRangeDecimal: number = canvasUniqDecimal * 2;
+	let hueRange: number = (((canvasUniq * 12433) % 360) / 360) ** 2 * 360 + minHueRange;
+	let strictFlowDirection: boolean = !!(canvasUniq % 2);
+	let Lwidth: number =
+		Math.round(canvasLWidthDecimal * (maxLineWidth - minLineWidth)) + minLineWidth;
 
-	let lineCount = (seed * generator.next().value) % (minLineCount * 2);
+	let lineCount: number = (seed * generator.next().value) % (minLineCount * 4);
 	// Minimum 101 lines
 	lineCount = lineCount < minLineCount ? minLineCount : lineCount;
 
-	let maxRotationChange = canvasUniqDecimal;
+	let maxRotationChange: number = canvasUniqDecimal / 2;
 	// let isGrayscale = true;
-	let isGrayscale = pseudoRandomDecimal() < 0.07;
-	let isGrayscaleHighContrast = pseudoRandomDecimal() < 0.5;
+	let isGrayscale: boolean = pseudoRandomDecimal() < 0.07;
+	let isGrayscaleHighContrast: boolean = pseudoRandomDecimal() < 0.5;
 
-	let doCircle = true; // || pseudoRandomDecimal() > 0.5;
-	let doCircleBreaks = false;
-	let doCircleSoft = true || pseudoRandomDecimal() < 0.75;
-	let circleSoftness =
+	let doCircle: boolean = true; // pseudoRandomDecimal() > 0.5;
+	let doCircleBreaks: boolean = false;
+	let doCircleSoft: boolean = true; // pseudoRandomDecimal() < 0.75;
+	let circleSoftness: number =
 		(canvasUniq % Math.round(renderSize * 0.133)) + Math.round(renderSize * 0.0195);
 
 	function evaluatePonintRelativeToCircle(x, y, lineUniq) {
@@ -124,10 +125,12 @@
 		{
 			name: 'solid',
 			weight: 9,
+			drawtype: 'lines',
 			resolutionAdjustments: {
 				lineWidth: 'scale',
 				stepDistance: 'scale',
 				stepCount: 'equal',
+				stepAngle: undefined,
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return maxMoveDistance;
@@ -146,16 +149,26 @@
 		{
 			name: 'solidTaper',
 			weight: 9,
+			drawtype: 'lines',
 			resolutionAdjustments: {
-				lineWidth: undefined,
-				stepDistance: 'equal',
-				stepCount: 'scale',
+				lineWidth: 'scale',
+				stepDistance: 'scale',
+				stepCount: 'equal',
+				stepAngle: 'equal',
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return maxMoveDistance;
 			},
 			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
-				return lineStepIndex !== Math.ceil((7 * renderSize) / 1024);
+				if (this.resolutionAdjustments.stepDistance === 'scale') {
+					return !(indexLine < lineCount * 0.8 && lineStepIndex >= 0 && lineStepIndex <= 2);
+				} else {
+					return !(
+						indexLine < lineCount * 0.8 &&
+						lineStepIndex >= Math.ceil((1 * renderSize) / 1024) &&
+						lineStepIndex <= Math.ceil((2 * renderSize) / 1024)
+					);
+				}
 			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				if (canvasUniq % 2) {
@@ -166,18 +179,21 @@
 					return indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
 				}
 			},
-			minLineSteps: 23,
+			minLineSteps: 12,
+			maxLineSteps: 28,
 			lineStepsAlgorithm() {
-				return (canvasUniq % 63) + this.minLineSteps;
+				return (canvasUniq % this.maxLineSteps) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'dripFish',
 			weight: 4,
+			drawtype: 'lines',
 			resolutionAdjustments: {
 				lineWidth: undefined,
 				stepDistance: 'equal',
 				stepCount: 'scale',
+				stepAngle: undefined,
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return 1;
@@ -202,10 +218,12 @@
 		{
 			name: 'dots',
 			weight: 7,
+			drawtype: 'circles',
 			resolutionAdjustments: {
 				lineWidth: 'scale',
 				stepDistance: 'scale',
 				stepCount: 'equal',
+				stepAngle: undefined,
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps, ogWidth) {
 				let lineSize = this.lineWidthAlgorithm(ogWidth, indexStep, lineSteps);
@@ -215,23 +233,25 @@
 					: maxMoveDistance * canvasUniqDecimal2 + diameter;
 			},
 			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
-				return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
+				return indexLine < lineCount * 0.9 || lineStepIndex !== 2;
 			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
-				return ogWidth;
+				return ogWidth < minLineWidth ? minLineWidth : ogWidth;
 			},
 			minLineSteps: 2,
 			lineStepsAlgorithm() {
-				return (canvasUniq % 73) + this.minLineSteps;
+				return (canvasUniq % 53) + this.minLineSteps;
 			},
 		},
 		{
 			name: 'dotsTaper',
 			weight: 9,
+			drawtype: 'circles',
 			resolutionAdjustments: {
 				lineWidth: 'scale',
-				stepDistance: 'scale',
+				stepDistance: 'scale', // I would choose 'scaled' here but this appears to be handled elsewhere
 				stepCount: 'equal',
+				stepAngle: undefined,
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps, ogWidth) {
 				let lineSize = this.lineWidthAlgorithm(ogWidth, indexStep, lineSteps);
@@ -252,7 +272,7 @@
 					return indexStep < lineSteps / 2 ? indexStep : lineSteps - indexStep;
 				}
 			},
-			minLineSteps: 23,
+			minLineSteps: 17,
 			lineStepsAlgorithm() {
 				return (canvasUniq % 73) + this.minLineSteps;
 			},
@@ -260,10 +280,12 @@
 		// {
 		// 	name: 'lolipop',
 		// 	weight: 4,
+		// 	drawtype: 'lines',
 		// 	resolutionAdjustments: {
 		// 		lineWidth: 'scale',
 		// 		stepDistance: 'scale',
 		// 		stepCount: 'equal',
+		// 		stepAngle: undefined
 		// 	},
 		// 	lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 		// 		return indexStep === lineSteps - 1 ? 1 : maxMoveDistance;
@@ -311,9 +333,9 @@
 
 	function chooseColor(ogX, ogY, x, y, lineUniqDecimal, indexLine, lineUniq, indexStep) {
 		let color;
-		let tempGoldDecimal;
+		let tempMetalDecimal;
 
-		let hueRepeatScaler = (canvasUniq % 23) + 1;
+		let hueRepeatScaler = (canvasUniq % 23) + 4;
 
 		let hue = 0;
 		let lightness;
@@ -342,23 +364,40 @@
 			lightness = 100 - lightness + 70;
 		}
 
-		// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
-		let hueDarkenMidPoint = 60;
-		let hueDarkenRange = 70;
-		let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
-		let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
-		let hueDarkenByMax = 8;
-		if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
-			let hueAdjustDecimal =
-				(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
-			let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
-			lightness = lightness - hueAdjustValue * hueDarkenByMax;
+		{
+			// Adjust bright yellow hues to be a little darker as they're impossible to see on white.
+			let hueDarkenMidPoint = 60;
+			let hueDarkenRange = 80;
+			let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
+			let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
+			let hueDarkenByMax = 9;
+			if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
+				let hueAdjustDecimal =
+					(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
+				let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
+				lightness = lightness - hueAdjustValue * hueDarkenByMax;
+			}
+		}
+
+		{
+			// Adjust bright cyan hues to be a little darker as they're impossible to see on white.
+			let hueDarkenMidPoint = 165;
+			let hueDarkenRange = 70;
+			let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
+			let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
+			let hueDarkenByMax = 10;
+			if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
+				let hueAdjustDecimal =
+					(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
+				let hueAdjustValue = Math.sin(hueAdjustDecimal * Math.PI);
+				lightness = lightness - hueAdjustValue * hueDarkenByMax;
+			}
 		}
 
 		// Rarely use opposite color hue
-		if (!(((indexLine * lineUniq) % lineCount) * canvasUniqDecimal)) {
+		if (!((indexLine * lineUniq) % Math.round(lineCount / 2))) {
 			hue = (hue + 180) % 360;
-			lightness = 80;
+			lightness = 85;
 		}
 
 		// Set saturation
@@ -378,42 +417,54 @@
 			// Choose gradient style
 			if (canvasUniqDecimal < 0.5) {
 				// Shart radial metal gradient
-				tempGoldDecimal =
+				tempMetalDecimal =
 					((Math.sqrt(x ** 2 + y ** 2) / (repeatlength * (1024 / renderSize))) % repeatlength) /
 					repeatlength;
 			} else {
 				// Sharp straight metal gradient
-				tempGoldDecimal =
+				tempMetalDecimal =
 					(((x + y) / (repeatlength * (1024 / renderSize))) % repeatlength) / repeatlength;
 			}
-			tempGoldDecimal = metalGradientBezier(tempGoldDecimal);
+			tempMetalDecimal = metalGradientBezier(tempMetalDecimal);
 
 			if (metalGoldNotSilver) {
 				// Gold
 
-				let goldHighHSL = [56, 87, 88];
-				// let goldMediumHSL = [46, 90, 62];
-				let goldLowHSL = [37, 63, 29];
+				let goldHighHSL;
+				// let goldMediumHSL;
+				let goldLowHSL;
+				if (darkStyle) {
+					goldHighHSL = [56, 87, 88];
+					// goldMediumHSL = [46, 90, 62];
+					goldLowHSL = [37, 63, 25];
+				} else {
+					goldHighHSL = [59, 85, 85];
+					// goldMediumHSL = [46, 90, 62];
+					goldLowHSL = [45, 73, 34];
+				}
 
 				// Hue
-				let hu = tempGoldDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
+				let hu = tempMetalDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
 				// Saturation
-				let sat = tempGoldDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
-				sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 6 : sat;
+				let sat = tempMetalDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
+				// Occasionally reduce
+				sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 4 : sat;
 				// Lightness
-				let lit = tempGoldDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
-				lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+				let lit = tempMetalDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
+				// Occasionally reduce
+				lit = lineUniqDecimal > 0.8 ? lit - lineUniqDecimal * 7 : lit;
 				// Combine to color
 				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
 			} else {
 				// Silver
 				// Hue
-				let hu = tempGoldDecimal * 10 + 180;
+				let hu = tempMetalDecimal * 10 + 180;
 				// Saturation
-				let sat = 2;
+				let sat = tempMetalDecimal * 4 + 3;
 				// Lightness
-				let lit = tempGoldDecimal * 70 + 30;
-				lit = lineUniqDecimal > 0.7 ? lit - lineUniqDecimal * 17 : lit;
+				let lit = tempMetalDecimal * 70 + 30;
+				// Occasionally reduce
+				lit = lineUniqDecimal > 0.8 ? lit - lineUniqDecimal * 7 : lit;
 				// Combine to color
 				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
 			}
@@ -435,18 +486,32 @@
 			if (metalGoldNotSilver) {
 				// Gold
 				color = darkStyle
-					? `hsl(${tempGoldDecimal * 10 + 70}, 13%, ${0.4 * 6 + 3}%)`
-					: `hsl(${tempGoldDecimal * 10 + 50}, 61%, ${0.4 * 6 + 87}%)`;
+					? `hsl(${tempMetalDecimal * 10 + 70}, 13%, 5%)`
+					: `hsl(${tempMetalDecimal * 10 + 50}, 51%, 93%)`;
 			} else {
 				// Silver
 				color = darkStyle
-					? `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 3}%)`
-					: `hsl(${tempGoldDecimal * 10 + 180}, 0%, ${0.4 * 6 + 90}%)`;
+					? `hsl(${tempMetalDecimal * 10 + 180}, 3%, 5%)`
+					: `hsl(${tempMetalDecimal * 10 + 180}, 3%, 95%)`;
 			}
 		}
 
 		if (!metalStyle) {
 			color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+		}
+		if (
+			doCircle &&
+			darkStyle &&
+			!metalStyle &&
+			!withinCircle &&
+			getLineStyleProperties(lineStyle.name).metalOutsideCircleHighlight(
+				indexStep,
+				lineSteps,
+				indexLine,
+				lineCount
+			)
+		) {
+			color = `hsl(${hue}, ${saturation / 2}%, ${lightness / 10}%)`;
 		}
 
 		return { color, lightness };
@@ -455,9 +520,9 @@
 	let lineStyle = chooseStyle(canvasUniqDecimal2);
 
 	let maxMoveDistance = Math.round(((seed * generator.next().value) % 20) + minMoveDistance);
-	if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
-		maxMoveDistance = Math.ceil((maxMoveDistance * renderSize) / 1024);
-	}
+	// if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
+	// 	maxMoveDistance = Math.ceil((maxMoveDistance * renderSize) / 1024);
+	// }
 
 	var d = new Date();
 	var n = d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 14);
@@ -472,6 +537,10 @@
 		link.delete;
 	}
 
+	function normaliseAngleRadians(angle: number): number {
+		return Math.atan2(Math.sin(angle), Math.cos(angle));
+	}
+
 	function makeFlowField() {
 		// Generate Flow Field values
 		let randomGen = pseudoRandom(seed);
@@ -482,9 +551,11 @@
 		}
 		for (let i = 0; i < Math.floor(canvasElement.width / flowFieldGridCellSize); i++) {
 			for (let j = 0; j < Math.floor(canvasElement.width / flowFieldGridCellSize); j++) {
-				flowField[i][j] =
+				let angle =
 					Math.round((randomGen.next().value % (flowFieldAngleRangeDecimal * Math.PI * 2)) * 100) /
 					100;
+
+				flowField[i][j] = normaliseAngleRadians(angle);
 			}
 		}
 
@@ -516,15 +587,15 @@
 		}
 	}
 
-	function getFlowFieldRotation(x, y) {
+	function getFlowFieldRotation(x: number, y: number): number {
 		// Round values to grid cells
-		let xCell = Math.floor(x / flowFieldGridCellSize);
-		let yCell = Math.floor(y / flowFieldGridCellSize);
+		let xCell: number = Math.floor(x / flowFieldGridCellSize);
+		let yCell: number = Math.floor(y / flowFieldGridCellSize);
 		// Force values within array bounds
 		xCell = xCell < 0 ? 0 : xCell > flowField.length - 1 ? flowField.length - 1 : xCell;
 		yCell = yCell < 0 ? 0 : yCell > flowField.length - 1 ? flowField.length - 1 : yCell;
 		// Retrieve result
-		let flowValue = flowField[yCell][xCell];
+		let flowValue: number = flowField[yCell][xCell];
 		return flowValue;
 	}
 
@@ -553,26 +624,21 @@
 
 		hueShift = ((canvasUniq % 360) * 5342) % 360;
 
-		let ogX;
-		let ogY;
+		let ogX: number;
+		let ogY: number;
 
 		for (let indexLine = 0; indexLine < lineCount; indexLine++) {
-			const lineUniq = generator.next().value;
-			const lineUniqDecimal = parseFloat(`0.${lineUniq.toString().slice(1, 3)}`);
-			let x;
-			let y;
-			let newx;
-			let newy;
+			const lineUniq: number = generator.next().value;
+			const lineUniqDecimal: number = pseudoRandomDecimal();
+			const lineUniqDecimal2: number = pseudoRandomDecimal();
+			let x: number;
+			let y: number;
+			let newx: number;
+			let newy: number;
 
-			if (edgeShy) {
-				// Start inset from edge
-				x = (generator.next().value % (canvasElement.width - 20)) + 10 || 100;
-				y = (generator.next().value % (canvasElement.height - 20)) + 10 || 100;
-			} else {
-				// Allow start outset from edge
-				x = (generator.next().value % (canvasElement.width + 100)) - 50 || 100;
-				y = (generator.next().value % (canvasElement.height + 100)) - 50 || 100;
-			}
+			// Allow start outset from edge
+			x = (generator.next().value % (canvasElement.width + 100)) - 50 || 100;
+			y = (generator.next().value % (canvasElement.height + 100)) - 50 || 100;
 
 			newx = x;
 			newy = y;
@@ -580,9 +646,9 @@
 			ogX = x;
 			ogY = y;
 
-			let moveVector;
-
-			ctx.lineCap = 'round'; // TODO move this
+			let moveUnitVector: [number, number];
+			let moveVector: [number, number];
+			let rotatingClockwise: boolean = lineUniqDecimal > 0.5;
 
 			lineSteps = lineStyle.lineStepsAlgorithm();
 
@@ -609,6 +675,7 @@
 					lineUniq,
 					indexStep
 				);
+
 				if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
 					// Resolution independence for distance
 					lineMoveDistance = Math.ceil((lineMoveDistance * renderSize) / 1024);
@@ -622,32 +689,68 @@
 
 				if (strictFlowDirection) {
 					// Exactly match flow vector
-					moveVector = [
-						Math.sin(cellFlowRotation) * lineMoveDistance,
-						Math.cos(cellFlowRotation) * lineMoveDistance,
-					];
+					moveUnitVector = [Math.sin(cellFlowRotation), Math.cos(cellFlowRotation)];
 				} else {
+					let maxOverRotate = lineUniqDecimal2 ** 2 * 6;
 					// Gradually turn to match move vector according to max turn per line step.
-					if (!moveVector) {
-						moveVector = [
-							Math.sin(cellFlowRotation) * lineMoveDistance,
-							Math.cos(cellFlowRotation) * lineMoveDistance,
+					if (!moveUnitVector) {
+						moveUnitVector = [
+							Math.sin(cellFlowRotation + maxOverRotate / 8),
+							Math.cos(cellFlowRotation + maxOverRotate / 8),
 						];
 					}
-					// Current move angle
-					const moveRotation = Math.atan2(moveVector[0], moveVector[1]);
-					const newMoveRotation =
-						Math.abs(moveRotation - cellFlowRotation) < maxRotationChange
-							? moveRotation
-							: moveRotation < cellFlowRotation
-							? moveRotation + maxRotationChange
-							: moveRotation - maxRotationChange;
 
-					moveVector = [
-						Math.sin(newMoveRotation) * lineMoveDistance,
-						Math.cos(newMoveRotation) * lineMoveDistance,
-					];
+					// Current move angle
+					const moveRotation: number = Math.atan2(moveUnitVector[0], moveUnitVector[1]);
+					let newMoveRotation: number;
+
+					// Switch between CW and CCW if getting too far from direction
+					if (moveRotation + 999 > cellFlowRotation + 999 + maxOverRotate) {
+						rotatingClockwise = false;
+						// newMoveRotation = cellFlowRotation + maxOverRotate;
+					} else if (moveRotation + 999 < cellFlowRotation + 999 - maxOverRotate) {
+						rotatingClockwise = true;
+						// newMoveRotation = cellFlowRotation - maxOverRotate;
+					}
+
+					// Resolve if close to field angle
+					if (
+						canvasUniq % 4 === 0 &&
+						moveRotation + 999 < cellFlowRotation + 999 + maxOverRotate / 10 &&
+						moveRotation + 999 > cellFlowRotation + 999 - maxOverRotate / 10
+					) {
+						newMoveRotation = cellFlowRotation;
+					} else if ((canvasUniq + 1) % 4 === 0) {
+						// Similar rotations for all lines per canvas
+						let angleChange = canvasUniqDecimal2 / ((canvasUniq % 12) + 1);
+						newMoveRotation = rotatingClockwise
+							? moveRotation + angleChange
+							: moveRotation - angleChange;
+						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+					} else if ((canvasUniq + 2) % 4 === 0) {
+						// Similar rotations for all lines per canvas
+						// This occasionally creates nice concentric dot-flowers
+						let angleChange = canvasUniq2 / ((canvasUniq % 12) + 1);
+						if (lineStyle.resolutionAdjustments.stepAngle === 'scale') {
+							angleChange *= 1024 / renderSize;
+						}
+
+						newMoveRotation = rotatingClockwise
+							? moveRotation + angleChange
+							: moveRotation - angleChange;
+						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+					} else {
+						// Different rotations per line
+						let angleChange = lineUniqDecimal / ((lineUniq % 12) + 1);
+						newMoveRotation = rotatingClockwise
+							? moveRotation + angleChange
+							: moveRotation - angleChange;
+						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+					}
 				}
+
+				// Add size to unit vector
+				moveVector = [moveUnitVector[0] * lineMoveDistance, moveUnitVector[1] * lineMoveDistance];
 
 				let lineSize = lineStyle.lineWidthAlgorithm(Lwidth, indexStep, lineSteps);
 				if (lineStyle.resolutionAdjustments.lineWidth === 'scale') {
@@ -657,18 +760,21 @@
 
 				ctx.fillStyle = color;
 				ctx.strokeStyle = color;
+				ctx.lineCap = 'round';
+
 				newx = Math.round(x + moveVector[0]);
 				newy = Math.round(y + moveVector[1]);
 
 				if (!doCircle || evaluatePonintRelativeToCircle(x, y, lineUniq) || lightness > 89) {
 					// Draw
-					if (lineStyle.name === 'dots' || lineStyle.name === 'dotsTaper') {
+					if (lineStyle.drawtype === 'circles') {
 						// Dotted lines
 						let fullCircle = 2 * Math.PI;
 						let dotRadius = lineSize / 2;
+						dotRadius = dotRadius < 1 ? 1 : dotRadius;
 						ctx.arc(x, y, dotRadius, 0, fullCircle);
 						ctx.fill();
-					} else {
+					} else if (lineStyle.drawtype === 'lines') {
 						// Solid lines
 						ctx.lineTo(newx, newy);
 						ctx.stroke();
@@ -713,6 +819,10 @@
 	});
 </script>
 
+{#if diagnostics}
+	{lineStyle.name} - {renderSize}
+{/if}
+
 <canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
 
 {#if download}
@@ -727,8 +837,8 @@
 					{#each row as pixel}
 						<span
 							class="pixel"
-							style="background: hsl({(pixel / (Math.PI * 2)) *
-								360}, 50%, 50%); transform: rotate({-pixel}rad);"
+							style="background: hsl({(pixel / Math.PI) *
+								180}, 50%, 50%); transform: rotate({-pixel}rad);"
 						>
 							↓
 						</span>
