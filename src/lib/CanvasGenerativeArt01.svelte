@@ -385,7 +385,7 @@
 			let hueDarkenRange = 70;
 			let hueRangeDarkenLower = hueDarkenMidPoint - hueDarkenRange / 2;
 			let hueRangeDarkenUpper = hueDarkenMidPoint + hueDarkenRange / 2;
-			let hueDarkenByMax = 10;
+			let hueDarkenByMax = 5;
 			if (hue > hueRangeDarkenLower && hue < hueRangeDarkenUpper) {
 				let hueAdjustDecimal =
 					(hue - hueRangeDarkenLower) / (hueRangeDarkenUpper - hueRangeDarkenLower);
