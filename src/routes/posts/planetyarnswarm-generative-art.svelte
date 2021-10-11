@@ -5,6 +5,8 @@
 	const artName = 'PlanetYarnSwarm';
 	const today = new Date();
 
+	const rendersize = 2 ** 11;
+
 	let currentDate = today;
 	let inputChosenDate = jsDateToInputString(currentDate);
 
@@ -61,7 +63,7 @@
 
 	<div class="art">
 		{#key chosenDateSeed}
-			<CanvasArt seed={chosenDateSeed} rendersize={2 ** 12} download={true} />
+			<CanvasArt seed={chosenDateSeed} {rendersize} download={true} />
 			<small style="float: right;">seed: <strong>{chosenDateSeed}</strong></small>
 		{/key}
 	</div>
