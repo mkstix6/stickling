@@ -89,7 +89,7 @@
 	let doSmoothFlowField: boolean = canvasUniqDecimal > 0.2;
 	let smoothFlowFieldIterations: number = Math.round((canvasUniqDecimal * 4313) % 11) + 3;
 	let flowFieldAngleRangeDecimal: number = canvasUniqDecimal * 2;
-	let hueRange: number = (((canvasUniq * 12433) % 360) / 360) ** 2 * 360 + minHueRange;
+	let hueRange: number = ((canvasUniq * 12433) % 360) + minHueRange;
 	let strictFlowDirection: boolean = !!(canvasUniq % 2);
 	let Lwidth: number =
 		Math.round(canvasLWidthDecimal * (maxLineWidth - minLineWidth)) + minLineWidth;
