@@ -12,3 +12,7 @@ export function* pseudoRandom(seed: number) {
 		yield value;
 	}
 }
+
+export function randomInt(): number {
+	return Math.ceil(Math.random() * 674365);
+}
