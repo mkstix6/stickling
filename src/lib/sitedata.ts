@@ -748,11 +748,11 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
-		title: 'PlanetYarnSwarm Generative art',
-		slug: 'planetyarnswarm-generative-art',
+		title: 'PlanetYarn Generative art',
+		slug: 'planetyarn-generative-art',
 		type: 'codeart',
 		tech: ['js'],
-		thumbnail: '/posts/planetyarnswarm-20211102.jpg',
+		thumbnail: '/posts/planetyarn-20211102.jpg',
 		codethumbnail: `background: #396;`,
 	},
 	{
