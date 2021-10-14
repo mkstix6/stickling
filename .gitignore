@@ -6,4 +6,4 @@ node_modules
 /functions
 
 .vscode/
-.netlify/
+# .netlify/
