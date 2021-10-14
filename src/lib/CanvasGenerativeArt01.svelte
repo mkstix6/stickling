@@ -21,7 +21,7 @@
 	let minHueRange: number = 1;
 
 	let minMoveDistance: number = 1;
-	let minLineCount: number = 1111; // Math.ceil(renderSize ** 2 * 0.000385);
+	let minLineCount: number = 888; // Math.ceil(renderSize ** 2 * 0.000385);
 	let minUniqDecimal: number = 0.001;
 	let loopAroundEdges: boolean = false;
 	let hueShift: number = 0;
