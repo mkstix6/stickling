@@ -10,7 +10,9 @@
 	export let diagnostics = false;
 	export let download = false;
 	export let rendersize = 2 ** 11;
+	export let transparent: boolean = false;
 
+	let circleOnly = transparent;
 	let renderSize = rendersize;
 
 	let canvasElement;
@@ -514,6 +516,10 @@
 			color = `hsl(${hue}, ${saturation / 2}%, ${lightness / 10}%)`;
 		}
 
+		if (circleOnly && !withinCircle) {
+			color = `hsla(0,0%,0%,0)`;
+		}
+
 		return { color, lightness };
 	}
 
@@ -606,13 +612,15 @@
 		ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
 		// Fill canvas background
-		ctx.rect(0, 0, canvasElement.width, canvasElement.height);
-		if (darkStyle) {
-			ctx.fillStyle = '#000';
-		} else {
-			ctx.fillStyle = '#fff';
+		if (!transparent) {
+			ctx.rect(0, 0, canvasElement.width, canvasElement.height);
+			if (darkStyle) {
+				ctx.fillStyle = '#000';
+			} else {
+				ctx.fillStyle = '#fff';
+			}
+			ctx.fill();
 		}
-		ctx.fill();
 
 		// Dark mode 1/2 // Dark mode was a bit meh
 		// if (canvasUniq > pseudoRandomMax * 0) {
@@ -806,7 +814,7 @@
 	}
 
 	onMount(() => {
-		ctx = canvasElement.getContext('2d', { alpha: false });
+		ctx = canvasElement.getContext('2d', { alpha: transparent });
 		if (!diagnostics) {
 			// Rotate entire canvas
 			for (let i = 0; i < canvasUniq2 % 4; i++) {
