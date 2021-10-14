@@ -393,6 +393,20 @@ $edges: (
 	}
 }
 
+.mauto {
+	margin: auto;
+}
+
+.mxauto {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.myauto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .angletext {
 	transform: rotate(-6deg) skewX(-6deg);
 	transform-origin: bottom left;
