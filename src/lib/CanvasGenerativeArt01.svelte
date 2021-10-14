@@ -537,7 +537,11 @@
 	// }
 
 	var d = new Date();
-	var n = d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 14);
+	var n = `${d.toISOString()}`
+		.replaceAll('-', '')
+		.replaceAll('T', '')
+		.replaceAll(':', '')
+		.slice(0, 14);
 	// let fileName = `${n}-${`${seed}`.padStart(2, '00')}.png`;
 	$: fileName = `${`${seed}`.padStart(8, '00000000')}.png`;
 

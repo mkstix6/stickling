@@ -19,18 +19,22 @@
 	}
 
 	function jsDateToSeed(date): number {
-		return parseInt(
-			date.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8)
+		return Math.floor(
+			`${date.toISOString()}`
+				.replaceAll('-', '')
+				.replaceAll('T', '')
+				.replaceAll(':', '')
+				.slice(0, 8)
 		);
 	}
 
 	function jsDateToInputString(jsDate) {
-		return jsDate.toISOString().replaceAll('T', '').replaceAll(':', '').slice(0, 10);
+		return `${jsDate.toISOString()}`.replaceAll('T', '').replaceAll(':', '').slice(0, 10);
 	}
 
 	function inputDateToSeed(dateString: string): number {
 		if (dateString) {
-			return parseInt(dateString.replaceAll('-', ''));
+			return Math.floor(`${dateString}`.replaceAll('-', ''));
 		}
 	}
 
