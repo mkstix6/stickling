@@ -17,7 +17,7 @@
 		return [hue, 100, lightness];
 	}
 
-	let daysRange = 401;
+	let daysRange = 30;
 	let timeJump = 0; //daysRange * 2;
 	let timeTravel = daysRange * timeJump;
 	let datesArray = Array.from(new Array(daysRange), (x, i) => {
