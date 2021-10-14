@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
 	import BigLogo from '$lib/BigLogo.svelte';
 	import LaptopLogos from '$lib/LaptopLogos.svelte';
 	import PostGrid from '$lib/PostGrid.svelte';
 	import Orbiter from '$lib/Orbiter.svelte';
+	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 	// import SunFlare from '$lib/SunFlare.svelte';
 	// import LogoSticker from '$lib/LogoSticker.svelte';
+	import { randomInt } from '$lib/utils';
+
+	let artSeed = randomInt();
 </script>
 
 <svelte:head>
@@ -26,13 +30,29 @@
 		</section> -->
 		<section />
 
-		<section class="px3 indentp">
-			<h1 class="angletext">
-				I'm
-				<strong class="color-active fontsize-double">Mark Stickling</strong><br />
-				a <em style="font-style: normal;">frontend web developer</em>
-			</h1>
+		<section class="px3 indentp" style="position: relative;">
+			<div
+				style="display: flex; flex-wrap: wrap; justify-content: center;align-items: center; gap: 2rem;"
+			>
+				<h1 class="angletext" style="flex: 0 1 10em; z-index: 1;">
+					I'm
+					<strong class="color-active fontsize-double">Mark Stickling</strong><br />
+					a <em style="font-style: normal;">frontend web developer</em>
+				</h1>
 
+				<div style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;">
+					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
+						{#key artSeed}
+							<CanvasArt seed={artSeed} rendersize={2 ** 10} transparent={true} />
+						{/key}
+					</button>
+					<p
+						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center;position: absolute; bottom: 0; left: 30%; width: 40%;"
+					>
+						<small>Click this art to generate a new one</small>
+					</p>
+				</div>
+			</div>
 			<!-- <div
 				style="display: inline-block;width:50vw; height:30vw; overflow: hidden; position: relative;"
 			>
@@ -139,6 +159,24 @@
 		background: var(--card-backgroundcolor);
 		// .button {
 		// 	background: var(--card-darkerbackgroundcolor);
+		// }
+	}
+
+	.artContainer {
+		z-index: 0;
+		width: 100%;
+		height: auto;
+		border: none;
+		background: #0000;
+		border-radius: 100%;
+		margin: 0;
+		padding: 0;
+		transition: background 400ms;
+		cursor: pointer;
+
+		// &:focus,
+		// &:hover {
+		// 	background: #0002;
 		// }
 	}
 
