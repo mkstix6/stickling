@@ -12,6 +12,12 @@
 
 	$: chosenDateSeed = jsDateToSeed(currentDate);
 
+	if (typeof String.prototype.replaceAll == 'undefined') {
+		String.prototype.replaceAll = function (match, replace) {
+			return this.replace(new RegExp(match, 'g'), () => replace);
+		};
+	}
+
 	function jsDateToSeed(date): number {
 		return parseInt(
 			date.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8)

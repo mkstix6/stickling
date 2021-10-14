@@ -32,6 +32,12 @@
 
 	let generator = pseudoRandom(seed);
 
+	if (typeof String.prototype.replaceAll == 'undefined') {
+		String.prototype.replaceAll = function (match, replace) {
+			return this.replace(new RegExp(match, 'g'), () => replace);
+		};
+	}
+
 	function pseudoRandomDecimal() {
 		return parseFloat(`0.${generator.next().value.toString().slice(-3)}`) + minUniqDecimal;
 	}
