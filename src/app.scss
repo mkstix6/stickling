@@ -90,6 +90,10 @@ body {
 		font-size: 14px;
 	}
 }
+
+.leadpara {
+	font-size: 20px;
+}
 /* Light themes */
 /* .theme-light
 .theme-morning
@@ -353,6 +357,7 @@ $edgeProperties: (
 	padding: 'p',
 );
 $spacers: (
+	0: 0,
 	1: var(--spacer1),
 	2: var(--spacer2),
 	3: var(--spacer3),

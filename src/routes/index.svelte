@@ -111,7 +111,7 @@
 		<section class="section slice px3 py3">
 			<div class="myauto" style="max-width: min-content;">
 				<h2 class="angletext">I made these…</h2>
-				<p class="angletext">Explore some things I've created.</p>
+				<p class="leadpara angletext mt0">Explore some things I've created.</p>
 				<PostGrid itemcount={6} />
 				<a class="megaButton" href="/posts">view all posts &gt;</a>
 			</div>
