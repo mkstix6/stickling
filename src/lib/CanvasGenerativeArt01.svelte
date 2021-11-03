@@ -84,7 +84,7 @@
 	let minLineWidth: number = widthChoiceDecimal < 0.9 ? 2 : 8;
 	let maxLineWidth: number = widthChoiceDecimal < 0.9 ? 13 : 50;
 
-	let metalStyle: boolean = !(canvasUniq % 22);
+	let metalStyle: boolean = false; //!(canvasUniq % 22);
 	let darkDecimal: number = pseudoRandomDecimal();
 	let darkStyle: boolean = (metalStyle && darkDecimal > 0.1) || (!metalStyle && darkDecimal < 0.15);
 	let hueReflect: boolean = pseudoRandomDecimal() > 0.5;
