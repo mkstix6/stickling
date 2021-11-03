@@ -49,7 +49,7 @@
 					<p
 						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center;position: absolute; bottom: 0; left: 30%; width: 40%;"
 					>
-						<small>Click this art to generate a new one</small>
+						<small>Click this art to generate a new one (seed: {artSeed})</small>
 					</p>
 				</div>
 			</div>
