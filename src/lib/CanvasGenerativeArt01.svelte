@@ -12,8 +12,11 @@
 	export let renderSize = 2 ** 11;
 	export let transparent: boolean = false;
 
-	let reScale = 1024 / renderSize;
-	let canvasScale = renderSize / 1024;
+	let ogResolution = 1024;
+	let reScale = ogResolution / renderSize;
+	let canvasScale = renderSize / ogResolution;
+	let publishedResolution = 2048;
+	let publishedCanvasReScale = renderSize / publishedResolution;
 	let circleOnly = transparent;
 
 	let canvasElement;
@@ -524,8 +527,10 @@
 			let newy: number;
 
 			// Allow start outset from edge
-			x = (generator.next().value % (canvasElement.width + 100)) - 50 || 100;
-			y = (generator.next().value % (canvasElement.height + 100)) - 50 || 100;
+			x = (generator.next().value % (publishedResolution + 100)) - 50 || 100;
+			y = (generator.next().value % (publishedResolution + 100)) - 50 || 100;
+			x *= publishedCanvasReScale;
+			y *= publishedCanvasReScale;
 
 			newx = x;
 			newy = y;
