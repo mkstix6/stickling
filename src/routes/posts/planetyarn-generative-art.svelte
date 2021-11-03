@@ -112,12 +112,15 @@
 		margin: 0 auto;
 
 		@media screen and (orientation: landscape) {
-			width: 60vh;
+			width: 90vh;
 			height: auto;
 		}
 		@media screen and (orientation: portrait) {
 			width: 60vw;
 			height: auto;
+		}
+		@media screen and (orientation: portrait) and (max-width: 600px) {
+			width: 100%;
 		}
 	}
 
