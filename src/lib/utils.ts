@@ -16,3 +16,6 @@ export function* pseudoRandom(seed: number) {
 export function randomInt(): number {
 	return Math.ceil(Math.random() * 674365);
 }
+
+export const clamp = (value: number, min: number = -Infinity, max: number = Infinity): number =>
+	value < min ? min : value > max ? max : value;
