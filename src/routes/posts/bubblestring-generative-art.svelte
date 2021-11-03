@@ -2,7 +2,7 @@
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 
-	const artName = 'PlanetYarn';
+	const artName = 'BubbleString';
 	const today = new Date();
 
 	const rendersize = 2 ** 11;
