@@ -61,6 +61,15 @@
 		return { x, y };
 	}
 
+	function metalGradientBezier(t) {
+		let cssBezierPoints = [0.1, 2.2, 0.925, -0.185];
+		let p0 = { x: 0, y: 0 }; // Start coordinates
+		let p1 = { x: cssBezierPoints[0], y: cssBezierPoints[1] }; // Handle 1 coordinates
+		let p2 = { x: cssBezierPoints[2], y: cssBezierPoints[3] }; // Handle 2 coordinates
+		let p3 = { x: 1, y: 1 }; // End coordinates
+		return bezier(t, p0, p1, p2, p3).y; // Just use the y value so this isn't a true bezier
+	}
+
 	let canvasUniq: number = generator.next().value;
 	let canvasUniq2: number = generator.next().value;
 	// Protect against zero and negative numbers
@@ -75,10 +84,11 @@
 	let minLineWidth: number = widthChoiceDecimal < 0.9 ? 2 : 8;
 	let maxLineWidth: number = widthChoiceDecimal < 0.9 ? 13 : 50;
 
+	let metalStyle: boolean = !(canvasUniq % 22);
 	let darkDecimal: number = pseudoRandomDecimal();
-	let darkStyle: boolean = darkDecimal < 0.15;
+	let darkStyle: boolean = (metalStyle && darkDecimal > 0.1) || (!metalStyle && darkDecimal < 0.15);
 	let hueReflect: boolean = pseudoRandomDecimal() > 0.5;
-	let canvasRandomBoolean: boolean = pseudoRandomDecimal() > 0.5; // Can't delete this line without changing art even though the variable isn't used
+	let metalGoldNotSilver: boolean = pseudoRandomDecimal() > 0.5;
 
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize: number =
@@ -137,6 +147,9 @@
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return maxMoveDistance;
 			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return indexLine < lineCount * 0.95 || lineStepIndex !== 1;
+			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				return ogWidth;
 			},
@@ -157,6 +170,17 @@
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return maxMoveDistance;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				if (this.resolutionAdjustments.stepDistance === 'scale') {
+					return !(indexLine < lineCount * 0.8 && lineStepIndex >= 0 && lineStepIndex <= 2);
+				} else {
+					return !(
+						indexLine < lineCount * 0.8 &&
+						lineStepIndex >= Math.ceil((1 * renderSize) / 1024) &&
+						lineStepIndex <= Math.ceil((2 * renderSize) / 1024)
+					);
+				}
 			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				if (canvasUniq % 2) {
@@ -185,6 +209,9 @@
 			},
 			lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 				return 1;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return lineStepIndex !== 3;
 			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				if (canvasUniq % 2) {
@@ -217,6 +244,9 @@
 					? diameter
 					: maxMoveDistance * canvasUniqDecimal2 + diameter;
 			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return indexLine < lineCount * 0.9 || lineStepIndex !== 2;
+			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				return ogWidth < minLineWidth ? minLineWidth : ogWidth;
 			},
@@ -241,6 +271,9 @@
 				return maxMoveDistance < diameter
 					? diameter
 					: maxMoveDistance * canvasUniqDecimal2 + diameter;
+			},
+			metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+				return lineStepIndex !== 3;
 			},
 			lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 				if (canvasUniq % 2) {
@@ -268,6 +301,9 @@
 		// 	},
 		// 	lineMoveDistanceAlgorithm(maxMoveDistance, indexStep, lineSteps) {
 		// 		return indexStep === lineSteps - 1 ? 1 : maxMoveDistance;
+		// 	},
+		// 	metalOutsideCircleHighlight(lineStepIndex, totalSteps, indexLine, lineCount) {
+		// 		return indexLine < lineCount * 0.9 || lineStepIndex !== totalSteps - 1;
 		// 	},
 		// 	lineWidthAlgorithm(ogWidth, indexStep, lineSteps): number {
 		// 		let width = ogWidth;
@@ -309,6 +345,7 @@
 
 	function chooseColor(ogX, ogY, x, y, lineUniqDecimal, indexLine, lineUniq, indexStep) {
 		let color;
+		let tempMetalDecimal;
 
 		let hueRepeatScaler = (canvasUniq % 23) + 4;
 
@@ -385,11 +422,105 @@
 			}
 		}
 
+		if (metalStyle) {
+			let repeatlength = canvasElement.width / ((canvasUniq2 % 15) + 24);
+			// Choose gradient style
+			if (canvasUniqDecimal < 0.5) {
+				// Shart radial metal gradient
+				tempMetalDecimal =
+					((Math.sqrt(x ** 2 + y ** 2) / (repeatlength * (1024 / renderSize))) % repeatlength) /
+					repeatlength;
+			} else {
+				// Sharp straight metal gradient
+				tempMetalDecimal =
+					(((x + y) / (repeatlength * (1024 / renderSize))) % repeatlength) / repeatlength;
+			}
+			tempMetalDecimal = metalGradientBezier(tempMetalDecimal);
+
+			if (metalGoldNotSilver) {
+				// Gold
+
+				let goldHighHSL;
+				// let goldMediumHSL;
+				let goldLowHSL;
+				if (darkStyle) {
+					goldHighHSL = [56, 87, 88];
+					// goldMediumHSL = [46, 90, 62];
+					goldLowHSL = [37, 63, 25];
+				} else {
+					goldHighHSL = [59, 85, 85];
+					// goldMediumHSL = [46, 90, 62];
+					goldLowHSL = [45, 73, 34];
+				}
+
+				// Hue
+				let hu = tempMetalDecimal * (goldHighHSL[0] - goldLowHSL[0]) + goldLowHSL[0];
+				// Saturation
+				let sat = tempMetalDecimal * (goldHighHSL[1] - goldLowHSL[1]) + goldLowHSL[1];
+				// Occasionally reduce
+				sat = lineUniqDecimal > 0.8 ? sat - lineUniqDecimal * 4 : sat;
+				// Lightness
+				let lit = tempMetalDecimal * (goldHighHSL[2] - goldLowHSL[2]) + goldLowHSL[2];
+				// Occasionally reduce
+				lit = lineUniqDecimal > 0.8 ? lit - lineUniqDecimal * 7 : lit;
+				// Combine to color
+				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
+			} else {
+				// Silver
+				// Hue
+				let hu = tempMetalDecimal * 10 + 180;
+				// Saturation
+				let sat = tempMetalDecimal * 4 + 3;
+				// Lightness
+				let lit = tempMetalDecimal * 70 + 30;
+				// Occasionally reduce
+				lit = lineUniqDecimal > 0.8 ? lit - lineUniqDecimal * 7 : lit;
+				// Combine to color
+				color = `hsl(${hu}, ${sat}%, ${lit}%)`;
+			}
+		}
+
 		let withinCircle = evaluatePonintRelativeToCircle(x, y, lineUniq);
 
-		color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+		if (
+			doCircle &&
+			metalStyle &&
+			!withinCircle &&
+			getLineStyleProperties(lineStyle.name).metalOutsideCircleHighlight(
+				indexStep,
+				lineSteps,
+				indexLine,
+				lineCount
+			)
+		) {
+			if (metalGoldNotSilver) {
+				// Gold
+				color = darkStyle
+					? `hsl(${tempMetalDecimal * 10 + 70}, 13%, 5%)`
+					: `hsl(${tempMetalDecimal * 10 + 50}, 51%, 93%)`;
+			} else {
+				// Silver
+				color = darkStyle
+					? `hsl(${tempMetalDecimal * 10 + 180}, 3%, 5%)`
+					: `hsl(${tempMetalDecimal * 10 + 180}, 3%, 95%)`;
+			}
+		}
 
-		if (doCircle && darkStyle && !withinCircle) {
+		if (!metalStyle) {
+			color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+		}
+		if (
+			doCircle &&
+			darkStyle &&
+			!metalStyle &&
+			!withinCircle &&
+			getLineStyleProperties(lineStyle.name).metalOutsideCircleHighlight(
+				indexStep,
+				lineSteps,
+				indexLine,
+				lineCount
+			)
+		) {
 			color = `hsl(${hue}, ${saturation / 2}%, ${lightness / 10}%)`;
 		}
 
