@@ -643,7 +643,7 @@
 		// 	ctx.fill();
 		// }
 
-		hueShift = ((canvasUniq % 360) * 5342) % 360;
+		hueShift = ((canvasUniq % 360) * 5342) % 360; // This isn't really random enough, can observe patterns over many seeds
 
 		let ogX: number;
 		let ogY: number;
