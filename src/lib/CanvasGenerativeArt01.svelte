@@ -77,7 +77,7 @@
 	let canvasLWidthDecimal: number = pseudoRandomDecimal();
 
 	let widthChoiceDecimal: number = pseudoRandomDecimal();
-	let minLineWidth: number = widthChoiceDecimal < 0.9 ? 1 : 8;
+	let minLineWidth: number = widthChoiceDecimal < 0.9 ? 2 : 8;
 	let maxLineWidth: number = widthChoiceDecimal < 0.9 ? 13 : 50;
 
 	let metalStyle: boolean = !(canvasUniq % 22);
