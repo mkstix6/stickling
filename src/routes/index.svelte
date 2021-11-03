@@ -43,7 +43,7 @@
 				<div style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;">
 					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
 						{#key artSeed}
-							<CanvasArt seed={artSeed} rendersize={2 ** 10} transparent={true} />
+							<CanvasArt seed={artSeed} renderSize={2 ** 10} transparent={true} />
 						{/key}
 					</button>
 					<p

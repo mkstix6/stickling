@@ -39,7 +39,7 @@
 			<div>
 				{date.toString().slice(6, 8)}/{date.toString().slice(4, 6)}/{date.toString().slice(0, 4)}
 				<div class="artcontainer">
-					<CanvasArt seed={date} rendersize={2 ** 9} diagnostics={false} />
+					<CanvasArt seed={date} renderSize={2 ** 9} diagnostics={false} />
 				</div>
 			</div>
 		{/each}
@@ -48,7 +48,7 @@
 	<!-- <div class="group grid">
 		{#each sizes as size}
 			<div class="artcontainer">
-				<CanvasArt seed={20260518} rendersize={2 ** size} diagnostics={true} />
+				<CanvasArt seed={20260518} renderSize={2 ** size} diagnostics={true} />
 			</div>
 		{/each}
 	</div> -->

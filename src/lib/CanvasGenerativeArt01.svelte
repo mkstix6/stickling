@@ -9,11 +9,10 @@
 	export let seed = 1;
 	export let diagnostics = false;
 	export let download = false;
-	export let rendersize = 2 ** 11;
+	export let renderSize = 2 ** 11;
 	export let transparent: boolean = false;
 
 	let circleOnly = transparent;
-	let renderSize = rendersize;
 
 	let canvasElement;
 	let ctx;

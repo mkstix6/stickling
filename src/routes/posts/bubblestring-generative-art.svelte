@@ -5,7 +5,7 @@
 	const artName = 'BubbleString';
 	const today = new Date();
 
-	const rendersize = 2 ** 11;
+	const renderSize = 2 ** 11;
 
 	let currentDate = today;
 	let inputChosenDate = jsDateToInputString(currentDate);
@@ -73,7 +73,7 @@
 
 	<div class="art">
 		{#key chosenDateSeed}
-			<CanvasArt seed={chosenDateSeed} {rendersize} download={true} />
+			<CanvasArt seed={chosenDateSeed} {renderSize} download={true} />
 			<small style="float: right;">seed: <strong>{chosenDateSeed}</strong></small>
 		{/key}
 	</div>
