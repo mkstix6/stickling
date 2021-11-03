@@ -12,6 +12,8 @@
 	export let renderSize = 2 ** 11;
 	export let transparent: boolean = false;
 
+	let reScale = 1024 / renderSize;
+	let canvasScale = renderSize / 1024;
 	let circleOnly = transparent;
 
 	let canvasElement;
@@ -313,15 +315,13 @@
 		if (hueReflect) {
 			// Hue reflect
 			let hueDecimal =
-				(((ogX / (renderSize / 1024) + ogY / (renderSize / 1024)) / (hueRepeatScaler * 2)) %
-					hueRange) /
-				hueRange;
+				(((ogX * reScale + ogY * reScale) / (hueRepeatScaler * 2)) % hueRange) / hueRange;
 			hueDecimal = hueDecimal < 0.5 ? hueDecimal : 1 - hueDecimal;
 			hueDecimal = hueDecimal * 2;
 			hue = hueDecimal * hueRange;
 		} else {
 			// Hue range cycle-snap-repeat
-			hue = ((ogX / (renderSize / 1024) + ogY / (renderSize / 1024)) / hueRepeatScaler) % hueRange;
+			hue = ((ogX * reScale + ogY * reScale) / hueRepeatScaler) % hueRange;
 		}
 		// Procedural hue shift
 		hue = hue + hueShift;
@@ -400,8 +400,9 @@
 	let lineStyle = chooseStyle(canvasUniqDecimal2);
 
 	let maxMoveDistance = Math.round(((seed * generator.next().value) % 20) + minMoveDistance);
+
 	// if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
-	// 	maxMoveDistance = Math.ceil((maxMoveDistance * renderSize) / 1024);
+	// 	maxMoveDistance = Math.ceil(maxMoveDistance * canvasScale);
 	// }
 
 	var d = new Date();
@@ -540,7 +541,7 @@
 
 			if (lineStyle.resolutionAdjustments.stepCount === 'scale') {
 				// Resolution independence: steps for dots need to be the same steps for others need to scale to retain shapes
-				lineSteps = Math.round((lineSteps * renderSize) / 1024);
+				lineSteps = Math.round(lineSteps * canvasScale);
 			}
 
 			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
@@ -564,7 +565,7 @@
 
 				if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
 					// Resolution independence for distance
-					lineMoveDistance = Math.ceil((lineMoveDistance * renderSize) / 1024);
+					lineMoveDistance = Math.ceil(lineMoveDistance * canvasScale);
 					lineMoveDistance = lineMoveDistance < 1 ? 1 : lineMoveDistance;
 				}
 
@@ -618,7 +619,7 @@
 						// This occasionally creates nice concentric dot-flowers
 						let angleChange = canvasUniq2 / ((canvasUniq % 12) + 1);
 						if (lineStyle.resolutionAdjustments.stepAngle === 'scale') {
-							angleChange *= 1024 / renderSize;
+							angleChange *= reScale;
 						}
 
 						newMoveRotation = rotatingClockwise
@@ -640,7 +641,7 @@
 
 				let lineSize = lineStyle.lineWidthAlgorithm(Lwidth, indexStep, lineSteps);
 				if (lineStyle.resolutionAdjustments.lineWidth === 'scale') {
-					lineSize = Math.ceil((lineSize * renderSize) / 1024);
+					lineSize = Math.ceil(lineSize * canvasScale);
 				}
 				ctx.lineWidth = lineSize;
 
