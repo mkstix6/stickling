@@ -1,16 +1,51 @@
+<script context="module">
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load({ page }) {
+		if (page.query.has('seed')) {
+			return {
+				props: {
+					seed: page.query.get('seed'),
+				},
+			};
+		} else {
+			return {
+				props: {
+					seed: undefined,
+				},
+			};
+		}
+	}
+</script>
+
 <script lang="ts">
-	import LogoSticker from '$lib/LogoSticker.svelte';
-	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
+	import { goto } from '$app/navigation';
+
+	export let seed;
 
 	const artName = 'BubbleString';
 	const today = new Date();
+	let renderedSeed;
+	let inputSeed;
+	let currentDate = today;
+
+	let seedMode = 'dateday';
+
+	if (seed) {
+		seedMode = 'basicnumber';
+		renderedSeed = seed;
+		inputSeed = seed;
+	} else {
+		renderedSeed = jsDateToSeed(currentDate);
+	}
+
+	import LogoSticker from '$lib/LogoSticker.svelte';
+	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 
 	const renderSize = 2 ** 11;
 
-	let currentDate = today;
 	let inputChosenDate = jsDateToInputString(currentDate);
-
-	$: chosenDateSeed = jsDateToSeed(currentDate);
 
 	if (typeof String.prototype.replaceAll == 'undefined') {
 		String.prototype.replaceAll = function (match, replace) {
@@ -42,6 +77,15 @@
 		let d = new Date(currentDate);
 		currentDate = new Date(d.setDate(d.getDate() + moveAmount));
 		inputChosenDate = jsDateToInputString(currentDate);
+		renderedSeed = inputDateToSeed(inputChosenDate);
+		seed = inputDateToSeed(inputChosenDate);
+	}
+
+	function changeSeed(newSeed) {
+		inputSeed = parseInt(newSeed);
+		renderedSeed = parseInt(inputSeed);
+		seed = parseInt(inputSeed);
+		goto(`bubblestring-generative-art?seed=${seed}`, { noscroll: true });
 	}
 </script>
 
@@ -61,33 +105,55 @@
 	</p>
 
 	<h2 style="text-align: center;">
-		🗓
-		{#if chosenDateSeed === jsDateToSeed(today)}
-			Today's {artName}
+		{#if seedMode === 'dateday'}
+			🗓
+			{#if renderedSeed === jsDateToSeed(today)}
+				Today's {artName}
+			{:else}
+				{artName} for {renderedSeed.toString().slice(6, 8)}/{renderedSeed
+					.toString()
+					.slice(4, 6)}/{renderedSeed.toString().slice(0, 4)}
+			{/if}
 		{:else}
-			{artName} for {chosenDateSeed.toString().slice(6, 8)}/{chosenDateSeed
-				.toString()
-				.slice(4, 6)}/{chosenDateSeed.toString().slice(0, 4)}
+			{artName}: {seed}
 		{/if}
 	</h2>
 
 	<div class="art">
-		{#key chosenDateSeed}
-			<CanvasArt seed={chosenDateSeed} {renderSize} download={true} />
-			<small style="float: right;">seed: <strong>{chosenDateSeed}</strong></small>
+		{#key renderedSeed}
+			<CanvasArt seed={renderedSeed} {renderSize} download={true} />
+			<small style="float: right;">seed: <strong>{renderedSeed}</strong></small>
 		{/key}
 	</div>
-	<div class="datebuttons">
-		<button on:click={() => moveDate(-1)}>←</button>
-		<div>
-			pick another day <input
-				type="date"
-				bind:value={inputChosenDate}
-				on:change={() => (currentDate = new Date(inputChosenDate))}
-			/>
+	{#if seedMode === 'dateday'}
+		<div class="datebuttons">
+			<button on:click={() => moveDate(-1)}>←</button>
+			<div>
+				pick another day <input
+					type="date"
+					bind:value={inputChosenDate}
+					on:change={() => {
+						currentDate = new Date(inputChosenDate);
+						seed = inputDateToSeed(inputChosenDate);
+						renderedSeed = inputDateToSeed(inputChosenDate);
+					}}
+				/>
+			</div>
+			<button on:click={() => moveDate(1)}>→</button>
 		</div>
-		<button on:click={() => moveDate(1)}>→</button>
-	</div>
+	{:else}
+		<div class="datebuttons">
+			<button on:click={() => changeSeed(parseInt(seed) - 1)}>←</button>
+			<div>
+				choose another seed <input
+					type="number"
+					bind:value={inputSeed}
+					on:change={() => changeSeed(parseInt(inputSeed))}
+				/>
+			</div>
+			<button on:click={() => changeSeed(parseInt(seed) + 1)}>→</button>
+		</div>
+	{/if}
 
 	<p>
 		Much of the insight, theory and technique I used for creating this came from reading the
@@ -112,7 +178,7 @@
 		margin: 0 auto;
 
 		@media screen and (orientation: landscape) {
-			width: 90vh;
+			width: 80vh;
 			height: auto;
 		}
 		@media screen and (orientation: portrait) {
