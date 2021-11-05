@@ -4,7 +4,7 @@
 	 */
 
 	import { onMount } from 'svelte';
-	import { pseudoRandom } from '$lib/utils';
+	import { pseudoRandom, clamp } from '$lib/utils';
 
 	export let seed = 1;
 	export let diagnostics = false;
@@ -418,7 +418,12 @@
 			saturation = 0.1;
 			if (isGrayscaleHighContrast) {
 				// High contrast
-				lightness = lineUniqDecimal > 0.6 ? 80 : lineUniqDecimal < 0.1 ? 95 : 30;
+				lightness =
+					lineUniqDecimal > 0.6
+						? lightness
+						: lineUniqDecimal < 0.1
+						? lightness + 10
+						: lightness - 65;
 			}
 		}
 
@@ -527,6 +532,9 @@
 		if (circleOnly && !withinCircle) {
 			color = `hsla(0,0%,0%,0)`;
 		}
+
+		// Normalise values
+		lightness = clamp(lightness, 0, 100);
 
 		return { color, lightness };
 	}
