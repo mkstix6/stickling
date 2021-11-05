@@ -11,6 +11,7 @@
 	export let download = false;
 	export let renderSize = 2 ** 11;
 	export let transparent: boolean = false;
+	export let doCircle: boolean = true;
 
 	let ogResolution = 1024;
 	let reScale = ogResolution / renderSize;
@@ -115,7 +116,6 @@
 	let isGrayscale: boolean = pseudoRandomDecimal() < 0.07;
 	let isGrayscaleHighContrast: boolean = pseudoRandomDecimal() < 0.5;
 
-	let doCircle: boolean = true; // pseudoRandomDecimal() > 0.5;
 	let doCircleBreaks: boolean = false;
 	let doCircleSoft: boolean = true; // pseudoRandomDecimal() < 0.75;
 	let circleSoftness: number =
