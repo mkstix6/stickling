@@ -748,7 +748,17 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
-		title: 'BubbleString Generative art',
+		month: 11,
+		title: 'SpiroFlare generative art',
+		slug: 'spiroflare-generative-art',
+		type: 'codeart',
+		tech: ['js'],
+		thumbnail: '/posts/spiroflare-thumb.png',
+		codethumbnail: `background: #826;`,
+	},
+	{
+		year: 2021,
+		title: 'BubbleString generative art',
 		slug: 'bubblestring-generative-art',
 		type: 'codeart',
 		tech: ['js'],
