@@ -697,8 +697,13 @@ a.sitelink,
 .page p a:not([href^="/"]):not([href^='http://localhost:3000']):not([href^='https://stickling.co.uk'])
 {
 	&::after {
-		content: '↗️'; /* TODO choose a better icon for external links */
-		margin-left: 0.5em;
+		content: '↗'; /* TODO choose a better icon for external links */
+		margin-left: 0.1em;
+		margin-right: 0.5em;
+		font-size: 0.5em;
+		position: relative;
+		top: -0.5em;
+		text-decoration: none;
 	}
 }
 
