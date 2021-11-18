@@ -287,13 +287,10 @@
 		drawCircle(time + tDiff, color, variance);
 	}
 
-	function drawCircle(time: number, color: string, variance: number = 2.23456789) {
+	function drawCircle(time: number, color: string, variance: number) {
 		ctx.beginPath();
-		radius *= options.lineRadiusChangeRate;
-		if (options.concentricLines) {
-			coverage -= options.coverageChange;
-		} else {
-			coverage *= options.coverageChange;
+		if (!options.globalVariablesAdjustPer || options.globalVariablesAdjustPer === 'circle') {
+			adjustGlobalVariables();
 		}
 		let [arcX, arcY] = options.arcPosition(time, coverage, variance);
 		ctx.arc(arcX, arcY, radius, 0, Math.PI * 2);
