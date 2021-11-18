@@ -5,9 +5,12 @@
 	export let seed = Math.ceil(Math.random() * 100);
 	export let preset: number = 2;
 
+	const renderSize = 2 ** 11;
 	let canvasElement;
 	let ctx;
 	let options;
+	let hardTime = 0;
+	let frameNumber = 0;
 	let globalAlpha = 1;
 	let colors: [number, string][] = [];
 	const variances: number[] = [];
@@ -16,6 +19,13 @@
 
 	onMount(() => {
 		ctx = <CanvasRenderingContext2D>canvasElement.getContext('2d');
+
+		// Prep a bunch of random numbers so they're stable as we add more presets
+		let optionsPRDs = [];
+		for (let i = 0; i < 100; i++) {
+			optionsPRDs.push(pseudoRandomDecimal());
+		}
+
 		const artStyles = [
 			{
 				name: 'NeonFossils',
@@ -29,8 +39,8 @@
 				rotateMagnitude: 0.2,
 				actorCount: 10,
 				globalCompositeOperation: 'source-over',
-				colorRange: 360 * pseudoRandomDecimal(),
-				colorHueShift: 360 * pseudoRandomDecimal(),
+				colorRange: 360 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
 				actorStepDistance: 10,
 				actorStepsPerFrame: 200,
 				lineRadiusStart: 4,
@@ -58,8 +68,8 @@
 				rotateMagnitude: 0.2,
 				actorCount: 10,
 				globalCompositeOperation: 'source-over',
-				colorRange: 360 * pseudoRandomDecimal(),
-				colorHueShift: 360 * pseudoRandomDecimal(),
+				colorRange: 360 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
 				actorStepDistance: 10,
 				actorStepsPerFrame: 200,
 				lineRadiusStart: 4,
@@ -84,8 +94,8 @@
 				rotateMagnitude: 0.04,
 				actorCount: 3,
 				globalCompositeOperation: 'source-over',
-				colorRange: 360 * pseudoRandomDecimal(),
-				colorHueShift: 360 * pseudoRandomDecimal(),
+				colorRange: 360 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
 				actorStepDistance: 15,
 				actorStepsPerFrame: 60,
 				lineRadiusStart: 4,
@@ -111,8 +121,8 @@
 				rotateMagnitude: 0.007,
 				actorCount: 7,
 				globalCompositeOperation: 'source-over',
-				colorRange: 360 * pseudoRandomDecimal(),
-				colorHueShift: 360 * pseudoRandomDecimal(),
+				colorRange: 360 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
 				actorStepDistance: 10,
 				actorStepsPerFrame: 400,
 				lineRadiusStart: 4,
@@ -124,6 +134,36 @@
         + Math.sin(time*0.001142) * coverage * 0.3,
         canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
         + Math.cos(time*0.001142) * coverage * 0.3,
+      ];
+				},
+			},
+			{
+				name: 'WarpFlower',
+				clearBetweenFrames: false,
+				maxFrames: 400,
+				fadeAlpha: true,
+				fadeAlphaRate: 0.015,
+				stopAtZeroWidth: true,
+				concentricLines: true,
+				globalVariablesAdjustPer: 'frame',
+				coverageChange: 10,
+				coverageStart: canvasElement.width * 0.59,
+				rotateMagnitude: Math.PI / (1 + Math.ceil(optionsPRDs[2] * 5) * 0.5),
+				actorCount: 3,
+				globalCompositeOperation: 'source-over',
+				colorRange: 250 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
+				actorStepDistance: 20,
+				actorStepsPerFrame: 150,
+				lineRadiusStart: 4,
+				lineRadiusChangeRate: 0.999,
+				arcPosition(time, coverage, variance): [number, number] {
+					// prettier-ignore
+					return [
+        canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
+        + Math.sin(time*0.0017564) * coverage * 0.3,
+        canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
+        + Math.cos(time*0.00016111) * coverage * 0.3,
       ];
 				},
 			},
@@ -140,8 +180,8 @@
 				rotateMagnitude: 0.1,
 				actorCount: 7,
 				globalCompositeOperation: 'source-over',
-				colorRange: 360 * pseudoRandomDecimal(),
-				colorHueShift: 360 * pseudoRandomDecimal(),
+				colorRange: 360 * optionsPRDs[0],
+				colorHueShift: 360 * optionsPRDs[1],
 				actorStepDistance: 10,
 				actorStepsPerFrame: 400,
 				lineRadiusStart: 4,
@@ -159,8 +199,6 @@
 		];
 
 		options = artStyles[preset];
-		const colorRange = options.colorRange;
-		const hueShift = options.colorHueShift;
 		coverage = options.coverageStart;
 		radius = options.lineRadiusStart;
 
@@ -172,7 +210,7 @@
 		// Create color list
 		for (let i = -options.actorStepsPerFrame / 2; i < options.actorStepsPerFrame / 2; i++) {
 			let linearDecimalPeak = 1 - Math.abs(i) * (1 / (options.actorStepsPerFrame / 2));
-			let hue = i * (colorRange / options.actorStepsPerFrame) + hueShift;
+			let hue = i * (options.colorRange / options.actorStepsPerFrame) + options.colorHueShift;
 			let saturation = 100;
 			let lightness = linearDecimalPeak * 80 + 40;
 			let alpha = linearDecimalPeak;
@@ -187,16 +225,13 @@
 		draw();
 	});
 
-	let frameNumber = 0;
-
-	const renderSize = 2 ** 11;
-
 	let generator = pseudoRandom(seed);
 	function pseudoRandomDecimal() {
 		return parseFloat(`0.${generator.next().value.toString().slice(-5)}`);
 	}
 
 	function draw(time: number = 0) {
+		hardTime += 16;
 		frameNumber++;
 		if (options.fadeAlpha) {
 			globalAlpha -= options.fadeAlphaRate;
@@ -207,11 +242,23 @@
 			fillWithBlack();
 		}
 		rotateCanvas();
-		drawParticles(time);
+		drawParticles(hardTime);
+		if (options.globalVariablesAdjustPer === 'frame') {
+			adjustGlobalVariables();
+		}
 		if (!options.maxFrames || options.maxFrames > frameNumber) {
 			if (!options.stopAtZeroWidth || coverage > 1) {
 				window.requestAnimationFrame(draw);
 			}
+		}
+	}
+
+	function adjustGlobalVariables() {
+		radius *= options.lineRadiusChangeRate;
+		if (options.concentricLines) {
+			coverage -= options.coverageChange;
+		} else {
+			coverage *= options.coverageChange;
 		}
 	}
 
