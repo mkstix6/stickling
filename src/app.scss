@@ -282,9 +282,15 @@ body {
 	font-weight: 600;
 	transform: skewY(-6deg);
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background: white;
 		color: var(--pallette-active);
+	}
+
+	&:active {
+		background: var(--pallette-active);
+		color: white;
 	}
 }
 
