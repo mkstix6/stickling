@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { pseudoRandom } from './utils';
 	import { onMount } from 'svelte';
+	import { tick } from 'svelte';
 
-	export let seed = Math.ceil(Math.random() * 100);
+	export let seed: number = Math.ceil(Math.random() * 100);
 	export let preset: number = 2;
+	export let controls: boolean = false;
 
-	const renderSize = 2 ** 11;
+	let renderSize = 2 ** 11;
 	let canvasElement;
 	let ctx;
 	let options;
@@ -13,22 +15,43 @@
 	let frameNumber = 0;
 	let globalAlpha = 1;
 	let colors: [number, string][] = [];
-	const variances: number[] = [];
+	let variances: number[] = [];
 	let coverage: number;
 	let radius: number;
+	let artStyles = [];
+	let optionsPRDs = [];
+	let generator;
+	let RAF;
+
+	function setStartValues() {
+		hardTime = 0;
+		frameNumber = 0;
+		globalAlpha = 1;
+		ctx.globalAlpha = globalAlpha;
+	}
 
 	onMount(() => {
-		ctx = <CanvasRenderingContext2D>canvasElement.getContext('2d');
+		startDrawing();
+	});
 
+	async function startDrawing() {
+		await tick();
+		window.cancelAnimationFrame(RAF);
+		ctx = <CanvasRenderingContext2D>canvasElement.getContext('2d');
+		// Cancel old animation
+
+		setStartValues();
+		fillWithBlack();
+		generator = pseudoRandom(seed);
 		// Prep a bunch of random numbers so they're stable as we add more presets
-		let optionsPRDs = [];
+		optionsPRDs = [];
 		for (let i = 0; i < 100; i++) {
 			optionsPRDs.push(pseudoRandomDecimal());
 		}
 
-		const artStyles = [
+		artStyles = [
 			{
-				name: 'NeonFossils',
+				name: 'NeonFossil',
 				clearBetweenFrames: false,
 				fadeAlpha: false,
 				fadeAlphaRate: 0.001,
@@ -103,9 +126,9 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					// prettier-ignore
 					return [
-        canvasElement.width / 2 + Math.sin((time * 0.001+variance*500) * Math.PI * 2 * (1 / 2) ) * coverage,
-        canvasElement.height / 2 + Math.cos((time * 0.001+variance*500) * Math.PI * 2 * (1 / 6)) * coverage,
-      ];
+					canvasElement.width / 2 + Math.sin((time * 0.001+variance*500) * Math.PI * 2 * (1 / 2) ) * coverage,
+					canvasElement.height / 2 + Math.cos((time * 0.001+variance*500) * Math.PI * 2 * (1 / 6)) * coverage,
+					];
 				},
 			},
 			{
@@ -130,11 +153,11 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					// prettier-ignore
 					return [
-        canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
-        + Math.sin(time*0.001142) * coverage * 0.3,
-        canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
-        + Math.cos(time*0.001142) * coverage * 0.3,
-      ];
+					canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
+					+ Math.sin(time*0.001142) * coverage * 0.3,
+					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
+					+ Math.cos(time*0.001142) * coverage * 0.3,
+					];
 				},
 			},
 			{
@@ -160,11 +183,11 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					// prettier-ignore
 					return [
-        canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
-        + Math.sin(time*0.0017564) * coverage * 0.3,
-        canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
-        + Math.cos(time*0.00016111) * coverage * 0.3,
-      ];
+					canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
+					+ Math.sin(time*0.0017564) * coverage * 0.3,
+					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
+					+ Math.cos(time*0.00016111) * coverage * 0.3,
+					];
 				},
 			},
 			{
@@ -189,11 +212,11 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					// prettier-ignore
 					return [
-        canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
-        + Math.sin(time*0.001142) * coverage * 0.3,
-        canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
-        + Math.cos(time*0.001142) * coverage * 0.3,
-      ];
+					canvasElement.width / 2 + Math.sin(time*0.002 + variance * 6523) * coverage * variance*0.4
+					+ Math.sin(time*0.001142) * coverage * 0.3,
+					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
+					+ Math.cos(time*0.001142) * coverage * 0.3,
+					];
 				},
 			},
 		];
@@ -203,11 +226,13 @@
 		radius = options.lineRadiusStart;
 
 		// Create list of particle differences
+		variances = [];
 		for (let i = 0; i < options.actorCount; i++) {
 			variances.push(pseudoRandomDecimal());
 		}
 
 		// Create color list
+		colors = [];
 		for (let i = -options.actorStepsPerFrame / 2; i < options.actorStepsPerFrame / 2; i++) {
 			let linearDecimalPeak = 1 - Math.abs(i) * (1 / (options.actorStepsPerFrame / 2));
 			let hue = i * (options.colorRange / options.actorStepsPerFrame) + options.colorHueShift;
@@ -223,9 +248,8 @@
 		// Start
 		fillWithBlack();
 		draw();
-	});
+	}
 
-	let generator = pseudoRandom(seed);
 	function pseudoRandomDecimal() {
 		return parseFloat(`0.${generator.next().value.toString().slice(-5)}`);
 	}
@@ -248,7 +272,7 @@
 		}
 		if (!options.maxFrames || options.maxFrames > frameNumber) {
 			if (!options.stopAtZeroWidth || coverage > 1) {
-				window.requestAnimationFrame(draw);
+				RAF = window.requestAnimationFrame(draw);
 			}
 		}
 	}
@@ -301,17 +325,99 @@
 
 	function fillWithBlack() {
 		ctx.globalCompositeOperation = 'source-over';
-		ctx.fillStyle = '#000';
-		ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+		ctx.fillStyle = '#000F';
+		ctx.fillRect(-100, -100, canvasElement.width + 100, canvasElement.height + 100);
 	}
 </script>
 
-<canvas bind:this={canvasElement} width={renderSize} height={renderSize}>Rendering…</canvas>
-<div><small>{options?.name} #{seed}</small></div>
+<small>{options?.name} #{seed}</small>
+
+{#key seed + preset}
+	<canvas bind:this={canvasElement} width={renderSize} height={renderSize}>Rendering…</canvas>
+{/key}
+
+<div>
+	{#if controls}
+		<div style="float: right;">
+			<button
+				class="megaButton"
+				on:click={() => {
+					seed = Math.ceil(Math.random() * 1000);
+					startDrawing();
+				}}>Draw a new one!</button
+			>
+		</div>
+	{/if}
+	{#if controls}
+		<div>
+			Choose a preset…
+			<div class="radiobuttons">
+				{#each artStyles as { name }, index}
+					<div class="radiobuttons__button">
+						<input
+							type="radio"
+							value={index}
+							id="preset{index}"
+							name="preset{index}"
+							bind:group={preset}
+							on:click={() => {
+								preset = index;
+								startDrawing();
+							}}
+						/>
+						<label for="preset{index}">{name}</label>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+</div>
 
 <style lang="scss">
 	canvas {
 		width: 100%;
 		height: 100%;
+	}
+
+	.radiobuttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-top: 0.25rem;
+
+		input {
+			position: absolute;
+			visibility: hidden;
+		}
+
+		label {
+			border-radius: 2px;
+			background: #0004;
+			display: block;
+			padding: 0.25rem 0.5rem;
+			border: 1px solid #fff5;
+			text-align: center;
+
+			&:focus,
+			&:hover {
+				background: var(--pallette-active-transparent);
+			}
+			&:active {
+				background: var(--pallette-active);
+			}
+		}
+
+		input:checked + label {
+			background: var(--pallette-active);
+			color: white;
+		}
+
+		&__button {
+			display: flex;
+			align-items: center;
+		}
 	}
 </style>

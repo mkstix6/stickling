@@ -42,7 +42,7 @@
 		<em>just right</em> you can get some lovely repeatable results.
 	</p>
 	<div class="art">
-		<SpiroFlareCanvasArt {seed} {preset} />
+		<SpiroFlareCanvasArt {seed} {preset} controls={true} />
 	</div>
 </div>
 
