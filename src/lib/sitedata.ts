@@ -29,6 +29,13 @@ export const socialDetails = [
 		contactUrl: 'https://github.com/mkstix6',
 		kind: 'codeExamples',
 	},
+	{
+		service: 'instagram',
+		serviceDisplayCase: 'Instagram',
+		handle: 'mkstix6',
+		contactUrl: 'https://www.instagram.com/mkstix6/',
+		kind: 'art',
+	},
 ];
 
 export const photography = [

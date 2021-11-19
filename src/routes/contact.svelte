@@ -3,6 +3,7 @@
 	import { socialDetails } from '$lib/sitedata';
 
 	const contactDetails = socialDetails.filter((item) => item.kind === 'contactInfo');
+	const artPosts = socialDetails.filter((item) => item.kind === 'art');
 	const codeExamples = socialDetails.filter((item) => item.kind === 'codeExamples');
 </script>
 
@@ -32,6 +33,22 @@
 			<h2>I upload code to these places</h2>
 			<ul>
 				{#each codeExamples as { handle, contactUrl, serviceDisplayCase, service }}
+					<li>
+						<a href={contactUrl}>
+							<span class="icon">
+								<SocialIcon {service} />
+							</span>
+							{handle || 'Mark'} on {serviceDisplayCase}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</aside>
+
+		<aside class="section px3 py3">
+			<h2>I post art or photography on these services</h2>
+			<ul>
+				{#each artPosts as { handle, contactUrl, serviceDisplayCase, service }}
 					<li>
 						<a href={contactUrl}>
 							<span class="icon">
