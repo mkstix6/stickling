@@ -60,7 +60,7 @@
 		margin: 0 auto;
 
 		@media screen and (orientation: landscape) {
-			width: 80vh;
+			width: 75vh;
 			height: auto;
 		}
 		@media screen and (orientation: portrait) {

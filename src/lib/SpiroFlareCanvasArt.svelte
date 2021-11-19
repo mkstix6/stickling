@@ -140,7 +140,7 @@
 				stopAtZeroWidth: true,
 				concentricLines: false,
 				coverageChange: 0.999997,
-				coverageStart: canvasElement.width * 0.73,
+				coverageStart: canvasElement.width * 0.7,
 				rotateMagnitude: 0.007,
 				actorCount: 7,
 				globalCompositeOperation: 'source-over',
@@ -330,7 +330,7 @@
 	}
 </script>
 
-<small>{options?.name} #{seed}</small>
+<h2 class="h4">{options?.name} #{`${seed}`.padStart(3, '000')}</h2>
 
 {#key seed + preset}
 	<canvas bind:this={canvasElement} width={renderSize} height={renderSize}>Rendering…</canvas>
