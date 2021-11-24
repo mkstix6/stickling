@@ -153,6 +153,24 @@
 				</li>
 			</ul>
 		</section> -->
+
+		<aside class="relaxZone">
+			<h2 class="h4 my3">That's all, take a moment for yourself…</h2>
+			<video loop muted autoplay playsinline tabindex="-1" class="relaxVideo">
+				<source src="/video/grassy-green720.webm" type="video/webm" />
+				<source src="/video/grassy-green720.mp4" type="video/mp4" />
+				<p>
+					Your browser doesn't support HTML5 video. Here is a <a href="/video/grassy-green720.mp4"
+						>link to the video</a
+					> instead.
+				</p>
+			</video>
+			<p>
+				<small>
+					<a href="https://codepen.io/mkstix6/full/ExvBYVK">JS canvas animation on CodePen</a>
+				</small>
+			</p>
+		</aside>
 	</div>
 </main>
 
@@ -223,4 +241,24 @@
 	// .section--hero {
 	// 	margin-bottom: 5rem;
 	// }
+
+	.relaxZone {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 90vw;
+		margin: 0 auto;
+
+		h2 {
+			text-align: center;
+		}
+	}
+
+	.relaxVideo {
+		border-radius: 100%;
+		width: 62vmin;
+		height: 62vmin;
+		box-shadow: 0 1em 5em 10em #0005;
+	}
 </style>
