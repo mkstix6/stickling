@@ -36,7 +36,13 @@
 			>
 				<h1 class="angletext" style="flex: 0 1 10em; z-index: 1;">
 					I'm
-					<strong class="color-active fontsize-double">Mark Stickling</strong><br />
+					<strong class="color-active fontsize-double wiggly-text"
+						><span class="word"><span>M</span><span>a</span><span>r</span><span>k</span></span><span
+							class="word"
+							><span>S</span><span>t</span><span>i</span><span>c</span><span>k</span><span>l</span
+							><span>i</span><span>n</span><span>g</span></span
+						></strong
+					><br />
 					a <em style="font-style: normal;">frontend web developer</em>
 				</h1>
 
@@ -182,6 +188,14 @@
 		// }
 	}
 
+	@keyframes rotate {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
 	.artContainer {
 		z-index: 0;
 		width: 100%;
@@ -193,6 +207,8 @@
 		padding: 0;
 		transition: background 400ms;
 		cursor: pointer;
+		animation: rotate 500s infinite;
+		animation-timing-function: linear;
 
 		// &:focus,
 		// &:hover {
@@ -256,9 +272,51 @@
 	}
 
 	.relaxVideo {
-		border-radius: 100%;
+		// border-radius: 100%;
 		width: 62vmin;
 		height: 62vmin;
 		box-shadow: 0 1em 5em 10em #0005;
+		clip-path: polygon(
+			50% 0%,
+			93.30127019% 25%,
+			93.30127019% 75%,
+			50% 100%,
+			6.698729811% 75%,
+			6.698729811% 25%
+		);
+	}
+
+	@keyframes wigglytext {
+		0% {
+			transform: rotateY(5deg) translateY(0);
+		}
+		50% {
+			transform: rotateY(-5deg) translateY(-0.2em);
+		}
+		100% {
+			transform: rotateY(5deg) translateY(0);
+		}
+	}
+
+	.wiggly-text {
+		span.word {
+			display: inline-block;
+			// position: relative;
+			perspective: 200px;
+
+			> span {
+				display: inline-block;
+				animation: wigglytext 5s infinite;
+				animation-timing-function: ease-in-out;
+				animation-fill-mode: both;
+				// text-shadow: 0.03em 0.03em 0 white;
+
+				@for $i from 0 through 10 {
+					&:nth-last-child(#{$i}) {
+						animation-delay: 300ms * $i;
+					}
+				}
+			}
+		}
 	}
 </style>
