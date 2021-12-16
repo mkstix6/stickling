@@ -1,14 +1,14 @@
 <script lang="ts">
 	import PhotographyImage from '$lib/PhotographyImage.svelte';
 	import AnimateIn from '$lib/AnimateIn.svelte';
-	import { photography } from '$lib/sitedata';
+	import { photography as photoData } from '$lib/sitedata';
 </script>
 
 <h1 class="angletext">Photography</h1>
 <p>Some of the photos I've taken over the years I'm most pleased with.</p>
 
 <div class="photogrid">
-	{#each photography as { filename, alt }}
+	{#each photoData as { filename, alt }}
 		<div class="imgcontainer">
 			<AnimateIn
 				from="transform: translateX(5px) translateY(50px) rotateY(20deg); opacity: 0;"
