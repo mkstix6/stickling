@@ -922,6 +922,27 @@ export interface Bookmark {
 
 export const bookmarks: Bookmark[] = [
 	{
+		title: 'How You Can Draw Regular Polygons with the HTML5 Canvas API',
+		url:
+			'http://wp.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/',
+		tech: ['js', 'canvas'],
+		kind: 'article',
+	},
+	{
+		title: 'Docker: How to delete all local Docker images',
+		url:
+			'https://stackoverflow.com/questions/44785585/docker-how-to-delete-all-local-docker-images',
+		tech: ['docker'],
+		kind: 'article',
+	},
+	{
+		title: 'Blender — Rotating each iteration of an Array Modifier',
+		url:
+			'https://blender.stackexchange.com/questions/2402/rotating-each-iteration-of-an-array-modifier',
+		tech: ['blender'],
+		kind: 'article',
+	},
+	{
 		title: 'Styling list bullets with emoji',
 		url: 'https://www.clairecodes.com/blog/2019-04-26-styling-list-bullets-with-emoji/',
 		date: '26 April 2019',
