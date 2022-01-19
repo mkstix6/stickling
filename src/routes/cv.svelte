@@ -15,8 +15,7 @@
 				<h2 class="h3">Employment history</h2>
 				<ul class="cvlist">
 					<li style="--durationyears: 6;">
-						<h3>Senior Frontend developer</h3>
-						<p>
+						<h3>Senior Front-end developer</h3>
 							<small
 								><time datetime="2015">2015</time>-<time datetime="2021">2021</time>
 								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>

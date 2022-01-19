@@ -23,7 +23,7 @@
 		</p>
 		<p>
 			<strong class="gradient">
-				I primarily wrote the frontend code using <LogoSticker logokey="vue" /> Vue.js and the <LogoSticker
+				I primarily wrote the front-end code using <LogoSticker logokey="vue" /> Vue.js and the <LogoSticker
 					logokey="nuxt"
 				/> Nuxt.js framework.
 			</strong>

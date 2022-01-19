@@ -13,7 +13,7 @@
 	<div class="page" style="padding-top: 10vw;">
 		<section class="section px3">
 			<h1 class="angletext">About me…</h1>
-			<p>Hey 👋, so, I'm a frontend web developer based in London U.K.</p>
+			<p>Hey 👋, so, I'm a front-end web developer based in London U.K.</p>
 		</section>
 
 		<section class="section px3">
@@ -70,7 +70,7 @@
 				<div class="mytechexperience">
 					<h3>I've built up a variety of skills:</h3>
 					<div class="skillcard">
-						I'm familiar with <strong>modern frontend frameworks</strong> such as <em>Vue.js</em>,
+						I'm familiar with <strong>modern front-end frameworks</strong> such as <em>Vue.js</em>,
 						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
 						<div class="logorow">
 							<LogoSticker logokey="vue" />
@@ -119,7 +119,7 @@
 						</div>
 					</div>
 					<div class="skillcard">
-						I've implemented <strong>data driven</strong> frontends calling on
+						I've implemented <strong>data driven</strong> front-ends calling on
 						<em>R.E.S.T APIs</em>. We organise and test their schemas with <em>Postman</em>. I'm
 						keen to improve my <em>GraphQL</em> skills.
 						<div class="logorow">

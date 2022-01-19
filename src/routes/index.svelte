@@ -43,7 +43,7 @@
 							><span>i</span><span>n</span><span>g</span></span
 						></strong
 					><br />
-					a <em style="font-style: normal;">frontend web developer</em>
+					a <em style="font-style: normal;">front-end web developer</em>
 				</h1>
 
 				<div style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;">
