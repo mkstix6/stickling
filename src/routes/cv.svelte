@@ -1,5 +1,19 @@
 <script>
 	import SocialIcon from '$lib/SocialIcon.svelte';
+	import LogoSticker from '$lib/LogoSticker.svelte';
+
+	const skillsList = [
+		{ key: 'svelte', name: 'Svelte' },
+		{ key: 'vue', name: 'Vue' },
+		{ key: 'js', name: 'JS' },
+		{ key: 'typescript', name: 'TypeScript' },
+		{ key: 'html', name: 'HTML' },
+		{ key: 'css', name: 'CSS' },
+		{ key: 'cypress', name: 'Cypress.js testing' },
+		{ key: 'three', name: 'Three.js 3D' },
+		// { key: 'aws', name: 'AWS' },
+		// { key: 'docker', name: 'Docker' },
+	];
 </script>
 
 <svelte:head>
@@ -8,33 +22,59 @@
 
 <main id="main" class="py3">
 	<div class="gutterpadding py3">
-		<h1 class="angletext">Mark Stickling CV</h1>
+		<header>
+			<h1 class="angletext">Mark Stickling CV</h1>
+			<p class="angletext">Front-end web developer</p>
+		</header>
+
+		<section class="summary mt0 mb2">
+			<p>Javascript framework developer</p>
+		</section>
 
 		<div class="grid">
 			<section class="employment">
-				<h2 class="h3">Employment history</h2>
+				<h2>Employment history</h2>
 				<ul class="cvlist">
 					<li style="--durationyears: 6;">
 						<h3>Senior Front-end developer</h3>
+						<p class="experienceMeta">
 							<small
 								><time datetime="2015">2015</time>-<time datetime="2021">2021</time>
 								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
 							</small>
 						</p>
-						<p>
-							My departmental responsibilities included assisting the department lead with team
-							organisation and supporting junior staff and interns. Client communication.
-							Facilitation of, and contributing to, project meetings.
-						</p>
-						<p>
-							Building webapps with the Vue.js and Nuxt.js frameworks with REST APIs for data
-							delivery. Also building bespoke WordPress based brochure websites and integrating 3D
-							experiences using three.js.
-						</p>
+						<h4>Departmental responsibilities:</h4>
+						<ul>
+							<li>assisting the department lead with team organisation.</li>
+							<li>
+								facilitation of, and contributing to, project meetings – with clients and
+								internally.
+							</li>
+							<li>supporting junior staff and teaching interns.</li>
+						</ul>
+						<h4>Technical responsibilities:</h4>
+						<ul>
+							<li>
+								managing and developing web applications with the <strong class="nowrap"
+									><LogoSticker logokey="vue" /> Vue.js</strong
+								>
+								and
+								<strong class="nowrap"><LogoSticker logokey="nuxt" /> Nuxt.js</strong> frameworks.
+							</li>
+							<li>setting up and monitoring CI/CD pipelines.</li>
+							<li>utilising REST APIs for data delivery.</li>
+							<li>co-designing and documenting APIs with my backend colleagues.</li>
+							<li>testing accessibility (a11y) and WCAG compliance.</li>
+							<li>S.E.O. analysis and improvement work.</li>
+							<li>code performance analysis and improvement work.</li>
+							<li>building bespoke WordPress based brochure websites.</li>
+							<li>building static HTML websites.</li>
+							<li>integrating 3D experiences using Three.js.</li>
+						</ul>
 					</li>
 					<li style="--durationyears: 2;">
-						<h3>Frontend developer</h3>
-						<p>
+						<h3>Front-end developer</h3>
+						<p class="experienceMeta">
 							<small>
 								<time datetime="2013">2013</time>-<time datetime="2015">2015</time>
 								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
@@ -50,7 +90,7 @@
 					</li>
 					<li style="--durationyears: 1;">
 						<h3>Development intern</h3>
-						<p>
+						<p class="experienceMeta">
 							<small>
 								<time datetime="2012-05">2012</time>-<time datetime="2013">2013</time>
 								<a href="https://www.minttwist.com">@ MintTwist digital agency</a>
@@ -68,7 +108,7 @@
 							<abbr title="Special Educational Needs">S.E.N.</abbr>
 							Teaching Assistant
 						</h3>
-						<p>
+						<p class="experienceMeta">
 							<small>
 								<time datetime="2009-09">2009</time>-<time datetime="2012-07">2012</time>
 								<a href="https://www.glebe.bromley.sch.uk">@ Glebe School</a>
@@ -85,11 +125,11 @@
 			</section>
 
 			<section class="education">
-				<h2 class="h3">Education</h2>
+				<h2>Education</h2>
 				<ul class="cvlist">
 					<li style="--durationyears: 3;">
 						<h3>Physics BSc</h3>
-						<p>
+						<p class="experienceMeta">
 							<small>
 								<time datetime="2005-09">2005</time>-<time datetime="2008-08">2008</time>
 								<a href="https://warwick.ac.uk">@ University of Warwick</a>
@@ -101,21 +141,26 @@
 
 			<div class="contact">
 				<section class="mb2">
-					<h2>Website</h2>
-					<p style="display: flex; align-items: center;">
-						<img class="qr" src="/cv/qr-sticklingcouk-cv.png" alt="QR code to stickling.co.uk" />
-						<a href="https://stickling.co.uk">stickling.co.uk</a>
-					</p>
+					<h2>Primary Skills</h2>
+					<ul class="skillsList">
+						{#each skillsList as { key, name }}
+							<li>
+								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
+									><LogoSticker logokey={key} /></span
+								>
+								{name}
+							</li>
+						{/each}
+					</ul>
 				</section>
-
 				<section class="mb2">
-					<h2 class="h3">Contact</h2>
+					<h2>Contact</h2>
 					<p>
-						<SocialIcon service="twitter" />
+						<span class="bulletIcon"><SocialIcon service="twitter" /></span>
 						<a href="https://twitter.com/mkstix6">twitter.com/mkstix6</a>
 					</p>
 					<p>
-						<SocialIcon service="linkedin" />
+						<span class="bulletIcon"><SocialIcon service="linkedin" /></span>
 						<a href="https://www.linkedin.com/in/mark-stickling-b77ba246/">
 							linkedin.com/in/mark-stickling-b77ba246/
 						</a>
@@ -123,10 +168,23 @@
 				</section>
 
 				<section class="mb2">
-					<h2 class="h3">Location</h2>
-					<p>
-						I live in London and can travel thoughout the city (national restrictions providing).
+					<h2>Portfolio</h2>
+					<p>built with <LogoSticker logokey="svelte" /> SvelteKit</p>
+					<p style="display: flex; align-items: center;">
+						<span class="bulletIcon"
+							><img
+								class="qr"
+								src="/cv/qr-sticklingcouk-cv.png"
+								alt="QR code to stickling.co.uk"
+							/></span
+						>
+						<a href="https://stickling.co.uk">stickling.co.uk</a>
 					</p>
+				</section>
+
+				<section class="mb2">
+					<h2>Location</h2>
+					<p>London</p>
 				</section>
 			</div>
 		</div>
@@ -182,7 +240,7 @@
 	.qr {
 		width: 1em;
 		height: 1em;
-		margin-right: 0.5em;
+		margin-right: 0.25em;
 
 		@media print {
 			width: 5em;
@@ -210,6 +268,18 @@
 		padding: 0 0 1em 0;
 	}
 
+	header {
+		margin: 0 0 1.5rem 0;
+		h1 {
+			padding-bottom: 0;
+		}
+		p {
+			font-size: 1.5em;
+			font-weight: 600;
+			margin: 0;
+		}
+	}
+
 	h2 {
 		font-size: 1.5rem;
 		font-weight: 400;
@@ -219,7 +289,7 @@
 	}
 
 	h3 {
-		font-size: 1rem;
+		font-size: 1.2rem;
 		font-weight: 400;
 		color: var(--bodycolor);
 		background: none;
@@ -244,9 +314,38 @@
 		line-height: 1.4;
 	}
 
+	.experienceMeta {
+		margin-bottom: 1.5rem;
+	}
+
+	.bulletIcon {
+		margin-right: 0.25em;
+		position: relative;
+		top: 0.05em;
+	}
+
 	.cvlist {
 		list-style: none;
 		margin-bottom: 3rem;
+
+		h4 {
+			background: none;
+			color: inherit;
+			font-weight: 600;
+			font-size: 16px;
+			margin: 0 0 0.5rem 0;
+		}
+
+		ul {
+			margin-bottom: 2rem;
+		}
+
+		ul,
+		li {
+			font-size: 16px;
+			list-style-position: outside;
+			padding-left: 0;
+		}
 
 		a {
 			text-decoration: none;
@@ -259,11 +358,22 @@
 			}
 		}
 
+		p,
+		li {
+			line-height: 1.5;
+		}
+
 		p ~ p {
 			margin-top: 1em;
 		}
 
-		li {
+		h4 + p,
+		h4 + ul,
+		h4 + ul > li:first-child {
+			margin-top: 0;
+		}
+
+		> li {
 			margin-bottom: 1em;
 			padding: 1.5em 0;
 
@@ -374,6 +484,23 @@
 
 		.printbutton {
 			display: none;
+		}
+	}
+
+	.skillsList {
+		list-style: none;
+		padding-left: 0;
+		display: flex;
+		flex-wrap: wrap;
+
+		li {
+			// border: 1px solid currentColor;
+			// padding: 0 0.2em 0.6em 0;
+			border-radius: 2em;
+			margin: 0 1.5em 1.2em 0;
+			display: flex;
+			align-items: center;
+			font-size: 16px;
 		}
 	}
 </style>
