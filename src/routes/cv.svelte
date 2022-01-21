@@ -3,16 +3,17 @@
 	import LogoSticker from '$lib/LogoSticker.svelte';
 
 	const skillsList = [
-		{ key: 'svelte', name: 'Svelte' },
-		{ key: 'vue', name: 'Vue' },
 		{ key: 'js', name: 'JS' },
 		{ key: 'typescript', name: 'TypeScript' },
-		{ key: 'html', name: 'HTML' },
+		{ key: 'vue', name: 'Vue' },
+		{ key: 'svelte', name: 'Svelte' },
 		{ key: 'css', name: 'CSS' },
-		{ key: 'cypress', name: 'Cypress.js testing' },
+		{ key: 'sass', name: 'SCSS' },
+		{ key: 'html', name: 'HTML' },
+		{ key: 'cypress', name: 'Cypress.js' },
 		{ key: 'three', name: 'Three.js 3D' },
-		// { key: 'aws', name: 'AWS' },
-		// { key: 'docker', name: 'Docker' },
+		{ key: 'aws', name: 'AWS' },
+		{ key: 'docker', name: 'Docker' },
 	];
 </script>
 
@@ -28,7 +29,11 @@
 		</header>
 
 		<section class="summary mt0 mb2">
-			<p>Javascript framework developer</p>
+			<p>
+				I'm a dilligent developer interested in building modern web experiences with good
+				accessibility and semantic qualities. Interested in the latest web development trends, most
+				recently working with TypeScript, Svelte and Vue.
+			</p>
 		</section>
 
 		<div class="grid">
@@ -64,9 +69,10 @@
 							<li>setting up and monitoring CI/CD pipelines.</li>
 							<li>utilising REST APIs for data delivery.</li>
 							<li>co-designing and documenting APIs with my backend colleagues.</li>
+							<li>unit-testing and integration-testing.</li>
 							<li>testing accessibility (a11y) and WCAG compliance.</li>
 							<li>S.E.O. analysis and improvement work.</li>
-							<li>code performance analysis and improvement work.</li>
+							<li>website performance analysis and improvement work.</li>
 							<li>building bespoke WordPress based brochure websites.</li>
 							<li>building static HTML websites.</li>
 							<li>integrating 3D experiences using Three.js.</li>
@@ -153,6 +159,20 @@
 						{/each}
 					</ul>
 				</section>
+
+				<section class="mb2">
+					<h2>Recent projects</h2>
+					<ul>
+						<li>
+							<a href="https://brandirectory.com"
+								><img alt="" src="project-favicons/project-favicon-34.png" width="16" height="16" />
+								Brand Directory.com</a
+							>
+							— built front-end with Vue.js and Nuxt.js. Consuming REST APIs for data.
+						</li>
+					</ul>
+				</section>
+
 				<section class="mb2">
 					<h2>Contact</h2>
 					<p>
