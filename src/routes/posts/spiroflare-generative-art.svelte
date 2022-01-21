@@ -2,16 +2,16 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page }) {
+	export async function load({ url: { searchParams } }) {
 		let props = {
 			seed: Math.ceil(Math.random() * 100),
 			preset: 2,
 		};
-		if (page.query.has('seed')) {
-			props.seed = page.query.get('seed');
+		if (searchParams.has('seed')) {
+			props.seed = parseInt(searchParams.get('seed'));
 		}
-		if (page.query.has('preset')) {
-			props.preset = page.query.get('preset');
+		if (searchParams.has('preset')) {
+			props.preset = parseInt(searchParams.get('preset'));
 		}
 		return { props };
 	}

@@ -1,9 +1,11 @@
 <script context="module">
-	export const load = async ({ page }) => ({
-		props: {
-			pagePath: page.path,
-		},
-	});
+	export const load = async ({ url: { pathname } }) => {
+		return {
+			props: {
+				pagePath: pathname,
+			},
+		};
+	};
 </script>
 
 <script>

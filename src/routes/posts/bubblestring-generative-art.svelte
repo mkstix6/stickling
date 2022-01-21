@@ -2,11 +2,11 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page }) {
-		if (page.query.has('seed')) {
+	export async function load({ url: { searchParams } }) {
+		if (searchParams.has('seed')) {
 			return {
 				props: {
-					seed: page.query.get('seed'),
+					seed: parseInt(searchParams.get('seed')),
 				},
 			};
 		} else {

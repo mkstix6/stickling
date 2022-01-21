@@ -15,7 +15,8 @@
 
 <nav>
 	{#each pages as navpage}
-		<a href={navpage.path} class:currentpage={$page.path === navpage.path}>{navpage.text}</a>
+		<a href={navpage.path} class:currentpage={$page.url.pathname === navpage.path}>{navpage.text}</a
+		>
 	{/each}
 </nav>
 

@@ -1,20 +1,20 @@
 <script context="module">
-	export async function load({ page }) {
+	export async function load({ url: { pathname } }) {
 		return {
 			props: {
-				page,
+				pathname,
 			},
 		};
 	}
 </script>
 
 <script lang="ts">
-	export let page;
+	export let pathname;
 
 	import PostPortal from '$lib/PostPortal.svelte';
 	import { postItems } from '$lib/sitedata';
 
-	$: slug = page.path.split('/').pop();
+	$: slug = pathname.split('/').pop();
 	$: thisPost = postItems.find((item) => item.slug === slug);
 	$: thisPostIndex = postItems.findIndex((item) => item.slug === slug);
 	$: prevPost = postItems[thisPostIndex - 1];
