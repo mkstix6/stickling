@@ -80,20 +80,20 @@
 		--ringTimer-bg: var(--card-backgroundcolor);
 	}
 
-	.ringTimer {
-		display: inline-grid;
-		grid-template-columns: 1fr 1fr;
-		padding: 2rem;
-		border-radius: 2rem;
-		box-shadow: 0 0.5rem 3rem -1.5rem #0005;
-		background: var(--ringTimer-bg);
+	// .ringTimer {
+	// 	display: inline-grid;
+	// 	grid-template-columns: 1fr 1fr;
+	// 	padding: 2rem;
+	// 	border-radius: 2rem;
+	// 	box-shadow: 0 0.5rem 3rem -1.5rem #0005;
+	// 	background: var(--ringTimer-bg);
 
-		&--ringOnly {
-			border-radius: 100%;
-			display: inline-block;
-			padding: 0.25rem;
-		}
-	}
+	// 	&--ringOnly {
+	// 		border-radius: 100%;
+	// 		display: inline-block;
+	// 		padding: 0.25rem;
+	// 	}
+	// }
 
 	.ring {
 		--ringsize: 7rem;

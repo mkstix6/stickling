@@ -9,7 +9,7 @@
 	// Props
 	export let onDuration = 30; // Number of seconds
 	export let offDuration = 15; // Number of seconds
-	export let loopStyle = 'single'; // Options 'single' | IDEA'double' | IDEA'countdown'
+	export const loopStyle = 'single'; // Options 'single' | IDEA'double' | IDEA'countdown'
 	export let widgetLayout = 'verbose'; // Options 'ringOnly' | 'verbose'
 	export let clockStyle = 'single';
 

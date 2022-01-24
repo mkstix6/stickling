@@ -497,10 +497,10 @@
 			font-size: 0.8em;
 		}
 
-		&.validRow {
-			// color: #5b5;
-			color: black;
-		}
+		// &.validRow {
+		// 	// color: #5b5;
+		// 	color: black;
+		// }
 		&.invalidRow {
 			// color: #b55;
 		}

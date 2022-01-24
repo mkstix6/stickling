@@ -233,10 +233,10 @@
 		}
 	}
 
-	.threecontainer {
-		width: 40vw;
-		height: 40vw;
-	}
+	// .threecontainer {
+	// 	width: 40vw;
+	// 	height: 40vw;
+	// }
 
 	.wordcloud {
 		position: relative;

@@ -916,7 +916,7 @@
 		transform-origin: left top;
 	}
 
-	.roundButton {
+	/* .roundButton {
 		--buttonsize: 3em;
 		width: var(--buttonsize);
 		height: var(--buttonsize);
@@ -926,5 +926,5 @@
 		border: 1px solid black;
 		background: white;
 		padding: 0;
-	}
+	} */
 </style>

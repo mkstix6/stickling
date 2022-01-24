@@ -47,9 +47,6 @@
 </div>
 
 <style lang="scss">
-	h2 {
-		margin-bottom: 0.5em;
-	}
 	.layout {
 		display: flex;
 		flex-direction: column;

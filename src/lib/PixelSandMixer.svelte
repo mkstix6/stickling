@@ -658,21 +658,6 @@ Compass: ${compass}
 		--roundedness: 100%;
 	}
 
-	html {
-		background: #eee;
-		display: grid;
-		place-items: center;
-		min-height: 100vh;
-		min-height: -webkit-fill-available;
-		color: black;
-	}
-	@media (prefers-color-scheme: dark) {
-		html {
-			background: #111;
-			color: white;
-		}
-	}
-
 	.noUserSelect {
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -762,18 +747,18 @@ Compass: ${compass}
 			filter: invert(1);
 		}
 	}
-	#motionControlsPermsButton.gyro-active {
+	/* #motionControlsPermsButton.gyro-active {
 		background-color: rgb(64, 213, 131);
-	}
+	} */
 	.icon--active {
 		display: none;
 	}
-	#motionControlsPermsButton.gyro-active .icon--active {
+	/* #motionControlsPermsButton.gyro-active .icon--active {
 		display: block;
 	}
 	#motionControlsPermsButton.gyro-active .icon--inactive {
 		display: none;
-	}
+	} */
 
 	.gyroreadout {
 		display: grid;
@@ -833,9 +818,9 @@ Compass: ${compass}
 	.key span {
 		filter: sepia(100%) hue-rotate(90deg) contrast(200%) brightness(90%);
 	}
-	.key.flash {
+	/* .key.flash {
 		animation: keyFlash 800ms 1;
-	}
+	} */
 	.key--up {
 		grid-row: 1 / 2;
 		grid-column: 2 / 3;

@@ -387,7 +387,7 @@
 			margin-top: 1em;
 		}
 
-		h4 + p,
+		// h4 + p,
 		h4 + ul,
 		h4 + ul > li:first-child {
 			margin-top: 0;

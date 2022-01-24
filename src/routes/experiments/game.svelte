@@ -72,9 +72,9 @@
 		flex-direction: column;
 	}
 
-	.group {
-		margin-bottom: 3em;
-	}
+	// .group {
+	// 	margin-bottom: 3em;
+	// }
 	.grid .artcontainer {
 		--size: 256px;
 		/* --size: auto; */
@@ -86,9 +86,9 @@
 		aspect-ratio: 1/1;
 	}
 
-	.halfs {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
-	}
+	// .halfs {
+	// 	display: grid;
+	// 	grid-template-columns: 1fr 1fr;
+	// 	gap: 1rem;
+	// }
 </style>
