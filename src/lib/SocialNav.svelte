@@ -1,10 +1,17 @@
 <script lang="ts">
 	import SocialIcon from '$lib/SocialIcon.svelte';
 	import { socialDetails } from '$lib/sitedata';
+
+	export let selection = undefined;
+
+	let iconList = socialDetails;
+	if (selection !== undefined) {
+		iconList = socialDetails.filter(({ kind }) => kind === 'contactInfo');
+	}
 </script>
 
 <nav class="socialnav">
-	{#each socialDetails as { contactUrl, serviceDisplayCase, service }}
+	{#each iconList as { contactUrl, serviceDisplayCase, service }}
 		<!-- prettier-ignore -->
 		<a href={contactUrl} title="Mark on {serviceDisplayCase}"><span class="screen-reader-text">{serviceDisplayCase}</span><SocialIcon {service} /></a>
 	{/each}

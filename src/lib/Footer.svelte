@@ -28,7 +28,7 @@
 
 		<div>
 			<span>get in touch…</span>
-			<SocialNav />
+			<SocialNav selection="contact" />
 		</div>
 
 		<div>
