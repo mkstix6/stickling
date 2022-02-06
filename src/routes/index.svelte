@@ -17,18 +17,27 @@
 				style="display: flex; flex-wrap: wrap; justify-content: center;align-items: center; gap: 2rem;"
 			>
 				<h1 class="angletext" style="flex: 0 1 10em; z-index: 1;">
-					I'm
-					<strong class="color-active fontsize-double wiggly-text"
-						><span class="word"><span>M</span><span>a</span><span>r</span><span>k</span></span><span
-							class="word"
+					<span class="word worddelay-1">I'm</span>
+					<strong class="fontsize-double wiggly-text"
+						><span class="word worddelay-2 color-active"
+							><span>M</span><span>a</span><span>r</span><span>k</span></span
+						><span class="word worddelay-3 color-active"
 							><span>S</span><span>t</span><span>i</span><span>c</span><span>k</span><span>l</span
 							><span>i</span><span>n</span><span>g</span></span
 						></strong
 					><br />
-					a <em style="font-style: normal;">front-end web developer</em>
+					<span class="word worddelay-4">a</span>
+					<em style="font-style: normal;"
+						><span class="word worddelay-5">front</span><span class="word worddelay-6">-end</span>
+						<span class="word worddelay-7">web</span>
+						<span class="word worddelay-8">developer</span></em
+					>
 				</h1>
 
-				<div style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;">
+				<div
+					class="artTransitionIn"
+					style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;"
+				>
 					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
 						{#key artSeed}
 							<CanvasArt seed={artSeed} renderSize={2 ** 10} transparent={true} />
@@ -157,5 +166,52 @@
 				}
 			}
 		}
+	}
+
+	@keyframes inup {
+		0% {
+			opacity: 0;
+			transform: translateY(0.5em);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	.word {
+		display: inline-block;
+		color: var(--pallette2);
+		animation: 0.4s 1 inup;
+		animation-fill-mode: backwards;
+	}
+	.worddelay-1 {
+		animation-delay: 0ms;
+	}
+	.worddelay-2 {
+		animation-delay: 400ms;
+	}
+	.worddelay-3 {
+		animation-delay: 600ms;
+	}
+	.worddelay-4 {
+		animation-delay: 1000ms;
+	}
+	.worddelay-5 {
+		animation-delay: 1300ms;
+	}
+	.worddelay-6 {
+		animation-delay: 1500ms;
+	}
+	.worddelay-7 {
+		animation-delay: 1900ms;
+	}
+	.worddelay-8 {
+		animation-delay: 2200ms;
+	}
+
+	.artTransitionIn {
+		animation: 2s 1 inup;
+		animation-fill-mode: backwards;
+		animation-delay: 2500ms;
 	}
 </style>
