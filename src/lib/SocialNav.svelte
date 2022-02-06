@@ -25,7 +25,7 @@
 	a {
 		display: inline-block;
 		margin: 0.4em 0.4em;
-		font-size: 1.6rem;
+		font-size: 1.3rem;
 		width: 1em;
 		height: 1em;
 		text-decoration: none;
