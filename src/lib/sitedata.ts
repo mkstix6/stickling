@@ -925,22 +925,19 @@ export interface Bookmark {
 export const bookmarks: Bookmark[] = [
 	{
 		title: 'How You Can Draw Regular Polygons with the HTML5 Canvas API',
-		url:
-			'http://wp.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/',
+		url: 'http://wp.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/',
 		tech: ['js', 'canvas'],
 		kind: 'article',
 	},
 	{
 		title: 'Docker: How to delete all local Docker images',
-		url:
-			'https://stackoverflow.com/questions/44785585/docker-how-to-delete-all-local-docker-images',
+		url: 'https://stackoverflow.com/questions/44785585/docker-how-to-delete-all-local-docker-images',
 		tech: ['docker'],
 		kind: 'article',
 	},
 	{
 		title: 'Blender — Rotating each iteration of an Array Modifier',
-		url:
-			'https://blender.stackexchange.com/questions/2402/rotating-each-iteration-of-an-array-modifier',
+		url: 'https://blender.stackexchange.com/questions/2402/rotating-each-iteration-of-an-array-modifier',
 		tech: ['blender'],
 		kind: 'article',
 	},
@@ -1074,16 +1071,14 @@ export const bookmarks: Bookmark[] = [
 	},
 	{
 		title: 'Transparent PNG in Blender',
-		url:
-			'https://blender.stackexchange.com/questions/1303/can-blender-render-pngs-with-the-background-transparent',
+		url: 'https://blender.stackexchange.com/questions/1303/can-blender-render-pngs-with-the-background-transparent',
 		year: 2013,
 		tech: ['blender'],
 		kind: 'article',
 	},
 	{
 		title: `My glass material isn't transparent in Eevee`,
-		url:
-			'https://blender.stackexchange.com/questions/162934/my-glass-material-isnt-transparent-in-eevee',
+		url: 'https://blender.stackexchange.com/questions/162934/my-glass-material-isnt-transparent-in-eevee',
 		year: 2020,
 		tech: ['blender'],
 		kind: 'questionanswer',
