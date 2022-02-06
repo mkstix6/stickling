@@ -159,6 +159,10 @@
 				animation-timing-function: ease-in-out;
 				animation-fill-mode: both;
 
+				@media (prefers-reduced-motion: reduce) {
+					animation: none;
+				}
+
 				@for $i from 0 through 10 {
 					&:nth-last-child(#{$i}) {
 						animation-delay: 254ms * $i;
@@ -183,35 +187,41 @@
 		color: var(--pallette2);
 		animation: 0.4s 1 inup;
 		animation-fill-mode: backwards;
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
 	}
 	.worddelay-1 {
 		animation-delay: 0ms;
 	}
 	.worddelay-2 {
-		animation-delay: 400ms;
+		animation-delay: 200ms;
 	}
 	.worddelay-3 {
-		animation-delay: 600ms;
+		animation-delay: 400ms;
 	}
 	.worddelay-4 {
-		animation-delay: 1000ms;
+		animation-delay: 800ms;
 	}
 	.worddelay-5 {
-		animation-delay: 1300ms;
+		animation-delay: 900ms;
 	}
 	.worddelay-6 {
-		animation-delay: 1500ms;
+		animation-delay: 950ms;
 	}
 	.worddelay-7 {
-		animation-delay: 1900ms;
+		animation-delay: 1200ms;
 	}
 	.worddelay-8 {
-		animation-delay: 2200ms;
+		animation-delay: 1400ms;
 	}
 
 	.artTransitionIn {
 		animation: 2s 1 inup;
 		animation-fill-mode: backwards;
-		animation-delay: 2500ms;
+		animation-delay: 1500ms;
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
 	}
 </style>
