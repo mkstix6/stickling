@@ -288,13 +288,13 @@
 
 	@keyframes wigglytext {
 		0% {
-			transform: rotateY(5deg) translateY(0);
+			transform: rotateY(10deg) skewX(10deg);
 		}
 		50% {
-			transform: rotateY(-5deg) translateY(-0.2em);
+			transform: rotateY(-10deg) skewX(-10deg);
 		}
 		100% {
-			transform: rotateY(5deg) translateY(0);
+			transform: rotateY(10deg) skewX(10deg);
 		}
 	}
 
@@ -306,14 +306,14 @@
 
 			> span {
 				display: inline-block;
-				animation: wigglytext 5s infinite;
+				animation: wigglytext 10s infinite;
 				animation-timing-function: ease-in-out;
 				animation-fill-mode: both;
 				// text-shadow: 0.03em 0.03em 0 white;
 
 				@for $i from 0 through 10 {
 					&:nth-last-child(#{$i}) {
-						animation-delay: 300ms * $i;
+						animation-delay: 254ms * $i;
 					}
 				}
 			}
