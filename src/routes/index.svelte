@@ -103,10 +103,15 @@
 		border-radius: 100%;
 		margin: 0;
 		padding: 0;
-		transition: background 400ms;
+		transition: background 400ms, filter 200ms;
 		cursor: pointer;
 		animation: rotate 500s infinite;
 		animation-timing-function: linear;
+
+		&:focus,
+		&:hover {
+			filter: brightness(1.1);
+		}
 	}
 
 	.relaxZone {
