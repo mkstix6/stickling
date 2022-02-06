@@ -750,6 +750,7 @@ export interface PostItem {
 	link?: string;
 	liveLink?: string;
 	codepenLink?: string;
+	priority?: number;
 }
 
 export const postItems: PostItem[] = [
@@ -835,6 +836,7 @@ export const postItems: PostItem[] = [
 		codethumbnail:
 			'background-position: -100% 45%; background-size: 200% 200%; background-image: conic-gradient(#a024ad 0%,5%,white 5%,6%,#ed962c 6%,10%,white 10%,11%,#f9eb53 11%,15%,white 15%,16%,#51af56 16%,20%,white 20%,21%,#cedc4e 21%,25%,white 25%,26%,#e95432 26%,30%,white 30%,31%,#4e97ef 31%,35%,white 35%,36%,#e72f63 36%,40%,white 40%,41%,#5cbdd2 41%,45%,white 45%,46%,#469688 46%,50%,white 50%,white);',
 		tech: ['vue', 'nuxt'],
+		priority: 1,
 	},
 	{
 		year: 2021,

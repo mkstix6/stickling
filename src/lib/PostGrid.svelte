@@ -7,7 +7,14 @@
 
 	let posts = [];
 	if (postItems.length) {
-		posts = [...postItems];
+		posts = [...postItems].sort((a, b) => {
+			let pa = a.priority;
+			let pb = b.priority;
+			if (!pa && !pb) return 0;
+			if (!pa) return 1;
+			if (!pb) return -1;
+			return pa > pb ? 1 : pa < pb ? -1 : 0;
+		});
 	}
 	if (itemcount > 0 && posts.length) {
 		posts = posts.slice(0, itemcount);
