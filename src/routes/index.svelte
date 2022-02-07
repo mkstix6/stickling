@@ -160,7 +160,7 @@
 
 			> span {
 				display: inline-block;
-				animation: wigglytext 10s infinite;
+				// animation: wigglytext 10s infinite;
 				animation-timing-function: ease-in-out;
 				animation-fill-mode: both;
 
