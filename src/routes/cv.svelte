@@ -145,7 +145,7 @@
 				</ul>
 			</section>
 
-			<div class="contact">
+			<div class="sidebar">
 				<section class="mb2">
 					<h2>Primary Skills</h2>
 					<ul class="skillsList">
@@ -230,7 +230,7 @@
 		.education {
 			order: 3;
 		}
-		.contact {
+		.sidebar {
 			order: 2;
 		}
 	}
@@ -252,7 +252,7 @@
 		.education {
 			order: 2;
 		}
-		.contact {
+		.sidebar {
 			order: 1;
 		}
 	}
@@ -479,7 +479,7 @@
 		margin: 0;
 	}
 
-	.contact a {
+	.sidebar a {
 		text-decoration: none;
 
 		@media print {
