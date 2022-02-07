@@ -206,6 +206,17 @@
 					<h2>Location</h2>
 					<p>London</p>
 				</section>
+
+				<section class="mb2">
+					<h2>Interests</h2>
+					<ul>
+						<li>Surfing</li>
+						<li>Hiking</li>
+						<li>Code art</li>
+						<li>Board games</li>
+						<li>Video games</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
@@ -328,7 +339,8 @@
 		}
 	}
 
-	p {
+	p,
+	ul {
 		font-size: 16px;
 		max-width: 60ex;
 		line-height: 1.4;
