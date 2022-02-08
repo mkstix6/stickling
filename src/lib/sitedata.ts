@@ -757,6 +757,15 @@ export const postItems: PostItem[] = [
 	{
 		year: 2021,
 		month: 11,
+		title: 'Chromatic motion blur',
+		slug: 'chromatic-motion-blur',
+		type: 'codeart',
+		tech: ['js'],
+		codethumbnail: `background: linear-gradient(to right, hsl(225, 100%, 50%), hsl(210, 100%, 50%), hsl(195, 100%, 50%), hsl(180, 100%, 50%), white, hsl(55, 100%, 50%), hsl(40, 100%, 50%), hsl(25, 100%, 50%), hsl(10, 100%, 50%), hsl(355, 100%, 50%));`,
+	},
+	{
+		year: 2021,
+		month: 11,
 		title: 'SpiroFlare generative art',
 		slug: 'spiroflare-generative-art',
 		type: 'codeart',
