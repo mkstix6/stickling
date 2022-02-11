@@ -1083,6 +1083,20 @@ export const bookmarks: Bookmark[] = [
 		tech: ['blender'],
 		kind: 'questionanswer',
 	},
+	{
+		title: `Custom error types in Node.js`,
+		url: 'https://dev.to/lvidakovic/custom-error-types-in-node-js-491a',
+		year: 2019,
+		tech: ['js'],
+		kind: 'article',
+	},
+	{
+		title: `What is Generative Art?`,
+		url: 'https://www.amygoodchild.com/blog/what-is-generative-art',
+		year: 2022,
+		tech: [],
+		kind: 'article',
+	},
 ].map((bookmark: Bookmark, index) => {
 	// Compute domain
 	let domain = new URL(bookmark.url);
