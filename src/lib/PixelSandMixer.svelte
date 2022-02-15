@@ -647,7 +647,7 @@ Compass: ${compass}
 		</span>
 	</button>
 	<pre>
-    <div class="gyroreadout"></div>
+    <div class="gyroreadout" />
   </pre>
 </div>
 

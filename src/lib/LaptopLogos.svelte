@@ -127,7 +127,7 @@
 </div>
 
 <style lang="scss">
-	@use "sass:math";
+	@use 'sass:math';
 
 	.aspectRatioBox {
 		width: 100%;
