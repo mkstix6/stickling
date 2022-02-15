@@ -79,12 +79,12 @@
 				width: 1px;
 				height: $length;
 				background-color: var(--card-backgroundcolor);
-				@media (prefers-color-scheme: light) {
-					background: linear-gradient(to top, #0002, #0000);
-				}
-				@media (prefers-color-scheme: dark) {
-					background: linear-gradient(to top, #fff1, #fff0);
-				}
+				// @media (prefers-color-scheme: light) {
+				// 	background: linear-gradient(to top, #0002, #0000);
+				// }
+				// @media (prefers-color-scheme: dark) {
+				background: linear-gradient(to top, #fff1, #fff0);
+				// }
 				top: -$length - 1;
 				left: 16.5px;
 			}

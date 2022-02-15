@@ -742,11 +742,11 @@ Compass: ${compass}
 		height: 2rem;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		#motionControlsPermsButton svg {
-			filter: invert(1);
-		}
+	/* @media (prefers-color-scheme: dark) { */
+	#motionControlsPermsButton svg {
+		filter: invert(1);
 	}
+	/* } */
 	/* #motionControlsPermsButton.gyro-active {
 		background-color: rgb(64, 213, 131);
 	} */
