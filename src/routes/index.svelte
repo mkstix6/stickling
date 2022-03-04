@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PostGrid from '$lib/PostGrid.svelte';
-	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
+	import CanvasArt from '$lib/FlareOArt.svelte';
 	import { randomInt } from '$lib/utils';
 
 	let artSeed = randomInt();
@@ -36,18 +36,18 @@
 
 				<div
 					class="artTransitionIn"
-					style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;"
+					style="flex: 1 1 30em; position: relative; margin: -15em; margin-bottom: 0;"
 				>
 					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
 						{#key artSeed}
 							<CanvasArt seed={artSeed} renderSize={2 ** 10} transparent={true} />
 						{/key}
 					</button>
-					<p
+					<!-- <p
 						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center;position: absolute; bottom: 0; left: 30%; width: 40%;"
 					>
 						<small>Click this art to generate a new one<br />(seed: {artSeed})</small>
-					</p>
+					</p> -->
 				</div>
 			</div>
 		</section>
@@ -95,8 +95,12 @@
 		}
 	}
 	.artContainer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
 		z-index: 0;
-		width: 100%;
+		// width: 100%;
 		height: auto;
 		border: none;
 		background: #0000;
