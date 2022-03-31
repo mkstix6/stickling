@@ -2,16 +2,23 @@
 	import SocialIcon from '$lib/SocialIcon.svelte';
 	import LogoSticker from '$lib/LogoSticker.svelte';
 
-	const skillsList = [
+	const primarySkillsList = [
 		{ key: 'js', name: 'JS' },
 		{ key: 'typescript', name: 'TypeScript' },
 		{ key: 'vue', name: 'Vue' },
+		{ key: 'nuxt', name: 'Nuxt' },
 		{ key: 'svelte', name: 'Svelte' },
 		{ key: 'css', name: 'CSS' },
 		{ key: 'sass', name: 'SCSS' },
 		{ key: 'html', name: 'HTML' },
+		{ key: 'wordpress', name: 'WordPress' },
 		{ key: 'cypress', name: 'Cypress.js' },
 		{ key: 'three', name: 'Three.js 3D' },
+		{ key: 'gulp', name: 'Gulp' },
+		{ key: 'webpack', name: 'Webpack' },
+	];
+
+	const secondarySkillsList = [
 		{ key: 'aws', name: 'AWS' },
 		{ key: 'docker', name: 'Docker' },
 	];
@@ -32,7 +39,8 @@
 			<p>
 				I'm a dilligent developer interested in building modern web experiences with good
 				accessibility and semantic qualities. Interested in the latest web development trends, most
-				recently working with TypeScript, Svelte and Vue.
+				recently working with TypeScript, Svelte and Vue. I've been responsible for supporting
+				junior developers and managing projects from beginning to ship and ongoing maintenance.
 			</p>
 		</section>
 
@@ -149,7 +157,20 @@
 				<section class="mb2">
 					<h2>Primary Skills</h2>
 					<ul class="skillsList">
-						{#each skillsList as { key, name }}
+						{#each primarySkillsList as { key, name }}
+							<li>
+								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
+									><LogoSticker logokey={key} /></span
+								>
+								{name}
+							</li>
+						{/each}
+					</ul>
+				</section>
+				<section class="mb2">
+					<h2>Familiar with…</h2>
+					<ul class="skillsList">
+						{#each secondarySkillsList as { key, name }}
 							<li>
 								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
 									><LogoSticker logokey={key} /></span
@@ -189,7 +210,6 @@
 
 				<section class="mb2">
 					<h2>Portfolio</h2>
-					<p>built with <LogoSticker logokey="svelte" /> SvelteKit</p>
 					<p style="display: flex; align-items: center;">
 						<span class="bulletIcon"
 							><img
@@ -199,6 +219,8 @@
 							/></span
 						>
 						<a href="https://stickling.co.uk">stickling.co.uk</a>
+						—
+						<small>built with <LogoSticker logokey="svelte" /> SvelteKit</small>
 					</p>
 				</section>
 
