@@ -19,6 +19,7 @@
 	];
 
 	const secondarySkillsList = [
+		{ key: 'python', name: 'Python' },
 		{ key: 'aws', name: 'AWS' },
 		{ key: 'docker', name: 'Docker' },
 	];

@@ -94,12 +94,14 @@
 						I've configured
 						<strong>tooling technologies</strong>
 						like
-						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Gulp</em>, <em>npm</em>,
+						<em>TypeScript</em>, <em>Webpack</em>, <em>Rollup</em>, <em>Vite</em>, <em>Gulp</em>,
+						<em>npm</em>,
 						<em>Docker</em> and <em>Yarn</em>.
 						<div class="logorow">
 							<LogoSticker logokey="typescript" />
 							<LogoSticker logokey="webpack" />
-							<LogoSticker logokey="webpackrollup" />
+							<LogoSticker logokey="rollup" />
+							<LogoSticker logokey="vite" />
 							<LogoSticker logokey="gulp" />
 							<LogoSticker logokey="npm" />
 							<LogoSticker logokey="docker" />
@@ -126,6 +128,14 @@
 							<LogoSticker logokey="rest" />
 							<LogoSticker logokey="postman" />
 							<LogoSticker logokey="graphql" />
+						</div>
+					</div>
+					<div class="skillcard">
+						<em>For fun</em>, taught myself a little Python <small>(with unit testing)</small>
+						whilst participating in the annual <a href="https://adventofcode.com">Advent of Code</a>
+						code challenges last year
+						<div class="logorow">
+							<LogoSticker logokey="Python" />
 						</div>
 					</div>
 					<div class="skillcard">
