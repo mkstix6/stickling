@@ -12,7 +12,7 @@
 <main id="main">
 	<div class="page" style="padding-top: 10vw;">
 		<section class="section px3">
-			<h1 class="angletext">About me…</h1>
+			<h1 class="angletext">About me (and my skills)…</h1>
 			<p>Hey 👋, so, I'm a front-end web developer based in London U.K.</p>
 		</section>
 
