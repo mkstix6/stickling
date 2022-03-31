@@ -5,7 +5,7 @@
 		{ path: '/', text: 'home' },
 		{ path: '/posts', text: 'posts' },
 		{ path: '/about', text: 'about' },
-		// { path: '/cv', text: 'CV' },
+		{ path: '/cv', text: 'CV' },
 		{ path: '/contact', text: 'contact' },
 		// { path: '/pallettes', text: 'Pallettes' }
 		// { path: '/workout', text: 'Workout' },
