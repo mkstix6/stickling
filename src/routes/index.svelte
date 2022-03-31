@@ -52,7 +52,7 @@
 			</div>
 		</section>
 
-		<section class="section slice px3 py3">
+		<section class="section px3">
 			<div class="myauto" style="max-width: min-content;">
 				<h2 class="angletext">I made these…</h2>
 				<p class="leadpara angletext mt0">Explore some things I've created.</p>
@@ -84,6 +84,9 @@
 <style lang="scss">
 	section:nth-child(even) {
 		background: var(--card-backgroundcolor);
+		clip-path: polygon(0 10vw, 100% 0, 100% calc(100% - 10vw), 0 100%);
+		padding-top: 15vw;
+		padding-bottom: 15vw;
 	}
 
 	@keyframes rotate {

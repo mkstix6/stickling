@@ -643,12 +643,6 @@ code {
 	pointer-events: none;
 }
 
-.slice {
-	clip-path: polygon(0 10vw, 100% 0, 100% calc(100% - 10vw), 0 100%);
-	padding-top: 15vw !important;
-	padding-bottom: 15vw !important;
-}
-
 .card {
 	padding: 3rem 1.5rem;
 	margin: 0;
