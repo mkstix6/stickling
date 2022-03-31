@@ -187,7 +187,7 @@
 						<li>
 							<a href="https://brandirectory.com"
 								><img alt="" src="project-favicons/project-favicon-34.png" width="16" height="16" />
-								Brand Directory.com</a
+								Brandirectory.com</a
 							>
 							— built front-end with Vue.js and Nuxt.js. Consuming REST APIs for data.
 						</li>
