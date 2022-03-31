@@ -25,7 +25,7 @@
 </script>
 
 <svelte:head>
-	<title>Mark's CV | Stickling.co.uk</title>
+	<title>Mark Stickling's CV | Stickling.co.uk</title>
 </svelte:head>
 
 <main id="main" class="py3">
