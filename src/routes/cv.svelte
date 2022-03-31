@@ -39,9 +39,9 @@
 		<section class="summary mt0 mb2">
 			<p>
 				I'm a dilligent developer interested in building modern web experiences with good
-				accessibility and semantic qualities. Interested in the latest web development trends, most
-				recently working with TypeScript, Svelte and Vue. I've been responsible for supporting
-				junior developers and managing projects from beginning to ship and ongoing maintenance.
+				accessibility <small>(WCAG 2.1)</small> and semantic qualities. Interested in the latest web
+				development trends, most recently working with TypeScript, Vue, and Svelte. I've been responsible
+				for supporting junior developers and managing projects through beginning to ship and onto maintenance.
 			</p>
 		</section>
 
