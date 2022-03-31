@@ -1,4 +1,4 @@
-<section class="section slice px3 py5">
+<section class="section px3 py5">
 	<h2 class="angletext">📣 Shoutouts and thanks 🙏</h2>
 	<ul class="thankslist">
 		<li class="card">
