@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PostGrid from '$lib/PostGrid.svelte';
 	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
+	import SocialLink from '$lib/SocialLink.svelte';
 	import { randomInt } from '$lib/utils';
 
 	let artSeed = randomInt();
@@ -62,7 +63,7 @@
 		</section>
 
 		<aside class="relaxZone">
-			<h2 class="h4 my3">That's all, take a moment for yourself…</h2>
+			<h2 class="h4 my3">That's all for now. Take a moment for yourself…</h2>
 			<video loop muted autoplay playsinline tabindex="-1" class="relaxVideo">
 				<source src="/video/grassy-green720.webm" type="video/webm" />
 				<source src="/video/grassy-green720.mp4" type="video/mp4" />
@@ -72,11 +73,11 @@
 					> instead.
 				</p>
 			</video>
-			<p>
-				<small>
-					<a href="https://codepen.io/mkstix6/full/ExvBYVK">JS canvas animation on CodePen</a>
-				</small>
-			</p>
+			<div class="my1">
+				<SocialLink href="https://codepen.io/mkstix6/full/ExvBYVK" service="codepen"
+					>JS canvas animation on CodePen</SocialLink
+				>
+			</div>
 		</aside>
 	</div>
 </main>
