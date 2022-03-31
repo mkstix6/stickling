@@ -2,6 +2,7 @@
 	import PostGrid from '$lib/PostGrid.svelte';
 	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 	import SocialLink from '$lib/SocialLink.svelte';
+	import LookingForWorkBanner from '$lib/LookingForWorkBanner.svelte';
 	import { randomInt } from '$lib/utils';
 
 	let artSeed = randomInt();
@@ -61,6 +62,8 @@
 				<a class="megaButton" href="/posts">view all posts &gt;</a>
 			</div>
 		</section>
+
+		<LookingForWorkBanner />
 
 		<aside class="relaxZone">
 			<h2 class="h4 my3">That's all for now. Take a moment for yourself…</h2>
