@@ -64,7 +64,8 @@
 								facilitation of, and contributing to, project meetings – with clients and
 								internally.
 							</li>
-							<li>supporting junior staff and teaching interns.</li>
+							<li>planning and assigning tasks for ongoing projects</li>
+							<li>supporting junior staff and teaching interns</li>
 						</ul>
 						<h4>Technical responsibilities:</h4>
 						<ul>
@@ -78,6 +79,10 @@
 							<li>setting up and monitoring CI/CD pipelines.</li>
 							<li>utilising REST APIs for data delivery.</li>
 							<li>co-designing and documenting APIs with my backend colleagues.</li>
+							<li>
+								product testing funcitonality and browser/responsive-design testing then logging and
+								managing bug tickets in <LogoSticker logokey="jira" /> Jira
+							</li>
 							<li>unit-testing and integration-testing.</li>
 							<li>testing accessibility (a11y) and WCAG compliance.</li>
 							<li>S.E.O. analysis and improvement work.</li>
