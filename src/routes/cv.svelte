@@ -91,7 +91,7 @@
 							<li>website performance analysis and improvement work.</li>
 							<li>building bespoke WordPress based brochure websites.</li>
 							<li>building static HTML websites.</li>
-							<li>integrating 3D experiences using Three.js.</li>
+							<li>integrating 3D experiences using <LogoSticker logokey="three" /> Three.js.</li>
 						</ul>
 					</li>
 					<li style="--durationyears: 2;">
