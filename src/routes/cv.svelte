@@ -23,6 +23,8 @@
 		{ key: 'aws', name: 'AWS' },
 		{ key: 'docker', name: 'Docker' },
 	];
+
+	const learningSkillsList = [{ key: 'react', name: 'React' }];
 </script>
 
 <svelte:head>
@@ -177,6 +179,19 @@
 					<h2>Familiar with…</h2>
 					<ul class="skillsList">
 						{#each secondarySkillsList as { key, name }}
+							<li>
+								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
+									><LogoSticker logokey={key} /></span
+								>
+								{name}
+							</li>
+						{/each}
+					</ul>
+				</section>
+				<section class="mb2">
+					<h2>Currently learning…</h2>
+					<ul class="skillsList">
+						{#each learningSkillsList as { key, name }}
 							<li>
 								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
 									><LogoSticker logokey={key} /></span
