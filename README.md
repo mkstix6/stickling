@@ -1,3 +1,13 @@
+# [Stickling.co.uk](https://stickling.co.uk)
+
+Personal website playground of Mark Stickling (front-end web developer).
+
+Live: [https://stickling.co.uk](https://stickling.co.uk)
+
+Built using SvelteKit beta.
+
+---
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
