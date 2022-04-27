@@ -1,7 +1,7 @@
 <script>
-	import Highlight from 'svelte-highlight';
-	import css from 'svelte-highlight/src/languages/css';
-	import nightOwl from 'svelte-highlight/src/styles/night-owl';
+	import { Highlight } from 'svelte-highlight';
+	import css from 'svelte-highlight/languages/css';
+	import nightOwl from 'svelte-highlight/styles/night-owl';
 
 	export let code = '';
 </script>
