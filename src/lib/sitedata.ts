@@ -795,6 +795,28 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2021,
+		month: 12,
+		title: 'Advent of Code 2021',
+		slug: 'advent-of-code-2021',
+		type: 'algorithms',
+		tech: ['python'],
+		// thumbnail: '/posts/',
+		codethumbnail: `background: #826;`,
+		repository: 'https://github.com/mkstix6/adventofcode2021',
+	},
+	{
+		year: 2020,
+		month: 12,
+		title: 'Advent of Code 2020',
+		slug: 'advent-of-code-2020',
+		type: 'algorithms',
+		tech: ['js', 'typescript', 'python'],
+		// thumbnail: '/posts/',
+		codethumbnail: `background: #826;`,
+		repository: 'https://github.com/mkstix6/adventofcode2020',
+	},
+	{
+		year: 2021,
 		month: 11,
 		title: 'SpiroFlare generative art',
 		slug: 'spiroflare-generative-art',
