@@ -1,5 +1,6 @@
 <script>
 	import LogoSticker from '$lib/LogoSticker.svelte';
+	import ImageLean from '$lib/ImageLean.svelte';
 </script>
 
 <header>
@@ -38,69 +39,32 @@
 	</div>
 
 	<div>
-		<div class="imgcontainer">
-			<img
-				src="/posts/brandirectory-screenshot1.png"
-				width="131"
-				height="93"
-				alt="Brandirectory.com homepage"
-			/>
-		</div>
-		<div class="imgcontainer">
-			<img
-				src="/posts/brandirectory-screenshot3.png"
-				width="131"
-				height="93"
-				alt="Various data offerings on Brandirectory.com"
-			/>
-		</div>
-		<div class="imgcontainer">
-			<img
-				src="/posts/brandirectory-screenshot2.png"
-				width="131"
-				height="93"
-				alt="Bar charts and doughnut charts on Brandirectory.com"
-			/>
-		</div>
+		<ImageLean
+			src="/posts/brandirectory-screenshot1.png"
+			ccw={false}
+			width="131"
+			height="93"
+			alt="Brandirectory.com homepage"
+		/>
+		<ImageLean
+			src="/posts/brandirectory-screenshot3.png"
+			ccw={true}
+			width="131"
+			height="93"
+			alt="Various data offerings on Brandirectory.com"
+		/>
+		<ImageLean
+			src="/posts/brandirectory-screenshot2.png"
+			ccw={false}
+			width="131"
+			height="93"
+			alt="Bar charts and doughnut charts on Brandirectory.com"
+		/>
 	</div>
 </div>
 
 <style>
 	.sitelink {
 		margin: 1rem 0;
-	}
-
-	.articlecols {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media screen and (max-width: 600px) {
-		.articlecols {
-			display: block;
-		}
-	}
-
-	.imgcontainer {
-		--imgrotation: 15deg;
-		perspective: 1000px;
-	}
-	.imgcontainer:nth-child(odd) img {
-		transform: rotateY(calc(-1 * var(--imgrotation)));
-	}
-	.imgcontainer:nth-child(even) img {
-		transform: rotateY(var(--imgrotation));
-	}
-	.imgcontainer img:focus,
-	.imgcontainer img:hover {
-		transform: rotateY(0deg);
-	}
-
-	img {
-		max-width: 100%;
-		width: 100%;
-		height: auto;
-		display: block;
-		transition: transform 600ms;
 	}
 </style>

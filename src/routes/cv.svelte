@@ -256,6 +256,7 @@
 						<li>Surfing</li>
 						<li>Hiking</li>
 						<li>Code art</li>
+						<li>Code challenges (<a href="https://adventofcode.com">Advent of Code</a>)</li>
 						<li>Board games</li>
 						<li>Video games</li>
 					</ul>

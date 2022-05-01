@@ -851,3 +851,14 @@ legend {
 	box-shadow: inset 4px 4px 4px fuchsia !important;
 	filter: blur(10px) !important;
 }
+
+.articlecols {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 600px) {
+	.articlecols {
+		display: block;
+	}
+}

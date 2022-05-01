@@ -794,6 +794,29 @@ export interface PostItem {
 
 export const postItems: PostItem[] = [
 	{
+		year: 2022,
+		month: 12,
+		title: 'Canvas art 2022',
+		slug: 'canvas-art-2022',
+		type: 'art',
+		tech: ['js', 'typescript'],
+		// thumbnail: '/posts/',
+		videothumbnail: '/posts/code-art-2022/silverripple.mp4',
+		codethumbnail: `background: #ccc; background: conic-gradient(#fff3,#fff0,#fffd,#fff9,#fff4,#fffa,#fffe,#fff8,#fff3,#fff3,#fff0,#fffa,#fffe,#fff8,#fff3,#fffd,#fff9,#fff4);`,
+		// repository: '',
+	},
+	{
+		year: 2021,
+		month: 12,
+		title: 'Advent of Code 2021',
+		slug: 'advent-of-code-2021',
+		type: 'algorithms',
+		tech: ['python'],
+		thumbnail: '/posts/adventofcodeasciicodeart2021.png',
+		codethumbnail: `background: #0f0f23; background: linear-gradient(60deg, #0f0f23, #0f0f23 70%, #009900 70%, #009900 calc(70% + 4px), #0f0f23 calc(70% + 4px), #0f0f23 calc(70% + 8px), #009900 calc(70% + 8px), #009900 calc(70% + 12px), #0f0f23 calc(70% + 12px));`,
+		repository: 'https://github.com/mkstix6/adventofcode2021',
+	},
+	{
 		year: 2021,
 		month: 11,
 		title: 'SpiroFlare generative art',
@@ -864,6 +887,17 @@ export const postItems: PostItem[] = [
 		tech: ['js'],
 		videothumbnail: '/posts/hex38.mp4',
 		codethumbnail: `background-color: #81b98d;`,
+	},
+	{
+		year: 2020,
+		month: 12,
+		title: 'Advent of Code 2020',
+		slug: 'advent-of-code-2020',
+		type: 'algorithms',
+		tech: ['js', 'typescript', 'ava', 'python'],
+		thumbnail: '/posts/adventofcodeasciicodeart2020.png',
+		codethumbnail: `background: #0f0f23; background: linear-gradient(60deg, #0f0f23, #0f0f23 70%, #009900 70%, #009900 calc(70% + 4px), #0f0f23 calc(70% + 4px));`,
+		repository: 'https://github.com/mkstix6/adventofcode2020',
 	},
 	{
 		year: 2020,
