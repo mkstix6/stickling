@@ -794,6 +794,18 @@ export interface PostItem {
 
 export const postItems: PostItem[] = [
 	{
+		year: 2022,
+		month: 12,
+		title: 'Canvas art 2022',
+		slug: 'canvas-art-2022',
+		type: 'art',
+		tech: ['js', 'typescript'],
+		// thumbnail: '/posts/',
+		videothumbnail: '/posts/code-art-2022/silverripple.mp4',
+		codethumbnail: `background: #ccc; background: conic-gradient(#fff3,#fff0,#fffd,#fff9,#fff4,#fffa,#fffe,#fff8,#fff3,#fff3,#fff0,#fffa,#fffe,#fff8,#fff3,#fffd,#fff9,#fff4);`,
+		// repository: '',
+	},
+	{
 		year: 2021,
 		month: 12,
 		title: 'Advent of Code 2021',
