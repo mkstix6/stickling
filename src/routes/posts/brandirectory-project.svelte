@@ -70,17 +70,6 @@
 		margin: 1rem 0;
 	}
 
-	.articlecols {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media screen and (max-width: 600px) {
-		.articlecols {
-			display: block;
-		}
-	}
-
 	.imgcontainer {
 		--imgrotation: 15deg;
 		perspective: 1000px;
