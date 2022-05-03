@@ -28,9 +28,9 @@
 	}
 
 	.action-grid__item {
-		flex: 1 1 auto;
+		flex: 0 1 auto;
 		/* background: var(--card-backgroundcolor); */
-		padding: 1em;
+		padding: 1em 1.5em;
 		text-decoration: none;
 	}
 </style>
