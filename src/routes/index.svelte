@@ -1,6 +1,6 @@
 <script lang="ts">
+	import JamesWebbSpaceTelescopeArt from '$lib/JamesWebbSpaceTelescopeArt.svelte';
 	import PostGrid from '$lib/PostGrid.svelte';
-	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 	import SocialLink from '$lib/SocialLink.svelte';
 	import LookingForWorkBanner from '$lib/LookingForWorkBanner.svelte';
 	import { randomInt } from '$lib/utils';
@@ -40,21 +40,23 @@
 					class="artTransitionIn"
 					style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;"
 				>
-					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
-						{#key artSeed}
-							<CanvasArt seed={artSeed} renderSize={2 ** 10} transparent={true} />
-						{/key}
-					</button>
+					<div class="artContainer" on:click={() => (artSeed = randomInt())}>
+						<JamesWebbSpaceTelescopeArt />
+					</div>
 					<p
-						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center;position: absolute; bottom: 0; left: 30%; width: 40%;"
+						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center; position: absolute; bottom: -4.5em; left: 25%; width: 50%;"
 					>
-						<small>Click this art to generate a new one<br />(seed: {artSeed})</small>
+						<small
+							>Looking forwards to the first images coming back from the <a
+								href="https://jwst.nasa.gov">NASA James Webb Space Telescope</a
+							>, soon!</small
+						>
 					</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="section px3 py2">
+		<section class="section mt5 px3 py2">
 			<LookingForWorkBanner />
 		</section>
 
