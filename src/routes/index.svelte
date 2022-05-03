@@ -54,7 +54,11 @@
 			</div>
 		</section>
 
-		<section class="section px3">
+		<section class="section px3 py2">
+			<LookingForWorkBanner />
+		</section>
+
+		<section class="section px3 altbackground">
 			<div class="myauto" style="max-width: min-content;">
 				<h2 class="angletext">I made these…</h2>
 				<p class="leadpara angletext mt0">Explore some things I've created.</p>
@@ -62,8 +66,6 @@
 				<a class="megaButton" href="/posts">view all posts &gt;</a>
 			</div>
 		</section>
-
-		<LookingForWorkBanner />
 
 		<aside class="relaxZone">
 			<h2 class="h4 my3">That's all for now. Take a moment for yourself…</h2>
@@ -86,7 +88,7 @@
 </main>
 
 <style lang="scss">
-	section:nth-child(even) {
+	section.altbackground {
 		background: var(--card-backgroundcolor);
 		clip-path: polygon(0 10vw, 100% 0, 100% calc(100% - 10vw), 0 100%);
 		padding-top: 15vw;

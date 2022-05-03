@@ -3,18 +3,20 @@
 </script>
 
 {#if currentlyLookingForWork}
-	<section class="section px3 py2">
+	<div>
 		<h2 class="angletext mb2">I'm currently looking for work…</h2>
 		<div class="action-grid">
-			<a class="action-grid__item angletext" href="/cv">Check out <strong>my CV</strong></a>
-			<a class="action-grid__item angletext" href="/contact"
-				>Find my <strong>contact details</strong> here</a
-			>
-			<a class="action-grid__item angletext" href="/about"
+			<a class="megaButton action-grid__item angletext" href="/about"
 				>Learn a little more <strong>about me</strong></a
 			>
+			<a class="megaButton action-grid__item angletext" href="/cv"
+				>Check out <strong>my CV</strong></a
+			>
+			<a class="megaButton action-grid__item angletext" href="/contact"
+				>Find my <strong>contact details</strong> here</a
+			>
 		</div>
-	</section>
+	</div>
 {/if}
 
 <style>
@@ -27,8 +29,8 @@
 
 	.action-grid__item {
 		flex: 1 1 auto;
-		background: var(--card-backgroundcolor);
-		padding: 2em;
+		/* background: var(--card-backgroundcolor); */
+		padding: 1em;
 		text-decoration: none;
 	}
 </style>
