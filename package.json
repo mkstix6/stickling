@@ -35,6 +35,8 @@
 	"type": "module",
 	"dependencies": {
 		"@types/three": "^0.139.0",
+		"emoji.json": "^13.1.0",
+		"flag-colors": "^0.1.0",
 		"gsap": "^3.7.1",
 		"node-sass": "^7.0.1",
 		"sass": "^1.37.5",
