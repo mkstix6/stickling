@@ -36,6 +36,36 @@
 			REST APIs. Postman allowed us to plan the response contract, write JSON schema to match the plan,
 			then consistently test our APIs as the number of APIs grew.
 		</p>
+		<p>During the course of this project I also:</p>
+		<ul>
+			<li>
+				<LogoSticker width="1.5em" height="auto" logokey="ava" />
+				<strong>Learnt TDD and Unit-testing (using AVA).</strong><br /> Amazing for finding bugs and
+				tracking edge cases in data processing code.
+			</li>
+			<li>
+				<LogoSticker width="1.5em" height="auto" logokey="cypress" />
+				<strong>End-to-end testing using Cypress.js.</strong><br />
+				It was such a reassurance to have Cypress check through our site's routes and report on their
+				status after changes.
+			</li>
+			<li>
+				<LogoSticker width="1.5em" height="auto" logokey="aws" />
+				<strong>Became familiar with AWS EC2 instances.</strong><br />
+				Tricky to administer but very powerful.
+			</li>
+			<li>
+				<LogoSticker width="1.5em" height="auto" logokey="bitbucket" />
+				<strong
+					>Set up
+					<abbr title="Continuous Integration">CI</abbr>/<abbr title="Continuous Deployment"
+						>CD</abbr
+					>
+					processes.</strong
+				><br /> These ran our tests and deployed our code from BitBucket to Production (on AWS) with
+				each git merge.
+			</li>
+		</ul>
 	</div>
 
 	<div>
