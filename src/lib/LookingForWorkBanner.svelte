@@ -1,5 +1,5 @@
 <script>
-	let currentlyLookingForWork = true;
+	let currentlyLookingForWork = false;
 </script>
 
 {#if currentlyLookingForWork}
