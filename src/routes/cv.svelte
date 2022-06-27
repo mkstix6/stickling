@@ -203,19 +203,6 @@
 				</section>
 
 				<section class="mb2">
-					<h2>Recent projects</h2>
-					<ul>
-						<li>
-							<a href="https://brandirectory.com"
-								><img alt="" src="project-favicons/project-favicon-34.png" width="16" height="16" />
-								Brandirectory.com</a
-							>
-							— built front-end with Vue.js and Nuxt.js. Consuming REST APIs for data.
-						</li>
-					</ul>
-				</section>
-
-				<section class="mb2">
 					<h2>Contact</h2>
 					<p>
 						<span class="bulletIcon"><SocialIcon service="twitter" /></span>
