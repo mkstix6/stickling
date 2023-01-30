@@ -1,28 +1,13 @@
-<script context="module">
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ url: { searchParams } }) {
-		let props = {
-			seed: Math.ceil(Math.random() * 100),
-			preset: 2,
-		};
-		if (searchParams.has('seed')) {
-			props.seed = parseInt(searchParams.get('seed'));
-		}
-		if (searchParams.has('preset')) {
-			props.preset = parseInt(searchParams.get('preset'));
-		}
-		return { props };
-	}
-</script>
-
 <script lang="ts">
+	import { page } from '$app/stores';
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import SpiroFlareCanvasArt from '$lib/SpiroFlareCanvasArt.svelte';
 
-	export let seed;
-	export let preset;
+	export let data;
+
+	let seedQueryParam = $page?.url?.searchParams?.get('seed');
+	let seed = seedQueryParam ? parseInt(seedQueryParam) : Math.floor(Math.random() * 100_000_000);
+	let preset = data.preset;
 
 	const artName = 'SpiroFlare';
 </script>

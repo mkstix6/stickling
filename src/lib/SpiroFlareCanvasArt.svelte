@@ -3,14 +3,37 @@
 	import { onMount } from 'svelte';
 	import { tick } from 'svelte';
 
+	type ArtConfig = {
+		name: string;
+		clearBetweenFrames: boolean;
+		maxFrames: number;
+		fadeAlpha: boolean;
+		fadeAlphaRate: number;
+		stopAtZeroWidth: boolean;
+		concentricLines: boolean;
+		coverageChange: number;
+		coverageStart: number;
+		rotateMagnitude: number;
+		actorCount: number;
+		globalVariablesAdjustPer: string;
+		globalCompositeOperation: string;
+		colorRange: number;
+		colorHueShift: number;
+		actorStepDistance: number;
+		actorStepsPerFrame: number;
+		lineRadiusStart: number;
+		lineRadiusChangeRate: number;
+		arcPosition: (time: number, coverage: number, variance: number) => [number, number];
+	};
+
 	export let seed: number = Math.ceil(Math.random() * 100);
 	export let preset: number = 2;
 	export let controls: boolean = false;
 
 	let renderSize = 2 ** 11;
-	let canvasElement;
-	let ctx;
-	let options;
+	let canvasElement: HTMLCanvasElement;
+	let ctx: CanvasRenderingContext2D;
+	let options: ArtConfig;
 	let hardTime = 0;
 	let frameNumber = 0;
 	let globalAlpha = 1;
@@ -18,9 +41,9 @@
 	let variances: number[] = [];
 	let coverage: number;
 	let radius: number;
-	let artStyles = [];
+	let artStyles: ArtConfig[] = [];
 	let optionsPRDs = [];
-	let generator;
+	let generator: Generator;
 	let RAF;
 
 	function setStartValues() {
@@ -68,6 +91,8 @@
 				actorStepsPerFrame: 200,
 				lineRadiusStart: 4,
 				lineRadiusChangeRate: 0.99999,
+				maxFrames: 0,
+				// globalVariablesAdjustPer: ,
 				arcPosition(time, coverage, variance): [number, number] {
 					return [
 						canvasElement.width / 2 +
@@ -75,9 +100,9 @@
 							Math.sin(time * 0.00174565342 + variance * 3.73645) * coverage * variance,
 						canvasElement.height / 2 +
 							Math.cos(time * 0.000132546 + variance * 76456543) * coverage * variance +
-							Math.cos(time * 0.0012536345 + variance * 2.65484564) * coverage * variance,
+							Math.cos(time * 0.0012536345 + variance * 2.65484564) * coverage * variance
 					];
-				},
+				}
 			},
 			{
 				name: 'StarBurst',
@@ -100,9 +125,9 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					return [
 						canvasElement.width / 2 + Math.sin(time * 0.001) * coverage,
-						canvasElement.height / 2 + Math.sin(time * 0.001) * coverage,
+						canvasElement.height / 2 + Math.sin(time * 0.001) * coverage
 					];
-				},
+				}
 			},
 			{
 				name: 'TorusSpectre',
@@ -129,12 +154,12 @@
 					canvasElement.width / 2 + Math.sin((time * 0.001+variance*500) * Math.PI * 2 * (1 / 2) ) * coverage,
 					canvasElement.height / 2 + Math.cos((time * 0.001+variance*500) * Math.PI * 2 * (1 / 6)) * coverage,
 					];
-				},
+				}
 			},
 			{
 				name: 'PetalNebula',
 				clearBetweenFrames: false,
-				maxFrames: undefined,
+				maxFrames: 0,
 				fadeAlpha: false,
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
@@ -158,7 +183,7 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.001142) * coverage * 0.3,
 					];
-				},
+				}
 			},
 			{
 				name: 'WarpFlower',
@@ -188,12 +213,12 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.00016111) * coverage * 0.3,
 					];
-				},
+				}
 			},
 			{
 				name: 'SpiroCoil',
 				clearBetweenFrames: false,
-				maxFrames: undefined,
+				maxFrames: 0,
 				fadeAlpha: false,
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
@@ -217,8 +242,8 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.001142) * coverage * 0.3,
 					];
-				},
-			},
+				}
+			}
 		];
 
 		options = artStyles[preset];
@@ -241,7 +266,7 @@
 			let alpha = linearDecimalPeak;
 			colors.push([
 				i * options.actorStepDistance,
-				`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`,
+				`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`
 			]);
 		}
 

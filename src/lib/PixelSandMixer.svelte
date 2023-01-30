@@ -5,10 +5,10 @@
 	type Coordinates2D = [number, number];
 
 	class Grain {
-		x = 0;
-		y = 0;
-		color;
-		iterationsHasBeenSettled = 0;
+		// x = 0;
+		// y = 0;
+		// color;
+		// iterationsHasBeenSettled = 0;
 		constructor(x = 0, y = 0, color = 'rgb(200, 0, 0)') {
 			this.setCoordinates([x, y]);
 			this.color = color;
@@ -75,10 +75,8 @@
 	}
 
 	class BitMap {
-		field = [];
-		width;
-		height;
 		constructor(width, height) {
+			this.field = [];
 			this.width = width;
 			this.height = height;
 			this.field = new Array(width * height).fill(0);
@@ -112,12 +110,12 @@
 	}
 
 	class GravityField extends BitMap {
-		gravity: Vector2D = [0, 1];
 		setGravity(vector: Vector2D = [0, 1]) {
 			this.gravity = vector;
 		}
 		constructor(width = canvasWidth, height = canvasHeight) {
 			super(width, height);
+			this.gravity = [0, 1];
 		}
 		getFieldState() {
 			return this.getBitMapState();

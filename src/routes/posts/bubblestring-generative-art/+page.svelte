@@ -1,35 +1,17 @@
-<script context="module">
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ url: { searchParams } }) {
-		if (searchParams.has('seed')) {
-			return {
-				props: {
-					seed: parseInt(searchParams.get('seed')),
-				},
-			};
-		} else {
-			return {
-				props: {
-					seed: undefined,
-				},
-			};
-		}
-	}
-</script>
-
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
-	export let seed;
+	export let data;
+
+	let seedQueryParam = $page?.url?.searchParams?.get('seed');
+	let seed = parseInt(seedQueryParam);
 
 	const artName = 'BubbleString';
 	const today = new Date();
-	let renderedSeed;
-	let inputSeed;
+	let renderedSeed: number;
+	let inputSeed: number;
 	let currentDate = today;
-
 	let seedMode = 'dateday';
 
 	if (seed) {
@@ -53,27 +35,31 @@
 		};
 	}
 
-	function jsDateToSeed(date): number {
+	function jsDateToSeed(date: Date): number {
 		return Math.floor(
-			`${date.toISOString()}`
-				.replaceAll('-', '')
-				.replaceAll('T', '')
-				.replaceAll(':', '')
-				.slice(0, 8)
+			parseInt(
+				`${date.toISOString()}`
+					.replaceAll('-', '')
+					.replaceAll('T', '')
+					.replaceAll(':', '')
+					.slice(0, 8),
+				10
+			)
 		);
 	}
 
-	function jsDateToInputString(jsDate) {
+	function jsDateToInputString(jsDate: Date) {
 		return `${jsDate.toISOString()}`.replaceAll('T', '').replaceAll(':', '').slice(0, 10);
 	}
 
 	function inputDateToSeed(dateString: string): number {
 		if (dateString) {
-			return Math.floor(`${dateString}`.replaceAll('-', ''));
+			return Math.floor(parseInt(`${dateString}`.replaceAll('-', '')));
 		}
+		throw new Error('Unhandled date value');
 	}
 
-	function moveDate(moveAmount) {
+	function moveDate(moveAmount: number) {
 		let d = new Date(currentDate);
 		currentDate = new Date(d.setDate(d.getDate() + moveAmount));
 		inputChosenDate = jsDateToInputString(currentDate);
@@ -81,10 +67,10 @@
 		seed = inputDateToSeed(inputChosenDate);
 	}
 
-	function changeSeed(newSeed) {
+	function changeSeed(newSeed: string) {
 		inputSeed = parseInt(newSeed);
-		renderedSeed = parseInt(inputSeed);
-		seed = parseInt(inputSeed);
+		renderedSeed = inputSeed;
+		seed = inputSeed;
 		goto(`bubblestring-generative-art?seed=${seed}`, { noscroll: true });
 	}
 </script>
@@ -127,7 +113,7 @@
 	</div>
 	{#if seedMode === 'dateday'}
 		<div class="datebuttons">
-			<button on:click={() => moveDate(-1)}>←</button>
+			<button on:click={() => moveDate(-1)} on:keypress={() => moveDate(-1)}>←</button>
 			<div>
 				pick another day <input
 					type="date"

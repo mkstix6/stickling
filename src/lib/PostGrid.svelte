@@ -24,7 +24,14 @@
 <div class="postGrid">
 	{#each posts as post, index}
 		<div in:fly={{ delay: index * 40 + 400, duration: 400, x: 5, y: 20, opacity: 0 }}>
-			<PostPortal {...post} />
+			<PostPortal
+				link={post.link}
+				thumbnail={post.thumbnail}
+				videothumbnail={post.videothumbnail}
+				tech={post.tech}
+				title={post.title}
+				codethumbnail={post.codethumbnail}
+			/>
 		</div>
 	{/each}
 </div>

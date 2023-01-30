@@ -1,6 +1,6 @@
 <script>
 	import * as THREE from 'three';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 
 	export let file;
 

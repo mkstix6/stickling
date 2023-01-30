@@ -1,24 +1,21 @@
-<script context="module">
-	export async function load({ url: { pathname } }) {
-		return {
-			props: {
-				pathname,
-			},
-		};
-	}
-</script>
-
 <script lang="ts">
-	export let pathname;
+	import { page } from '$app/stores';
+
+	// let seedQueryParam = $page?.url?.searchParams?.get('seed');
 
 	import PostPortal from '$lib/PostPortal.svelte';
 	import { postItems } from '$lib/sitedata';
 
-	$: slug = pathname.split('/').pop();
+	$: slug = $page.url.pathname.split('/').pop();
 	$: thisPost = postItems.find((item) => item.slug === slug);
 	$: thisPostIndex = postItems.findIndex((item) => item.slug === slug);
 	$: prevPost = postItems[thisPostIndex - 1];
 	$: nextPost = postItems[thisPostIndex + 1];
+	// let slug = $page.url.pathname.split('/').pop();
+	// let thisPost = postItems.find((item) => item.slug === slug);
+	// let thisPostIndex = postItems.findIndex((item) => item.slug === slug);
+	// let prevPost = postItems[thisPostIndex - 1];
+	// let nextPost = postItems[thisPostIndex + 1];
 </script>
 
 <svelte:head>
