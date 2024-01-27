@@ -59,21 +59,28 @@
 		scene.add(ambientLight);
 
 		{
-			let pointLight = new THREE.PointLight(0x4466ff, 0.5);
+			let pointLight = new THREE.PointLight(0x4466ff, 500);
 			pointLight.position.z = 2500;
 			scene.add(pointLight);
 		}
 
 		{
-			const pointLight2 = new THREE.PointLight(0xffffff, 1);
+			const pointLight2 = new THREE.PointLight(0xffffff, 700);
 			camera.add(pointLight2);
 		}
 
 		{
-			const pointLight3 = new THREE.PointLight(0xffffff, 0.5);
-			pointLight3.position.x = -1000;
-			pointLight3.position.z = 1000;
+			const pointLight3 = new THREE.PointLight(0xffffff, 200);
+			pointLight3.position.x = -10;
+			pointLight3.position.z = 10;
 			scene.add(pointLight3);
+		}
+
+		{
+			const pointLight4 = new THREE.PointLight(0xffffff, 200);
+			pointLight4.position.x = 0;
+			pointLight4.position.z = -2;
+			scene.add(pointLight4);
 		}
 
 		const geometry = new THREE.CylinderGeometry(1, 1, 0.2, 6);
