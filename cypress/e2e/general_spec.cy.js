@@ -44,6 +44,6 @@ describe('SpiroFlare art page', () => {
 });
 
 describe(`Error pages`, () => {
-	it.todo(`404 page has appropriate message`);
+	it(`404 page has appropriate message`);
 	// e.g. 404 Sorry, we couldn't find this page
 });
