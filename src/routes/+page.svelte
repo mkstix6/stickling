@@ -47,9 +47,9 @@
 						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center; position: absolute; bottom: -4.5em; left: 25%; width: 50%;"
 					>
 						<small
-							>Looking forwards to the first images coming back from the <a
+							>Inspired by the <a
 								href="https://jwst.nasa.gov">NASA James Webb Space Telescope</a
-							>, soon!</small
+							><br>(a ThreeJS experiment)</small
 						>
 					</p>
 				</div>
