@@ -1,5 +1,5 @@
 <script lang="ts">
-	import JamesWebbSpaceTelescopeArt from '$lib/JamesWebbSpaceTelescopeArt.svelte';
+	import CanvasArt from '$lib/CanvasGenerativeArt01.svelte';
 	import PostGrid from '$lib/PostGrid.svelte';
 	import SocialLink from '$lib/SocialLink.svelte';
 	import LookingForWorkBanner from '$lib/LookingForWorkBanner.svelte';
@@ -40,17 +40,15 @@
 					class="artTransitionIn"
 					style="flex: 0 1 30em; position: relative; margin: -5em; margin-bottom: 0;"
 				>
-					<div class="artContainer" on:click={() => (artSeed = randomInt())}>
-						<JamesWebbSpaceTelescopeArt />
-					</div>
+					<button class="artContainer" on:click={() => (artSeed = randomInt())}>
+						{#key artSeed}
+							<CanvasArt seed={artSeed} renderSize={2 ** 10} transparent={true} />
+						{/key}
+					</button>
 					<p
-						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center; position: absolute; bottom: -4.5em; left: 25%; width: 50%;"
+						style="line-height:1; margin: 0 auto; opacity: 0.5; text-align: center;position: absolute; bottom: 0; left: 30%; width: 40%;"
 					>
-						<small
-							>Inspired by the <a
-								href="https://jwst.nasa.gov">NASA James Webb Space Telescope</a
-							><br>(a ThreeJS experiment)</small
-						>
+						<small>Click this art to generate a new one<br />(seed: {artSeed})</small>
 					</p>
 				</div>
 			</div>
@@ -114,7 +112,9 @@
 		border-radius: 100%;
 		margin: 0;
 		padding: 0;
-		transition: background 400ms, filter 200ms;
+		transition:
+			background 400ms,
+			filter 200ms;
 		cursor: pointer;
 		animation: rotate 500s infinite;
 		animation-timing-function: linear;
