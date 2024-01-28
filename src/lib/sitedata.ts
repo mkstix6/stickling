@@ -70,6 +70,20 @@ export const photography = [
 	{ filename: 'IMG_8397.jpeg', alt: 'Hackney Wick heavens' },
 ];
 
+export const procreateArt = [
+	{ filename: 'after-glow.jpg', alt: 'After Glow' },
+	{ filename: 'bunny.jpg', alt: 'Bunny' },
+	{ filename: 'desert.jpg', alt: 'Desert' },
+	{ filename: 'hunter.jpg', alt: 'Hunter' },
+	{ filename: 'neon-watcher.jpg', alt: 'Neon Watcher' },
+	{ filename: 'nova.jpg', alt: 'Nova' },
+	{ filename: 'parrott.jpg', alt: 'Parrott' },
+	{ filename: 'santa-hat.jpg', alt: 'Santa Hat' },
+	{ filename: 'saturn-slide.jpg', alt: 'Saturn Slide' },
+	{ filename: 'saturnian-traverse.jpg', alt: 'Saturnian Traverse' },
+	{ filename: 'setting-sun.jpg', alt: 'Setting Sun' },
+];
+
 export const developmentLogos = [
 	{
 		key: 'ava',
@@ -793,6 +807,15 @@ export interface PostItem {
 }
 
 export const postItems: PostItem[] = [
+	{
+		year: 2024,
+		month: 1,
+		title: 'Procreate',
+		slug: 'procreate',
+		type: 'art',
+		tech: ['procreate'],
+		thumbnail: '/procreate/neon-watcher.jpg',
+	},
 	{
 		year: 2022,
 		month: 12,
