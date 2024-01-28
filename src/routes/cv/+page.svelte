@@ -51,6 +51,30 @@
 			<section class="employment">
 				<h2>Employment history</h2>
 				<ul class="cvlist">
+					<li style="--durationyears: 2;">
+						<h3>Core Front-end engineer</h3>
+						<p class="experienceMeta">
+							<small>
+								<time datetime="2022">2022</time>-<time datetime="2024">2024</time>
+								<a href="https://www.itv.com">@ ITV</a>
+							</small>
+						</p>
+						<h4>Primary responsibilities:</h4>
+						<ul>
+							<li>
+								Engineering functionality and maintaining <a href="https://www.itv.com">itv.com</a>
+							</li>
+							<li>
+								Engineering functionality and maintaining ITV's Connected Television (CTV)
+								offerings.
+							</li>
+							<li>Reviewing and improving accessibility throughout user facing UI.</li>
+						</ul>
+						<h4>Community responsibilities:</h4>
+						<ul>
+							<li>Contributing and presenting within regular community meetings.</li>
+						</ul>
+					</li>
 					<li style="--durationyears: 6;">
 						<h3>Senior Front-end developer</h3>
 						<p class="experienceMeta">
