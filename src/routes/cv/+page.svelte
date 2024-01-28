@@ -3,22 +3,25 @@
 	import LogoSticker from '$lib/LogoSticker.svelte';
 
 	const primarySkillsList = [
-		{ key: 'js', name: 'JS' },
 		{ key: 'typescript', name: 'TypeScript' },
-		{ key: 'vue', name: 'Vue' },
-		{ key: 'nuxt', name: 'Nuxt' },
-		{ key: 'svelte', name: 'Svelte' },
+		{ key: 'react', name: 'React' },
 		{ key: 'css', name: 'CSS' },
-		{ key: 'sass', name: 'SCSS' },
 		{ key: 'html', name: 'HTML' },
-		{ key: 'wordpress', name: 'WordPress' },
+		{ key: 'graphql', name: 'GraphQL' },
 		{ key: 'cypress', name: 'Cypress.js' },
-		{ key: 'three', name: 'Three.js 3D' },
-		{ key: 'gulp', name: 'Gulp' },
-		{ key: 'webpack', name: 'Webpack' },
 	];
 
 	const secondarySkillsList = [
+		{ key: 'js', name: 'JS' },
+		{ key: 'vue', name: 'Vue' },
+		{ key: 'nuxt', name: 'Nuxt' },
+		{ key: 'svelte', name: 'Svelte' },
+		{ key: 'sass', name: 'SCSS' },
+		{ key: 'wordpress', name: 'WordPress' },
+		{ key: 'three', name: 'Three.js 3D' },
+		{ key: 'gulp', name: 'Gulp' },
+		{ key: 'webpack', name: 'Webpack' },
+
 		{ key: 'python', name: 'Python' },
 		{ key: 'aws', name: 'AWS' },
 		{ key: 'docker', name: 'Docker' },
