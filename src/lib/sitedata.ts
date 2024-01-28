@@ -817,6 +817,16 @@ export const postItems: PostItem[] = [
 		thumbnail: '/procreate/neon-watcher.jpg',
 	},
 	{
+		year: 2023,
+		month: 1,
+		title: 'JWST ThreeJS art',
+		slug: 'jwst-threejs-art',
+		type: 'art',
+		tech: ['threejs'],
+		thumbnail: '/posts/jwst-threejs-art.jpg',
+		codethumbnail: `background: rgb(255, 205, 2);`,
+	},
+	{
 		year: 2022,
 		month: 12,
 		title: 'Canvas art 2022',
