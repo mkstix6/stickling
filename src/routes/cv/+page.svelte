@@ -457,12 +457,12 @@
 				left: 0;
 				top: 0;
 				bottom: 0;
-				// transform: skewY(-6deg);
 				transform-origin: top right;
-				// background: linear-gradient(to left, var(--stripecolor) 30%, transparent);
-				box-shadow: -0.4em 0 0 var(--stripecolor1), -0.8em 0 0 var(--stripecolor2),
-					-1.25em 0 0 var(--stripecolor3), -1.7em 0 0 var(--stripecolor4);
-				// opacity: 0.3;
+				box-shadow:
+					-0.4em 0 0 var(--stripecolor1),
+					-0.8em 0 0 var(--stripecolor2),
+					-1.25em 0 0 var(--stripecolor3),
+					-1.7em 0 0 var(--stripecolor4);
 
 				@media print {
 					display: none !important;
