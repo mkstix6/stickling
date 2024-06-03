@@ -20,8 +20,8 @@
 	let publishedCanvasReScale = renderSize / publishedResolution;
 	let circleOnly = transparent;
 
-	let canvasElement;
-	let ctx;
+	let canvasElement: HTMLCanvasElement;
+	let ctx: CanvasRenderingContext2D;
 	let flowField = [];
 	let lineSteps: number = 20;
 	// Minimum clamp values
@@ -94,7 +94,7 @@
 	// Random flow field cell size steps of 10 e.g. 10, 20, 30, 40 etc…
 	let flowFieldGridCellSize: number =
 		Math.round(
-			(canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * Math.ceil(renderSize * 0.0302734375)
+			(canvasUniqDecimal < 0.01 ? 0.01 : canvasUniqDecimal) * Math.ceil(renderSize * 0.0302734375),
 		) * 10;
 	// Protect against zero cell size
 	flowFieldGridCellSize = flowFieldGridCellSize < 10 ? 10 : flowFieldGridCellSize;
@@ -123,7 +123,7 @@
 
 	function evaluatePonintRelativeToCircle(x, y, lineUniq) {
 		let distanceFromCenter = Math.sqrt(
-			(canvasElement.width / 2 - x) ** 2 + (canvasElement.height / 2 - y) ** 2
+			(canvasElement.width / 2 - x) ** 2 + (canvasElement.height / 2 - y) ** 2,
 		);
 		if (doCircleSoft) {
 			distanceFromCenter = distanceFromCenter + (lineUniq % circleSoftness);
@@ -422,8 +422,8 @@
 					lineUniqDecimal > 0.6
 						? lightness
 						: lineUniqDecimal < 0.1
-						? lightness + 10
-						: lightness - 65;
+							? lightness + 10
+							: lightness - 65;
 			}
 		}
 
@@ -495,7 +495,7 @@
 				indexStep,
 				lineSteps,
 				indexLine,
-				lineCount
+				lineCount,
 			)
 		) {
 			if (metalGoldNotSilver) {
@@ -523,7 +523,7 @@
 				indexStep,
 				lineSteps,
 				indexLine,
-				lineCount
+				lineCount,
 			)
 		) {
 			color = `hsl(${hue}, ${saturation / 2}%, ${lightness / 10}%)`;
@@ -656,14 +656,14 @@
 		let ogX: number;
 		let ogY: number;
 
+		const lineData = [];
+
 		for (let indexLine = 0; indexLine < lineCount; indexLine++) {
 			const lineUniq: number = generator.next().value;
 			const lineUniqDecimal: number = pseudoRandomDecimal();
 			const lineUniqDecimal2: number = pseudoRandomDecimal();
 			let x: number;
 			let y: number;
-			let newx: number;
-			let newy: number;
 
 			// Allow start outset from edge
 			x = (generator.next().value % (publishedResolution + 100)) - 50 || 100;
@@ -671,169 +671,215 @@
 			x *= publishedCanvasReScale;
 			y *= publishedCanvasReScale;
 
-			newx = x;
-			newy = y;
+			lineData.push({
+				lineUniq,
+				lineUniqDecimal,
+				lineUniqDecimal2,
+				x,
+				y,
+				done: false,
+			});
+		}
 
-			ogX = x;
-			ogY = y;
+		let frameCount = 0;
 
-			let moveUnitVector: [number, number];
-			let moveVector: [number, number];
-			let rotatingClockwise: boolean = lineUniqDecimal > 0.5;
+		function drawLines() {
+			// Clear canvas to start over
+			ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
-			lineSteps = lineStyle.lineStepsAlgorithm();
-
-			if (lineStyle.resolutionAdjustments.stepCount === 'scale') {
-				// Resolution independence: steps for dots need to be the same steps for others need to scale to retain shapes
-				lineSteps = Math.round(lineSteps * canvasScale);
+			// Fill canvas background
+			if (!transparent) {
+				ctx.rect(0, 0, canvasElement.width, canvasElement.height);
+				if (darkStyle) {
+					ctx.fillStyle = '#000';
+				} else {
+					ctx.fillStyle = '#fff';
+				}
+				ctx.fill();
 			}
 
-			for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
-				lineMoveDistance = lineStyle.lineMoveDistanceAlgorithm(
-					maxMoveDistance,
-					indexStep,
-					lineSteps,
-					Lwidth
-				);
+			frameCount++;
+			// console.log(frameCount);
 
-				let { color, lightness } = chooseColor(
-					ogX,
-					ogY,
-					x,
-					y,
-					lineUniqDecimal,
-					indexLine,
-					lineUniq,
-					indexStep
-				);
+			for (let indexLine = 0; indexLine < lineCount; indexLine++) {
+				let { lineUniq, lineUniqDecimal, lineUniqDecimal2, x, y } = lineData[indexLine];
+				let newx: number;
+				let newy: number;
+				newx = x;
+				newy = y;
 
-				if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
-					// Resolution independence for distance
-					lineMoveDistance = Math.ceil(lineMoveDistance * canvasScale);
-					lineMoveDistance = lineMoveDistance < 1 ? 1 : lineMoveDistance;
+				ogX = x;
+				ogY = y;
+
+				let moveUnitVector: [number, number];
+				let moveVector: [number, number];
+				let rotatingClockwise: boolean = lineUniqDecimal > 0.5;
+
+				lineSteps = lineStyle.lineStepsAlgorithm();
+
+				if (lineStyle.resolutionAdjustments.stepCount === 'scale') {
+					// Resolution independence: steps for dots need to be the same steps for others need to scale to retain shapes
+					lineSteps = Math.round(lineSteps * canvasScale);
 				}
 
-				ctx.beginPath();
-				ctx.moveTo(x, y);
-
-				const cellFlowRotation = getFlowFieldRotation(x, y);
-
-				if (strictFlowDirection) {
-					// Exactly match flow vector
-					moveUnitVector = [Math.sin(cellFlowRotation), Math.cos(cellFlowRotation)];
-				} else {
-					let maxOverRotate = lineUniqDecimal2 ** 2 * 6;
-					// Gradually turn to match move vector according to max turn per line step.
-					if (!moveUnitVector) {
-						moveUnitVector = [
-							Math.sin(cellFlowRotation + maxOverRotate / 8),
-							Math.cos(cellFlowRotation + maxOverRotate / 8),
-						];
+				for (let indexStep = 1; indexStep < lineSteps; indexStep++) {
+					if (indexStep > frameCount) break;
+					if (lineSteps === frameCount) {
+						lineData[indexLine].done = true;
 					}
 
-					// Current move angle
-					const moveRotation: number = Math.atan2(moveUnitVector[0], moveUnitVector[1]);
-					let newMoveRotation: number;
+					lineMoveDistance = lineStyle.lineMoveDistanceAlgorithm(
+						maxMoveDistance,
+						indexStep,
+						lineSteps,
+						Lwidth,
+					);
 
-					// Switch between CW and CCW if getting too far from direction
-					if (moveRotation + 999 > cellFlowRotation + 999 + maxOverRotate) {
-						rotatingClockwise = false;
-						// newMoveRotation = cellFlowRotation + maxOverRotate;
-					} else if (moveRotation + 999 < cellFlowRotation + 999 - maxOverRotate) {
-						rotatingClockwise = true;
-						// newMoveRotation = cellFlowRotation - maxOverRotate;
+					let { color, lightness } = chooseColor(
+						ogX,
+						ogY,
+						x,
+						y,
+						lineUniqDecimal,
+						indexLine,
+						lineUniq,
+						indexStep,
+					);
+
+					if (lineStyle.resolutionAdjustments.stepDistance === 'scale') {
+						// Resolution independence for distance
+						lineMoveDistance = Math.ceil(lineMoveDistance * canvasScale);
+						lineMoveDistance = lineMoveDistance < 1 ? 1 : lineMoveDistance;
 					}
 
-					// Resolve if close to field angle
-					if (
-						canvasUniq % 4 === 0 &&
-						moveRotation + 999 < cellFlowRotation + 999 + maxOverRotate / 10 &&
-						moveRotation + 999 > cellFlowRotation + 999 - maxOverRotate / 10
-					) {
-						newMoveRotation = cellFlowRotation;
-					} else if ((canvasUniq + 1) % 4 === 0) {
-						// Similar rotations for all lines per canvas
-						let angleChange = canvasUniqDecimal2 / ((canvasUniq % 12) + 1);
-						newMoveRotation = rotatingClockwise
-							? moveRotation + angleChange
-							: moveRotation - angleChange;
-						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
-					} else if ((canvasUniq + 2) % 4 === 0) {
-						// Similar rotations for all lines per canvas
-						// This occasionally creates nice concentric dot-flowers
-						let angleChange = canvasUniq2 / ((canvasUniq % 12) + 1);
-						if (lineStyle.resolutionAdjustments.stepAngle === 'scale') {
-							angleChange *= reScale;
+					ctx.beginPath();
+					ctx.moveTo(x, y);
+
+					const cellFlowRotation = getFlowFieldRotation(x, y);
+
+					if (strictFlowDirection) {
+						// Exactly match flow vector
+						moveUnitVector = [Math.sin(cellFlowRotation), Math.cos(cellFlowRotation)];
+					} else {
+						let maxOverRotate = lineUniqDecimal2 ** 2 * 6;
+						// Gradually turn to match move vector according to max turn per line step.
+						if (!moveUnitVector) {
+							moveUnitVector = [
+								Math.sin(cellFlowRotation + maxOverRotate / 8),
+								Math.cos(cellFlowRotation + maxOverRotate / 8),
+							];
 						}
 
-						newMoveRotation = rotatingClockwise
-							? moveRotation + angleChange
-							: moveRotation - angleChange;
-						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+						// Current move angle
+						const moveRotation: number = Math.atan2(moveUnitVector[0], moveUnitVector[1]);
+						let newMoveRotation: number;
+
+						// Switch between CW and CCW if getting too far from direction
+						if (moveRotation + 999 > cellFlowRotation + 999 + maxOverRotate) {
+							rotatingClockwise = false;
+							// newMoveRotation = cellFlowRotation + maxOverRotate;
+						} else if (moveRotation + 999 < cellFlowRotation + 999 - maxOverRotate) {
+							rotatingClockwise = true;
+							// newMoveRotation = cellFlowRotation - maxOverRotate;
+						}
+
+						// Resolve if close to field angle
+						if (
+							canvasUniq % 4 === 0 &&
+							moveRotation + 999 < cellFlowRotation + 999 + maxOverRotate / 10 &&
+							moveRotation + 999 > cellFlowRotation + 999 - maxOverRotate / 10
+						) {
+							newMoveRotation = cellFlowRotation;
+						} else if ((canvasUniq + 1) % 4 === 0) {
+							// Similar rotations for all lines per canvas
+							let angleChange = canvasUniqDecimal2 / ((canvasUniq % 12) + 1);
+							newMoveRotation = rotatingClockwise
+								? moveRotation + angleChange
+								: moveRotation - angleChange;
+							moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+						} else if ((canvasUniq + 2) % 4 === 0) {
+							// Similar rotations for all lines per canvas
+							// This occasionally creates nice concentric dot-flowers
+							let angleChange = canvasUniq2 / ((canvasUniq % 12) + 1);
+							if (lineStyle.resolutionAdjustments.stepAngle === 'scale') {
+								angleChange *= reScale;
+							}
+
+							newMoveRotation = rotatingClockwise
+								? moveRotation + angleChange
+								: moveRotation - angleChange;
+							moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+						} else {
+							// Different rotations per line
+							let angleChange = lineUniqDecimal / ((lineUniq % 12) + 1);
+							newMoveRotation = rotatingClockwise
+								? moveRotation + angleChange
+								: moveRotation - angleChange;
+							moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+						}
+					}
+
+					// Add size to unit vector
+					moveVector = [moveUnitVector[0] * lineMoveDistance, moveUnitVector[1] * lineMoveDistance];
+
+					let lineSize = lineStyle.lineWidthAlgorithm(Lwidth, indexStep, lineSteps);
+					if (lineStyle.resolutionAdjustments.lineWidth === 'scale') {
+						lineSize = Math.ceil(lineSize * canvasScale);
+					}
+					ctx.lineWidth = lineSize;
+
+					ctx.fillStyle = color;
+					ctx.strokeStyle = color;
+					ctx.lineCap = 'round';
+
+					newx = Math.round(x + moveVector[0]);
+					newy = Math.round(y + moveVector[1]);
+
+					if (!doCircle || evaluatePonintRelativeToCircle(x, y, lineUniq) || lightness > 89) {
+						// Draw
+						if (lineStyle.drawtype === 'circles') {
+							// Dotted lines
+							let fullCircle = 2 * Math.PI;
+							let dotRadius = lineSize / 2;
+							dotRadius = dotRadius < 1 ? 1 : dotRadius;
+							ctx.arc(x, y, dotRadius, 0, fullCircle);
+							ctx.fill();
+						} else if (lineStyle.drawtype === 'lines') {
+							// Solid lines
+							ctx.lineTo(newx, newy);
+							ctx.stroke();
+						}
 					} else {
-						// Different rotations per line
-						let angleChange = lineUniqDecimal / ((lineUniq % 12) + 1);
-						newMoveRotation = rotatingClockwise
-							? moveRotation + angleChange
-							: moveRotation - angleChange;
-						moveUnitVector = [Math.sin(newMoveRotation), Math.cos(newMoveRotation)];
+						if (doCircleBreaks) {
+							break;
+						}
 					}
-				}
+					// ctx.closePath();
 
-				// Add size to unit vector
-				moveVector = [moveUnitVector[0] * lineMoveDistance, moveUnitVector[1] * lineMoveDistance];
+					// Skip to other side if out of bounds
+					if (loopAroundEdges) {
+						if (newx < 0 || newy < 0 || newx > canvasElement.width || newy > canvasElement.height) {
+							newx = newx < 0 ? canvasElement.width : newx;
+							newy = newy < 0 ? canvasElement.height : newy;
 
-				let lineSize = lineStyle.lineWidthAlgorithm(Lwidth, indexStep, lineSteps);
-				if (lineStyle.resolutionAdjustments.lineWidth === 'scale') {
-					lineSize = Math.ceil(lineSize * canvasScale);
-				}
-				ctx.lineWidth = lineSize;
+							newx = newx > canvasElement.width ? 0 : newx;
+							newy = newy > canvasElement.height ? 0 : newy;
 
-				ctx.fillStyle = color;
-				ctx.strokeStyle = color;
-				ctx.lineCap = 'round';
-
-				newx = Math.round(x + moveVector[0]);
-				newy = Math.round(y + moveVector[1]);
-
-				if (!doCircle || evaluatePonintRelativeToCircle(x, y, lineUniq) || lightness > 89) {
-					// Draw
-					if (lineStyle.drawtype === 'circles') {
-						// Dotted lines
-						let fullCircle = 2 * Math.PI;
-						let dotRadius = lineSize / 2;
-						dotRadius = dotRadius < 1 ? 1 : dotRadius;
-						ctx.arc(x, y, dotRadius, 0, fullCircle);
-						ctx.fill();
-					} else if (lineStyle.drawtype === 'lines') {
-						// Solid lines
-						ctx.lineTo(newx, newy);
-						ctx.stroke();
+							ctx.moveTo(newx, newy);
+						}
 					}
-				} else {
-					if (doCircleBreaks) {
-						break;
-					}
+
+					x = newx;
+					y = newy;
 				}
-				// ctx.closePath();
-
-				// Skip to other side if out of bounds
-				if (loopAroundEdges) {
-					if (newx < 0 || newy < 0 || newx > canvasElement.width || newy > canvasElement.height) {
-						newx = newx < 0 ? canvasElement.width : newx;
-						newy = newy < 0 ? canvasElement.height : newy;
-
-						newx = newx > canvasElement.width ? 0 : newx;
-						newy = newy > canvasElement.height ? 0 : newy;
-
-						ctx.moveTo(newx, newy);
-					}
-				}
-
-				x = newx;
-				y = newy;
 			}
+
+			if (lineData.some((line) => line.done === false)) {
+				window.requestAnimationFrame(drawLines);
+			}
+			// drawLines();
 		}
+		drawLines();
 	}
 
 	onMount(() => {

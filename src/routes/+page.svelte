@@ -233,9 +233,9 @@
 	}
 
 	.artTransitionIn {
-		animation: 2s 1 inup;
+		// animation: 2s 1 inup;
 		animation-fill-mode: backwards;
-		animation-delay: 1500ms;
+		//animation-delay: 1500ms;
 		@media (prefers-reduced-motion: reduce) {
 			animation: none;
 		}
