@@ -1,8 +1,13 @@
-<script>
+<script lang="ts">
 	import SocialIcon from '$lib/SocialIcon.svelte';
 	import LogoSticker from '$lib/LogoSticker.svelte';
 
-	const primarySkillsList = [
+	interface SkillListItem {
+		key: string;
+		name: string;
+	}
+
+	const primarySkillsList: SkillListItem[] = [
 		{ key: 'typescript', name: 'TypeScript' },
 		{ key: 'react', name: 'React' },
 		{ key: 'next', name: 'NextJS' },
@@ -12,23 +17,23 @@
 		{ key: 'cypress', name: 'Cypress.js' },
 	];
 
-	const secondarySkillsList = [
+	const secondarySkillsList: SkillListItem[] = [
 		{ key: 'js', name: 'JS' },
 		{ key: 'vue', name: 'Vue' },
 		{ key: 'nuxt', name: 'Nuxt' },
 		{ key: 'svelte', name: 'Svelte' },
 		{ key: 'sass', name: 'SCSS' },
-		{ key: 'wordpress', name: 'WordPress' },
 		{ key: 'three', name: 'Three.js 3D' },
+		{ key: 'amplitude', name: 'Amplitude' },
+		{ key: 'wordpress', name: 'WordPress' },
 		{ key: 'gulp', name: 'Gulp' },
 		{ key: 'webpack', name: 'Webpack' },
-
 		{ key: 'python', name: 'Python' },
 		{ key: 'aws', name: 'AWS' },
 		{ key: 'docker', name: 'Docker' },
 	];
 
-	const learningSkillsList = [{ key: 'react', name: 'React' }];
+	const learningSkillsList: SkillListItem[] = [];
 </script>
 
 <svelte:head>
@@ -76,7 +81,7 @@
 							</li>
 							<li>Reviewing and improving accessibility throughout user facing UI.</li>
 							<li>Maintaining and improving development documentation and procedures.</li>
-							<li>Implementing A/B UI tests atop Amplitude.</li>
+							<li>Implementing A/B tests atop Amplitude.</li>
 						</ul>
 						<h4>Community responsibilities:</h4>
 						<ul>
