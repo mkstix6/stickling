@@ -86,6 +86,19 @@ export const procreateArt = [
 
 export const developmentLogos = [
 	{
+		key: 'amplitude',
+		name: 'Amplitude',
+		image: 'amplitude.png',
+		link: undefined,
+		posX: 0,
+		posY: 0,
+		scale: 1,
+		rotation: 0,
+		zindex: 0,
+		order: 2024,
+		aspectratio: 1,
+	},
+	{
 		key: 'ava',
 		name: 'AVA',
 		image: 'ava.png',
