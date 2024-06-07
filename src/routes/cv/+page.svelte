@@ -235,19 +235,21 @@
 						{/each}
 					</ul>
 				</section>
-				<section class="mb2">
-					<h2>Currently learning…</h2>
-					<ul class="skillsList">
-						{#each learningSkillsList as { key, name }}
-							<li>
-								<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
-									><LogoSticker logokey={key} /></span
-								>
-								{name}
-							</li>
-						{/each}
-					</ul>
-				</section>
+				{#if learningSkillsList?.length}
+					<section class="mb2">
+						<h2>Currently learning…</h2>
+						<ul class="skillsList">
+							{#each learningSkillsList as { key, name }}
+								<li>
+									<span style="margin-right: 0.4em; position: relative; top: 0.1em;"
+										><LogoSticker logokey={key} /></span
+									>
+									{name}
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/if}
 
 				<section class="mb2">
 					<h2>Contact</h2>
