@@ -388,7 +388,7 @@ export const developmentLogos = [
 	{
 		key: 'next',
 		name: 'next.js',
-		image: 'next.png',
+		image: 'nextjssymbol.png',
 		link: undefined,
 		posX: 0,
 		posY: 0,
