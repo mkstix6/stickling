@@ -88,6 +88,7 @@
 								Contributing, knowledge share and presenting within regular front end community
 								meetings.
 							</li>
+							<li>Running and administering internal Special Interest Group meetings.</li>
 							<li>Mentoring junior developers.</li>
 						</ul>
 						<h4>Further interests</h4>
