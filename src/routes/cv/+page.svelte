@@ -26,7 +26,6 @@
 		{ key: 'three', name: 'Three.js 3D' },
 		{ key: 'amplitude', name: 'Amplitude' },
 		{ key: 'wordpress', name: 'WordPress' },
-		{ key: 'gulp', name: 'Gulp' },
 		{ key: 'webpack', name: 'Webpack' },
 		{ key: 'python', name: 'Python' },
 		{ key: 'aws', name: 'AWS' },
