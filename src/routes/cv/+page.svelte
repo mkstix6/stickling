@@ -68,14 +68,15 @@
 							<li>
 								Engineering functionality and maintaining ITVX at <a href="https://www.itv.com"
 									>itv.com</a
-								>
+								> (a Next.js + GraphQL application).
 							</li>
 							<li>
-								Engineering, testing and maintaining ITV's ITVX Connected Television (CTV)
-								offerings.
+								Engineering, testing and maintaining ITV's ITVX Connected Television (CTV) offerings
+								(a React.js + GraphQL application).
 							</li>
 							<li>Reviewing and improving accessibility throughout user facing UI.</li>
 							<li>Maintaining and improving development documentation and procedures.</li>
+							<li>Implementing A/B UI tests atop Amplitude.</li>
 						</ul>
 						<h4>Community responsibilities:</h4>
 						<ul>
@@ -126,13 +127,13 @@
 								product testing funcitonality and browser/responsive-design testing then logging and
 								managing bug tickets in <LogoSticker logokey="jira" /> Jira
 							</li>
+							<li>integrating 3D experiences using <LogoSticker logokey="three" /> Three.js.</li>
 							<li>unit-testing and integration-testing.</li>
 							<li>testing accessibility (a11y) and WCAG compliance.</li>
 							<li>S.E.O. analysis and improvement work.</li>
 							<li>website performance analysis and improvement work.</li>
 							<li>building bespoke WordPress based brochure websites.</li>
 							<li>building static HTML websites.</li>
-							<li>integrating 3D experiences using <LogoSticker logokey="three" /> Three.js.</li>
 						</ul>
 					</li>
 					<li style="--durationyears: 2;">
