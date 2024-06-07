@@ -5,6 +5,7 @@
 	const primarySkillsList = [
 		{ key: 'typescript', name: 'TypeScript' },
 		{ key: 'react', name: 'React' },
+		{ key: 'next', name: 'NextJS' },
 		{ key: 'css', name: 'CSS' },
 		{ key: 'html', name: 'HTML' },
 		{ key: 'graphql', name: 'GraphQL' },
@@ -65,17 +66,30 @@
 						<h4>Primary responsibilities:</h4>
 						<ul>
 							<li>
-								Engineering functionality and maintaining <a href="https://www.itv.com">itv.com</a>
+								Engineering functionality and maintaining ITVX at <a href="https://www.itv.com"
+									>itv.com</a
+								>
 							</li>
 							<li>
-								Engineering functionality and maintaining ITV's Connected Television (CTV)
+								Engineering, testing and maintaining ITV's ITVX Connected Television (CTV)
 								offerings.
 							</li>
 							<li>Reviewing and improving accessibility throughout user facing UI.</li>
+							<li>Maintaining and improving development documentation and procedures.</li>
 						</ul>
 						<h4>Community responsibilities:</h4>
 						<ul>
-							<li>Contributing and presenting within regular community meetings.</li>
+							<li>
+								Contributing, knowledge share and presenting within regular front end community
+								meetings.
+							</li>
+							<li>Mentoring junior developers.</li>
+						</ul>
+						<h4>Further interests</h4>
+						<ul>
+							<li>
+								Co-hosted an Accessibility workshop to understand weak points in ITVX's coverage.
+							</li>
 						</ul>
 					</li>
 					<li style="--durationyears: 6;">
