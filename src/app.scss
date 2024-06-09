@@ -434,6 +434,10 @@ $edges: (
 .angletext {
 	transform: rotate(-6deg) skewX(-6deg);
 	transform-origin: bottom left;
+
+	@media print {
+		transform: none;
+	}
 }
 
 p + .angletext {
