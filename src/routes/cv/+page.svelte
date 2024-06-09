@@ -262,10 +262,6 @@
 
 				<section class="mb2">
 					<h2>Contact</h2>
-					<!-- <p>
-						<span class="bulletIcon"><SocialIcon service="twitter" /></span>
-						<a href="https://twitter.com/mkstix6">twitter.com/mkstix6</a>
-					</p> -->
 					<p>
 						<span class="bulletIcon"><SocialIcon service="linkedin" /></span>
 						<a href="https://www.linkedin.com/in/mark-stickling-b77ba246/">
