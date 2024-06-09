@@ -284,15 +284,19 @@ body {
 	transform: skewY(-6deg);
 	box-shadow: 0 0.5rem 1rem 0.5rem var(--pallette-active-supertransparent);
 	--shadowDrift: 0.25em;
-	box-shadow: calc(1*var(--shadowDrift)) calc(2*var(--shadowDrift)) calc(2*var(--shadowDrift)) var(--pallette-active-supertransparent),
-							calc(2*var(--shadowDrift)) calc(4*var(--shadowDrift)) calc(4*var(--shadowDrift)) var(--pallette-active-supertransparent);
+	box-shadow:
+		calc(1 * var(--shadowDrift)) calc(2 * var(--shadowDrift)) calc(2 * var(--shadowDrift))
+			var(--pallette-active-supertransparent),
+		calc(2 * var(--shadowDrift)) calc(4 * var(--shadowDrift)) calc(4 * var(--shadowDrift))
+			var(--pallette-active-supertransparent);
 
 	&:hover,
 	&:focus {
 		background: white;
 		color: var(--pallette-active);
-		box-shadow: calc(1*var(--shadowDrift)) calc(2*var(--shadowDrift)) calc(2*var(--shadowDrift)) #fff1,
-		calc(2*var(--shadowDrift)) calc(4*var(--shadowDrift)) calc(4*var(--shadowDrift)) #fff1;
+		box-shadow:
+			calc(1 * var(--shadowDrift)) calc(2 * var(--shadowDrift)) calc(2 * var(--shadowDrift)) #fff1,
+			calc(2 * var(--shadowDrift)) calc(4 * var(--shadowDrift)) calc(4 * var(--shadowDrift)) #fff1;
 	}
 
 	&:active {
@@ -600,7 +604,13 @@ abbr {
 code {
 	// color: var(--pallette-active);
 	font-weight: 400;
-	font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace !important;
+	font-family:
+		Menlo,
+		Consolas,
+		Monaco,
+		Liberation Mono,
+		Lucida Console,
+		monospace !important;
 }
 
 .button {
