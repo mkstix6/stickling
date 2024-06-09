@@ -61,6 +61,15 @@
 				<ul class="cvlist">
 					<li style="--durationyears: 2;">
 						<h3>Core Front-end engineer</h3>
+						<img
+							class="logo"
+							src="/logos/itv2024.svg"
+							alt="ITV"
+							title="ITV"
+							width="18"
+							height="18"
+							style="width: auto; height: 2.3em; margin: 0.25em 0 0.1em;"
+						/>
 						<p class="experienceMeta">
 							<small>
 								<time datetime="2022">2022</time>-<time datetime="2024">2024</time>
