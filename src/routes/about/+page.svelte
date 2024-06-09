@@ -1,6 +1,6 @@
 <script>
 	import LaptopLogos from '$lib/LaptopLogos.svelte';
-	import Orbiter from '$lib/Orbiter.svelte';
+	import FaviconMobile from '$lib/FaviconMobile.svelte';
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import AnimateIn from '$lib/AnimateIn.svelte';
 </script>
@@ -24,7 +24,7 @@
 				webapps.
 			</p>
 			<AnimateIn duration={1000}>
-				<Orbiter />
+				<FaviconMobile />
 			</AnimateIn>
 		</section>
 
