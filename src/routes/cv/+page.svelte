@@ -427,8 +427,20 @@
 	p,
 	ul {
 		font-size: 16px;
-		max-width: 60ex;
+		max-width: none;
 		line-height: 1.4;
+	}
+
+	.summary {
+		max-width: 120ex;
+	}
+	.summary p {
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+
+	li {
+		max-width: none;
 	}
 
 	.experienceMeta {
