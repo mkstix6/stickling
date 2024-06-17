@@ -300,7 +300,7 @@
 
 				<section class="mb2">
 					<h2>Location</h2>
-					<p>London</p>
+					<p>London, United Kingdom</p>
 				</section>
 
 				<section class="mb2">
