@@ -48,10 +48,14 @@
 
 		<section class="summary mt0 mb2">
 			<p>
-				I'm a dilligent developer interested in building modern web experiences with good
-				accessibility <small>(WCAG 2.1)</small> and semantic qualities. Interested in the latest web
-				development trends, most recently working with NextJS, TypeScript and GraphQL. I've been responsible
-				for supporting junior developers and managing projects through beginning to ship and onto maintenance.
+				I'm an enthusiastic, sunny, dilligent and creative developer interested in building modern
+				web experiences with great teams of people. I've been the developer point of contact for
+				clients and managed projects from inception, to ship, and further onto long term
+				maintenance. I enjoy mentoring junior developers and contributing generously to community
+				movements. Interested in keeping up with the latest web development trends whilst utilising
+				battle tested offerings such as NextJS, TypeScript and GraphQL where it really counts. I
+				strive for good performance, accessibility <small>(WCAG 2.1)</small>, S.E.O. and semantic
+				qualities in the code I write.
 			</p>
 		</section>
 
@@ -77,11 +81,19 @@
 							</small>
 						</p>
 						<h4>Primary responsibilities:</h4>
+						<p>
+							My work at ITV has predominently focussed on delivering fearures and performance
+							improvements to our ITVX app offerings. We liase with key stake holders, discuss
+							features with our design teams, collaborate in planning work and pair on developing.
+							We're responsible for new features from the first line of code to deploying them to
+							our web and connected TV hardware – each of which bring unique challenges due to
+							performance and memory limitations.
+						</p>
 						<ul>
 							<li>
 								Engineering functionality and maintaining ITVX at <a href="https://www.itv.com"
 									>itv.com</a
-								> (a Next.js + GraphQL application).
+								> (a modern Next.js + GraphQL application).
 							</li>
 							<li>
 								Engineering, testing and maintaining ITV's ITVX Connected Television (CTV) offerings
