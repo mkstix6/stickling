@@ -135,7 +135,7 @@
 						whilst participating in the annual <a href="https://adventofcode.com">Advent of Code</a>
 						code challenges last year
 						<div class="logorow">
-							<LogoSticker logokey="Python" />
+							<LogoSticker logokey="python" />
 						</div>
 					</div>
 					<div class="skillcard">
