@@ -7,8 +7,8 @@
 		localVideoSourceMP4: string;
 		localVideoSourceWEBM: string;
 		poster: string;
-		instagramURL: string;
-		codepenURL: string;
+		instagramURL: string | null;
+		codepenURL: string | null;
 	};
 
 	const artworks: ArtWork[] = [
