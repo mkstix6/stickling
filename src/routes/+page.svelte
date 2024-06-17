@@ -68,7 +68,7 @@
 		</section>
 
 		<aside class="relaxZone">
-			<h2 class="h4 my3">That's all for now. Take a moment for yourself…</h2>
+			<h2 class="h4 my3">That's all for now…</h2>
 			<video loop muted autoplay playsinline tabindex="-1" class="relaxVideo">
 				<source src="/video/grassy-green720.webm" type="video/webm" />
 				<source src="/video/grassy-green720.mp4" type="video/mp4" />
