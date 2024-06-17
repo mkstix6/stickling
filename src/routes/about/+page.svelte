@@ -70,9 +70,12 @@
 				<div class="mytechexperience">
 					<h3>I've built up a variety of skills:</h3>
 					<div class="skillcard">
-						I'm familiar with <strong>modern front-end frameworks</strong> such as <em>Vue.js</em>,
+						I'm familiar with <strong>modern front-end frameworks</strong> such as
+						<em>React.js</em>, <em>Next.js</em>, <em>Vue.js</em>,
 						<em>Nuxt.js</em>, and <em>SvelteKit</em>.
 						<div class="logorow">
+							<LogoSticker logokey="react" />
+							<LogoSticker logokey="next" />
 							<LogoSticker logokey="vue" />
 							<LogoSticker logokey="nuxt" />
 							<LogoSticker logokey="svelte" />
@@ -81,10 +84,11 @@
 					<div class="skillcard">
 						<strong>End-to-end tested</strong> applications with
 						<em>Cypress.js</em>.
-						<strong>Unit tested</strong> with runners like <em>AVA</em> and <em>Jest</em>. Then
+						<strong>Unit tested</strong> with runners like <em>Jest</em> and <em>AVA</em>. Then
 						incorporated them into a continuous delivery process with <em>Bitbucket Pipelines</em>.
 						<div class="logorow">
 							<LogoSticker logokey="cypress" />
+							<LogoSticker logokey="jest" />
 							<LogoSticker logokey="ava" />
 							<LogoSticker logokey="jest" />
 							<LogoSticker logokey="bitbucket" />
