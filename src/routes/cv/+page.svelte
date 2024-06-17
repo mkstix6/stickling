@@ -398,6 +398,9 @@
 
 	header {
 		margin: 5vw 0 1.5rem 0;
+		@media print {
+			margin-top: 0;
+		}
 		h1 {
 			padding-bottom: 0;
 		}
