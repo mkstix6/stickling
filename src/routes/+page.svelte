@@ -69,7 +69,7 @@
 
 		<aside class="relaxZone">
 			<h2 class="h4 my3">That's all for now…</h2>
-			<video loop muted autoplay playsinline tabindex="-1" class="relaxVideo">
+			<video loop muted autoplay playsinline tabindex="-1" class="relaxVideo hexagonCrop">
 				<source src="/video/grassy-green720.webm" type="video/webm" />
 				<source src="/video/grassy-green720.mp4" type="video/mp4" />
 				<p>
@@ -142,6 +142,9 @@
 		width: 62vmin;
 		height: 62vmin;
 		box-shadow: 0 1em 5em 10em #0005;
+	}
+
+	.hexagonCrop {
 		clip-path: polygon(
 			50% 0%,
 			93.30127019% 25%,
