@@ -82,7 +82,7 @@
 						</p>
 						<h4>Primary responsibilities:</h4>
 						<p>
-							My work at ITV has predominently focussed on delivering fearures and performance
+							My work at ITV has predominently focussed on delivering features and performance
 							improvements to our ITVX app offerings. We liase with key stake holders, discuss
 							features with our design teams, collaborate in planning work and pair on developing.
 							We're responsible for new features from the first line of code to deploying them to
