@@ -479,8 +479,8 @@ body {
 }
 
 strong.gradient {
-	@include gradientText;
 	display: block;
+	@include gradientText;
 }
 
 h1,
@@ -493,7 +493,6 @@ h6 {
 	font-family: var(--fontfamilyheadings);
 	font-weight: 600;
 	letter-spacing: 0.02em;
-	@include gradientText;
 	padding-bottom: 0.2em;
 	line-height: 1;
 	margin: 0;
@@ -501,6 +500,7 @@ h6 {
 	position: relative;
 	/* padding: 0.2em 0.3em; */
 	width: max-content;
+	@include gradientText;
 }
 
 // h1:first-letter,

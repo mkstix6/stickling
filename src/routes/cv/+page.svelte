@@ -375,20 +375,22 @@
 			height: 5em;
 		}
 
-		border-radius: 1px;
-		padding: 1px;
-		background-color: white;
-		cursor: none;
-		position: relative;
-		z-index: 5;
-		transition: transform 300ms;
-		transition-timing-function: cubic-bezier(0.415, 1.34, 0.83, 0.745);
+		& {
+			border-radius: 1px;
+			padding: 1px;
+			background-color: white;
+			cursor: none;
+			position: relative;
+			z-index: 5;
+			transition: transform 300ms;
+			transition-timing-function: cubic-bezier(0.415, 1.34, 0.83, 0.745);
 
-		&:focus,
-		&:hover {
-			transform: scale(7);
-			transition: transform 800ms;
-			transition-timing-function: cubic-bezier(0.79, -0.07, 0, 1.03);
+			&:focus,
+			&:hover {
+				transform: scale(7);
+				transition: transform 800ms;
+				transition-timing-function: cubic-bezier(0.79, -0.07, 0, 1.03);
+			}
 		}
 	}
 
@@ -520,11 +522,6 @@
 		> li {
 			margin-bottom: 1em;
 			padding: 1.5em 0;
-
-			@media print {
-				padding-top: 0;
-			}
-
 			padding-left: 3em;
 			position: relative;
 			min-height: calc(3vw * var(--durationyears));

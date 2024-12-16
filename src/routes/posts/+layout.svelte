@@ -98,7 +98,11 @@
 		@media screen and (max-width: 500px) {
 			grid-template-columns: 1fr;
 		}
-		margin: 5rem 0;
+
+		& {
+			margin: 5rem 0;
+		}
+
 		a {
 			padding: 0;
 		}
