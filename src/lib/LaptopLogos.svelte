@@ -128,6 +128,7 @@
 
 <style lang="scss">
 	@use 'sass:math';
+	@use 'sass:color';
 
 	.aspectRatioBox {
 		width: 100%;
@@ -214,8 +215,8 @@
 			background: #dfdfe4;
 			background: linear-gradient(
 				to top,
-				darken(#dfdfe4, 30%),
-				darken(#dfdfe4, 10%) 1.25vw,
+				color.adjust(#dfdfe4, $lightness: -30%),
+				color.adjust(#dfdfe4, $lightness: -10%) 1.25vw,
 				#dfdfe4 1.25vw,
 				#dfdfe4
 			);

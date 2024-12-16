@@ -246,6 +246,8 @@
 </footer>
 
 <style lang="scss">
+	@use 'sass:color';
+
 	.controls {
 		margin: 1.5rem 0;
 	}
@@ -372,8 +374,14 @@
 		$color: #375;
 		font-size: calc(var(--hexWidth) / 3);
 		color: #0009;
-		text-shadow: 0 1px 0 transparentize(lighten($color, 20%), 0.7),
-			0 -1px 0 transparentize(darken($color, 20%), 0.7);
+		text-shadow:
+			0 1px 0 color.adjust(color.adjust($color, $lightness: 20%), $alpha: -0.7, $space: hsl),
+			// direct replacement for transparentize()
+			0 -1px 0 color.adjust(
+					color.adjust($color, $lightness: -20%),
+					$alpha: -0.7,
+					$space: hsl
+				); // direct replacement for transparentize()
 		width: var(--hexWidth);
 		height: var(--hexHeight);
 		$fraction: 25%;

@@ -185,7 +185,7 @@
 		&::before {
 			display: block;
 			margin-bottom: 1em;
-			// color: rgba(darken($color, 60%), 0.4);
+			// color: rgba(color.adjust($color, $lightness: -60%), 0.4);
 			content: 'Fluid width down to 400px, then 100% width when on own row.';
 		}
 		&:empty::before {

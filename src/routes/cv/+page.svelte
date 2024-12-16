@@ -324,6 +324,8 @@
 </main>
 
 <style lang="scss">
+	@use 'sass:color';
+
 	@media screen and (min-width: 1000px), print {
 		.grid {
 			$goldenratio: 1.62;
@@ -566,16 +568,37 @@
 					content: none !important;
 				}
 			}
+
+			@media print {
+				padding-top: 0;
+			}
 		}
+
 		@for $i from 1 through 6 {
 			li:nth-child(#{$i}) {
 				&::before,
 				&::after {
-					--stripecolor: #{mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%)};
-					--stripecolor1: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.6)};
-					--stripecolor2: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.75)};
-					--stripecolor3: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.85)};
-					--stripecolor4: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.9)};
+					--stripecolor: #{color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%)};
+					--stripecolor1: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.6,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor2: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.75,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor3: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.85,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor4: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.9,
+							$space: hsl
+						)}; // direct replacement for transparentize()
 				}
 			}
 		}
@@ -586,11 +609,27 @@
 			li:nth-child(#{$i}) {
 				&::before,
 				&::after {
-					--stripecolor: #{mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%)};
-					--stripecolor1: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.6)};
-					--stripecolor2: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.75)};
-					--stripecolor3: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.85)};
-					--stripecolor4: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.9)};
+					--stripecolor: #{color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%)};
+					--stripecolor1: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.6,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor2: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.75,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor3: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.85,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor4: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.9,
+							$space: hsl
+						)}; // direct replacement for transparentize()
 				}
 			}
 		}
