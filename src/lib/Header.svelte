@@ -9,7 +9,7 @@
 <header class="siteHeader">
 	<div class="bigM">
 		<div class="square-box pos-rel">
-			<a href="/" title="home page" class="bigM__button logolink">
+			<a href="/" title="home page" class="bigM__button logolink" aria-label="Home page">
 				<svg
 					aria-label="M logo for Stickling.co.uk"
 					viewBox="70 -20 260 260"

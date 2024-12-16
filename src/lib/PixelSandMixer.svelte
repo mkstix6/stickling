@@ -611,6 +611,7 @@ Compass: ${compass}
 		id="motionControlsPermsButton"
 		style="height: 50px"
 		on:click={getMotionControlsPermission}
+		aria-label="Enable motion controls"
 	>
 		<span class="icon--inactive"
 			><svg
