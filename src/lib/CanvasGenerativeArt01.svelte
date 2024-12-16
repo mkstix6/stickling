@@ -900,7 +900,7 @@
 	{lineStyle.name} - {renderSize}
 {/if}
 
-<canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize} />
+<canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize}></canvas>
 
 {#if download}
 	<button id="download" on:click={downloadImage}>Download {fileName}</button>

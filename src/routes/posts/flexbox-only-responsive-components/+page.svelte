@@ -106,32 +106,32 @@
 
 <div class="widthObserver column100">Container 100% width</div>
 <div class="container column100">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column80">Container 80% width</div>
 <div class="container column80">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column60">Container 60% width</div>
 <div class="container column60">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <!-- <div class="widthObserver column40">Container 40% width</div>
 <div class="container column40">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column20">Container 20% width</div>
 <div class="container column20">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div> -->
 
 <hr />
@@ -140,14 +140,14 @@
 <div class="container">
 	<div class="fluidWidthDownToAPoint">
 		<div class="container">
-			<div class="fluidWidthDownToAPoint" />
-			<div class="fixedUnlessOnOwnRow" />
+			<div class="fluidWidthDownToAPoint"></div>
+			<div class="fixedUnlessOnOwnRow"></div>
 		</div>
 	</div>
 	<div class="fixedUnlessOnOwnRow">
 		<div class="container">
-			<div class="fluidWidthDownToAPoint" />
-			<div class="fixedUnlessOnOwnRow" />
+			<div class="fluidWidthDownToAPoint"></div>
+			<div class="fixedUnlessOnOwnRow"></div>
 		</div>
 	</div>
 </div>

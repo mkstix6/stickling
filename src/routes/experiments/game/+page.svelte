@@ -31,7 +31,7 @@
 	let sizes = [9, 10, 11, 12, 13];
 </script>
 
-<div class="p5 m5" />
+<div class="p5 m5"></div>
 
 <div class="m5">
 	<div class="grid">

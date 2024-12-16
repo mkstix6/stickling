@@ -595,7 +595,7 @@ Compass: ${compass}
 <svelte:window on:keydown={handleKeyboardEvents} />
 
 <div class="canvasComponent noUserSelect" on:click={handleKeyboardEvents}>
-	<div class="canvasShadow noUserSelect" />
+	<div class="canvasShadow noUserSelect"></div>
 	<div class="canvasContainer noUserSelect">
 		<canvas width="64" height="64" class="noUserSelect">PixelMixer…</canvas>
 	</div>
@@ -645,7 +645,7 @@ Compass: ${compass}
 		</span>
 	</button>
 	<pre>
-    <div class="gyroreadout" />
+    <div class="gyroreadout"></div>
   </pre>
 </div>
 

@@ -82,4 +82,4 @@
 	}
 </script>
 
-<canvas id="c" width="500" height="500" />
+<canvas id="c" width="500" height="500"></canvas>

@@ -88,8 +88,8 @@
 
 <div class="aspectRatioBox">
 	<div class="laptop" bind:clientWidth={laptopWidth} class:laptop--observed={wasObserverd}>
-		<div class="laptop__screenglow" />
-		<div class="laptop__base" />
+		<div class="laptop__screenglow"></div>
+		<div class="laptop__base"></div>
 		<div class="laptop__lidperspective">
 			<div class="laptop__lid">
 				<div class="laptop__logos" bind:this={logos_element}>

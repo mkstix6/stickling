@@ -173,7 +173,7 @@
 
 <div class="page page--post my5">
 	<div>
-		<canvas bind:this={canvasElement} width="600" height="600" />
+		<canvas bind:this={canvasElement} width="600" height="600"></canvas>
 	</div>
 
 	<div class="flowFieldReadout">

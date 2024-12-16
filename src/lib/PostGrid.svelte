@@ -36,7 +36,7 @@
 	{/each}
 </div>
 
-<div class="BDgradient" />
+<div class="BDgradient"></div>
 
 <style lang="scss">
 	.postGrid {

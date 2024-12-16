@@ -148,7 +148,7 @@
 </script>
 
 <template id="zprofiletemplate">
-	<canvas id="canvas" />
+	<canvas id="canvas"></canvas>
 	<div class="character" style="transform: rotate(calc(var(--characterRotation) * -1rad));">
 		<div class="character-icon">🚀</div>
 	</div>

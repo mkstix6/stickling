@@ -50,14 +50,14 @@
 <div class:onZone={whichZone} class:offZone={!whichZone}>
 	<div class="ring" style="background: {styleRingBackground};">
 		{#if ringBackgroundHighlight === 'active' && whichZone}
-			<div class="ring__background" style="background: {styleRingBackgroundOn};" />
+			<div class="ring__background" style="background: {styleRingBackgroundOn};"></div>
 		{:else if ringBackgroundHighlight === 'active' && !whichZone}
-			<div class="ring__background" style="background: {styleRingBackgroundOff};" />
+			<div class="ring__background" style="background: {styleRingBackgroundOff};"></div>
 		{/if}
 		{#if showTicks}
-			<div class="ringtimer__secondsMarkers" style="background: {ticksImage}" />
+			<div class="ringtimer__secondsMarkers" style="background: {ticksImage}"></div>
 		{/if}
-		<div class="ringtimer__secondHand" style="transform: rotate({$loopProgress * 360}deg);" />
+		<div class="ringtimer__secondHand" style="transform: rotate({$loopProgress * 360}deg);"></div>
 		<div class="ringtimer__zoneCountdown">{prettyTime(whichZone ? onCountDown : offCountDown)}</div>
 		<div class="ringtimer__button">
 			<PlayPauseButton {playing} on:toggle />
