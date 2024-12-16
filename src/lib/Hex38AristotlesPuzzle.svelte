@@ -50,7 +50,7 @@
 			(event) => {
 				randomBoard();
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 	});
 
@@ -262,7 +262,9 @@
 		position: relative;
 		top: 0;
 		transform: translateY(0em);
-		transition: transform 100ms, box-shadow 70ms;
+		transition:
+			transform 100ms,
+			box-shadow 70ms;
 		line-height: 1;
 		padding: 0 1em;
 		margin-bottom: 0.3em;

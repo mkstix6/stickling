@@ -224,7 +224,9 @@
 		border-bottom: 1px solid currentColor;
 		opacity: 0.8;
 		&:after {
-			box-shadow: inset 1px 0 0 currentColor, inset -1px 0 0 currentColor;
+			box-shadow:
+				inset 1px 0 0 currentColor,
+				inset -1px 0 0 currentColor;
 			content: '';
 			display: block;
 			position: absolute;

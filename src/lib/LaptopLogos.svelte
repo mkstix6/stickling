@@ -51,7 +51,7 @@
 					stagger: { amount: 2 },
 					opacity: 1,
 				},
-				flyDuration + 0.01
+				flyDuration + 0.01,
 			);
 		}
 	};
@@ -65,9 +65,9 @@
 			// No animation
 		} else {
 			if (
-				!'IntersectionObserver' in window &&
-				!'IntersectionObserverEntry' in window &&
-				!'intersectionRatio' in window.IntersectionObserverEntry.prototype
+				(!'IntersectionObserver') in window &&
+				(!'IntersectionObserverEntry') in window &&
+				(!'intersectionRatio') in window.IntersectionObserverEntry.prototype
 			) {
 				// Polyfill if required
 			} else {
@@ -111,9 +111,9 @@
 								src="/logos/stickers/{image}"
 								alt={name}
 								style="--logo-width: {Math.floor(
-									scale * (laptopWidth * 0.15) * aspectratio
+									scale * (laptopWidth * 0.15) * aspectratio,
 								)}px; --logo-height: {Math.floor(
-									scale * (laptopWidth * 0.15)
+									scale * (laptopWidth * 0.15),
 								)}px; transform: rotate({Math.floor((Math.random() - 0.5) * 30)}deg);"
 								loading="lazy"
 								decoding="async"
