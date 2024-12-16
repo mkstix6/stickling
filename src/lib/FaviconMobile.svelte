@@ -97,18 +97,18 @@
 			}
 			@for $i from 1 through 50 {
 				&:nth-child(50n + #{$i}) {
-					$forward: random() * 40;
-					transform: rotateY(#{floor((random() * 12) - 6)}deg)
-						translateX(#{floor((random() * 100 - 50))}px)
-						translateY(#{floor((random() * $forward) + $forward)}px)
-						translateZ(#{floor(($forward - 20) * 10)}px);
-					z-index: floor($forward);
+					$forward: math.random() * 40;
+					transform: rotateY(#{math.floor((math.random() * 12) - 6)}deg)
+						translateX(#{math.floor((math.random() * 100 - 50))}px)
+						translateY(#{math.floor((math.random() * $forward) + $forward)}px)
+						translateZ(#{math.floor(($forward - 20) * 10)}px);
+					z-index: math.floor($forward);
 
 					img {
-						animation-duration: #{random() * 20s + 25s};
-						animation-delay: #{random() * 20s};
+						animation-duration: #{math.random() * 20s + 25s};
+						animation-delay: #{math.random() * 20s};
 						filter: blur(
-							#{max(0, floor(math.div(40 - $forward, 10) - 2))}px
+							#{max(0, math.floor(math.div(40 - $forward, 10) - 2))}px
 						); // brightness(#{($forward / 40) + 0.25});
 						opacity: #{math.div($forward, 40) + 0.25};
 					}
