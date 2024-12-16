@@ -15,5 +15,5 @@
 
 <figure>
 	<JamesWebbSpaceTelescopeArt />
-	<caption>The real JWST doesn't move like this.</caption>
+	<figcaption>The real JWST doesn't move like this.</figcaption>
 </figure>

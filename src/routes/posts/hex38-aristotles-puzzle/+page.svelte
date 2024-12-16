@@ -12,9 +12,9 @@
 
 <figure>
 	<Hex38AristotlesPuzzle />
-	<caption
+	<figcaption
 		>Switch the tiles so that every line adds up to 38. There are good reasons for this puzzle's
-		⭐️⭐️⭐️⭐️⭐️ difficulty rating.</caption
+		⭐️⭐️⭐️⭐️⭐️ difficulty rating.</figcaption
 	>
 </figure>
 
