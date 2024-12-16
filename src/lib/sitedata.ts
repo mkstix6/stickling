@@ -861,6 +861,16 @@ export interface PostItem {
 export const postItems: PostItem[] = [
 	{
 		year: 2024,
+		month: 6,
+		title: 'FlowerWorks code art',
+		slug: 'flowerworks',
+		type: 'art',
+		tech: ['javascript'],
+		codethumbnail: `background: #3d6f40`,
+		thumbnail: '/posts/flowerworkscanvasart.jpg',
+	},
+	{
+		year: 2024,
 		month: 1,
 		title: 'Procreate',
 		slug: 'procreate',
