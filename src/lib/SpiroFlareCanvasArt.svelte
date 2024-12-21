@@ -60,7 +60,7 @@
 	async function startDrawing() {
 		await tick();
 		window.cancelAnimationFrame(RAF);
-		ctx = <CanvasRenderingContext2D>canvasElement.getContext('2d');
+		ctx = canvasElement.getContext('2d');
 		// Cancel old animation
 
 		setStartValues();
