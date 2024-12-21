@@ -196,6 +196,7 @@
 	class="confettiSpace card"
 	data-particleschoice={particlesChoice}
 	on:mousemove={handleMouseMove}
+	role="application"
 ></div>
 
 <SocialLink href="https://codepen.io/mkstix6/pen/arZWbE" service="codepen"
