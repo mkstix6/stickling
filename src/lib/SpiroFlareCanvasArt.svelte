@@ -100,9 +100,9 @@
 							Math.sin(time * 0.00174565342 + variance * 3.73645) * coverage * variance,
 						canvasElement.height / 2 +
 							Math.cos(time * 0.000132546 + variance * 76456543) * coverage * variance +
-							Math.cos(time * 0.0012536345 + variance * 2.65484564) * coverage * variance
+							Math.cos(time * 0.0012536345 + variance * 2.65484564) * coverage * variance,
 					];
-				}
+				},
 			},
 			{
 				name: 'StarBurst',
@@ -125,9 +125,9 @@
 				arcPosition(time, coverage, variance): [number, number] {
 					return [
 						canvasElement.width / 2 + Math.sin(time * 0.001) * coverage,
-						canvasElement.height / 2 + Math.sin(time * 0.001) * coverage
+						canvasElement.height / 2 + Math.sin(time * 0.001) * coverage,
 					];
-				}
+				},
 			},
 			{
 				name: 'TorusSpectre',
@@ -154,7 +154,7 @@
 					canvasElement.width / 2 + Math.sin((time * 0.001+variance*500) * Math.PI * 2 * (1 / 2) ) * coverage,
 					canvasElement.height / 2 + Math.cos((time * 0.001+variance*500) * Math.PI * 2 * (1 / 6)) * coverage,
 					];
-				}
+				},
 			},
 			{
 				name: 'PetalNebula',
@@ -183,7 +183,7 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.001142) * coverage * 0.3,
 					];
-				}
+				},
 			},
 			{
 				name: 'WarpFlower',
@@ -213,7 +213,7 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.00016111) * coverage * 0.3,
 					];
-				}
+				},
 			},
 			{
 				name: 'SpiroCoil',
@@ -242,8 +242,8 @@
 					canvasElement.height / 2 + Math.cos(time*0.002 + variance * 2543) * coverage * variance*0.4
 					+ Math.cos(time*0.001142) * coverage * 0.3,
 					];
-				}
-			}
+				},
+			},
 		];
 
 		options = artStyles[preset];
@@ -266,7 +266,7 @@
 			let alpha = linearDecimalPeak;
 			colors.push([
 				i * options.actorStepDistance,
-				`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`
+				`hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`,
 			]);
 		}
 
@@ -331,7 +331,7 @@
 		time: number,
 		variance: number = 2.6432557,
 		tDiff: number = 0,
-		color: string = '#fff'
+		color: string = '#fff',
 	) {
 		drawCircle(time + tDiff, color, variance);
 	}
