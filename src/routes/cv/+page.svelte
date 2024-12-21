@@ -318,7 +318,7 @@
 		</div>
 
 		<div style="text-align: center;">
-			<button onclick="window.print()" class="megaButton printbutton">Print this page</button>
+			<button onclick={window.print()} class="megaButton printbutton">Print this page</button>
 		</div>
 	</div>
 </main>
