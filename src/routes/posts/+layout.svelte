@@ -67,7 +67,6 @@
 	}
 
 	.backbutton {
-		// display: block;
 		opacity: 0.7;
 		margin-bottom: 1rem;
 		transition: opacity 300ms;

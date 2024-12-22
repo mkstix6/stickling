@@ -48,8 +48,4 @@
 	.slotContent {
 		margin-left: 1.75em;
 	}
-
-	a:hover .icon {
-		// color: inherit;
-	}
 </style>
