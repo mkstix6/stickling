@@ -113,31 +113,31 @@
 	</div>
 	{#if seedMode === 'dateday'}
 		<div class="datebuttons">
-			<button on:click={() => moveDate(-1)} on:keypress={() => moveDate(-1)}>←</button>
+			<button onclick={() => moveDate(-1)} onkeypress={() => moveDate(-1)}>←</button>
 			<div>
 				pick another day <input
 					type="date"
 					bind:value={inputChosenDate}
-					on:change={() => {
+					onchange={() => {
 						currentDate = new Date(inputChosenDate);
 						seed = inputDateToSeed(inputChosenDate);
 						renderedSeed = inputDateToSeed(inputChosenDate);
 					}}
 				/>
 			</div>
-			<button on:click={() => moveDate(1)}>→</button>
+			<button onclick={() => moveDate(1)}>→</button>
 		</div>
 	{:else}
 		<div class="datebuttons">
-			<button on:click={() => changeSeed(parseInt(seed) - 1)}>←</button>
+			<button onclick={() => changeSeed(parseInt(seed) - 1)}>←</button>
 			<div>
 				choose another seed <input
 					type="number"
 					bind:value={inputSeed}
-					on:change={() => changeSeed(parseInt(inputSeed))}
+					onchange={() => changeSeed(parseInt(inputSeed))}
 				/>
 			</div>
-			<button on:click={() => changeSeed(parseInt(seed) + 1)}>→</button>
+			<button onclick={() => changeSeed(parseInt(seed) + 1)}>→</button>
 		</div>
 	{/if}
 

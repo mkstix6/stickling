@@ -903,7 +903,7 @@
 <canvas class:diagnostics bind:this={canvasElement} width={renderSize} height={renderSize}></canvas>
 
 {#if download}
-	<button id="download" on:click={downloadImage}>Download {fileName}</button>
+	<button id="download" onclick={downloadImage}>Download {fileName}</button>
 {/if}
 
 {#if diagnostics}

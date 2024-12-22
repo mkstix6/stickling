@@ -594,7 +594,7 @@ Compass: ${compass}
 
 <svelte:window on:keydown={handleKeyboardEvents} />
 
-<div class="canvasComponent noUserSelect" on:click={handleKeyboardEvents}>
+<div class="canvasComponent noUserSelect" onclick={handleKeyboardEvents}>
 	<div class="canvasShadow noUserSelect"></div>
 	<div class="canvasContainer noUserSelect">
 		<canvas width="64" height="64" class="noUserSelect">PixelMixer…</canvas>
@@ -610,7 +610,7 @@ Compass: ${compass}
 	<button
 		id="motionControlsPermsButton"
 		style="height: 50px"
-		on:click={getMotionControlsPermission}
+		onclick={getMotionControlsPermission}
 		aria-label="Enable motion controls"
 	>
 		<span class="icon--inactive"

@@ -12,7 +12,7 @@
 
 <button
 	class="ringtimer__playpause ringtimer__playpause--{playing ? 'paused' : 'playing'}"
-	on:click={triggerPlayPauseTimer}
+	onclick={triggerPlayPauseTimer}
 >
 	<span class="screen-reader-text">{playing ? 'Pause' : 'Play'}</span>
 	<span class="ringtimer__playpauseicon">

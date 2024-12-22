@@ -47,7 +47,7 @@
 	};
 </script>
 
-<button class="switch" on:click={switchTheme}>
+<button class="switch" onclick={switchTheme}>
 	<ShapePolygon {...sunShape} {size} />
 </button>
 

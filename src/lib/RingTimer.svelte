@@ -65,7 +65,7 @@
 	{#if showControls}
 		<div class="controls">
 			<nav class="mb1">
-				<button on:click={resetTimer}>Restart</button>
+				<button onclick={resetTimer}>Restart</button>
 			</nav>
 			<nav>
 				<div class="mb1">

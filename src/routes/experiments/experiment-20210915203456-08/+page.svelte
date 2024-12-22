@@ -197,10 +197,10 @@
 	</div>
 
 	<div>
-		<input bind:value={seed} type="range" min="1" max="10" on:change={drawStuff} />
+		<input bind:value={seed} type="range" min="1" max="10" onchange={drawStuff} />
 		{seed}
 	</div>
-	<button class="megaButton" id="download" on:click={downloadImage}>Download {fileName}</button>
+	<button class="megaButton" id="download" onclick={downloadImage}>Download {fileName}</button>
 </div>
 
 <style>

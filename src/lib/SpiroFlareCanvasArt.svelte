@@ -366,7 +366,7 @@
 		<div style="float: right;">
 			<button
 				class="megaButton"
-				on:click={() => {
+				onclick={() => {
 					seed = Math.ceil(Math.random() * 1000);
 					startDrawing();
 				}}>Draw a new one!</button
@@ -385,7 +385,7 @@
 							id="preset{index}"
 							name="preset{index}"
 							bind:group={preset}
-							on:click={() => {
+							onclick={() => {
 								preset = index;
 								startDrawing();
 							}}
