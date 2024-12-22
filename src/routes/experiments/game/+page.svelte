@@ -24,7 +24,7 @@
 		var d = new Date();
 		d.setDate(d.getDate() + i + timeTravel);
 		return parseInt(
-			d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8)
+			d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8),
 		);
 	});
 
