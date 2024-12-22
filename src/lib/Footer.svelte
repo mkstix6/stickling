@@ -8,7 +8,7 @@
 	<div>
 		<div class="bigM">
 			<div class="square-box">
-				<a href="/" title="home page" class="bigM__button logolink">
+				<a href="/" title="home page" class="bigM__button logolink" aria-label="Stickling.com">
 					<svg height="224" viewBox="92 0 224 224" width="224" xmlns="http://www.w3.org/2000/svg">
 						<linearGradient id="stampGrad" x1="0%" y1="0%" x2="0%" y2="100%">
 							<stop offset="0" stop-color="#1d48b4" />
