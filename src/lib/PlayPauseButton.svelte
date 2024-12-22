@@ -42,7 +42,10 @@
 		border-radius: 100%;
 		z-index: 15;
 		transform: rotate(0deg);
-		transition: opacity 0.4s, transform 0.3s, background-color 0.5s;
+		transition:
+			opacity 0.4s,
+			transform 0.3s,
+			background-color 0.5s;
 		&:focus {
 			outline: red solid 2px;
 		}

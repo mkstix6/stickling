@@ -43,8 +43,8 @@
 					.replaceAll('T', '')
 					.replaceAll(':', '')
 					.slice(0, 8),
-				10
-			)
+				10,
+			),
 		);
 	}
 

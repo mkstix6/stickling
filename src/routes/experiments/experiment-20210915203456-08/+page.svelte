@@ -146,8 +146,8 @@
 					Math.abs(moveRotation - cellFlowRotation) < maxRotationChange
 						? moveRotation
 						: moveRotation < cellFlowRotation
-						? moveRotation + maxRotationChange
-						: moveRotation - maxRotationChange;
+							? moveRotation + maxRotationChange
+							: moveRotation - maxRotationChange;
 
 				moveVector = [
 					Math.sin(newMoveRotation) * maxMoveDistance,

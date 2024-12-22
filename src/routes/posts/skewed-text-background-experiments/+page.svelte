@@ -8,7 +8,6 @@
   font-style: normal;
   position: relative;
   transform: skewX(-10deg);
-  
   border-radius: 0.2em;
   background: var(--gradient);
   padding: 0.1em 0.3em;
@@ -47,7 +46,7 @@ em {
   /* transform skew is ignored
     on inline elements
     (in Webkit at least). */
-}	
+}
 `;
 
 	let codeD = `

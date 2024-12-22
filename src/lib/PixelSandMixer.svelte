@@ -567,7 +567,7 @@ Compass: ${compass}
 				nextSandColorPref();
 				resetAndReinitialiseSand();
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 
 		// Accelerometer code

@@ -28,14 +28,14 @@
 						chosenShape: 'star',
 						innerRadius: 0.7,
 						randomness: 0,
-				  }
+					}
 				: {
 						polyStyle: 'fill: white; stroke: #0001; stroke-width:1',
 						pointCount: 20,
 						chosenShape: 'star',
 						innerRadius: 0.7,
 						randomness: 0,
-				  };
+					};
 	}
 
 	const switchTheme = () => {
