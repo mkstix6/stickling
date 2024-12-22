@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.layout {
 		display: flex;
 		flex-direction: column;

@@ -38,7 +38,7 @@
 
 <div class="BDgradient"></div>
 
-<style lang="scss">
+<style>
 	.postGrid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

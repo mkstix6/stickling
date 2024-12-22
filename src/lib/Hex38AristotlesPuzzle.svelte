@@ -310,15 +310,6 @@
 		padding: 0.5rem;
 	}
 
-	// .keyGradient {
-	//   height: 5rem;
-	//   width: 1rem;
-	//   border: 1px solid white;
-	//   border-radius: 0.2rem;
-	//   $perfectColor: hsl(133.89, 89.8%, 50%);
-	//   background: linear-gradient(to bottom, hsl(290, 50%, 50%), hsl(230, 50%, 50%), $perfectColor, hsl(67.5, 70.59%, 80%), hsl(0, 70.59%, 80%));
-	// }
-
 	.keyLabels {
 		display: flex;
 		flex-direction: column;
@@ -326,7 +317,7 @@
 		text-align: left;
 	}
 
-	// Start Hex 38 puzzle styles
+	/* Start Hex 38 puzzle styles */
 	:root {
 		--boardSize: 90vw;
 		--gap: 0.3vw;

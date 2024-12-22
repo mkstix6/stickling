@@ -328,10 +328,9 @@
 
 	@media screen and (min-width: 1000px), print {
 		.grid {
-			$goldenratio: 1.62;
 			display: grid;
 			gap: 3rem;
-			grid-template-columns: #{$goldenratio}fr 1fr;
+			grid-template-columns: 1.62fr 1fr;
 		}
 
 		.employment {
@@ -515,7 +514,6 @@
 			margin-top: 1em;
 		}
 
-		// h4 + p,
 		h4 + ul,
 		h4 + ul > li:first-child {
 			margin-top: 0;

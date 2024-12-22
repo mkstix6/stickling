@@ -203,7 +203,7 @@
 	</div>
 </main>
 
-<style lang="scss">
+<style>
 	.laptopGrid {
 		h3 {
 			width: 100%;

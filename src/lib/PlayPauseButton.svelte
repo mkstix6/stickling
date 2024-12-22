@@ -26,7 +26,7 @@
 	</span>
 </button>
 
-<style lang="scss">
+<style>
 	.ringtimer__playpause {
 		cursor: pointer;
 		opacity: 0;

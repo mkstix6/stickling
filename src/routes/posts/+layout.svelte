@@ -56,7 +56,7 @@
 	</footer>
 </div>
 
-<style lang="scss">
+<style>
 	:global(.page--post h1) {
 		margin-left: auto;
 		margin-right: auto;
@@ -138,13 +138,7 @@
 		transform: rotateY(-15deg);
 		position: relative;
 
-		// @media (prefers-color-scheme: dark) {
 		background: white;
 		color: black;
-		// }
-		// @media (prefers-color-scheme: light) {
-		// 	background: #111;
-		// 	color: white;
-		// }
 	}
 </style>

@@ -203,28 +203,7 @@
 	>This experiment is also visible on CodePen.</SocialLink
 >
 
-<style lang="scss">
-	// @keyframes spinny {
-	// 	0% {
-	// 		background: cyan;
-	// 		transform: rotate3D(0, 1, 0.5, 3.142rad);
-	// 	}
-
-	// 	100% {
-	// 		background: yellow;
-	// 		transform: rotate3D(0, 1, 0.5, 3.142rad);
-	// 	}
-	// }
-
-	// .dust {
-	// 	background: #ff0;
-	// 	display: block;
-	// 	width: 10px;
-	// 	height: 10px;
-	// 	position: absolute;
-	// 	animation: spinny 0.4s infinite;
-	// 	border-radius: 100%;
-	// }
+<style>
 	label {
 		text-transform: capitalize;
 	}

@@ -42,7 +42,7 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.perspective {
 		perspective: 1000px;
 	}

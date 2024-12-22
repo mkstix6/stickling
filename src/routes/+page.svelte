@@ -87,7 +87,7 @@
 	</div>
 </main>
 
-<style lang="scss">
+<style>
 	section.altbackground {
 		background: var(--card-backgroundcolor);
 		clip-path: polygon(0 10vw, 100% 0, 100% calc(100% - 10vw), 0 100%);
@@ -174,7 +174,6 @@
 
 			> span {
 				display: inline-block;
-				// animation: wigglytext 10s infinite;
 				animation-timing-function: ease-in-out;
 				animation-fill-mode: both;
 
@@ -182,15 +181,42 @@
 					animation: none;
 				}
 
-				@for $i from 0 through 10 {
-					&:nth-last-child(#{$i}) {
-						animation-delay: 254ms * $i;
-					}
+				&:nth-last-child(0) {
+					animation-delay: 0ms;
+				}
+				&:nth-last-child(1) {
+					animation-delay: 254ms;
+				}
+				&:nth-last-child(2) {
+					animation-delay: 508ms;
+				}
+				&:nth-last-child(3) {
+					animation-delay: 762ms;
+				}
+				&:nth-last-child(4) {
+					animation-delay: 1016ms;
+				}
+				&:nth-last-child(5) {
+					animation-delay: 1270ms;
+				}
+				&:nth-last-child(6) {
+					animation-delay: 1524ms;
+				}
+				&:nth-last-child(7) {
+					animation-delay: 1778ms;
+				}
+				&:nth-last-child(8) {
+					animation-delay: 2032ms;
+				}
+				&:nth-last-child(9) {
+					animation-delay: 2286ms;
+				}
+				&:nth-last-child(10) {
+					animation-delay: 2540ms;
 				}
 			}
 		}
 	}
-
 	@keyframes inup {
 		0% {
 			opacity: 0;
@@ -236,9 +262,7 @@
 	}
 
 	.artTransitionIn {
-		// animation: 2s 1 inup;
 		animation-fill-mode: backwards;
-		//animation-delay: 1500ms;
 		@media (prefers-reduced-motion: reduce) {
 			animation: none;
 		}

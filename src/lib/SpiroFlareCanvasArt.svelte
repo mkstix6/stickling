@@ -398,7 +398,7 @@
 	{/if}
 </div>
 
-<style lang="scss">
+<style>
 	canvas {
 		width: 100%;
 		height: 100%;

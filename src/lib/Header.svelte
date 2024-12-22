@@ -50,7 +50,7 @@
 	</div>
 </header>
 
-<style lang="scss">
+<style>
 	.bigM {
 		width: 10vw;
 		position: absolute;
@@ -67,17 +67,14 @@
 	}
 
 	.bigM__button {
-		// background: white;
 		border-radius: 100%;
 		aspect-ratio: 1 / 1;
 		width: 100%;
 		height: 100%;
-		// position: absolute;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		filter: drop-shadow(0 1px #0002);
-		// background: var(--pallettemax);
 	}
 
 	.navcontainer {

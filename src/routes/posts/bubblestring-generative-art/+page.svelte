@@ -149,7 +149,7 @@
 	</p>
 </div>
 
-<style lang="scss">
+<style>
 	h2 {
 		margin-bottom: 0.5em;
 	}

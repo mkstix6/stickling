@@ -158,44 +158,41 @@
 	>
 </aside>
 
-<style lang="scss">
-	///////////////// interesting flexbox bits /////////////////////////
+<style>
+	/* ///////////////// interesting flexbox bits ///////////////////////// */
 	.container {
 		display: flex;
 		flex-wrap: wrap;
 	}
 	.fluidWidthDownToAPoint {
-		flex-grow: 999999; // a relatively big number: needed for OTHER column to be fixed width // if it's too big IE fails to compute
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
-		flex-basis: 400px; // its natural min-width
+		flex-grow: 999999; /* a relatively big number: needed for OTHER column to be fixed width // if it's too big IE fails to compute */
+		flex-shrink: 1; /* Allows this to shrink below flex-basis if forced to by small container. */
+		flex-basis: 400px; /* its natural min-width */
 	}
 	.fixedUnlessOnOwnRow {
-		flex-grow: 1; // a relatively small number: needed for THIS column to be fixed width. Not "0" so it will also fill to expand a row if it is on it's own in the row.
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
-		flex-basis: 300px; // its natural min-width.
+		flex-grow: 1; /* a relatively small number: needed for THIS column to be fixed width. Not "0" so it will also fill to expand a row if it is on it's own in the row. */
+		flex-shrink: 1; /* Allows this to shrink below flex-basis if forced to by small container. */
+		flex-basis: 300px; /* its natural min-width. */
 	}
 
-	///////////////// stylings /////////////////////////
+	/* ///////////////// stylings ///////////////////////// */
 
 	.fluidWidthDownToAPoint {
-		$color: #00ffb4;
-		background: rgba($color, 0.4);
+		background: rgba(#00ffb4, 0.4);
 		padding: 20px;
 		box-sizing: border-box;
 		&::before {
 			display: block;
 			margin-bottom: 1em;
-			// color: rgba(color.adjust($color, $lightness: -60%), 0.4);
 			content: 'Fluid width down to 400px, then 100% width when on own row.';
 		}
 		&:empty::before {
 			margin-bottom: 0;
 		}
 	}
-	$fixedColor: #06006d;
 	.fixedUnlessOnOwnRow {
 		color: white;
-		background: rgba($fixedColor, 0.5);
+		background: rgba(#06006d, 0.5);
 		padding: 20px;
 		box-sizing: border-box;
 		&::before {
@@ -213,28 +210,7 @@
 		color: white;
 		padding: 0 0.2em;
 		border-radius: 0.45em;
-		background-color: rgba($fixedColor, 0.5);
-	}
-
-	%hmeasureguide {
-		color: inherit;
-		margin-left: auto;
-		margin-right: auto;
-		position: relative;
-		border-bottom: 1px solid currentColor;
-		opacity: 0.8;
-		&:after {
-			box-shadow:
-				inset 1px 0 0 currentColor,
-				inset -1px 0 0 currentColor;
-			content: '';
-			display: block;
-			position: absolute;
-			height: 100%;
-			top: 50%;
-			left: 0;
-			right: 0;
-		}
+		background-color: rgba(#06006d, 0.5);
 	}
 
 	hr {
@@ -262,7 +238,24 @@
 		text-align: center;
 		margin-top: 1em;
 		margin-bottom: 1em;
-		@extend %hmeasureguide;
+		color: inherit;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		border-bottom: 1px solid currentColor;
+		opacity: 0.8;
+		&:after {
+			box-shadow:
+				inset 1px 0 0 currentColor,
+				inset -1px 0 0 currentColor;
+			content: '';
+			display: block;
+			position: absolute;
+			height: 100%;
+			top: 50%;
+			left: 0;
+			right: 0;
+		}
 	}
 
 	.container {
@@ -292,15 +285,8 @@
 	.column60 {
 		width: 60%;
 	}
-	// .column40 {
-	// 	width: 40%;
-	// }
-	// .column20 {
-	// 	width: 20%;
-	// }
 
 	aside {
 		display: inline-block;
-		// max-width: 60ex;
 	}
 </style>

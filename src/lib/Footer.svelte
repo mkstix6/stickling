@@ -46,20 +46,9 @@
 	</div>
 </footer>
 
-<style lang="scss">
+<style>
 	.siteFooter {
-		// display: flex;
-		// flex-direction: column;
-		// align-items: center;
-		// justify-content: space-between;
-
-		// @media (prefers-color-scheme: light) {
-		// 	background: linear-gradient(-186deg, #fff0, 45%, #ffff 60%);
-		// }
-		// @media (prefers-color-scheme: dark) {
 		background: linear-gradient(-186deg, #06102300, 45%, #061023ff 60%);
-		// }
-
 		padding: 5rem 2rem 3rem;
 		margin-top: auto !important;
 

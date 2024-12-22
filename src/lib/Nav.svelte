@@ -20,7 +20,7 @@
 	{/each}
 </nav>
 
-<style lang="scss">
+<style>
 	nav {
 		display: flex;
 	}
