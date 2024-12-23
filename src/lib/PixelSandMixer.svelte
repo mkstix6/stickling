@@ -1,14 +1,14 @@
-<script lang="ts">
+<script>
 	import { onMount, onDestroy } from 'svelte';
 
-	type Vector2D = [number, number];
-	type Coordinates2D = [number, number];
+	// type Vector2D = [number, number];
+	// type Coordinates2D = [number, number];
 
 	class Grain {
-		// x = 0;
-		// y = 0;
-		// color;
-		// iterationsHasBeenSettled = 0;
+		x = 0;
+		y = 0;
+		color = 'white';
+		iterationsHasBeenSettled = 0;
 		constructor(x = 0, y = 0, color = 'rgb(200, 0, 0)') {
 			this.setCoordinates([x, y]);
 			this.color = color;
@@ -17,7 +17,7 @@
 			this.x = x;
 			this.y = y;
 		}
-		getCoordinates(): Vector2D {
+		getCoordinates() {
 			return [this.x, this.y];
 		}
 		isSettled() {
@@ -75,6 +75,9 @@
 	}
 
 	class BitMap {
+		field;
+		width;
+		height;
 		constructor(width, height) {
 			this.field = [];
 			this.width = width;
@@ -110,7 +113,7 @@
 	}
 
 	class GravityField extends BitMap {
-		setGravity(vector: Vector2D = [0, 1]) {
+		setGravity(vector = [0, 1]) {
 			this.gravity = vector;
 		}
 		constructor(width = canvasWidth, height = canvasHeight) {
@@ -139,7 +142,7 @@
 		down1(coordinates) {
 			let [gx, gy] = this.gravity;
 			let [fromX, fromY] = coordinates;
-			let newCoordinates: Coordinates2D = [fromX + gx, fromY + gy];
+			let newCoordinates = [fromX + gx, fromY + gy];
 			if (this.validCoordinates(newCoordinates)) {
 				return newCoordinates;
 			} else {
@@ -168,10 +171,10 @@
 			sidewaysVector = combineVectors(sidewaysVector, sidewaysVector);
 			return this.vectorMovement(coordinates, sidewaysVector);
 		}
-		vectorMovement(coordinates: Coordinates2D, sidewaysVector: Vector2D = [0, 0]) {
+		vectorMovement(coordinates, sidewaysVector = [0, 0]) {
 			let [gx, gy] = combineVectors(this.gravity, sidewaysVector);
 			let [fromX, fromY] = coordinates;
-			let newCoordinates: Coordinates2D = [fromX + gx, fromY + gy];
+			let newCoordinates = [fromX + gx, fromY + gy];
 			if (this.validCoordinates(newCoordinates)) {
 				return newCoordinates;
 			} else {
@@ -179,7 +182,7 @@
 			}
 		}
 	}
-
+	const autoRotateDuration = 4000;
 	let autoRotateInterval;
 	let sandField;
 	let pipList = [];
@@ -234,17 +237,21 @@
 		},
 	};
 
-	const rotateVector90CW = ([x, y]: Vector2D): Vector2D => [-y, x];
-	const rotateVector90CCW = ([x, y]: Vector2D): Vector2D =>
+	const rotateVector90CW = ([x, y]) => [-y, x];
+	const rotateVector90CCW = ([x, y]) =>
 		rotateVector90CW(rotateVector90CW(rotateVector90CW([x, y])));
 
 	nextSandColorPref();
 
-	// Rotate sand bubble when pressing left or right keys
-	function handleKeyboardEvents(event) {
+	function resetAllPipCounters() {
 		pipList.forEach((pip) => {
 			pip.resetSettledCounter();
 		});
+	}
+
+	// Rotate sand bubble when pressing left or right keys
+	function handleKeyboardEvents(event) {
+		resetAllPipCounters();
 		// console.log(event.keyCode);
 		// Restart animation
 		console.log(event.target);
@@ -422,8 +429,8 @@
 		return toggleBool;
 	}
 
-	function combineVectors(a: Vector2D, b: Vector2D): Vector2D {
-		let newVector: Vector2D = [0, 0];
+	function combineVectors(a, b) {
+		let newVector = [0, 0];
 		for (let i = 0; i < a.length; i++) {
 			newVector[i] = a[i] + b[i];
 		}
@@ -555,7 +562,7 @@ Compass: ${compass}
 				sandField.rotateGravity('CCW');
 				console.log('🔄 auto-rotate');
 				startAnimation();
-			}, 4000);
+			}, autoRotateDuration);
 		}
 
 		// documentElement.addEventListener('keydown', handleKeyboardEvents, { passive: true });
@@ -594,7 +601,7 @@ Compass: ${compass}
 
 <svelte:window on:keydown={handleKeyboardEvents} />
 
-<div class="canvasComponent noUserSelect" onclick={handleKeyboardEvents} role="application">
+<div class="canvasComponent noUserSelect" role="application">
 	<div class="canvasShadow noUserSelect"></div>
 	<div class="canvasContainer noUserSelect">
 		<canvas width="64" height="64" class="noUserSelect">PixelMixer…</canvas>
