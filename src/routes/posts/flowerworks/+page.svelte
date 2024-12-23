@@ -2,8 +2,6 @@
 	import LogoSticker from '$lib/LogoSticker.svelte';
 	import FlowerWorksCanvasArt from '$lib/FlowerWorksCanvasArt.svelte';
 
-	export let data;
-
 	const seed = Math.floor(Math.random() * 100_000_000);
 </script>
 
