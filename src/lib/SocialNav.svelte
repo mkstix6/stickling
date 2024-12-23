@@ -18,10 +18,6 @@
 </nav>
 
 <style>
-	a:is(:hover, :focus) svg :is(path, rect) {
-		fill: var(--pallette-active);
-	}
-
 	a {
 		display: inline-block;
 		margin: 0.4em 0.4em;
