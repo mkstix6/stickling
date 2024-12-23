@@ -16,7 +16,7 @@
 		rotateMagnitude: number;
 		actorCount: number;
 		globalVariablesAdjustPer: string;
-		globalCompositeOperation: string;
+		globalCompositeOperation: GlobalCompositeOperation;
 		colorRange: number;
 		colorHueShift: number;
 		actorStepDistance: number;
@@ -32,7 +32,7 @@
 
 	let renderSize = 2 ** 11;
 	let canvasElement: HTMLCanvasElement;
-	let ctx: CanvasRenderingContext2D;
+	let ctx: CanvasRenderingContext2D | null;
 	let options: ArtConfig;
 	let hardTime = 0;
 	let frameNumber = 0;
@@ -44,9 +44,10 @@
 	let artStyles: ArtConfig[] = [];
 	let optionsPRDs = [];
 	let generator: Generator;
-	let RAF;
+	let RAF: number;
 
 	function setStartValues() {
+		if (!ctx) return;
 		hardTime = 0;
 		frameNumber = 0;
 		globalAlpha = 1;
@@ -92,7 +93,7 @@
 				lineRadiusStart: 4,
 				lineRadiusChangeRate: 0.99999,
 				maxFrames: 0,
-				// globalVariablesAdjustPer: ,
+				globalVariablesAdjustPer: 'circle',
 				arcPosition(time, coverage, variance): [number, number] {
 					return [
 						canvasElement.width / 2 +
@@ -107,10 +108,12 @@
 			{
 				name: 'StarBurst',
 				clearBetweenFrames: false,
+				maxFrames: 0,
 				fadeAlpha: false,
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
 				concentricLines: false,
+				globalVariablesAdjustPer: 'circle',
 				coverageChange: 1,
 				coverageStart: canvasElement.width * 0.3,
 				rotateMagnitude: 0.2,
@@ -137,6 +140,7 @@
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
 				concentricLines: false,
+				globalVariablesAdjustPer: 'circle',
 				coverageChange: 0.999999,
 				coverageStart: canvasElement.width * 0.3,
 				rotateMagnitude: 0.04,
@@ -164,6 +168,7 @@
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
 				concentricLines: false,
+				globalVariablesAdjustPer: 'circle',
 				coverageChange: 0.999997,
 				coverageStart: canvasElement.width * 0.7,
 				rotateMagnitude: 0.007,
@@ -223,6 +228,7 @@
 				fadeAlphaRate: 0.001,
 				stopAtZeroWidth: true,
 				concentricLines: false,
+				globalVariablesAdjustPer: 'circle',
 				coverageChange: 0.999997,
 				coverageStart: canvasElement.width * 0.65,
 				rotateMagnitude: 0.1,
@@ -283,6 +289,7 @@
 		hardTime += 16;
 		frameNumber++;
 		if (options.fadeAlpha) {
+			if (!ctx) return;
 			globalAlpha -= options.fadeAlphaRate;
 			globalAlpha = globalAlpha < 0 ? 0 : globalAlpha;
 			ctx.globalAlpha = globalAlpha;
@@ -312,12 +319,14 @@
 	}
 
 	function rotateCanvas() {
+		if (!ctx) return;
 		ctx.translate(canvasElement.width / 2, canvasElement.height / 2);
 		ctx.rotate(options.rotateMagnitude);
 		ctx.translate(-canvasElement.width / 2, -canvasElement.height / 2);
 	}
 
 	function drawParticles(time: number) {
+		if (!ctx) return;
 		ctx.globalCompositeOperation = options.globalCompositeOperation;
 
 		colors.forEach(([tDiff, color]) => {
@@ -337,8 +346,9 @@
 	}
 
 	function drawCircle(time: number, color: string, variance: number) {
+		if (!ctx) return;
 		ctx.beginPath();
-		if (!options.globalVariablesAdjustPer || options.globalVariablesAdjustPer === 'circle') {
+		if (options.globalVariablesAdjustPer === 'circle') {
 			adjustGlobalVariables();
 		}
 		let [arcX, arcY] = options.arcPosition(time, coverage, variance);
@@ -349,6 +359,7 @@
 	}
 
 	function fillWithBlack() {
+		if (!ctx) return;
 		ctx.globalCompositeOperation = 'source-over';
 		ctx.fillStyle = '#000F';
 		ctx.fillRect(-100, -100, canvasElement.width + 100, canvasElement.height + 100);
@@ -439,10 +450,10 @@
 			background: var(--pallette-active);
 			color: white;
 		}
+	}
 
-		&__button {
-			display: flex;
-			align-items: center;
-		}
+	.radiobuttons__button {
+		display: flex;
+		align-items: center;
 	}
 </style>
