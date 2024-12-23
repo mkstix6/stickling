@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Nav from '$lib/Nav.svelte';
 	import SocialNav from '$lib/SocialNav.svelte';
-	// import ThemeSwitch from '$lib/ThemeSwitch.svelte';
 </script>
 
 <a class="skip-to-content-link" href="#main">Skip to main</a>
