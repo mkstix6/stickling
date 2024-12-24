@@ -188,7 +188,7 @@
 	</section>
 </article>
 
-<style lang="scss">
+<style>
 	h2 {
 		clear: both;
 	}
@@ -233,11 +233,6 @@
 		}
 	}
 
-	// .threecontainer {
-	// 	width: 40vw;
-	// 	height: 40vw;
-	// }
-
 	.wordcloud {
 		position: relative;
 		display: flex;
@@ -257,7 +252,6 @@
 
 			&:nth-child(odd) {
 				position: relative;
-				// top: -1em;
 			}
 		}
 	}

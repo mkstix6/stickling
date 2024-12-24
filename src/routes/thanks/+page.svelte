@@ -15,11 +15,10 @@
 	</ul>
 </section>
 
-<style lang="scss">
+<style>
 	.thankslist {
 		list-style: none;
 		display: grid;
-		// grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		grid-auto-flow: dense;

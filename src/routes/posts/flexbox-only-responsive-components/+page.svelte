@@ -106,32 +106,32 @@
 
 <div class="widthObserver column100">Container 100% width</div>
 <div class="container column100">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column80">Container 80% width</div>
 <div class="container column80">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column60">Container 60% width</div>
 <div class="container column60">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <!-- <div class="widthObserver column40">Container 40% width</div>
 <div class="container column40">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div>
 
 <div class="widthObserver column20">Container 20% width</div>
 <div class="container column20">
-	<div class="fluidWidthDownToAPoint" />
-	<div class="fixedUnlessOnOwnRow" />
+	<div class="fluidWidthDownToAPoint"></div>
+	<div class="fixedUnlessOnOwnRow"></div>
 </div> -->
 
 <hr />
@@ -140,14 +140,14 @@
 <div class="container">
 	<div class="fluidWidthDownToAPoint">
 		<div class="container">
-			<div class="fluidWidthDownToAPoint" />
-			<div class="fixedUnlessOnOwnRow" />
+			<div class="fluidWidthDownToAPoint"></div>
+			<div class="fixedUnlessOnOwnRow"></div>
 		</div>
 	</div>
 	<div class="fixedUnlessOnOwnRow">
 		<div class="container">
-			<div class="fluidWidthDownToAPoint" />
-			<div class="fixedUnlessOnOwnRow" />
+			<div class="fluidWidthDownToAPoint"></div>
+			<div class="fixedUnlessOnOwnRow"></div>
 		</div>
 	</div>
 </div>
@@ -158,52 +158,55 @@
 	>
 </aside>
 
-<style lang="scss">
-	///////////////// interesting flexbox bits /////////////////////////
+<style>
+	/* ///////////////// interesting flexbox bits ///////////////////////// */
 	.container {
 		display: flex;
 		flex-wrap: wrap;
 	}
+
 	.fluidWidthDownToAPoint {
-		flex-grow: 999999; // a relatively big number: needed for OTHER column to be fixed width // if it's too big IE fails to compute
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
-		flex-basis: 400px; // its natural min-width
+		flex-grow: 999999; /* a relatively big number: needed for OTHER column to be fixed width // if it's too big IE fails to compute */
+		flex-shrink: 1; /* Allows this to shrink below flex-basis if forced to by small container. */
+		flex-basis: 400px; /* its natural min-width */
 	}
+
 	.fixedUnlessOnOwnRow {
-		flex-grow: 1; // a relatively small number: needed for THIS column to be fixed width. Not "0" so it will also fill to expand a row if it is on it's own in the row.
-		flex-shrink: 1; // Allows this to shrink below flex-basis if forced to by small container.
-		flex-basis: 300px; // its natural min-width.
+		flex-grow: 1; /* a relatively small number: needed for THIS column to be fixed width. Not "0" so it will also fill to expand a row if it is on it's own in the row. */
+		flex-shrink: 1; /* Allows this to shrink below flex-basis if forced to by small container. */
+		flex-basis: 300px; /* its natural min-width. */
 	}
 
-	///////////////// stylings /////////////////////////
+	/* ///////////////// stylings ///////////////////////// */
 
 	.fluidWidthDownToAPoint {
-		$color: #00ffb4;
-		background: rgba($color, 0.4);
+		background: rgba(#00ffb4, 0.4);
 		padding: 20px;
 		box-sizing: border-box;
+
 		&::before {
 			display: block;
 			margin-bottom: 1em;
-			// color: rgba(darken($color, 60%), 0.4);
 			content: 'Fluid width down to 400px, then 100% width when on own row.';
 		}
+
 		&:empty::before {
 			margin-bottom: 0;
 		}
 	}
-	$fixedColor: #06006d;
 	.fixedUnlessOnOwnRow {
 		color: white;
-		background: rgba($fixedColor, 0.5);
+		background: rgb(from var(--pallette-active) r g b / 40%);
 		padding: 20px;
 		box-sizing: border-box;
+
 		&::before {
 			display: block;
 			margin-bottom: 1em;
 			color: white;
 			content: 'Fixed width of 300px unless on own row. Width 100% when on own row.';
 		}
+
 		&:empty::before {
 			margin-bottom: 0;
 		}
@@ -213,26 +216,7 @@
 		color: white;
 		padding: 0 0.2em;
 		border-radius: 0.45em;
-		background-color: rgba($fixedColor, 0.5);
-	}
-
-	%hmeasureguide {
-		color: inherit;
-		margin-left: auto;
-		margin-right: auto;
-		position: relative;
-		border-bottom: 1px solid currentColor;
-		opacity: 0.8;
-		&:after {
-			box-shadow: inset 1px 0 0 currentColor, inset -1px 0 0 currentColor;
-			content: '';
-			display: block;
-			position: absolute;
-			height: 100%;
-			top: 50%;
-			left: 0;
-			right: 0;
-		}
+		background-color: rgba(#06006d, 0.5);
 	}
 
 	hr {
@@ -260,7 +244,25 @@
 		text-align: center;
 		margin-top: 1em;
 		margin-bottom: 1em;
-		@extend %hmeasureguide;
+		color: inherit;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		border-bottom: 1px solid currentColor;
+		opacity: 0.8;
+
+		&::after {
+			box-shadow:
+				inset 1px 0 0 currentColor,
+				inset -1px 0 0 currentColor;
+			content: '';
+			display: block;
+			position: absolute;
+			height: 100%;
+			top: 50%;
+			left: 0;
+			right: 0;
+		}
 	}
 
 	.container {
@@ -270,7 +272,6 @@
 		border: 1px solid rgba(black, 0.1);
 		border: 2px solid white;
 		border: none;
-		/*box-shadow:inset 0 0 0 10px rgba(white,1);*/
 		box-shadow: 0 0 0 0.2em white;
 		border-radius: 1em;
 		overflow: hidden;
@@ -278,27 +279,24 @@
 		margin-right: auto;
 		padding: 1px;
 	}
+
 	.container .container {
 		border-radius: 0.5em;
 	}
+
 	.column100 {
 		width: 100%;
 	}
+
 	.column80 {
 		width: 80%;
 	}
+
 	.column60 {
 		width: 60%;
 	}
-	// .column40 {
-	// 	width: 40%;
-	// }
-	// .column20 {
-	// 	width: 20%;
-	// }
 
 	aside {
 		display: inline-block;
-		// max-width: 60ex;
 	}
 </style>

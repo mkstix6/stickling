@@ -203,7 +203,7 @@
 	</div>
 </main>
 
-<style lang="scss">
+<style>
 	.laptopGrid {
 		h3 {
 			width: 100%;
@@ -239,25 +239,18 @@
 			font-style: normal;
 			border-radius: 0.3em;
 			transform: skewX(-10deg);
-			// color: var(--pallette5);
 			white-space: nowrap;
-		}
-
-		strong {
-			// font-weight: inherit;
-			// color: var(--pallette2);
-			// white-space: nowrap;
 		}
 	}
 
 	.skillcard {
 		line-height: 1.5;
 		margin: 0;
-		// border: 2px solid var(--card-backgroundcolor);
 		background: linear-gradient(150deg, #06102300, var(--card-backgroundcolor));
 		padding: 1.5em 1em 0.5em;
 		max-width: 50ex;
 	}
+
 	.logorow {
 		margin: 0.5em 0 0;
 		text-align: right;

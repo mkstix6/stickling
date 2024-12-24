@@ -24,14 +24,14 @@
 		var d = new Date();
 		d.setDate(d.getDate() + i + timeTravel);
 		return parseInt(
-			d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8)
+			d.toISOString().replaceAll('-', '').replaceAll('T', '').replaceAll(':', '').slice(0, 8),
 		);
 	});
 
 	let sizes = [9, 10, 11, 12, 13];
 </script>
 
-<div class="p5 m5" />
+<div class="p5 m5"></div>
 
 <div class="m5">
 	<div class="grid">
@@ -54,7 +54,7 @@
 	</div> -->
 </div>
 
-<style lang="scss">
+<style>
 	.grid {
 		display: flex;
 		flex-wrap: wrap;
@@ -67,14 +67,10 @@
 		--artsize: 256px;
 		width: var(--artsize);
 		height: auto;
-		// margin: 5em;
 		display: flex;
 		flex-direction: column;
 	}
 
-	// .group {
-	// 	margin-bottom: 3em;
-	// }
 	.grid .artcontainer {
 		--size: 256px;
 		/* --size: auto; */
@@ -85,10 +81,4 @@
 		box-sizing: content-box;
 		aspect-ratio: 1/1;
 	}
-
-	// .halfs {
-	// 	display: grid;
-	// 	grid-template-columns: 1fr 1fr;
-	// 	gap: 1rem;
-	// }
 </style>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Nav from '$lib/Nav.svelte';
 	import SocialNav from '$lib/SocialNav.svelte';
-	// import ThemeSwitch from '$lib/ThemeSwitch.svelte';
 </script>
 
 <a class="skip-to-content-link" href="#main">Skip to main</a>
@@ -9,7 +8,7 @@
 <header class="siteHeader">
 	<div class="bigM">
 		<div class="square-box pos-rel">
-			<a href="/" title="home page" class="bigM__button logolink">
+			<a href="/" title="home page" class="bigM__button logolink" aria-label="Home page">
 				<svg
 					aria-label="M logo for Stickling.co.uk"
 					viewBox="70 -20 260 260"
@@ -50,7 +49,7 @@
 	</div>
 </header>
 
-<style lang="scss">
+<style>
 	.bigM {
 		width: 10vw;
 		position: absolute;
@@ -67,17 +66,14 @@
 	}
 
 	.bigM__button {
-		// background: white;
 		border-radius: 100%;
 		aspect-ratio: 1 / 1;
 		width: 100%;
 		height: 100%;
-		// position: absolute;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		filter: drop-shadow(0 1px #0002);
-		// background: var(--pallettemax);
 	}
 
 	.navcontainer {

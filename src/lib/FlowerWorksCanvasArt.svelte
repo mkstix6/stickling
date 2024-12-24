@@ -43,7 +43,7 @@
 		const canvasSize = renderSize;
 		// canvas.width = canvasSize;
 		// canvas.height = canvasSize;
-		const ctx = <CanvasRenderingContext2D>canvas.getContext('2d', { colorSpace: 'display-p3' });
+		const ctx = canvas.getContext('2d', { colorSpace: 'display-p3' });
 		const bgGradient = ctx.createLinearGradient(0, 0, 0, canvasSize);
 		const cloverGreenHue = 136;
 		// Add three color stops
@@ -84,9 +84,7 @@
 			};
 			const petals = Array.from({ length: petalCount }, (petal) =>
 				createPetal(
-					<HSLValues>(
-						petalColor.map((value, i) => value + (Math.random() * 2 - 1) * colorTolerence[i])
-					),
+					petalColor.map((value, i) => value + (Math.random() * 2 - 1) * colorTolerence[i]),
 				),
 			);
 			return {
@@ -159,8 +157,8 @@
 						];
 						const startCoordinates = this.entityRotater(
 							entityRotaterAroundPoint(
-								<Coordinates>this.origin,
-								<Coordinates>petalCoordinates.map((value: number): number => value),
+								this.origin,
+								petalCoordinates.map((value: number) => value),
 								(i * 360) / petalCount,
 							),
 						);

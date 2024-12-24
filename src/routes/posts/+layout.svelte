@@ -56,7 +56,7 @@
 	</footer>
 </div>
 
-<style lang="scss">
+<style>
 	:global(.page--post h1) {
 		margin-left: auto;
 		margin-right: auto;
@@ -67,7 +67,6 @@
 	}
 
 	.backbutton {
-		// display: block;
 		opacity: 0.7;
 		margin-bottom: 1rem;
 		transition: opacity 300ms;
@@ -98,7 +97,11 @@
 		@media screen and (max-width: 500px) {
 			grid-template-columns: 1fr;
 		}
-		margin: 5rem 0;
+
+		& {
+			margin: 5rem 0;
+		}
+
 		a {
 			padding: 0;
 		}
@@ -134,13 +137,7 @@
 		transform: rotateY(-15deg);
 		position: relative;
 
-		// @media (prefers-color-scheme: dark) {
 		background: white;
 		color: black;
-		// }
-		// @media (prefers-color-scheme: light) {
-		// 	background: #111;
-		// 	color: white;
-		// }
 	}
 </style>

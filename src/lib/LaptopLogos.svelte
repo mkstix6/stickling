@@ -51,7 +51,7 @@
 					stagger: { amount: 2 },
 					opacity: 1,
 				},
-				flyDuration + 0.01
+				flyDuration + 0.01,
 			);
 		}
 	};
@@ -65,9 +65,9 @@
 			// No animation
 		} else {
 			if (
-				!'IntersectionObserver' in window &&
-				!'IntersectionObserverEntry' in window &&
-				!'intersectionRatio' in window.IntersectionObserverEntry.prototype
+				(!'IntersectionObserver') in window &&
+				(!'IntersectionObserverEntry') in window &&
+				(!'intersectionRatio') in window.IntersectionObserverEntry.prototype
 			) {
 				// Polyfill if required
 			} else {
@@ -88,8 +88,8 @@
 
 <div class="aspectRatioBox">
 	<div class="laptop" bind:clientWidth={laptopWidth} class:laptop--observed={wasObserverd}>
-		<div class="laptop__screenglow" />
-		<div class="laptop__base" />
+		<div class="laptop__screenglow"></div>
+		<div class="laptop__base"></div>
 		<div class="laptop__lidperspective">
 			<div class="laptop__lid">
 				<div class="laptop__logos" bind:this={logos_element}>
@@ -111,9 +111,9 @@
 								src="/logos/stickers/{image}"
 								alt={name}
 								style="--logo-width: {Math.floor(
-									scale * (laptopWidth * 0.15) * aspectratio
+									scale * (laptopWidth * 0.15) * aspectratio,
 								)}px; --logo-height: {Math.floor(
-									scale * (laptopWidth * 0.15)
+									scale * (laptopWidth * 0.15),
 								)}px; transform: rotate({Math.floor((Math.random() - 0.5) * 30)}deg);"
 								loading="lazy"
 								decoding="async"
@@ -128,6 +128,7 @@
 
 <style lang="scss">
 	@use 'sass:math';
+	@use 'sass:color';
 
 	.aspectRatioBox {
 		width: 100%;
@@ -214,8 +215,8 @@
 			background: #dfdfe4;
 			background: linear-gradient(
 				to top,
-				darken(#dfdfe4, 30%),
-				darken(#dfdfe4, 10%) 1.25vw,
+				color.adjust(#dfdfe4, $lightness: -30%),
+				color.adjust(#dfdfe4, $lightness: -10%) 1.25vw,
 				#dfdfe4 1.25vw,
 				#dfdfe4
 			);

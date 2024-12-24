@@ -8,5 +8,5 @@
 	</main>
 </div>
 
-<style lang="scss">
+<style>
 </style>

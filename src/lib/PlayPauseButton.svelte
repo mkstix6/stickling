@@ -12,7 +12,7 @@
 
 <button
 	class="ringtimer__playpause ringtimer__playpause--{playing ? 'paused' : 'playing'}"
-	on:click={triggerPlayPauseTimer}
+	onclick={triggerPlayPauseTimer}
 >
 	<span class="screen-reader-text">{playing ? 'Pause' : 'Play'}</span>
 	<span class="ringtimer__playpauseicon">
@@ -26,7 +26,7 @@
 	</span>
 </button>
 
-<style lang="scss">
+<style>
 	.ringtimer__playpause {
 		cursor: pointer;
 		opacity: 0;
@@ -42,7 +42,10 @@
 		border-radius: 100%;
 		z-index: 15;
 		transform: rotate(0deg);
-		transition: opacity 0.4s, transform 0.3s, background-color 0.5s;
+		transition:
+			opacity 0.4s,
+			transform 0.3s,
+			background-color 0.5s;
 		&:focus {
 			outline: red solid 2px;
 		}

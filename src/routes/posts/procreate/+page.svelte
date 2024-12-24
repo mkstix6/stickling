@@ -24,7 +24,7 @@
 	{/each}
 </div>
 
-<style lang="scss">
+<style>
 	.photogrid {
 		display: grid;
 		gap: clamp(2vw, 8vw, 5rem);

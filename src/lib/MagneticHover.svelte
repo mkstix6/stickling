@@ -36,12 +36,13 @@
 		on:mouseout={resetTransform}
 		on:blur={resetTransform}
 		style="transform: scale({scale}) rotateX({degx}deg) rotateY({degy}deg) translateX({pxx}px) translateY({pxy}px);"
+		role="presentation"
 	>
 		<slot />
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.perspective {
 		perspective: 1000px;
 	}

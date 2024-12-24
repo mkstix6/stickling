@@ -1,5 +1,5 @@
 <script>
-	  /** @type {import('./$types').PageData} */
+	/** @type {import('./$types').PageData} */
 
 	import '../app.scss';
 	import SiteHeader from '$lib/Header.svelte';
@@ -11,7 +11,7 @@
 
 <div>
 	<!-- <PageTransitions {pagePath}> -->
-		<slot />
+	<slot />
 	<!-- </PageTransitions> -->
 </div>
 

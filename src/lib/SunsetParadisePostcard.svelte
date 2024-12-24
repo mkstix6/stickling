@@ -50,11 +50,11 @@
 	</div>
 </div>
 
-<style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+<style>
+	/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
 
 	:root {
-		// The standard postcard size in the UK is 148mm x 105mm (14.8 cm x 10.5cm) which is the equivalent of A6. The postcard size in inches is 5.8 inches x 4.2 inches. https://www.postsnap.com/blog/postcard-size/
+		/* The standard postcard size in the UK is 148mm x 105mm (14.8 cm x 10.5cm) which is the equivalent of A6. The postcard size in inches is 5.8 inches x 4.2 inches. https://www.postsnap.com/blog/postcard-size/ */
 		--A6paperRatio: calc(105 / 148);
 		--postcardWidth: 60vw;
 	}
@@ -71,7 +71,6 @@
 		margin: 5vw;
 		display: grid;
 		place-items: center;
-		// border: 6vw solid white;
 		transform: rotate(-3deg);
 		position: relative;
 	}
@@ -91,17 +90,20 @@
 		padding: 0 0.1em;
 	}
 
-	// Horizontal Vignette
+	/* Horizontal Vignette */
 	.postcard::before {
 		content: '';
 		position: absolute;
 		inset: 0;
 		background: linear-gradient(110deg, #fff0, #ffff, #fff0);
 		mix-blend-mode: overlay;
-		box-shadow: inset 1px 1px 0 #fff7, inset -1px -1px 0 #0001, -0.05em 0.15em 0.1em #0003;
+		box-shadow:
+			inset 1px 1px 0 #fff7,
+			inset -1px -1px 0 #0001,
+			-0.05em 0.15em 0.1em #0003;
 	}
 
-	// Postcard shimmer
+	/* Postcard shimmer */
 	.postcard::after {
 		content: '';
 		position: absolute;
@@ -132,9 +134,13 @@
 		background-color: #402214;
 		background-image: linear-gradient(to bottom, #fda528, #ba4d15, #5a2b15),
 			linear-gradient(to bottom, #402214, #673b12);
-		background-size: 100% 75%, 100% 26%;
+		background-size:
+			100% 75%,
+			100% 26%;
 		background-repeat: no-repeat, repeat;
-		background-position: top center, bottom center;
+		background-position:
+			top center,
+			bottom center;
 	}
 
 	.sun {

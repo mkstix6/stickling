@@ -50,7 +50,7 @@
 			(event) => {
 				randomBoard();
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 	});
 
@@ -246,6 +246,8 @@
 </footer>
 
 <style lang="scss">
+	@use 'sass:color';
+
 	.controls {
 		margin: 1.5rem 0;
 	}
@@ -262,7 +264,9 @@
 		position: relative;
 		top: 0;
 		transform: translateY(0em);
-		transition: transform 100ms, box-shadow 70ms;
+		transition:
+			transform 100ms,
+			box-shadow 70ms;
 		line-height: 1;
 		padding: 0 1em;
 		margin-bottom: 0.3em;
@@ -306,15 +310,6 @@
 		padding: 0.5rem;
 	}
 
-	// .keyGradient {
-	//   height: 5rem;
-	//   width: 1rem;
-	//   border: 1px solid white;
-	//   border-radius: 0.2rem;
-	//   $perfectColor: hsl(133.89, 89.8%, 50%);
-	//   background: linear-gradient(to bottom, hsl(290, 50%, 50%), hsl(230, 50%, 50%), $perfectColor, hsl(67.5, 70.59%, 80%), hsl(0, 70.59%, 80%));
-	// }
-
 	.keyLabels {
 		display: flex;
 		flex-direction: column;
@@ -322,7 +317,7 @@
 		text-align: left;
 	}
 
-	// Start Hex 38 puzzle styles
+	/* Start Hex 38 puzzle styles */
 	:root {
 		--boardSize: 90vw;
 		--gap: 0.3vw;
@@ -370,8 +365,14 @@
 		$color: #375;
 		font-size: calc(var(--hexWidth) / 3);
 		color: #0009;
-		text-shadow: 0 1px 0 transparentize(lighten($color, 20%), 0.7),
-			0 -1px 0 transparentize(darken($color, 20%), 0.7);
+		text-shadow:
+			0 1px 0 color.adjust(color.adjust($color, $lightness: 20%), $alpha: -0.7, $space: hsl),
+			// direct replacement for transparentize()
+			0 -1px 0 color.adjust(
+					color.adjust($color, $lightness: -20%),
+					$alpha: -0.7,
+					$space: hsl
+				); // direct replacement for transparentize()
 		width: var(--hexWidth);
 		height: var(--hexHeight);
 		$fraction: 25%;

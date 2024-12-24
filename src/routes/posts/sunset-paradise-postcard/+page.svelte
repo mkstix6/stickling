@@ -11,7 +11,7 @@
 
 <figure>
 	<SunsetParadisePostcard />
-	<caption>Remember your sunnies 🕶.</caption>
+	<figcaption>Remember your sunnies 🕶.</figcaption>
 </figure>
 
 <SocialLink href="https://codepen.io/mkstix6/pen/LYyLrEO?editors=0100" service="codepen"

@@ -318,18 +318,19 @@
 		</div>
 
 		<div style="text-align: center;">
-			<button onclick="window.print()" class="megaButton printbutton">Print this page</button>
+			<button onclick={window.print()} class="megaButton printbutton">Print this page</button>
 		</div>
 	</div>
 </main>
 
 <style lang="scss">
+	@use 'sass:color';
+
 	@media screen and (min-width: 1000px), print {
 		.grid {
-			$goldenratio: 1.62;
 			display: grid;
 			gap: 3rem;
-			grid-template-columns: #{$goldenratio}fr 1fr;
+			grid-template-columns: 1.62fr 1fr;
 		}
 
 		.employment {
@@ -375,20 +376,22 @@
 			height: 5em;
 		}
 
-		border-radius: 1px;
-		padding: 1px;
-		background-color: white;
-		cursor: none;
-		position: relative;
-		z-index: 5;
-		transition: transform 300ms;
-		transition-timing-function: cubic-bezier(0.415, 1.34, 0.83, 0.745);
+		& {
+			border-radius: 1px;
+			padding: 1px;
+			background-color: white;
+			cursor: none;
+			position: relative;
+			z-index: 5;
+			transition: transform 300ms;
+			transition-timing-function: cubic-bezier(0.415, 1.34, 0.83, 0.745);
 
-		&:focus,
-		&:hover {
-			transform: scale(7);
-			transition: transform 800ms;
-			transition-timing-function: cubic-bezier(0.79, -0.07, 0, 1.03);
+			&:focus,
+			&:hover {
+				transform: scale(7);
+				transition: transform 800ms;
+				transition-timing-function: cubic-bezier(0.79, -0.07, 0, 1.03);
+			}
 		}
 	}
 
@@ -511,7 +514,6 @@
 			margin-top: 1em;
 		}
 
-		// h4 + p,
 		h4 + ul,
 		h4 + ul > li:first-child {
 			margin-top: 0;
@@ -520,11 +522,6 @@
 		> li {
 			margin-bottom: 1em;
 			padding: 1.5em 0;
-
-			@media print {
-				padding-top: 0;
-			}
-
 			padding-left: 3em;
 			position: relative;
 			min-height: calc(3vw * var(--durationyears));
@@ -569,16 +566,37 @@
 					content: none !important;
 				}
 			}
+
+			@media print {
+				padding-top: 0;
+			}
 		}
+
 		@for $i from 1 through 6 {
 			li:nth-child(#{$i}) {
 				&::before,
 				&::after {
-					--stripecolor: #{mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%)};
-					--stripecolor1: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.6)};
-					--stripecolor2: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.75)};
-					--stripecolor3: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.85)};
-					--stripecolor4: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%), 0.9)};
+					--stripecolor: #{color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%)};
+					--stripecolor1: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.6,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor2: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.75,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor3: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.85,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor4: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i - 1) * 20%),
+							$alpha: -0.9,
+							$space: hsl
+						)}; // direct replacement for transparentize()
 				}
 			}
 		}
@@ -589,11 +607,27 @@
 			li:nth-child(#{$i}) {
 				&::before,
 				&::after {
-					--stripecolor: #{mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%)};
-					--stripecolor1: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.6)};
-					--stripecolor2: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.75)};
-					--stripecolor3: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.85)};
-					--stripecolor4: #{transparentize(mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%), 0.9)};
+					--stripecolor: #{color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%)};
+					--stripecolor1: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.6,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor2: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.75,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor3: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.85,
+							$space: hsl
+						)}; // direct replacement for transparentize()
+					--stripecolor4: #{color.adjust(
+							color.mix(hsl(222, 64%, 25%), #56ffd5, ($i + 3) * 20%),
+							$alpha: -0.9,
+							$space: hsl
+						)}; // direct replacement for transparentize()
 				}
 			}
 		}

@@ -50,14 +50,14 @@
 <div class:onZone={whichZone} class:offZone={!whichZone}>
 	<div class="ring" style="background: {styleRingBackground};">
 		{#if ringBackgroundHighlight === 'active' && whichZone}
-			<div class="ring__background" style="background: {styleRingBackgroundOn};" />
+			<div class="ring__background" style="background: {styleRingBackgroundOn};"></div>
 		{:else if ringBackgroundHighlight === 'active' && !whichZone}
-			<div class="ring__background" style="background: {styleRingBackgroundOff};" />
+			<div class="ring__background" style="background: {styleRingBackgroundOff};"></div>
 		{/if}
 		{#if showTicks}
-			<div class="ringtimer__secondsMarkers" style="background: {ticksImage}" />
+			<div class="ringtimer__secondsMarkers" style="background: {ticksImage}"></div>
 		{/if}
-		<div class="ringtimer__secondHand" style="transform: rotate({$loopProgress * 360}deg);" />
+		<div class="ringtimer__secondHand" style="transform: rotate({$loopProgress * 360}deg);"></div>
 		<div class="ringtimer__zoneCountdown">{prettyTime(whichZone ? onCountDown : offCountDown)}</div>
 		<div class="ringtimer__button">
 			<PlayPauseButton {playing} on:toggle />
@@ -65,12 +65,10 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	:root {
-		// --pallette-on: rgb(90, 207, 90);
 		--pallette-on: #43f880;
 		--pallette-on2: #20f1b7;
-		// --pallette-off: rgb(167, 66, 66);
 		--pallette-off: #d51041;
 		--pallette-offInactive: #fc2a06;
 		--pallette-offInactive: #38130d;
@@ -79,21 +77,6 @@
 		--pallette-secondhand: rgb(4, 121, 218);
 		--ringTimer-bg: var(--card-backgroundcolor);
 	}
-
-	// .ringTimer {
-	// 	display: inline-grid;
-	// 	grid-template-columns: 1fr 1fr;
-	// 	padding: 2rem;
-	// 	border-radius: 2rem;
-	// 	box-shadow: 0 0.5rem 3rem -1.5rem #0005;
-	// 	background: var(--ringTimer-bg);
-
-	// 	&--ringOnly {
-	// 		border-radius: 100%;
-	// 		display: inline-block;
-	// 		padding: 0.25rem;
-	// 	}
-	// }
 
 	.ring {
 		--ringsize: 7rem;
@@ -147,7 +130,6 @@
 		border-radius: 2px;
 		background: transparent;
 		transform-origin: center bottom;
-		// transition: transform 100ms ease-out;
 
 		&::after {
 			content: '';

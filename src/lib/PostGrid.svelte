@@ -36,19 +36,22 @@
 	{/each}
 </div>
 
-<div class="BDgradient" />
+<div class="BDgradient"></div>
 
-<style lang="scss">
+<style>
 	.postGrid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		@media screen and (max-width: 400px) {
 			grid-template-columns: 1fr;
 		}
-		/* This is better for small screens, once min() is better supported */
-		/* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
-		gap: 2rem;
-		margin-bottom: 5rem;
-		max-width: 1248px;
+
+		& {
+			/* This is better for small screens, once min() is better supported */
+			/* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+			gap: 2rem;
+			margin-bottom: 5rem;
+			max-width: 1248px;
+		}
 	}
 </style>

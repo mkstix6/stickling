@@ -64,8 +64,8 @@
 							this.opacity === 1
 								? (this.velocity = 12)
 								: this.velocity < minV
-								? minV
-								: this.velocity - Math.random() * minV * 0.3;
+									? minV
+									: this.velocity - Math.random() * minV * 0.3;
 						this.angle =
 							this.angle < Math.PI / 2 || this.angle > Math.PI
 								? (Math.PI * 3) / 4 + Math.random() * 0.2
@@ -79,8 +79,8 @@
 							this.opacity === 1
 								? 1
 								: this.velocity < minV
-								? minV
-								: this.velocity - Math.random() * 0.01;
+									? minV
+									: this.velocity - Math.random() * 0.01;
 						// this.angle =
 						// 	this.angle < -Math.PI / 2 || this.angle > Math.PI / 2
 						// 		? -Math.PI / 2 + Math.random() * Math.PI
@@ -113,7 +113,7 @@
 			},
 			updateCSS() {
 				this.elem.style.transform = `translateX(${Math.floor(this.x)}px) translateY(${Math.floor(
-					this.y
+					this.y,
 				)}px) rotate(${this.rotate}deg)`;
 				this.opacity = this.elem.style.opacity = this.opacity;
 			},
@@ -196,34 +196,14 @@
 	class="confettiSpace card"
 	data-particleschoice={particlesChoice}
 	on:mousemove={handleMouseMove}
-/>
+	role="application"
+></div>
 
 <SocialLink href="https://codepen.io/mkstix6/pen/arZWbE" service="codepen"
 	>This experiment is also visible on CodePen.</SocialLink
 >
 
-<style lang="scss">
-	// @keyframes spinny {
-	// 	0% {
-	// 		background: cyan;
-	// 		transform: rotate3D(0, 1, 0.5, 3.142rad);
-	// 	}
-
-	// 	100% {
-	// 		background: yellow;
-	// 		transform: rotate3D(0, 1, 0.5, 3.142rad);
-	// 	}
-	// }
-
-	// .dust {
-	// 	background: #ff0;
-	// 	display: block;
-	// 	width: 10px;
-	// 	height: 10px;
-	// 	position: absolute;
-	// 	animation: spinny 0.4s infinite;
-	// 	border-radius: 100%;
-	// }
+<style>
 	label {
 		text-transform: capitalize;
 	}
